@@ -1,0 +1,41 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 46705370fcbbd37478a0ec82d2c16e82, type: 3}
+  m_Name: EnemyCardMaster
+  m_EditorClassIdentifier: 
+  dataList:
+  - active: 1
+    cardId: 3000100
+    originId: 30001
+    sortId: 1
+    charaName: "\u30BF\u30B3"
+    readCharaname: 
+    tagNames: []
+    rarityType: 0
+    moveType: 0
+    hitType: 0
+    attributeType: 0
+    OverrideId: 1000015
+    ExsaOverrideId: 1000012
+    SectaOverrideId: 1000013
+    QuetaOverrideId: 1000014
+    maxLevel: 100
+    minHP: 1000
+    maxHP: 2700
+    minATK: 456
+    maxATK: 1074
+    minSPD: 25
+    maxSPD: 250
+    Move: 1
+    damageRange: 5
+    growthTableKey: Card_GrowthTable_Normal
+    behaviorAI: 080000000400000001000000050000000200000006000000030000000700000000000000

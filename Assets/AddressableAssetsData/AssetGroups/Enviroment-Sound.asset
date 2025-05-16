@@ -1,0 +1,47 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Enviroment-Sound
+  m_EditorClassIdentifier: 
+  m_GroupName: Enviroment-Sound
+  m_GUID: a6456ee4e0ea89044aed0b5e11a4f0c3
+  m_SerializeEntries:
+  - m_GUID: 2f001dfca214f8341b694236075b9b4c
+    m_Address: Assets/FantecGames/Resources_moved/Sound/SE/SystemLoginPop.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9af7e0cfdc5fb1045a38f4bd9bf39316
+    m_Address: Assets/FantecGames/Resources_moved/Sound/BGM/Fantasy6.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a7b963382e0827f4b86b2d8387d48774
+    m_Address: Assets/FantecGames/Resources_moved/Sound/BGM/Fantasy8.mp3
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ecde6ee74339e894797bac40b07c3327
+    m_Address: Assets/FantecGames/Resources_moved/Sound/BGM/Home.wav
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8913082de55996a47b8a0e99d1f63ddf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1cd59dd3e767a5f4587c81ffd3713c00, type: 2}
+    - {fileID: 11400000, guid: 5076ebcfbc74e96439397e8e231903b0, type: 2}

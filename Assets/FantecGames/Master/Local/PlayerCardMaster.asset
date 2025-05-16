@@ -1,0 +1,171 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a16a1d3af22f01642944f044d97ce664, type: 3}
+  m_Name: PlayerCardMaster
+  m_EditorClassIdentifier: 
+  dataList:
+  - active: 1
+    cardId: 10001100
+    originId: 10000
+    sortId: 1
+    charaName: Magi0
+    readCharaname: "\u30DE\u30AE0"
+    tagNames: []
+    rarityType: 0
+    moveType: 0
+    hitType: 0
+    attributeType: 1
+    OverrideId: 1000011
+    ExsaOverrideId: 1000012
+    SectaOverrideId: 1000013
+    QuetaOverrideId: 1000014
+    maxLevel: 100
+    minHP: 1400
+    maxHP: 4200
+    minATK: 120
+    maxATK: 1600
+    minSPD: 25
+    maxSPD: 250
+    Move: 4
+    damageRange: 5
+    growthTableKey: Card_GrowthTable_Precocity
+    behaviorAI: 080000000500000001000000040000000000000007000000030000000600000002000000
+    homeVoice: []
+    expTableKey: Card_ExpTable_Precocity
+    getStartSchedule: 2000/1/1 0:00:00
+    getEndSchedule: 2099/12/31 23:59:59
+    Live2DlocalPosition: {x: 0, y: -200, z: 0}
+    Live2DlocalScale: {x: 1000, y: 1000, z: 1}
+    AnimationClip:
+    - mtn_02.anim
+    - mtn_03.anim
+    - mtn_04.anim
+    - special_01.anim
+    - special_02.anim
+    - special_03.anim
+  - active: 1
+    cardId: 10001101
+    originId: 10001
+    sortId: 2
+    charaName: Magi1
+    readCharaname: "\u30DE\u30AE1"
+    tagNames: []
+    rarityType: 0
+    moveType: 1
+    hitType: 0
+    attributeType: 1
+    OverrideId: 1000011
+    ExsaOverrideId: 1000012
+    SectaOverrideId: 1000013
+    QuetaOverrideId: 1000014
+    maxLevel: 100
+    minHP: 1400
+    maxHP: 4200
+    minATK: 120
+    maxATK: 600
+    minSPD: 25
+    maxSPD: 250
+    Move: 3
+    damageRange: 5
+    growthTableKey: Card_GrowthTable_Precocity
+    behaviorAI: 080000000500000001000000040000000000000007000000030000000600000002000000
+    homeVoice: []
+    expTableKey: Card_ExpTable_Precocity
+    getStartSchedule: 2000/1/1 0:00:00
+    getEndSchedule: 2099/12/31 23:59:59
+    Live2DlocalPosition: {x: 0, y: -200, z: 0}
+    Live2DlocalScale: {x: 1000, y: 1000, z: 1}
+    AnimationClip:
+    - mtn_02.anim
+    - mtn_03.anim
+    - mtn_04.anim
+    - special_01.anim
+    - special_02.anim
+    - special_03.anim
+  - active: 1
+    cardId: 10001102
+    originId: 10002
+    sortId: 3
+    charaName: Magi2
+    readCharaname: "\u30DE\u30AE2"
+    tagNames: []
+    rarityType: 0
+    moveType: 1
+    hitType: 0
+    attributeType: 1
+    OverrideId: 1000011
+    ExsaOverrideId: 1000012
+    SectaOverrideId: 1000013
+    QuetaOverrideId: 1000014
+    maxLevel: 100
+    minHP: 1400
+    maxHP: 4200
+    minATK: 120
+    maxATK: 600
+    minSPD: 25
+    maxSPD: 250
+    Move: 1
+    damageRange: 5
+    growthTableKey: Card_GrowthTable_Precocity
+    behaviorAI: 080000000400000001000000050000000200000006000000030000000700000000000000
+    homeVoice: []
+    expTableKey: Card_ExpTable_Precocity
+    getStartSchedule: 2000/1/1 0:00:00
+    getEndSchedule: 2099/12/31 23:59:59
+    Live2DlocalPosition: {x: 0, y: -200, z: 0}
+    Live2DlocalScale: {x: 1000, y: 1000, z: 0}
+    AnimationClip:
+    - mtn_02.anim
+    - mtn_03.anim
+    - mtn_04.anim
+    - special_01.anim
+    - special_02.anim
+    - special_03.anim
+  - active: 1
+    cardId: 10001103
+    originId: 10003
+    sortId: 4
+    charaName: MagiDark
+    readCharaname: "\u30DE\u30AE\u30C0\u30FC\u30AF"
+    tagNames: []
+    rarityType: 0
+    moveType: 1
+    hitType: 0
+    attributeType: 1
+    OverrideId: 1000011
+    ExsaOverrideId: 1000012
+    SectaOverrideId: 1000013
+    QuetaOverrideId: 1000014
+    maxLevel: 100
+    minHP: 1400
+    maxHP: 20580
+    minATK: 120
+    maxATK: 4175
+    minSPD: 25
+    maxSPD: 2520
+    Move: 2
+    damageRange: 5
+    growthTableKey: Card_GrowthTable_Precocity
+    behaviorAI: 080000000400000001000000050000000200000006000000030000000700000000000000
+    homeVoice: []
+    expTableKey: Card_ExpTable_Precocity
+    getStartSchedule: 2000/1/1 0:00:00
+    getEndSchedule: 2099/12/31 23:59:59
+    Live2DlocalPosition: {x: 0, y: -200, z: 0}
+    Live2DlocalScale: {x: 1000, y: 1000, z: 1}
+    AnimationClip:
+    - mtn_02.anim
+    - mtn_03.anim
+    - mtn_04.anim
+    - special_01.anim
+    - special_02.anim
+    - special_03.anim

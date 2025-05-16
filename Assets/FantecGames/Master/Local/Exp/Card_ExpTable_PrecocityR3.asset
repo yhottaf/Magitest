@@ -1,0 +1,215 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: a0718e689d4add34880cd289a92e93ec, type: 3}
+  m_Name: Card_ExpTable_PrecocityR3
+  m_EditorClassIdentifier: 
+  dataList:
+  - level: 1
+    totalExp: 0
+  - level: 2
+    totalExp: 160
+  - level: 3
+    totalExp: 323
+  - level: 4
+    totalExp: 488
+  - level: 5
+    totalExp: 654
+  - level: 6
+    totalExp: 822
+  - level: 7
+    totalExp: 992
+  - level: 8
+    totalExp: 1164
+  - level: 9
+    totalExp: 1337
+  - level: 10
+    totalExp: 1512
+  - level: 11
+    totalExp: 1689
+  - level: 12
+    totalExp: 1867
+  - level: 13
+    totalExp: 2047
+  - level: 14
+    totalExp: 2229
+  - level: 15
+    totalExp: 2413
+  - level: 16
+    totalExp: 2599
+  - level: 17
+    totalExp: 2787
+  - level: 18
+    totalExp: 2976
+  - level: 19
+    totalExp: 3167
+  - level: 20
+    totalExp: 3360
+  - level: 21
+    totalExp: 3555
+  - level: 22
+    totalExp: 3752
+  - level: 23
+    totalExp: 3951
+  - level: 24
+    totalExp: 4152
+  - level: 25
+    totalExp: 4355
+  - level: 26
+    totalExp: 4560
+  - level: 27
+    totalExp: 4767
+  - level: 28
+    totalExp: 4976
+  - level: 29
+    totalExp: 5187
+  - level: 30
+    totalExp: 5400
+  - level: 31
+    totalExp: 5616
+  - level: 32
+    totalExp: 5834
+  - level: 33
+    totalExp: 6054
+  - level: 34
+    totalExp: 6276
+  - level: 35
+    totalExp: 6500
+  - level: 36
+    totalExp: 6727
+  - level: 37
+    totalExp: 6956
+  - level: 38
+    totalExp: 7187
+  - level: 39
+    totalExp: 7420
+  - level: 40
+    totalExp: 7656
+  - level: 41
+    totalExp: 7894
+  - level: 42
+    totalExp: 8135
+  - level: 43
+    totalExp: 8378
+  - level: 44
+    totalExp: 8623
+  - level: 45
+    totalExp: 8871
+  - level: 46
+    totalExp: 9121
+  - level: 47
+    totalExp: 9374
+  - level: 48
+    totalExp: 9629
+  - level: 49
+    totalExp: 9887
+  - level: 50
+    totalExp: 10147
+  - level: 51
+    totalExp: 10564
+  - level: 52
+    totalExp: 10989
+  - level: 53
+    totalExp: 11423
+  - level: 54
+    totalExp: 11866
+  - level: 55
+    totalExp: 12318
+  - level: 56
+    totalExp: 12779
+  - level: 57
+    totalExp: 13249
+  - level: 58
+    totalExp: 13728
+  - level: 59
+    totalExp: 14217
+  - level: 60
+    totalExp: 14716
+  - level: 61
+    totalExp: 15225
+  - level: 62
+    totalExp: 15744
+  - level: 63
+    totalExp: 16273
+  - level: 64
+    totalExp: 16813
+  - level: 65
+    totalExp: 17363
+  - level: 66
+    totalExp: 17924
+  - level: 67
+    totalExp: 18497
+  - level: 68
+    totalExp: 19081
+  - level: 69
+    totalExp: 19677
+  - level: 70
+    totalExp: 20285
+  - level: 71
+    totalExp: 21161
+  - level: 72
+    totalExp: 22064
+  - level: 73
+    totalExp: 22994
+  - level: 74
+    totalExp: 23952
+  - level: 75
+    totalExp: 24938
+  - level: 76
+    totalExp: 25954
+  - level: 77
+    totalExp: 27000
+  - level: 78
+    totalExp: 28078
+  - level: 79
+    totalExp: 29188
+  - level: 80
+    totalExp: 30331
+  - level: 81
+    totalExp: 32173
+  - level: 82
+    totalExp: 34107
+  - level: 83
+    totalExp: 36138
+  - level: 84
+    totalExp: 38270
+  - level: 85
+    totalExp: 40509
+  - level: 86
+    totalExp: 42860
+  - level: 87
+    totalExp: 45329
+  - level: 88
+    totalExp: 47921
+  - level: 89
+    totalExp: 50643
+  - level: 90
+    totalExp: 53501
+  - level: 91
+    totalExp: 56502
+  - level: 92
+    totalExp: 59653
+  - level: 93
+    totalExp: 62961
+  - level: 94
+    totalExp: 66435
+  - level: 95
+    totalExp: 70082
+  - level: 96
+    totalExp: 73912
+  - level: 97
+    totalExp: 77933
+  - level: 98
+    totalExp: 82155
+  - level: 99
+    totalExp: 86588
+  - level: 100
+    totalExp: 91243

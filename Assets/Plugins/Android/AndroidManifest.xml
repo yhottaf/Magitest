@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.DefaultCompany.Magi">
+
+	<application
+        android:allowBackup="true"
+        android:supportsRtl="true">
+
+		<!-- UnityPlayerActivity の定義 -->
+		<activity android:name="com.unity3d.player.UnityPlayerActivity">
+			<intent-filter>
+				<action android:name="android.intent.action.MAIN" />
+				<category android:name="android.intent.category.LAUNCHER" />
+			</intent-filter>
+		</activity>
+
+		<!-- Foreground Service の定義 -->
+		<service android:name="com.unity3d.player.UnityPlayerActivity"
+                 android:foregroundServiceType="dataSync" />
+	</application>
+
+	<!-- 必要なパーミッション -->
+	<uses-permission android:name="android.permission.FOREGROUND_SERVICE" />
+	<uses-permission android:name="android.permission.INTERNET" />
+</manifest>

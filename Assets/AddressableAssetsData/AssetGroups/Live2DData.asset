@@ -1,0 +1,341 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Live2DData
+  m_EditorClassIdentifier: 
+  m_GroupName: Live2DData
+  m_GUID: f9b58b0847cee8c44b17e1a8fe0df0e6
+  m_SerializeEntries:
+  - m_GUID: 25a803563231b5f47a6ab273911580f7
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_02.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 25ca0061790ded74e9bc0325c298010c
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.model3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 299633afddd90f641bb26a5cdb5b86cf
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_02.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29fca108bee2ab747a9a7f4c4b64d105
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_02.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ca1a9f09a9d45447a9e4d68fc85c047
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.cdi3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 2ecdc4bd53045de40896f36d5ddc19e9
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_02.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 310b74c51b63e7b4eade85d64d573750
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_01.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 34cc18210ccf97f49b15845b7e7c3a73
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_05.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3dfa55b7b2b948945bf7fbf141f6ec39
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_06.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4198db065ac7b8d44ae17c0202df90a9
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_02.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4d9a17918638d714bb286f1890e312fe
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_03.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 50ff5cb85a01bf64c868347f428e5d9e
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.2048/texture_00.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 5d0458e47acba9a4795f2b5a0501ad77
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_04.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 60600997b1476984382150f47189cf44
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_02.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 64033c0923da5de4d9cfb6298212eda6
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/MaoMaskTexture.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 65a1fd0232cb2414f8122e15423781b0
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_04.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f4fcda1eac66e54abcdbbf0e18c26eb
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_02.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 70cfcbd4f35d11540a28fa44473509a9
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_08.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 78941216609d33a4f8722232be743fcd
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Live2D.prefab
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7cedc24fbf4f9a74fbc08bf710792465
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_03.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8aed75811eb6fe845ba75ff276bd992e
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/sample_01.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8bfba3be4edf1764982d54db00794a85
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_03.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8f421a10f2749fe43a1c3b98a649cf6a
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_01.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 938dce3f1a79d6845be68d2e579dff9a
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.physics3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 93975dbbe3c9ee4488f425b6cc09b961
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_06.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 94a70b586c0910746b25b07436ef55c9
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_01.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 963ff7ff24f49af4db1a8745b2e62dcb
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_03.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97b47fa3535772341a31f7527cd6634a
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.expressionList.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9c0e872fef8d7c649bac5485f1b30b2f
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/AnimController.controller
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9fabfd62eeca680479a7d0a69aefe935
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/sample_01.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a4e3d8fe32b4bf94bb41f47603b8ddfb
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/sample_01.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a571187f861b0164c89026ef7998a652
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/1000.expressionList.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: aaa47bfa7be30dc49b26ce779f07502e
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/Idle.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ab5b5c150255c694db8556ee7e5d92c1
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_03.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ad3daf5b36755e741a3cf2423286eaf7
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_04.fade.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ae82728a2ae93f24e828c612c829b0c2
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_03.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b10854ea02c156142812e1e0369641bb
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_03.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b803c54d55eeedd48a5924aa7ce4f075
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_04.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: bb0f7d34395041e4fb8692e6e5a7263a
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.fadeMotionList.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: c6a968865ad9dc84c94206d1775fb13c
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_02.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cfefe8f637600254585442e8b9031abc
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_01.motion3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d21d5e18ef186e14c8642fc71827f051
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_07.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d78a3a06fb2e1d747be7bced50f57ab8
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_08.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8a4b57f3101bbb49baa9282fc2baaac
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_05.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d8ffb70bda52d344183b4bac9d2849f1
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_04.exp3.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d97c9e17432afe144a29221ecdaaa4e5
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_01.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dbe1edeedde202443a283c6654e439a4
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/expressions/exp_07.exp3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dd6873ae7e203b74bb668af926c791d1
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/Unlit.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: dee17d53be1ad2746a162b0aa163e275
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/1000.fadeMotionList.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9a6766d2544ac14591d4be4721f0224
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/special_01.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e9abdb3bccaedd44eaf8f7bf9508487d
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/mtn_03.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fc0ba1c3b3a74694cb8170651ca463c6
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/motions/Idle.anim
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: fca1c449b7a920840b17befc67d43535
+    m_Address: Assets/FantecGames/Resources_moved/Live2D/10000/Mao.pose3.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8913082de55996a47b8a0e99d1f63ddf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 1052fb54c9f5a954a90a3568531c6084, type: 2}
+    - {fileID: 11400000, guid: 575bc848fab4aba40956a7de733b29f1, type: 2}

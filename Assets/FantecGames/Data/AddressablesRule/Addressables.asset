@@ -1,0 +1,273 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c113ff064b10c427fb3a071e46ace37d, type: 3}
+  m_Name: Addressables
+  m_EditorClassIdentifier: 
+  _layoutRule:
+    _settings:
+      _excludeUnversioned:
+        _value: 0
+      _versionExpression:
+        _value: (1.0.0,1.1.0)
+    _addressRules:
+      _internalList:
+      - _id: a53dee26-a989-482d-a094-0943a4346b08
+        _addressableGroup: {fileID: 11400000, guid: 41a2f782394d82f4589a9ab87f2b7c84, type: 2}
+        _control:
+          _value: 1
+        _assetGroups:
+          _internalList:
+          - _id: efbf5a43-c000-4175-935e-bbb502d454aa
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853606794756455
+        _addressProviderInternal:
+          rid: 429853606794756454
+      - _id: 14076641-5a58-4aad-89ab-e3519ac203d0
+        _addressableGroup: {fileID: 11400000, guid: e2cda7955d565c54ba3bd73ca2c45a23, type: 2}
+        _control:
+          _value: 0
+        _assetGroups:
+          _internalList:
+          - _id: 274f29be-89fc-4386-9d66-df9a662415f4
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853538234401052
+        _addressProviderInternal:
+          rid: 429853538234401047
+      - _id: 8baa13ee-9dc0-4cd3-88df-f2b16acdf9cc
+        _addressableGroup: {fileID: 11400000, guid: 549bea538943d944882cd1c1adbe1204, type: 2}
+        _control:
+          _value: 1
+        _assetGroups:
+          _internalList:
+          - _id: 7cca3710-7e9e-49ac-8963-392fed1444d0
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853538234401051
+        _addressProviderInternal:
+          rid: 429853538234401048
+      - _id: 6162ba16-9619-424f-8d9d-2b0d339c5052
+        _addressableGroup: {fileID: 11400000, guid: 3d4f14e1712ac5e4bac2f931046e5bb4, type: 2}
+        _control:
+          _value: 1
+        _assetGroups:
+          _internalList:
+          - _id: 58e0ac7b-b6b0-4f08-8916-562fc60cb575
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853538234401054
+        _addressProviderInternal:
+          rid: 429853538234401046
+      - _id: 5e8facf1-cd44-47cd-853e-4f0b90d39484
+        _addressableGroup: {fileID: 11400000, guid: a9a5c733daeca1f49a420a24bc7e727c, type: 2}
+        _control:
+          _value: 1
+        _assetGroups:
+          _internalList:
+          - _id: a83ecde9-1dba-4fb9-85bf-e543ca1f20c0
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853538234401053
+        _addressProviderInternal:
+          rid: 429853538234401049
+    _labelRules:
+      _internalList:
+      - _id: 18b30afe-cdcc-47e8-afa7-80588c762029
+        _name:
+          _value: ver 1.0.0
+        _assetGroups:
+          _internalList:
+          - _id: ac45356d-f9df-48de-a490-396c1dd9953d
+            _name:
+              _value: Default Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853606794756203
+        _labelProviderInternal:
+          rid: 429853606794756202
+    _versionRules:
+      _internalList:
+      - _id: 21f93562-40c1-4c2a-a8da-0e4918c10037
+        _name:
+          _value: 1.0.0
+        _assetGroups:
+          _internalList:
+          - _id: 8006b0b6-1ccd-4c20-9463-a3449a1431e9
+            _name:
+              _value: New Asset Group
+            _filters:
+              _internalList:
+              - rid: 429853538234401061
+        _versionProviderInternal:
+          rid: 429853538234401057
+  references:
+    version: 2
+    RefIds:
+    - rid: 429853538234401046
+      type: {class: AssetPathBasedAddressProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.AddressRules, asm: SmartAddresser.Editor}
+      data:
+        _source: 2
+        _replaceWithRegex: 1
+        _pattern: 
+        _replacement: '{AssetPath.Replace("Assets/FantecGames/Resources_moved/",
+          "")}'
+    - rid: 429853538234401047
+      type: {class: AssetPathBasedAddressProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.AddressRules, asm: SmartAddresser.Editor}
+      data:
+        _source: 2
+        _replaceWithRegex: 1
+        _pattern: 
+        _replacement: '{AssetPath.Replace("Assets/FantecGames/Resouces_moved/", "")}'
+    - rid: 429853538234401048
+      type: {class: AssetPathBasedAddressProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.AddressRules, asm: SmartAddresser.Editor}
+      data:
+        _source: 2
+        _replaceWithRegex: 1
+        _pattern: 
+        _replacement: '{AssetPath.Replace("Assets/FantecGames/Resources_moved/",
+          "")}'
+    - rid: 429853538234401049
+      type: {class: AssetPathBasedAddressProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.AddressRules, asm: SmartAddresser.Editor}
+      data:
+        _source: 2
+        _replaceWithRegex: 1
+        _pattern: 
+        _replacement: '{AssetPath.Replace("Assets/FantecGames/Resources_moved/",
+          "")}'
+    - rid: 429853538234401051
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: bb48a0bf-cb05-4fc0-bef3-29c34b9354f0
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: 6326c978d6ffdcd4f9b49420754110c8, type: 3}
+    - rid: 429853538234401052
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: 9bf072a3-a2b0-41a1-8f2d-81b272d3222c
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: 0854923d3755bea4ab647d672a76552b, type: 3}
+    - rid: 429853538234401053
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: 330df1e0-e18a-447f-97a1-dd9d7dd6d7a2
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: 9bf21649c355e95468dd53de7fd92428, type: 3}
+    - rid: 429853538234401054
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: 3bd20666-5450-4562-9afe-113c9a42c425
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: 2054ffd3436789d42bdd0bb0d74eab68, type: 3}
+    - rid: 429853538234401057
+      type: {class: ConstantVersionProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.VersionRules, asm: SmartAddresser.Editor}
+      data:
+        _version: 1.0.0
+    - rid: 429853538234401061
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: 9e34841d-ae50-4fee-acc9-3b0017011d5f
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 1
+          _values:
+          - {fileID: 102900000, guid: bb59d8f86b6a1f245af77543e31229d7, type: 3}
+          - {fileID: 102900000, guid: 55de90b0f4067b746afe8cd9f4436c52, type: 3}
+          - {fileID: 102900000, guid: e8cd8c777021e9549b6e2da90cc324fd, type: 3}
+          - {fileID: 102900000, guid: 66e810ea43809544198e72b0729915be, type: 3}
+          - {fileID: 8002274295217891296, guid: 47e6863ecb2e77348b7f31ba401fba7d, type: 3}
+          - {fileID: 537904884577095380, guid: faff1f71424efe84dbea7be1a2f45925, type: 3}
+          - {fileID: 8364085607365401598, guid: 0f513ab6b7f888d4eaac0db31fd4bfa4, type: 3}
+          - {fileID: 7776649963033554955, guid: 2d752bff85724554c936422b7fb662c7, type: 3}
+          - {fileID: 1508856115486783197, guid: d7b1458e6660eb14fab61449b77d607f, type: 3}
+          - {fileID: 8300000, guid: 9af7e0cfdc5fb1045a38f4bd9bf39316, type: 3}
+          - {fileID: 8300000, guid: a7b963382e0827f4b86b2d8387d48774, type: 3}
+          - {fileID: 8300000, guid: ecde6ee74339e894797bac40b07c3327, type: 3}
+          - {fileID: 8300000, guid: 2f001dfca214f8341b694236075b9b4c, type: 3}
+          - {fileID: 2800000, guid: 528a31c11a9b1ac498a490ccb72614d2, type: 3}
+          - {fileID: 2800000, guid: 1e53e05872244a948a515db9f6574b3b, type: 3}
+          - {fileID: 2800000, guid: ae3a166ffb417e74aa812d6b4cd59944, type: 3}
+          - {fileID: 2800000, guid: c9c5c01caba33f04290b24ec887e2411, type: 3}
+    - rid: 429853606794756202
+      type: {class: ConstantLabelProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.LabelRules, asm: SmartAddresser.Editor}
+      data:
+        _label: InitialAssets-1.0.0
+    - rid: 429853606794756203
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: 515f1ee2-cea3-49e2-b733-90f01030c7e1
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 1
+          _values:
+          - {fileID: 8300000, guid: 9af7e0cfdc5fb1045a38f4bd9bf39316, type: 3}
+          - {fileID: 8300000, guid: a7b963382e0827f4b86b2d8387d48774, type: 3}
+          - {fileID: 8300000, guid: ecde6ee74339e894797bac40b07c3327, type: 3}
+          - {fileID: 8300000, guid: 2f001dfca214f8341b694236075b9b4c, type: 3}
+          - {fileID: 11400000, guid: 12bf1c3cf93aca648820edf10a0309b4, type: 2}
+          - {fileID: 2800000, guid: ccba5a8f3131ed24a8e36206f40993c0, type: 3}
+          - {fileID: 2800000, guid: 3e60098b6c391d2419eb48857c2f9acf, type: 3}
+          - {fileID: 2800000, guid: 9d91be028bfee9649856aa2e3ffea863, type: 3}
+          - {fileID: 11400000, guid: 13b1c429886391744bbbdea160ba4df9, type: 2}
+          - {fileID: 2800000, guid: eca9d8d8b3f926e4b8f6b57342503914, type: 3}
+          - {fileID: 2800000, guid: dd4d565c80b0e254d81deb132999a6e7, type: 3}
+          - {fileID: 2800000, guid: fba284c81724c4e4fa1e0e2d3f512f12, type: 3}
+          - {fileID: 11400000, guid: 2c316d2167fb2964da24cc621c15bc4d, type: 2}
+          - {fileID: 2800000, guid: 83db775ec2fa83740aab03ff84e968a4, type: 3}
+          - {fileID: 2800000, guid: 72ff6c0bdffe0514f9c5f3d8632d5fa4, type: 3}
+          - {fileID: 2800000, guid: 290e929b7dc56034981f4d071b0b8aa0, type: 3}
+          - {fileID: 11400000, guid: 322960798888e7549a427050a528d7eb, type: 2}
+          - {fileID: 2800000, guid: e94193bc9d252e0489c4be7e9961dfee, type: 3}
+          - {fileID: 2800000, guid: 41c6dbfeec386634f80be29f2c5a6bd7, type: 3}
+          - {fileID: 2800000, guid: 528a31c11a9b1ac498a490ccb72614d2, type: 3}
+          - {fileID: 2800000, guid: 1e53e05872244a948a515db9f6574b3b, type: 3}
+          - {fileID: 2800000, guid: c9c5c01caba33f04290b24ec887e2411, type: 3}
+          - {fileID: 2800000, guid: ae3a166ffb417e74aa812d6b4cd59944, type: 3}
+    - rid: 429853606794756454
+      type: {class: AssetPathBasedAddressProvider, ns: SmartAddresser.Editor.Core.Models.LayoutRules.AddressRules, asm: SmartAddresser.Editor}
+      data:
+        _source: 2
+        _replaceWithRegex: 1
+        _pattern: 
+        _replacement: '{AssetPath.Replace("Assets/FantecGames/Resources_moved/Character/Shader/",
+          "")}'
+    - rid: 429853606794756455
+      type: {class: ObjectBasedAssetFilter, ns: SmartAddresser.Editor.Core.Models.Shared.AssetGroups.AssetFilterImpl, asm: SmartAddresser.Editor}
+      data:
+        _id: a50bdf33-bd2d-4ac7-a5e1-dc773a70cba0
+        _folderTargetingMode: 0
+        _object:
+          _isListMode: 0
+          _values:
+          - {fileID: 102900000, guid: 2727f199a3692644e877c9c67bccc651, type: 3}

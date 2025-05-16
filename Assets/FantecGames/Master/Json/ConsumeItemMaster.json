@@ -1,0 +1,1 @@
+[{"itemId":0,"sortNo":1,"name":"ダミーアイテム","categoryName":"","categoryId":0,"description":"","effectType":0,"effectValue":0,"effectTime":0,"maxItem":0,"imageName":""},{"itemId":1000001,"sortNo":1,"name":"マギ強化アイテム","categoryName":"マギ強化","categoryId":1,"description":"ユニットの経験値を少しアップ","effectType":1,"effectValue":100,"effectTime":-1,"maxItem":9999,"imageName":"item_orb_blue"}]

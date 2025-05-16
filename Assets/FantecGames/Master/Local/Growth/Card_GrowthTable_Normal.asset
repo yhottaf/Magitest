@@ -1,0 +1,515 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e51ac71fa3c09cc4a91773d9166f8770, type: 3}
+  m_Name: Card_GrowthTable_Normal
+  m_EditorClassIdentifier: 
+  dataList:
+  - level: 1
+    HP: 0
+    ATK: 0
+    DEF: 0
+    SPD: 0
+  - level: 2
+    HP: 1.05
+    ATK: 1.05
+    DEF: 1.05
+    SPD: 1.05
+  - level: 3
+    HP: 2.11
+    ATK: 2.11
+    DEF: 2.11
+    SPD: 2.11
+  - level: 4
+    HP: 3.16
+    ATK: 3.16
+    DEF: 3.16
+    SPD: 3.16
+  - level: 5
+    HP: 4.21
+    ATK: 4.21
+    DEF: 4.21
+    SPD: 4.21
+  - level: 6
+    HP: 5.26
+    ATK: 5.26
+    DEF: 5.26
+    SPD: 5.26
+  - level: 7
+    HP: 6.32
+    ATK: 6.32
+    DEF: 6.32
+    SPD: 6.32
+  - level: 8
+    HP: 7.37
+    ATK: 7.37
+    DEF: 7.37
+    SPD: 7.37
+  - level: 9
+    HP: 8.42
+    ATK: 8.42
+    DEF: 8.42
+    SPD: 8.42
+  - level: 10
+    HP: 9.47
+    ATK: 9.47
+    DEF: 9.47
+    SPD: 9.47
+  - level: 11
+    HP: 10.53
+    ATK: 10.53
+    DEF: 10.53
+    SPD: 10.53
+  - level: 12
+    HP: 11.58
+    ATK: 11.58
+    DEF: 11.58
+    SPD: 11.58
+  - level: 13
+    HP: 12.63
+    ATK: 12.63
+    DEF: 12.63
+    SPD: 12.63
+  - level: 14
+    HP: 13.68
+    ATK: 13.68
+    DEF: 13.68
+    SPD: 13.68
+  - level: 15
+    HP: 14.74
+    ATK: 14.74
+    DEF: 14.74
+    SPD: 14.74
+  - level: 16
+    HP: 15.79
+    ATK: 15.79
+    DEF: 15.79
+    SPD: 15.79
+  - level: 17
+    HP: 16.84
+    ATK: 16.84
+    DEF: 16.84
+    SPD: 16.84
+  - level: 18
+    HP: 17.89
+    ATK: 17.89
+    DEF: 17.89
+    SPD: 17.89
+  - level: 19
+    HP: 18.95
+    ATK: 18.95
+    DEF: 18.95
+    SPD: 18.95
+  - level: 20
+    HP: 20
+    ATK: 20
+    DEF: 20
+    SPD: 20
+  - level: 21
+    HP: 21
+    ATK: 21
+    DEF: 21
+    SPD: 21
+  - level: 22
+    HP: 22
+    ATK: 22
+    DEF: 22
+    SPD: 22
+  - level: 23
+    HP: 23
+    ATK: 23
+    DEF: 23
+    SPD: 23
+  - level: 24
+    HP: 24
+    ATK: 24
+    DEF: 24
+    SPD: 24
+  - level: 25
+    HP: 25
+    ATK: 25
+    DEF: 25
+    SPD: 25
+  - level: 26
+    HP: 26
+    ATK: 26
+    DEF: 26
+    SPD: 26
+  - level: 27
+    HP: 27
+    ATK: 27
+    DEF: 27
+    SPD: 27
+  - level: 28
+    HP: 28
+    ATK: 28
+    DEF: 28
+    SPD: 28
+  - level: 29
+    HP: 29
+    ATK: 29
+    DEF: 29
+    SPD: 29
+  - level: 30
+    HP: 30
+    ATK: 30
+    DEF: 30
+    SPD: 30
+  - level: 31
+    HP: 31
+    ATK: 31
+    DEF: 31
+    SPD: 31
+  - level: 32
+    HP: 32
+    ATK: 32
+    DEF: 32
+    SPD: 32
+  - level: 33
+    HP: 33
+    ATK: 33
+    DEF: 33
+    SPD: 33
+  - level: 34
+    HP: 34
+    ATK: 34
+    DEF: 34
+    SPD: 34
+  - level: 35
+    HP: 35
+    ATK: 35
+    DEF: 35
+    SPD: 35
+  - level: 36
+    HP: 36
+    ATK: 36
+    DEF: 36
+    SPD: 36
+  - level: 37
+    HP: 37
+    ATK: 37
+    DEF: 37
+    SPD: 37
+  - level: 38
+    HP: 38
+    ATK: 38
+    DEF: 38
+    SPD: 38
+  - level: 39
+    HP: 39
+    ATK: 39
+    DEF: 39
+    SPD: 39
+  - level: 40
+    HP: 40
+    ATK: 40
+    DEF: 40
+    SPD: 40
+  - level: 41
+    HP: 41
+    ATK: 41
+    DEF: 41
+    SPD: 41
+  - level: 42
+    HP: 42
+    ATK: 42
+    DEF: 42
+    SPD: 42
+  - level: 43
+    HP: 43
+    ATK: 43
+    DEF: 43
+    SPD: 43
+  - level: 44
+    HP: 44
+    ATK: 44
+    DEF: 44
+    SPD: 44
+  - level: 45
+    HP: 45
+    ATK: 45
+    DEF: 45
+    SPD: 45
+  - level: 46
+    HP: 46
+    ATK: 46
+    DEF: 46
+    SPD: 46
+  - level: 47
+    HP: 47
+    ATK: 47
+    DEF: 47
+    SPD: 47
+  - level: 48
+    HP: 48
+    ATK: 48
+    DEF: 48
+    SPD: 48
+  - level: 49
+    HP: 49
+    ATK: 49
+    DEF: 49
+    SPD: 49
+  - level: 50
+    HP: 50
+    ATK: 50
+    DEF: 50
+    SPD: 50
+  - level: 51
+    HP: 51
+    ATK: 51
+    DEF: 51
+    SPD: 51
+  - level: 52
+    HP: 52
+    ATK: 52
+    DEF: 52
+    SPD: 52
+  - level: 53
+    HP: 53
+    ATK: 53
+    DEF: 53
+    SPD: 53
+  - level: 54
+    HP: 54
+    ATK: 54
+    DEF: 54
+    SPD: 54
+  - level: 55
+    HP: 55
+    ATK: 55
+    DEF: 55
+    SPD: 55
+  - level: 56
+    HP: 56
+    ATK: 56
+    DEF: 56
+    SPD: 56
+  - level: 57
+    HP: 57
+    ATK: 57
+    DEF: 57
+    SPD: 57
+  - level: 58
+    HP: 58
+    ATK: 58
+    DEF: 58
+    SPD: 58
+  - level: 59
+    HP: 59
+    ATK: 59
+    DEF: 59
+    SPD: 59
+  - level: 60
+    HP: 60
+    ATK: 60
+    DEF: 60
+    SPD: 60
+  - level: 61
+    HP: 61
+    ATK: 61
+    DEF: 61
+    SPD: 61
+  - level: 62
+    HP: 62
+    ATK: 62
+    DEF: 62
+    SPD: 62
+  - level: 63
+    HP: 63
+    ATK: 63
+    DEF: 63
+    SPD: 63
+  - level: 64
+    HP: 64
+    ATK: 64
+    DEF: 64
+    SPD: 64
+  - level: 65
+    HP: 65
+    ATK: 65
+    DEF: 65
+    SPD: 65
+  - level: 66
+    HP: 66
+    ATK: 66
+    DEF: 66
+    SPD: 66
+  - level: 67
+    HP: 67
+    ATK: 67
+    DEF: 67
+    SPD: 67
+  - level: 68
+    HP: 68
+    ATK: 68
+    DEF: 68
+    SPD: 68
+  - level: 69
+    HP: 69
+    ATK: 69
+    DEF: 69
+    SPD: 69
+  - level: 70
+    HP: 70
+    ATK: 70
+    DEF: 70
+    SPD: 70
+  - level: 71
+    HP: 71
+    ATK: 71
+    DEF: 71
+    SPD: 71
+  - level: 72
+    HP: 72
+    ATK: 72
+    DEF: 72
+    SPD: 72
+  - level: 73
+    HP: 73
+    ATK: 73
+    DEF: 73
+    SPD: 73
+  - level: 74
+    HP: 74
+    ATK: 74
+    DEF: 74
+    SPD: 74
+  - level: 75
+    HP: 75
+    ATK: 75
+    DEF: 75
+    SPD: 75
+  - level: 76
+    HP: 76
+    ATK: 76
+    DEF: 76
+    SPD: 76
+  - level: 77
+    HP: 77
+    ATK: 77
+    DEF: 77
+    SPD: 77
+  - level: 78
+    HP: 78
+    ATK: 78
+    DEF: 78
+    SPD: 78
+  - level: 79
+    HP: 79
+    ATK: 79
+    DEF: 79
+    SPD: 79
+  - level: 80
+    HP: 80
+    ATK: 80
+    DEF: 80
+    SPD: 80
+  - level: 81
+    HP: 81
+    ATK: 81
+    DEF: 81
+    SPD: 81
+  - level: 82
+    HP: 82
+    ATK: 82
+    DEF: 82
+    SPD: 82
+  - level: 83
+    HP: 83
+    ATK: 83
+    DEF: 83
+    SPD: 83
+  - level: 84
+    HP: 84
+    ATK: 84
+    DEF: 84
+    SPD: 84
+  - level: 85
+    HP: 85
+    ATK: 85
+    DEF: 85
+    SPD: 85
+  - level: 86
+    HP: 86
+    ATK: 86
+    DEF: 86
+    SPD: 86
+  - level: 87
+    HP: 87
+    ATK: 87
+    DEF: 87
+    SPD: 87
+  - level: 88
+    HP: 88
+    ATK: 88
+    DEF: 88
+    SPD: 88
+  - level: 89
+    HP: 89
+    ATK: 89
+    DEF: 89
+    SPD: 89
+  - level: 90
+    HP: 90
+    ATK: 90
+    DEF: 90
+    SPD: 90
+  - level: 91
+    HP: 91
+    ATK: 91
+    DEF: 91
+    SPD: 91
+  - level: 92
+    HP: 92
+    ATK: 92
+    DEF: 92
+    SPD: 92
+  - level: 93
+    HP: 93
+    ATK: 93
+    DEF: 93
+    SPD: 93
+  - level: 94
+    HP: 94
+    ATK: 94
+    DEF: 94
+    SPD: 94
+  - level: 95
+    HP: 95
+    ATK: 95
+    DEF: 95
+    SPD: 95
+  - level: 96
+    HP: 96
+    ATK: 96
+    DEF: 96
+    SPD: 96
+  - level: 97
+    HP: 97
+    ATK: 97
+    DEF: 97
+    SPD: 97
+  - level: 98
+    HP: 98
+    ATK: 98
+    DEF: 98
+    SPD: 98
+  - level: 99
+    HP: 99
+    ATK: 99
+    DEF: 99
+    SPD: 99
+  - level: 100
+    HP: 100
+    ATK: 100
+    DEF: 100
+    SPD: 100

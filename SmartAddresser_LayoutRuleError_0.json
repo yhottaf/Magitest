@@ -1,0 +1,25 @@
+{
+    "addressRuleErrors": [],
+    "labelRuleErrors": [
+        {
+            "labelRuleId": "18b30afe-cdcc-47e8-afa7-80588c762029",
+            "labelRuleName": "ver 1.0.0",
+            "assetGroupErrors": [
+                {
+                    "assetGroupId": "ac45356d-f9df-48de-a490-396c1dd9953d",
+                    "assetGroupName": "Default Asset Group",
+                    "assetFilterErrors": [
+                        {
+                            "assetFilterId": "515f1ee2-cea3-49e2-b733-90f01030c7e1",
+                            "assetFilterTypeName": "ObjectBasedAssetFilter",
+                            "errorMessages": [
+                                "There are null reference objects."
+                            ]
+                        }
+                    ]
+                }
+            ]
+        }
+    ],
+    "versionRuleErrors": []
+}

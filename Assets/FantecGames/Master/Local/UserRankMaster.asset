@@ -1,0 +1,315 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 932170c579604fe488e563088bb76983, type: 3}
+  m_Name: UserRankMaster
+  m_EditorClassIdentifier: 
+  dataList:
+  - level: 1
+    exp: 0
+    stamina: 10
+  - level: 2
+    exp: 20
+    stamina: 11
+  - level: 3
+    exp: 40
+    stamina: 12
+  - level: 4
+    exp: 80
+    stamina: 13
+  - level: 5
+    exp: 160
+    stamina: 14
+  - level: 6
+    exp: 190
+    stamina: 15
+  - level: 7
+    exp: 300
+    stamina: 16
+  - level: 8
+    exp: 500
+    stamina: 17
+  - level: 9
+    exp: 1000
+    stamina: 18
+  - level: 10
+    exp: 2000
+    stamina: 19
+  - level: 11
+    exp: 3000
+    stamina: 20
+  - level: 12
+    exp: 4000
+    stamina: 21
+  - level: 13
+    exp: 5000
+    stamina: 22
+  - level: 14
+    exp: 6000
+    stamina: 23
+  - level: 15
+    exp: 7000
+    stamina: 24
+  - level: 16
+    exp: 8000
+    stamina: 25
+  - level: 17
+    exp: 9000
+    stamina: 26
+  - level: 18
+    exp: 10000
+    stamina: 27
+  - level: 19
+    exp: 11000
+    stamina: 28
+  - level: 20
+    exp: 12000
+    stamina: 29
+  - level: 21
+    exp: 13000
+    stamina: 30
+  - level: 22
+    exp: 14000
+    stamina: 31
+  - level: 23
+    exp: 15000
+    stamina: 32
+  - level: 24
+    exp: 16000
+    stamina: 33
+  - level: 25
+    exp: 17000
+    stamina: 34
+  - level: 26
+    exp: 18000
+    stamina: 35
+  - level: 27
+    exp: 19000
+    stamina: 36
+  - level: 28
+    exp: 20000
+    stamina: 37
+  - level: 29
+    exp: 21000
+    stamina: 38
+  - level: 30
+    exp: 22000
+    stamina: 39
+  - level: 31
+    exp: 23000
+    stamina: 40
+  - level: 32
+    exp: 24000
+    stamina: 41
+  - level: 33
+    exp: 25000
+    stamina: 42
+  - level: 34
+    exp: 26000
+    stamina: 43
+  - level: 35
+    exp: 27000
+    stamina: 44
+  - level: 36
+    exp: 28000
+    stamina: 45
+  - level: 37
+    exp: 29000
+    stamina: 46
+  - level: 38
+    exp: 30000
+    stamina: 47
+  - level: 39
+    exp: 31000
+    stamina: 48
+  - level: 40
+    exp: 32000
+    stamina: 49
+  - level: 41
+    exp: 33000
+    stamina: 50
+  - level: 42
+    exp: 34000
+    stamina: 51
+  - level: 43
+    exp: 35000
+    stamina: 52
+  - level: 44
+    exp: 36000
+    stamina: 53
+  - level: 45
+    exp: 37000
+    stamina: 54
+  - level: 46
+    exp: 38000
+    stamina: 55
+  - level: 47
+    exp: 39000
+    stamina: 56
+  - level: 48
+    exp: 40000
+    stamina: 57
+  - level: 49
+    exp: 41000
+    stamina: 58
+  - level: 50
+    exp: 42000
+    stamina: 59
+  - level: 51
+    exp: 43000
+    stamina: 60
+  - level: 52
+    exp: 44000
+    stamina: 61
+  - level: 53
+    exp: 45000
+    stamina: 62
+  - level: 54
+    exp: 46000
+    stamina: 63
+  - level: 55
+    exp: 47000
+    stamina: 64
+  - level: 56
+    exp: 48000
+    stamina: 65
+  - level: 57
+    exp: 49000
+    stamina: 66
+  - level: 58
+    exp: 50000
+    stamina: 67
+  - level: 59
+    exp: 51000
+    stamina: 68
+  - level: 60
+    exp: 52000
+    stamina: 69
+  - level: 61
+    exp: 53000
+    stamina: 70
+  - level: 62
+    exp: 54000
+    stamina: 71
+  - level: 63
+    exp: 55000
+    stamina: 72
+  - level: 64
+    exp: 56000
+    stamina: 73
+  - level: 65
+    exp: 57000
+    stamina: 74
+  - level: 66
+    exp: 58000
+    stamina: 75
+  - level: 67
+    exp: 59000
+    stamina: 76
+  - level: 68
+    exp: 60000
+    stamina: 77
+  - level: 69
+    exp: 61000
+    stamina: 78
+  - level: 70
+    exp: 62000
+    stamina: 79
+  - level: 71
+    exp: 63000
+    stamina: 80
+  - level: 72
+    exp: 64000
+    stamina: 81
+  - level: 73
+    exp: 65000
+    stamina: 82
+  - level: 74
+    exp: 66000
+    stamina: 83
+  - level: 75
+    exp: 67000
+    stamina: 84
+  - level: 76
+    exp: 68000
+    stamina: 85
+  - level: 77
+    exp: 69000
+    stamina: 86
+  - level: 78
+    exp: 70000
+    stamina: 87
+  - level: 79
+    exp: 71000
+    stamina: 88
+  - level: 80
+    exp: 72000
+    stamina: 89
+  - level: 81
+    exp: 73000
+    stamina: 90
+  - level: 82
+    exp: 74000
+    stamina: 91
+  - level: 83
+    exp: 75000
+    stamina: 92
+  - level: 84
+    exp: 76000
+    stamina: 93
+  - level: 85
+    exp: 77000
+    stamina: 94
+  - level: 86
+    exp: 78000
+    stamina: 95
+  - level: 87
+    exp: 79000
+    stamina: 96
+  - level: 88
+    exp: 80000
+    stamina: 97
+  - level: 89
+    exp: 81000
+    stamina: 98
+  - level: 90
+    exp: 82000
+    stamina: 99
+  - level: 91
+    exp: 83000
+    stamina: 100
+  - level: 92
+    exp: 84000
+    stamina: 101
+  - level: 93
+    exp: 85000
+    stamina: 102
+  - level: 94
+    exp: 86000
+    stamina: 103
+  - level: 95
+    exp: 87000
+    stamina: 104
+  - level: 96
+    exp: 88000
+    stamina: 105
+  - level: 97
+    exp: 89000
+    stamina: 106
+  - level: 98
+    exp: 90000
+    stamina: 107
+  - level: 99
+    exp: 91000
+    stamina: 108
+  - level: 100
+    exp: 92000
+    stamina: 109

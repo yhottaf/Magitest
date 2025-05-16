@@ -1,0 +1,287 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: CharacterData
+  m_EditorClassIdentifier: 
+  m_GroupName: CharacterData
+  m_GUID: 627ead3cb5ef5bf4c94c516e0f4cc73f
+  m_SerializeEntries:
+  - m_GUID: 05b4422d30cecf44ca535077aac1bc24
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/tako_Atlas.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0705518bb733da44da018b3d2dce3735
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/1_dark_Atlas.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 0a258743ce2c22047b8b36f813105919
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/SpriteSphere.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 10cd3d39a491b9240929d81d328ac263
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/tako_Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 11cc4c8abee5e604b88b435ac3c0f4c8
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/tako.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 12bf1c3cf93aca648820edf10a0309b4
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/Spine.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1344780c3212e374eb2f1dc35a96240c
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/SpriteCutin.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1568fe053ff69af46a87f83bf756c592
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/SpriteCutin.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 1e7cbe907a5eeb141a862aa873209f6d
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/1_dark_Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 200a4421c9ee58c448d40563de7404cf
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/SpriteSphere.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29640bdf55626ae419ceff4dd80fba4a
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/1_dark.atlas.txt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 29c063710e4aa2a41935f2265425382e
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/1_dark.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 322960798888e7549a427050a528d7eb
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/Spine.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 36157153a4950c94193828bf9e65ea68
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/1_dark.atlas.txt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 3e60098b6c391d2419eb48857c2f9acf
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/SpriteCutin.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 41c6dbfeec386634f80be29f2c5a6bd7
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/SpriteSphere.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 4bec75c851982754aa893d3026fd0896
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/SpriteCapsule.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 534f5a245d87811469f6958484cd05f8
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/tako_Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e561c32a856a47459cd1272688cc000
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/tako.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6f1c6a7cc70c4f647a2c21770a626838
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/SpriteCutin.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7d7537d9898ba9d429e5bad7d6deaf8c
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/tako.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8435837b2d943ce4886f734bd3246cfc
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/SpriteSphere.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 87e74e350a86ada4b8bb6e2cc3e7ad03
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/tako.atlas.txt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 88fc3d358b761ea45861344f864326f4
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/SpriteCapsule.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 8b5503d952c35304b940bc739f6c5573
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/1_dark_Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 95480e92ebc37a4428f1aeab0fc15a72
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/1_dark.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 97dce319414cd5d43ae80b6486ddec10
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/tako_Atlas.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 9d91be028bfee9649856aa2e3ffea863
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/SpriteSphere.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: a2a86eec953aba04eb4b3c60aa973993
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/1_dark_Atlas.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: abd2786d287776e4ebca5c5910ab51c9
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/tako_Atlas.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b29c16658dcb25b4ea9e9e9bbcae8133
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/Spine.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b5680ab2f95fa1947a4ea6ac68ffac50
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/tako.atlas.txt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: b8a8a1e824f7ac543a6ce1f30b57f0f7
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/tako.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cba5737eb627899408c872d0f25fe594
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/tako.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: cbddd60e086e7094dbc563b425b8d33e
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/Spine.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ccba5a8f3131ed24a8e36206f40993c0
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/SpriteCapsule.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ce4eac5f65a543d47b8df89da3f13f8c
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/SpriteCapsule.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d63c5df6bcfe5ee4eac9b83366ba3485
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/tako.atlas.txt
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d66ef78bff220124eb81c7e9293f42e1
+    m_Address: Assets/FantecGames/Resources_moved/Character/10000/tako_Material.mat
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d73c6832e880e114cb3b684b32a72681
+    m_Address: Assets/FantecGames/Resources_moved/Character/10003/1_dark.json
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: db293f316f888ad48b5d105fd7e67a51
+    m_Address: Assets/FantecGames/Resources_moved/Character/10002/tako.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e8bbefff0bb29664d8a2539a261bbf34
+    m_Address: Assets/FantecGames/Resources_moved/Character/10001/Spine.asset
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: e94193bc9d252e0489c4be7e9961dfee
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/SpriteCutin.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: ef7c2bb2d6ac0e54f8df5c3366d185db
+    m_Address: Assets/FantecGames/Resources_moved/Character/30001/1_dark.png
+    m_ReadOnly: 0
+    m_SerializedLabels:
+    - InitialAssets-1.0.0
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: 8913082de55996a47b8a0e99d1f63ddf, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: 4a5bc44d7c2643444af12484e4befd1c, type: 2}
+    - {fileID: 11400000, guid: ff75fe16f166ad940b76103a04674bef, type: 2}

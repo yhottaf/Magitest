@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: d4ceef0267561d3429320811b1a24369, type: 3}
+  m_Name: Normal_0-0
+  m_EditorClassIdentifier: 
+  dataList:
+  - rarityType: 0
+    cardId: 3000100
+    cardLevel: 1
+    positionIndex: 3
+    waveIndex: 0
+    isBoss: 0
+  - rarityType: 0
+    cardId: 3000100
+    cardLevel: 1
+    positionIndex: 1
+    waveIndex: 1
+    isBoss: 0
+  - rarityType: 0
+    cardId: 3000100
+    cardLevel: 1
+    positionIndex: 2
+    waveIndex: 1
+    isBoss: 0
