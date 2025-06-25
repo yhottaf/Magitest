@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using System.Collections.Generic;
 using Newtonsoft.Json;
@@ -13,7 +13,7 @@ namespace fantec.PlayFabClient
         public static int Level=>CurrentLevelInfo.level;
         public static int MaxStamina => CurrentLevelInfo.stamina;
 
-        //ƒp[ƒeƒB[î•ñ‚È‚Ç‚ÌƒŠƒXƒg‚È‚Ç‚ª‚ ‚ê‚Î‚±‚±‚É‹LÚ‚µ‚Ä‚¨‚­
+        //ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼æƒ…å ±ãªã©ã®ãƒªã‚¹ãƒˆãªã©ãŒã‚ã‚Œã°ã“ã“ã«è¨˜è¼‰ã—ã¦ãŠã
         public static List<PartyData> PartyList => User.PartyList;
 
         private static Master.UserRankData CurrentLevelInfo { get; set; }
@@ -22,7 +22,7 @@ namespace fantec.PlayFabClient
         public static User User { get; set; }
 
         /// <summary>
-        /// PlayFab‚©‚çÅV‚Ìƒf[ƒ^‚ğæ“¾‚µ‚Äƒ[ƒJƒ‹‚ÉƒLƒƒƒbƒVƒ…‚·‚é
+        /// PlayFabã‹ã‚‰æœ€æ–°ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã—ã¦ãƒ­ãƒ¼ã‚«ãƒ«ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹
         /// </summary>
         /// <param name="userData"></param>
         public  static void SyncPlayFabToClient(Dictionary<string,UserDataRecord>userData)
@@ -44,18 +44,18 @@ namespace fantec.PlayFabClient
                     new PartyData(new List<int>(Define.PARTY_CAPACITY)),
                     new PartyData(new List<int>(Define.PARTY_CAPACITY)),
                 };
-                // ¦ƒp[ƒeƒB‚É‚¢‚ê‚é‚½‚ß‚Ì‰ŠúƒLƒƒƒ‰3‘Ì‚ğ‚ ‚ç‚©‚¶‚ßİ’è‚µ‚Ä‚¨‚­
+                // â€»ãƒ‘ãƒ¼ãƒ†ã‚£ã«ã„ã‚Œã‚‹ãŸã‚ã®åˆæœŸã‚­ãƒ£ãƒ©3ä½“ã‚’ã‚ã‚‰ã‹ã˜ã‚è¨­å®šã—ã¦ãŠã
                 List<int> cardIds = new List<int>() { 10001100, 10001101, 10001102 };
 
 
-                // ƒvƒƒtƒB[ƒ‹ƒJ[ƒh‚Ìİ’è
+                // ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã‚«ãƒ¼ãƒ‰ã®è¨­å®š
                 User.ProfileCardId = cardIds[0];
 
-                // ‚¨‹C‚É“ü‚èƒJ[ƒh‚É‚àİ’è (‚±‚Ìq‚ğƒgƒbƒv‰æ–Ê‚ÉLive2D‚Åo‚·‚æ‚¤‚É‚·‚é ) 
+                // ãŠæ°—ã«å…¥ã‚Šã‚«ãƒ¼ãƒ‰ã«ã‚‚è¨­å®š (ã“ã®å­ã‚’ãƒˆãƒƒãƒ—ç”»é¢ã«Live2Dã§å‡ºã™ã‚ˆã†ã«ã™ã‚‹ ) 
                 LocalDataManager.Instance.LocalData.AddFavoriteCard(cardIds[0]);
 
-                // ‰Šúƒp[ƒeƒB‚Ìİ’è
-                for (int i = 0; i < User.PartyList.Count; i++) // •Ò¬˜g‘S‚Ä‚ğ“¯‚¶•Ò¬‚Å–„‚ß‚é
+                // åˆæœŸãƒ‘ãƒ¼ãƒ†ã‚£ã®è¨­å®š
+                for (int i = 0; i < User.PartyList.Count; i++) // ç·¨æˆæ å…¨ã¦ã‚’åŒã˜ç·¨æˆã§åŸ‹ã‚ã‚‹
                 {
                     for (int k = 0; k < cardIds.Count; k++)
                     {
@@ -67,10 +67,15 @@ namespace fantec.PlayFabClient
             {
                 User.ClearQuestIdList=new List<int>();
             }
+
+            if(User.ClaimedNoticeDictionary==null)
+            {
+                User.ClaimedNoticeDictionary = new Dictionary<string, bool>();
+            }
         }
 
         /// <summary>
-        /// PlayFab‚Ìƒ†[ƒU[ƒf[ƒ^‚ğXV‚·‚éB
+        /// PlayFabã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’æ›´æ–°ã™ã‚‹ã€‚
         /// </summary>
         /// <returns></returns>
         public static async UniTask<(bool isSuccess, string errorMessage)>UpdatePlayFab()
@@ -88,7 +93,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒNƒŠƒAÏ‚İ‚ÌƒNƒGƒXƒgID‚ğ’Ç‰Á‚·‚é
+        /// ã‚¯ãƒªã‚¢æ¸ˆã¿ã®ã‚¯ã‚¨ã‚¹ãƒˆIDã‚’è¿½åŠ ã™ã‚‹
         /// </summary>
         /// <param name="questId"></param>
         public static void AddClearQuestId(int questId)
@@ -102,7 +107,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒNƒGƒXƒg‚ÌƒNƒŠƒAó‘Ô‚ğ•Ô‚µ‚Ü‚·B
+        /// ã‚¯ã‚¨ã‚¹ãƒˆã®ã‚¯ãƒªã‚¢çŠ¶æ…‹ã‚’è¿”ã—ã¾ã™ã€‚
         /// </summary>
         /// <param name="questId"></param>
         /// <returns></returns>
@@ -112,7 +117,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒQ[ƒ€‚Ìƒ†[ƒU[ƒf[ƒ^‚ğíœ‚·‚é
+        /// ã‚²ãƒ¼ãƒ ã®ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã™ã‚‹
         /// </summary>
         /// <returns></returns>
         public static async UniTask<(bool isSuccess, string errorMessage)> DeleteUserData()

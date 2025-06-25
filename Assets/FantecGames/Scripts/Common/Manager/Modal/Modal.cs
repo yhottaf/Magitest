@@ -1,4 +1,4 @@
-
+﻿
 namespace fantec.Common
 {
     public class Modal

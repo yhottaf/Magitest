@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Common;
 
 namespace fantec.Master
@@ -14,7 +14,7 @@ namespace fantec.Master
     public class ExpMaster :MasterBase<ExpData>
     {
         /// <summary>
-        /// Å‘åƒŒƒxƒ‹‚ğæ“¾
+        /// æœ€å¤§ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—
         /// </summary>
         /// <returns></returns>
         public int GetMaxLevel()
@@ -23,7 +23,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌŒoŒ±’l‚É‰‚¶‚½ƒŒƒxƒ‹‚ğæ“¾
+        /// å¼•æ•°ã®çµŒé¨“å€¤ã«å¿œã˜ãŸãƒ¬ãƒ™ãƒ«ã‚’å–å¾—
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -50,7 +50,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌƒŒƒxƒ‹‚Ü‚Å‚É•K—v‚Æ‚È‚é—İŒvŒoŒ±’l‚ğæ“¾
+        /// å¼•æ•°ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã«å¿…è¦ã¨ãªã‚‹ç´¯è¨ˆçµŒé¨“å€¤ã‚’å–å¾—
         /// </summary>
         /// <param name="level"></param>
         /// <returns></returns>
@@ -60,7 +60,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// Œ»İ‚ÌŒoŒ±’l‚ğ‚à‚Æ‚ÉŸ‚ÌƒŒƒxƒ‹‚Ü‚Å‚É•K—v‚ÈŒoŒ±’l‚ğæ“¾
+        /// ç¾åœ¨ã®çµŒé¨“å€¤ã‚’ã‚‚ã¨ã«æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã«å¿…è¦ãªçµŒé¨“å€¤ã‚’å–å¾—
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -72,7 +72,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// Œ»İ‚ÌƒŒƒxƒ‹ƒe[ƒuƒ‹‚Åæ“¾‚µ‚Ä‚¢‚éŒoŒ±’l‚ğæ“¾
+        /// ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«ã§å–å¾—ã—ã¦ã„ã‚‹çµŒé¨“å€¤ã‚’å–å¾—
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>

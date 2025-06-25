@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Battle.Animations;
 
 namespace fantec.Battle.Manager
@@ -36,7 +36,7 @@ namespace fantec.Battle.Manager
                 }
             }
 
-            throw new System.Exception($"[type {typeof(T).FullName}] ‚Í–¢“o˜^‚Å‚·B");
+            throw new System.Exception($"[type {typeof(T).FullName}] ã¯æœªç™»éŒ²ã§ã™ã€‚");
         }
 
         public T Get<T>() where T: IFullScreenAnimation<T>
@@ -50,7 +50,7 @@ namespace fantec.Battle.Manager
                 }
             }
 
-            throw new System.Exception($"{typeof(T).FullName}] ‚ğƒAƒ^ƒbƒ`‚µ‚½ƒAƒjƒ[ƒVƒ‡ƒ“‚ª¶¬‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            throw new System.Exception($"{typeof(T).FullName}] ã‚’ã‚¢ã‚¿ãƒƒãƒã—ãŸã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒç”Ÿæˆã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
 
         public bool GetIsExist<T>(out T animation)where T: IFullScreenAnimation<T>
@@ -72,9 +72,9 @@ namespace fantec.Battle.Manager
         private T Create<T>(AnimationBase animBase)where T:IFullScreenAnimation<T>
         {
             var clone=Instantiate(animBase);
-            clone.transform.SetParent(m_Parent);          // eİ’è
-            clone.transform.localPosition=Vector3.zero;   // ”z’u’²®
-            clone.transform.localScale=Vector3.one;       // ƒTƒCƒY’²®
+            clone.transform.SetParent(m_Parent);          // è¦ªè¨­å®š
+            clone.transform.localPosition=Vector3.zero;   // é…ç½®èª¿æ•´
+            clone.transform.localScale=Vector3.one;       // ã‚µã‚¤ã‚ºèª¿æ•´
             return clone.GetComponent<T>().OnCreate();
         }
 

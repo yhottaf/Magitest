@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+ï»¿using fantec.Battle.Model;
 using UnityEngine;
 
 namespace fantec.Battle.Manager
@@ -12,9 +12,9 @@ namespace fantec.Battle.Manager
                 var modelUnits = Locator.Resolve<IBattleModelUnits>();
                 var modelStage=Locator.Resolve<IBattleModelStage>();
 
-                // Å‘åƒEƒF[ƒu‚É’B‚µAƒGƒlƒ~[‚ğ‘S–Å‚³‚¹‚½ê‡‚©A
-                // Å‘åƒEƒF[ƒu‚É’B‚µAÅ‘åƒ^[ƒ“‚É“’B‚µ‚½’iŠK‚ÅƒvƒŒƒCƒ„[‚ÌHPŠ„‡‚ªƒGƒlƒ~[‚æ‚èŸ‚Á‚Ä‚¢‚½‚ç
-                // Ÿ—˜‚Ö
+                // æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã«é”ã—ã€ã‚¨ãƒãƒŸãƒ¼ã‚’å…¨æ»…ã•ã›ãŸå ´åˆã‹ã€
+                // æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã«é”ã—ã€æœ€å¤§ã‚¿ãƒ¼ãƒ³ã«åˆ°é”ã—ãŸæ®µéšã§ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®HPå‰²åˆãŒã‚¨ãƒãƒŸãƒ¼ã‚ˆã‚Šå‹ã£ã¦ã„ãŸã‚‰
+                // å‹åˆ©ã¸
                 if ((modelStage.IsMaxWave && modelUnits.IsEnemyDefeat) ||
                     (modelStage.IsMaxTurn && modelStage.IsMaxWave &&
                     (modelUnits.PlayerHPRatio > modelUnits.EnemyHPRatio))
@@ -22,14 +22,14 @@ namespace fantec.Battle.Manager
                 {
                     manager.ChangeFlow<FlowWin>();
                 }
-                // –¡•û‚ª‘S–Å‚µ‚½ê‡‚©AÅ‘åƒ^[ƒ“‚É“’B‚µ‚Ä‚¢‚ÄƒGƒlƒ~[‚ª—D¨‚Ìê‡”s–k‚Ö
+                // å‘³æ–¹ãŒå…¨æ»…ã—ãŸå ´åˆã‹ã€æœ€å¤§ã‚¿ãƒ¼ãƒ³ã«åˆ°é”ã—ã¦ã„ã¦ã‚¨ãƒãƒŸãƒ¼ãŒå„ªå‹¢ã®å ´åˆæ•—åŒ—ã¸
                 else if (modelUnits.IsPlayerDefeat ||
                     (modelStage.IsMaxTurn &&
                     (modelUnits.PlayerHPRatio <= modelUnits.EnemyHPRatio)))
                 {
                      manager.ChangeFlow<FlowLose>();
                 }
-                // ‚Ü‚¾ƒEƒF[ƒu‚ªc‚Á‚Ä‚¢‚éê‡ŸƒEƒF[ƒu€”õ‚Ö
+                // ã¾ã ã‚¦ã‚§ãƒ¼ãƒ–ãŒæ®‹ã£ã¦ã„ã‚‹å ´åˆæ¬¡ã‚¦ã‚§ãƒ¼ãƒ–æº–å‚™ã¸
                 else
                 {
                     modelStage.NextWave();

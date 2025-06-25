@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -36,7 +36,7 @@ namespace fantec.Battle.Model
         {
             m_ReserveList = this.GetSortByHeadInsertBattlerList();
 
-            // XV‚ğ’Ê’m
+            // æ›´æ–°ã‚’é€šçŸ¥
             m_UpdateOrderSubject.OnNext(m_ReserveList.ToArray());
         }
 
@@ -44,14 +44,14 @@ namespace fantec.Battle.Model
         {
             if(m_ReserveList.GetIsPlayer()==false)
             {
-                throw new Exception("ƒvƒŒƒCƒ„[‚ª‘¶Û‚µ‚È‚¢ó‘Ô‚Å‚±‚ÌŠÖ”‚ÍŒÄ‚×‚Ü‚¹‚ñB");
+                throw new Exception("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒå­˜éš›ã—ãªã„çŠ¶æ…‹ã§ã“ã®é–¢æ•°ã¯å‘¼ã¹ã¾ã›ã‚“ã€‚");
             }
             while(m_ReserveList.First().GetIsPlayer()==false)
             {
                 m_ReserveList = this.GetSortByHeadInsertBattlerList();
             }
 
-            // XV‚ğ’Ê’m
+            // æ›´æ–°ã‚’é€šçŸ¥
             m_UpdateOrderSubject.OnNext(m_ReserveList.ToArray());
         }
 
@@ -59,7 +59,7 @@ namespace fantec.Battle.Model
         {
             m_ReserveList = this.GetSortBySpeedReserveList();
 
-            // XV‚ğ’Ê’m
+            // æ›´æ–°ã‚’é€šçŸ¥
             m_UpdateOrderSubject.OnNext(m_ReserveList.ToArray());
         }
     }

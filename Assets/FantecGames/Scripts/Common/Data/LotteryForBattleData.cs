@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 #if UNITY_EDITOR
 using UnityEditor;
 #endif
@@ -6,15 +6,15 @@ using UnityEditor;
 namespace fantec
 {
     /// <summary>
-    /// ƒoƒgƒ‹‚ÖŠJn‚É’Š‘I‚³‚ê‚é‚½‚ß‚ÌŒ‹‰Ê‚Ìƒf[ƒ^
+    /// ãƒãƒˆãƒ«ã¸é–‹å§‹æ™‚ã«æŠ½é¸ã•ã‚Œã‚‹ãŸã‚ã®çµæœã®ãƒ‡ãƒ¼ã‚¿
     /// </summary>
     [System.Serializable]
     public class LotteryForBattleData
     {
         [SerializeField, ReadOnly] bool m_IsSuccess;
-        [SerializeField, ReadOnly] int m_InitialRewardTableId; // ‰‰ñ•ñV‚Ìƒe[ƒuƒ‹ID‚ğ•Û‘¶
-        [SerializeField, ReadOnly] int m_StageRewardTableId;   // ƒXƒe[ƒW‚Ì•ñVƒe[ƒuƒ‹
-        [SerializeField, ReadOnly] int m_RewardExp;            // ƒNƒŠƒAŒoŒ±’l
+        [SerializeField, ReadOnly] int m_InitialRewardTableId; // åˆå›å ±é…¬ã®ãƒ†ãƒ¼ãƒ–ãƒ«IDã‚’ä¿å­˜
+        [SerializeField, ReadOnly] int m_StageRewardTableId;   // ã‚¹ãƒ†ãƒ¼ã‚¸ã®å ±é…¬ãƒ†ãƒ¼ãƒ–ãƒ«
+        [SerializeField, ReadOnly] int m_RewardExp;            // ã‚¯ãƒªã‚¢çµŒé¨“å€¤
 
         public bool IsSuccess => m_IsSuccess;
         public int InitialRewardTableId => m_InitialRewardTableId;

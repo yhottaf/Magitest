@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using fantec.Master;
 using System.Collections.Generic;
 
@@ -16,7 +16,7 @@ namespace fantec.Battle
 
         public AdventSkillEntity(AdventSkillData data,AffectAttributeType attributeType):this(data)
         {
-            this.commands.InterpolationAttributeType(attributeType);  // ‘®«‚ğ•âŠ®‚·‚é
+            this.commands.InterpolationAttributeType(attributeType);  // å±æ€§ã‚’è£œå®Œã™ã‚‹
         }
     }
 

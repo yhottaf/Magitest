@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
@@ -85,21 +85,21 @@ namespace fantec.Battle.Model
             }
             catch (ArgumentOutOfRangeException)
             {
-                throw new ArgumentOutOfRangeException(nameof(m_ReserveList), "”­“®—\–ñ’†‚ÌƒLƒƒƒ‰ƒNƒ^[‚ª‚¢‚È‚¢ó‘Ô‚ÅŒÄ‚Î‚ê‚Ü‚µ‚½");
+                throw new ArgumentOutOfRangeException(nameof(m_ReserveList), "ç™ºå‹•äºˆç´„ä¸­ã®ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒã„ãªã„çŠ¶æ…‹ã§å‘¼ã°ã‚Œã¾ã—ãŸ");
             }
         }
 
         private void ReserveCheck()
         {
-            if (m_ReserveList.Count == 0)          // —\–ñ’†‚ÌƒXƒLƒ‹‚ª‚È‚¯‚ê‚Î
+            if (m_ReserveList.Count == 0)          // äºˆç´„ä¸­ã®ã‚¹ã‚­ãƒ«ãŒãªã‘ã‚Œã°
             {
-                m_IsFookReactive.Value = false; // ƒtƒbƒN‚ğ–³Œø‰»
+                m_IsFookReactive.Value = false; // ãƒ•ãƒƒã‚¯ã‚’ç„¡åŠ¹åŒ–
             }
-            else                                // —\–ñ’†‚ÌƒXƒLƒ‹‚ª‚ ‚éó‘Ô‚Å
+            else                                // äºˆç´„ä¸­ã®ã‚¹ã‚­ãƒ«ãŒã‚ã‚‹çŠ¶æ…‹ã§
             {
-                if (m_IsActiveReactive.Value == false) // ”­“®’†‚Å‚È‚¯‚ê‚Î
+                if (m_IsActiveReactive.Value == false) // ç™ºå‹•ä¸­ã§ãªã‘ã‚Œã°
                 {
-                    m_IsFookReactive.Value = true; // ƒtƒbƒN‚ğ—LŒø‰»
+                    m_IsFookReactive.Value = true; // ãƒ•ãƒƒã‚¯ã‚’æœ‰åŠ¹åŒ–
                 }
             }
         }

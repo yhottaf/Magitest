@@ -1,4 +1,4 @@
-using fantec.Utilities;
+ï»¿using fantec.Utilities;
 using Newtonsoft.Json;
 using System.Collections.Generic;
 using System.IO;
@@ -71,7 +71,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ‚¨‹C‚É“ü‚è‚ğíœ‚·‚é
+        /// ãŠæ°—ã«å…¥ã‚Šã‚’å‰Šé™¤ã™ã‚‹
         /// </summary>
         /// <param name="cardId"></param>
         public void RemoveFavoriteCard(int cardId)
@@ -83,7 +83,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ‚¨‹C‚É“ü‚èƒŠƒXƒg‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚é‚©
+        /// ãŠæ°—ã«å…¥ã‚Šãƒªã‚¹ãƒˆã«å«ã¾ã‚Œã¦ã„ã‚‹ã‹
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
@@ -93,7 +93,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// •\¦‚µ‚½‚±‚Æ‚Ì‚ ‚éƒJ[ƒh‚ğ’Ç‰Á‚·‚é
+        /// è¡¨ç¤ºã—ãŸã“ã¨ã®ã‚ã‚‹ã‚«ãƒ¼ãƒ‰ã‚’è¿½åŠ ã™ã‚‹
         /// </summary>
         /// <param name="cardId"></param>
         public void AddCheckCard(int cardId)
@@ -107,7 +107,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// •\f•ƒ‚µ‚½‚±‚Æ‚Ì‚ ‚éƒŠƒXƒg‚©‚çAcardId‚ğ•\¦‚µ‚½‚±‚Æ‚ª‚ ‚é‚©‚ğ•Ô‚·
+        /// è¡¨å”çˆ¶ã—ãŸã“ã¨ã®ã‚ã‚‹ãƒªã‚¹ãƒˆã‹ã‚‰ã€cardIdã‚’è¡¨ç¤ºã—ãŸã“ã¨ãŒã‚ã‚‹ã‹ã‚’è¿”ã™
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>

@@ -1,26 +1,26 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 namespace fantec
 {
     [CreateAssetMenu(menuName =nameof(fantec)+"/"+nameof(EnvironSoundDatabase))]
     public class EnvironSoundDatabase : ScriptableObject
     {
-        [Header("ƒqƒbƒg‰¹")]
-        [SerializeField] AudioClip m_HitBlow;     // ‘ÅŒ‚‰¹
-        [SerializeField] AudioClip m_HitSlash;    // Ø‚è—ô‚«‰¹
-        [SerializeField] AudioClip m_HitThrust;   // “Ë‚«‰¹
+        [Header("ãƒ’ãƒƒãƒˆéŸ³")]
+        [SerializeField] AudioClip m_HitBlow;     // æ‰“æ’ƒéŸ³
+        [SerializeField] AudioClip m_HitSlash;    // åˆ‡ã‚Šè£‚ãéŸ³
+        [SerializeField] AudioClip m_HitThrust;   // çªãéŸ³
 
-        [Header("‘®«‰¹")]
+        [Header("å±æ€§éŸ³")]
         [SerializeField] AudioClip m_AttHeat;
 
-        [Header("Œø‰Ê”½‰f‰¹")]
-        [SerializeField] AudioClip m_AffHeal;      // ƒq[ƒ‹‰¹
-        [SerializeField] AudioClip m_AffPoison;    // “Å‰¹
-        [SerializeField] AudioClip m_AffBurn;      // ƒo[ƒ“‰¹
-        [SerializeField] AudioClip m_AffFrost;     // •X‰¹
-        [SerializeField] AudioClip m_AffDebuff;    // ƒfƒoƒt‰¹
+        [Header("åŠ¹æœåæ˜ éŸ³")]
+        [SerializeField] AudioClip m_AffHeal;      // ãƒ’ãƒ¼ãƒ«éŸ³
+        [SerializeField] AudioClip m_AffPoison;    // æ¯’éŸ³
+        [SerializeField] AudioClip m_AffBurn;      // ãƒãƒ¼ãƒ³éŸ³
+        [SerializeField] AudioClip m_AffFrost;     // æ°·éŸ³
+        [SerializeField] AudioClip m_AffDebuff;    // ãƒ‡ãƒãƒ•éŸ³
         [SerializeField] AudioClip m_AffConfusion;
-        [SerializeField] AudioClip m_AffBuff;      // ƒoƒt‰¹
+        [SerializeField] AudioClip m_AffBuff;      // ãƒãƒ•éŸ³
 
         private Dictionary<int, AudioClip> m_HitDict;
         private Dictionary<int, AudioClip> m_AttributeDict;
@@ -30,15 +30,15 @@ namespace fantec
         {
             m_HitDict = new Dictionary<int, AudioClip>()
             {
-                //{(int)AffectHitType.‘Å,m_HitBlow },
-                //{(int)AffectHitType.a,m_HitSlash },
-                //{(int)AffectHitType.“Ë,m_HitThrust },
+                //{(int)AffectHitType.æ‰“,m_HitBlow },
+                //{(int)AffectHitType.æ–¬,m_HitSlash },
+                //{(int)AffectHitType.çª,m_HitThrust },
             };
 
             m_CategoryDict = new Dictionary<int, AudioClip>()
             {
 
-                // ó‘ÔˆÙí
+                // çŠ¶æ…‹ç•°å¸¸
                 //{ (int)AffectCategoryType.Poison, m_AffPoison },
                 //{ (int)AffectCategoryType.Confusion, m_AffConfusion },
                 //{ (int)AffectCategoryType.Burn, m_AffBurn },

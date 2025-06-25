@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle;
 using fantec.Common;
 using fantec.Master;
@@ -27,17 +27,17 @@ namespace fantec.Menu.PartySortie
         private GameObject m_Content;
         
         [SerializeField, Range(1e-2f, 100f)]
-        private float ThresholdSeconds = 1.0f; // 1•b’·‰Ÿ‚µ
+        private float ThresholdSeconds = 1.0f; // 1ç§’é•·æŠ¼ã—
 
         [SerializeField]
         private ObservableEventTrigger eventTrigger;
 
         private GameObject ghostObject;
 
-        private readonly Vector3 DefaultScale = new Vector3(10, 10, 10); // ƒS[ƒXƒg‚ÌƒfƒtƒHƒ‹ƒgƒXƒP[ƒ‹
-        private readonly float alpha = 0.5f; // ƒS[ƒXƒgSpine‚Ì“§–¾“x
+        private readonly Vector3 DefaultScale = new Vector3(10, 10, 10); // ã‚´ãƒ¼ã‚¹ãƒˆã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚±ãƒ¼ãƒ«
+        private readonly float alpha = 0.5f; // ã‚´ãƒ¼ã‚¹ãƒˆSpineã®é€æ˜åº¦
 
-        // ƒvƒƒpƒeƒB
+        // ãƒ—ãƒ­ãƒ‘ãƒ†ã‚£
         private int m_CardId;
         private int m_PositionIndex=0;
 
@@ -50,13 +50,13 @@ namespace fantec.Menu.PartySortie
 
         private CompositeDisposable _disposables = new CompositeDisposable();
 
-        // ’·‰Ÿ‚µ
+        // é•·æŠ¼ã—
         public IObservable<Unit> OnPointerDownAsObservable
         {
             get { return _onPointerDown; }
         }
 
-        // —£‚µ‚½
+        // é›¢ã—ãŸæ™‚
         public IObservable<Unit> OnPointerUpAsObservable
         {
             get { return _onPointerUp; }
@@ -82,7 +82,7 @@ namespace fantec.Menu.PartySortie
         }
 
         /// <summary>
-        /// Œ©‚½–Ú‚ğXV‚·‚é
+        /// è¦‹ãŸç›®ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         public async UniTask Settings(int cardId, CancellationToken cts = default)
         {
@@ -101,7 +101,7 @@ namespace fantec.Menu.PartySortie
 
                 string address = AssetPath.GetCharacterSpinePath(originId);
 
-                // AssetManager Œo—R‚Å”ñ“¯Šú‚Éƒ[ƒh
+                // AssetManager çµŒç”±ã§éåŒæœŸã«ãƒ­ãƒ¼ãƒ‰
                 var skeletonData = await AssetManager.Instance.LoadAssetAsync<SkeletonDataAsset>(address, cts);
 
                 if (skeletonData != null)
@@ -112,13 +112,13 @@ namespace fantec.Menu.PartySortie
                 }
                 else
                 {
-                    Debug.LogError($"[Settings] SpineƒAƒZƒbƒg‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½Baddress: {address}");
+                    Debug.LogError($"[Settings] Spineã‚¢ã‚»ãƒƒãƒˆã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚address: {address}");
                 }
             }
 
             CardData cardData = CardManager.GetCardData(m_CardId);
 
-            // Œ»İ‚ÌƒXƒƒbƒg(Œ»ó5ƒXƒƒbƒg(ƒfƒbƒL)‚ ‚é)‚Ì”z’uêŠ‚Ìæ“¾
+            // ç¾åœ¨ã®ã‚¹ãƒ­ãƒƒãƒˆ(ç¾çŠ¶5ã‚¹ãƒ­ãƒƒãƒˆ(ãƒ‡ãƒƒã‚­)ã‚ã‚‹)ã®é…ç½®å ´æ‰€ã®å–å¾—
             m_PositionIndex = cardData.positionIndex[PlayerPrefsManager.SelectPartyIndex];
             if (m_PositionIndex == 9)
             {
@@ -130,7 +130,7 @@ namespace fantec.Menu.PartySortie
         public void CreateGhosst()
         {
             if (m_SpineGraphic.skeletonDataAsset == null || m_SpineGraphic == null) return;
-            // GhostƒIƒuƒWƒFƒNƒg¶¬
+            // Ghostã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆ
             ghostObject = new GameObject("SpineGhost");
             ghostObject.transform.SetParent(m_Content.transform);
             ghostObject.transform.localPosition = Vector3.zero;
@@ -143,7 +143,7 @@ namespace fantec.Menu.PartySortie
             ghostRenderer.GetComponent<Renderer>().sortingLayerName = "MainCanvas";
 
 
-            // ƒXƒLƒ“‚Æƒ|[ƒY‚ğ“¯Šú
+            // ã‚¹ã‚­ãƒ³ã¨ãƒãƒ¼ã‚ºã‚’åŒæœŸ
             ghostRenderer.skeleton.SetSkin(m_SpineGraphic.Skeleton.Skin);
             ghostRenderer.skeleton.SetSlotsToSetupPose();
             ghostRenderer.skeleton.SetBonesToSetupPose();
@@ -189,7 +189,7 @@ namespace fantec.Menu.PartySortie
         private void ApplyShader(SkeletonAnimation obj)
         {
             Shader loadedShader = Shader.Find("Spine/Skeleton");
-            // SkeletonDataAsset ¨ AtlasAssets ¨ Material‚ğ’H‚é
+            // SkeletonDataAsset â†’ AtlasAssets â†’ Materialã‚’è¾¿ã‚‹
             var atlasAssets = obj.skeletonDataAsset.atlasAssets;
             foreach (var atlasAsset in atlasAssets)
             {
@@ -197,15 +197,15 @@ namespace fantec.Menu.PartySortie
                 foreach (var mat in materials)
                 {
                     mat.shader = loadedShader;
-                    Debug.Log($"Shader‚ğ“K—p‚µ‚Ü‚µ‚½IMaterial: {mat.name}");
+                    Debug.Log($"Shaderã‚’é©ç”¨ã—ã¾ã—ãŸï¼Material: {mat.name}");
                 }
             }
-            Debug.Log("Shaderƒ[ƒhŠ®—¹Iƒ}ƒeƒŠƒAƒ‹‚É“K—p‚µ‚Ü‚µ‚½I");
+            Debug.Log("Shaderãƒ­ãƒ¼ãƒ‰å®Œäº†ï¼ãƒãƒ†ãƒªã‚¢ãƒ«ã«é©ç”¨ã—ã¾ã—ãŸï¼");
         }
 
         private void RegisterEventTriggers()
         {
-            _disposables.Clear(); // ‘O‰ñ‚Ìw“Ç‚ğ”jŠü
+            _disposables.Clear(); // å‰å›ã®è³¼èª­ã‚’ç ´æ£„
 
             eventTrigger
                 .OnBeginDragAsObservable()

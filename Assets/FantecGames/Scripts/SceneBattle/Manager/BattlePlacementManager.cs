@@ -1,4 +1,4 @@
-using fantec.Battle.Manager.Placement;
+ï»¿using fantec.Battle.Manager.Placement;
 using fantec.Battle.Model;
 using UnityEngine;
 
@@ -39,7 +39,7 @@ namespace fantec.Battle.Manager
             Locator.Register<IBattlePlacementManager>(this);
         }
 
-        // ƒ}ƒX–Ú‚ÉˆÚ“®‚·‚éÛ‚ÉAŒ»İ‚ÌUnit‚Ì‚¢‚éƒ}ƒX–Úî•ñ‚ğ‘‚«Š·‚¦‚é
+        // ãƒã‚¹ç›®ã«ç§»å‹•ã™ã‚‹éš›ã«ã€ç¾åœ¨ã®Unitã®ã„ã‚‹ãƒã‚¹ç›®æƒ…å ±ã‚’æ›¸ãæ›ãˆã‚‹
         public void SetDefaultPosition(IBattler affecter, int positionindex)
         {
             affecter.Unit.Entity.positionIndex = positionindex;
@@ -53,7 +53,7 @@ namespace fantec.Battle.Manager
                     m_EnemyPoints[affecter.Unit.Entity.positionIndex] :
                     m_PlayerPoints[affecter.Unit.Entity.positionIndex];
             }
-            catch { throw new System.Exception($"[{affecter.Unit.Entity.positionIndex}] ‚Í”ÍˆÍŠO‚Å‚·B"); }
+            catch { throw new System.Exception($"[{affecter.Unit.Entity.positionIndex}] ã¯ç¯„å›²å¤–ã§ã™ã€‚"); }
         }
 
 
@@ -70,7 +70,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ‘S‘ÌUŒ‚‚·‚éÛ‚ÌˆÊ’u‚ğæ“¾
+        /// å…¨ä½“æ”»æ’ƒã™ã‚‹éš›ã®ä½ç½®ã‚’å–å¾—
         /// </summary>
         /// <param name="affecter"></param>
         public Vector3 GetBeAttackCenterPosition(IBattler affecter)
@@ -81,7 +81,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ‘S‘Ìƒoƒt‚ğ‚·‚éÛ‚ÌˆÊ’u‚ğæ“¾
+        /// å…¨ä½“ãƒãƒ•ã‚’ã™ã‚‹éš›ã®ä½ç½®ã‚’å–å¾—
         /// </summary>
         /// <param name="affecter"></param>
         public Vector3 GetBuffCenterPosition(IBattler affecter)
@@ -96,10 +96,10 @@ namespace fantec.Battle.Manager
         public Vector3 GetTopPosition() => m_TopPoint.position;
 
 
-        // TODO : UŒ‚‚·‚éÛ‚ÌˆÚ“®æ‚ğŒˆ’è‚µ‚½‚¢ê‡‚±‚±‚ğ‚¢‚¶‚é
+        // TODO : æ”»æ’ƒã™ã‚‹éš›ã®ç§»å‹•å…ˆã‚’æ±ºå®šã—ãŸã„å ´åˆã“ã“ã‚’ã„ã˜ã‚‹
 
         /// <summary>
-        /// ”­“®ƒXƒLƒ‹‚É‚æ‚Á‚ÄˆÚ“®æ‚ğæ“¾
+        /// ç™ºå‹•ã‚¹ã‚­ãƒ«ã«ã‚ˆã£ã¦ç§»å‹•å…ˆã‚’å–å¾—
         /// </summary>
         public Vector3 GetDestination(AffectInfo info)
         {
@@ -127,30 +127,30 @@ namespace fantec.Battle.Manager
                 case AffectRangeType.MySideAll:
                     return this.GetBuffCenterPosition(affecter);
 
-                default: throw new System.Exception($"[rangeType:{rangeType}] ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                default: throw new System.Exception($"[rangeType:{rangeType}] ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 
         /// <summary>
-        /// MAGI‚ªs“®ƒpƒ^[ƒ“‚É]‚Á‚ÄŸ‚ÉˆÚ“®‚·‚é‚×‚«©w‚ÌpositionIndex‚Ì’l‚ğ•Ô‚·
-        /// positionIndex(9‚Â‚ ‚éPlacementPointer‚ÌêŠ)0`8‚Ü‚Å‚Ì’l‚µ‚©‚È‚¢
+        /// MAGIãŒè¡Œå‹•ãƒ‘ã‚¿ãƒ¼ãƒ³ã«å¾“ã£ã¦æ¬¡ã«ç§»å‹•ã™ã‚‹ã¹ãè‡ªé™£ã®positionIndexã®å€¤ã‚’è¿”ã™
+        /// positionIndex(9ã¤ã‚ã‚‹PlacementPointerã®å ´æ‰€)0ï½8ã¾ã§ã®å€¤ã—ã‹ãªã„
         /// </summary>
         public int GetNextPositionIndex(IBattler affecter)
         {
-            // s“®‡”Ôî•ñ‚ª‚È‚¢ê‡‚ÍŒ»İ‚ÌˆÊ’uî•ñ‚ğ•Ô‚·
+            // è¡Œå‹•é †ç•ªæƒ…å ±ãŒãªã„å ´åˆã¯ç¾åœ¨ã®ä½ç½®æƒ…å ±ã‚’è¿”ã™
             if (affecter.Unit.Entity.behaviorAI.Count.Equals(0)) return affecter.Unit.Entity.positionIndex;
 
             for(int i=0;i<affecter.Unit.Entity.behaviorAI.Count;i++)
             {
                 if (affecter.Unit.Entity.positionIndex == affecter.Unit.Entity.behaviorAI[i])
                 {
-                    if (i + 1 >= affecter.Unit.Entity.behaviorAI.Count)// ƒJƒEƒ“ƒg‚Í9‚Ü‚Å‚ªŒÀŠE
+                    if (i + 1 >= affecter.Unit.Entity.behaviorAI.Count)// ã‚«ã‚¦ãƒ³ãƒˆã¯9ã¾ã§ãŒé™ç•Œ
                     {
-                        return affecter.Unit.Entity.behaviorAI[0]; // ƒŠƒXƒg“à‚ÌÅ‰‚Ìs“®ƒpƒ^[ƒ“‚ÌˆÊ’u‚ğ•Ô‚·
+                        return affecter.Unit.Entity.behaviorAI[0]; // ãƒªã‚¹ãƒˆå†…ã®æœ€åˆã®è¡Œå‹•ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ä½ç½®ã‚’è¿”ã™
                     }
                     else
                     {
-                        return affecter.Unit.Entity.behaviorAI[i + 1];// Ÿ‚Ìs“®ƒpƒ^[ƒ“‚ÌˆÊ’u‚ğ•Ô‚·
+                        return affecter.Unit.Entity.behaviorAI[i + 1];// æ¬¡ã®è¡Œå‹•ãƒ‘ã‚¿ãƒ¼ãƒ³ã®ä½ç½®ã‚’è¿”ã™
                     }
                 }
             }

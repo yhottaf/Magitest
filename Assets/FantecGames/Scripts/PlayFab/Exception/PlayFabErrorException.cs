@@ -1,8 +1,8 @@
-using PlayFab;
+﻿using PlayFab;
 using System;
 
 /// <summary>
-/// �z��O��PlayFab�̃G���[���O�Ƃ��Ĉ������߂�Exception
+/// 想定外のPlayFabのエラーを例外として扱うためのException
 /// </summary>
 public class PlayFabErrorException:Exception
 {

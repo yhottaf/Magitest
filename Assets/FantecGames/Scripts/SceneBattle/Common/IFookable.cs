@@ -1,12 +1,12 @@
-using UniRx;
+﻿using UniRx;
 
 namespace fantec.Battle
 {
     /// <summary>
-    /// <see cref="bool"/> �ɂ��g���K�[��p�ӂ��Ĉ����|���銴���̗p�r
-    /// <see cref="FookableExtentions.FookOn(IFookable)"/> �Ńt�b�N��L����
-    /// <see cref="FookableExtentions.FookOff(IFookable)"/> �Ńt�b�N�𖳌���
-    /// <see cref="IReadOnlyReactiveProperty{T}"/> �ւ̍w�ǂ͉\
+    /// <see cref="bool"/> によるトリガーを用意して引っ掛ける感じの用途
+    /// <see cref="FookableExtentions.FookOn(IFookable)"/> でフックを有効に
+    /// <see cref="FookableExtentions.FookOff(IFookable)"/> でフックを無効に
+    /// <see cref="IReadOnlyReactiveProperty{T}"/> への購読は可能
     /// </summary>
     public interface IFookable
     {

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.PlayfabCilent;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -11,18 +11,18 @@ namespace fantec.PlayFabClient
     public static class VirtualCurrencyManager
     {
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi
+        /// ã‚¹ã‚¿ãƒŸãƒŠ
         /// </summary>
         public static int Stamina => UserDataManager.MaxStamina > StaminaRaw ? StaminaRaw : UserDataManager.MaxStamina;
         private static int StaminaRaw { get; set; }
 
         /// <summary>
-        /// ŒoŒ±’l
+        /// çµŒé¨“å€¤
         /// </summary>
         public static int Exp { get; private set; }
 
         /// <summary>
-        /// —LÎA–³Î‚Ì‡Œv”
+        /// æœ‰å„ŸçŸ³ã€ç„¡å„ŸçŸ³ã®åˆè¨ˆæ•°
         /// </summary>
         public static int Stone
         {
@@ -33,27 +33,27 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// —LÎ
+        /// æœ‰å„ŸçŸ³
         /// </summary>
         public static int PaidStone { get; private set; }
 
         /// <summary>
-        /// –³Î
+        /// ç„¡å„ŸçŸ³
         /// </summary>
         public static int FreeStone { get; private set; }
         
         /// <summary>
-        /// ƒ}ƒl[
+        /// ãƒãƒãƒ¼
         /// </summary>
         public static int Money { get; private set; }
 
         /// <summary>
-        /// ƒtƒŒƒ“ƒhƒ|ƒCƒ“ƒg
+        /// ãƒ•ãƒ¬ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ
         /// </summary>
         public static int FriendPoint { get; private set; }
 
         /// <summary>
-        /// PlayFab‚©‚çÅV‚Ìƒf[ƒ^‚ğæ“¾‚µ‚Äƒ[ƒJƒ‹‚ÉƒLƒƒƒbƒVƒ…‚·‚é
+        /// PlayFabã‹ã‚‰æœ€æ–°ã®ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—ã—ã¦ãƒ­ãƒ¼ã‚«ãƒ«ã«ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹
         /// </summary>
         /// <param name="currency"></param>
         public static void SyncPlayFabToClient(Dictionary<string,int>currency)
@@ -67,13 +67,13 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‚ğÁ”ï‚·‚é
+        /// ã‚¹ã‚¿ãƒŸãƒŠã‚’æ¶ˆè²»ã™ã‚‹
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
         public static async UniTask SubtractStaminaAsync(int amount)
         {
-            // PlayFab “à•”‚Å‚ÍƒXƒ^ƒ~ƒi‚ªƒ†[ƒU[‚²‚Æ‚ÌƒXƒ^ƒ~ƒiÅ‘å’l‚ğ’´‚¦‚Ä‚¢‚é‚±‚Æ‚ª‚ ‚é‚Ì‚Å‚»‚Ì•ª‚à‚±‚±‚Ål—¶‚µ‚ÄŒ¸Z‚·‚éB
+            // PlayFab å†…éƒ¨ã§ã¯ã‚¹ã‚¿ãƒŸãƒŠãŒãƒ¦ãƒ¼ã‚¶ãƒ¼ã”ã¨ã®ã‚¹ã‚¿ãƒŸãƒŠæœ€å¤§å€¤ã‚’è¶…ãˆã¦ã„ã‚‹ã“ã¨ãŒã‚ã‚‹ã®ã§ãã®åˆ†ã‚‚ã“ã“ã§è€ƒæ…®ã—ã¦æ¸›ç®—ã™ã‚‹ã€‚
             int overMaxStaminaNum = StaminaRaw - UserDataManager.MaxStamina;
             if(overMaxStaminaNum>0)
             {
@@ -96,7 +96,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‚ğ‰ñ•œ‚·‚éB
+        /// ã‚¹ã‚¿ãƒŸãƒŠã‚’å›å¾©ã™ã‚‹ã€‚
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
@@ -121,7 +121,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ŒoŒ±’l‚ğ‘‰Á‚·‚é
+        /// çµŒé¨“å€¤ã‚’å¢—åŠ ã™ã‚‹
         /// </summary>
         /// <param name="amount"></param>
         /// <param name="login"></param>
@@ -154,19 +154,19 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// Î‚ğÁ”ï‚·‚é(ÀÛ‚ÍƒNƒ‰ƒCƒAƒ“ƒg‚©‚ç•ÏX‚Å‚«‚È‚¢‚Ì‚Å‰¼À‘•)
+        /// çŸ³ã‚’æ¶ˆè²»ã™ã‚‹(å®Ÿéš›ã¯ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‹ã‚‰å¤‰æ›´ã§ããªã„ã®ã§ä»®å®Ÿè£…)
         /// </summary>
         /// <param name="amount"></param>
         /// <returns></returns>
         public static async UniTask<bool>SubtractStoneAsync(int amount)
         {
-            //@Î‚ª‚ ‚é‚©‚ÌŠm”F
+            //ã€€çŸ³ãŒã‚ã‚‹ã‹ã®ç¢ºèª
             if(amount>Stone)
             {
                 return false;
             }
 
-            // —LÎ‚ğÁ”ï‚·‚é‚©
+            // æœ‰å„ŸçŸ³ã‚’æ¶ˆè²»ã™ã‚‹ã‹
             bool isPaid = FreeStone < amount;
 
             var request = new SubtractUserVirtualCurrencyRequest

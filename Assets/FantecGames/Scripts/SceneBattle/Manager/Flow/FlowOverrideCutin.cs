@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Model;
 using UniRx;
 using UnityEngine;
@@ -24,9 +24,9 @@ namespace fantec.Battle.Manager
 
                 void PlayCutin()
                 {
-                    // ƒ{ƒCƒX‚ª‘¶İ‚µ‚Ä‚¢‚ê‚ÎÄ¶
+                    // ãƒœã‚¤ã‚¹ãŒå­˜åœ¨ã—ã¦ã„ã‚Œã°å†ç”Ÿ
 
-                    // ƒAƒjƒ[ƒVƒ‡ƒ“Ä¶
+                    // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å†ç”Ÿ
                     var cutinAnim = Locator.Resolve<IBattleAnimationManager>().Play<IOverrideSkillCutinAnimation>();
 
                     cutinAnim.SetCharaSprite(resourceMng.GetCutinSprite(battler))
@@ -36,7 +36,7 @@ namespace fantec.Battle.Manager
                         .AddTo(cutinAnim.ClosedDisposables);
                 }
 
-                // ƒJƒbƒgƒCƒ“‚ÌÄ¶
+                // ã‚«ãƒƒãƒˆã‚¤ãƒ³ã®å†ç”Ÿ
                 PlayCutin();
             }
         }

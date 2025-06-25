@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace fantec.Battle.Model
@@ -7,7 +7,7 @@ namespace fantec.Battle.Model
     {
         void Activation(AffectInfo info);
 
-        IObservable<Unit> OnActionCompletedObservable {  get; } // ƒAƒNƒVƒ‡ƒ“‚ÌŠ®—¹’Ê’m‚ğŠÄ‹
-        void ActionCompleted(); // ƒAƒNƒVƒ‡ƒ“‚ªŠ®—¹‚µ‚½‚±‚Æ‚ğ’Ê’m‚·‚é
+        IObservable<Unit> OnActionCompletedObservable {  get; } // ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ã®å®Œäº†é€šçŸ¥ã‚’ç›£è¦–
+        void ActionCompleted(); // ã‚¢ã‚¯ã‚·ãƒ§ãƒ³ãŒå®Œäº†ã—ãŸã“ã¨ã‚’é€šçŸ¥ã™ã‚‹
     }
 }

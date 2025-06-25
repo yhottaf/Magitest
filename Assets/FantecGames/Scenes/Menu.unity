@@ -168,9 +168,11 @@ MonoBehaviour:
   m_Home: {fileID: 1914703642892942954, guid: 129aa1172eaf01a47b2a8f8c6cef9db7, type: 3}
   m_Gacha: {fileID: 0}
   m_PartySelect: {fileID: 2027871220838836924, guid: 6a077749c2c8ca949bf51b397e08d9f1, type: 3}
+  m_CardDetail: {fileID: 3774414116886366664, guid: 51d3b109e9065954f80858183c42be5b, type: 3}
   m_MenuModal: {fileID: 0}
   m_Profile: {fileID: 0}
   m_Notice: {fileID: 2027871220838836924, guid: 99b68139408fa074587f32b43058bb0a, type: 3}
+  m_InputGuard: {fileID: 2027871220838836924, guid: 95f1cd77d3f0c924eafdf5dcd99a5347, type: 3}
   m_NameChangeModal: {fileID: 7614362586803383860, guid: 64358acdae611e94d922cfa945a40c0f, type: 3}
   m_PlayerNameEditModal: {fileID: 2448323664247604063, guid: a62dacacf7a45ea4dad8d0dfe6ebcbd9, type: 3}
   m_EnemyDetailModal: {fileID: 0}

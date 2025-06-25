@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using System;
 using System.Collections.Generic;
@@ -27,7 +27,7 @@ namespace fantec.Battle.Model
         public IObservable<AffectInfo> OnBuffedObservable => m_BuffedSubject;
         public IObservable<Unit> OnBreakObservable => m_BreakSubject;
 
-        public IBattler BossData => m_EnemyDatas[BD.POSITION_INDEX_BOSS];// ‰¼‚Å3‘Ì‚Éİ’è
+        public IBattler BossData => m_EnemyDatas[BD.POSITION_INDEX_BOSS];// ä»®ã§3ä½“ã«è¨­å®š
         public IBattler[] PlayerDatas => m_PlayerDatas;
         public IBattler[]EnemyDatas=> m_EnemyDatas;
         public bool IsPlayerDefeat => m_PlayerDatas.GetIsAllDead();
@@ -36,7 +36,7 @@ namespace fantec.Battle.Model
         public float PlayerHPRatio => m_PlayerDatas.GetHPRatio();
         public float EnemyHPRatio => m_EnemyDatas.GetHPRatio();
 
-        public bool IsSettled => IsPlayerDefeat || IsEnemyDefeat; // Œˆ’…‚ª‚Â‚¢‚½‚©‚Ç‚¤‚©
+        public bool IsSettled => IsPlayerDefeat || IsEnemyDefeat; // æ±ºç€ãŒã¤ã„ãŸã‹ã©ã†ã‹
 
 
         private readonly AsyncSubject<IBattleModelUnits> m_SetupCompletedSubject = new AsyncSubject<IBattleModelUnits>();
@@ -67,7 +67,7 @@ namespace fantec.Battle.Model
                 m_EnemyDatas[index] = new BattleUnitEnemy();
             }
 
-            //TODO ƒGƒlƒ~[ƒf[ƒ^‚Ì”•ªƒ{ƒX‚ğ‰Á‚¦‚½‚è‚·‚é
+            //TODO ã‚¨ãƒãƒŸãƒ¼ãƒ‡ãƒ¼ã‚¿ã®æ•°åˆ†ãƒœã‚¹ã‚’åŠ ãˆãŸã‚Šã™ã‚‹
 
             foreach (var player in PlayerDatas)
             {
@@ -108,7 +108,7 @@ namespace fantec.Battle.Model
         {
             m_DeadBattlerSubject.OnNext(battler);
 
-            // ‘S–Å‚µ‚Ä‚¢‚éê‡
+            // å…¨æ»…ã—ã¦ã„ã‚‹å ´åˆ
             if(IsPlayerDefeat)
             {
                 m_DefeatPlayerSubject.OnNext(Unit.Default);
@@ -119,7 +119,7 @@ namespace fantec.Battle.Model
         {
             m_DeadBattlerSubject.OnNext(battler);
 
-            // ‘S–Å‚µ‚Ä‚¢‚éê‡
+            // å…¨æ»…ã—ã¦ã„ã‚‹å ´åˆ
             if(IsEnemyDefeat)
             {
                 m_DefeatEnemySubject.OnNext(Unit.Default);
@@ -152,32 +152,32 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// –¡•ûƒp[ƒeƒB[ƒƒ“ƒo[‚ğí“¬ŠÄ‹‘ÎÛ‚É“o˜^‚·‚é
+        /// å‘³æ–¹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ã‚’æˆ¦é—˜ç›£è¦–å¯¾è±¡ã«ç™»éŒ²ã™ã‚‹
         /// </summary>
         public void SetPlayerTeam(TeamData team)
         {
-            // ‹Œƒf[ƒ^‚Ì”jŠü
+            // æ—§ãƒ‡ãƒ¼ã‚¿ã®ç ´æ£„
             m_PlayerDatas.Reset();
 
-            // Vƒf[ƒ^‚Ì“o˜^
+            // æ–°ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²
             m_PlayerDatas.SetUnitData(team);
 
-            // ‘¶İ‚·‚éƒLƒƒƒ‰‚ğ’Ê’m
+            // å­˜åœ¨ã™ã‚‹ã‚­ãƒ£ãƒ©ã‚’é€šçŸ¥
             m_UpdatePlayerMemberSubject.OnNext(m_PlayerDatas.GetExistBattlers());
         }
 
         /// <summary>
-        /// “Gƒp[ƒeƒB[ƒƒ“ƒo[‚ğí“¬ŠÄ‹‘ÎÛ‚É“o˜^‚·‚é
+        /// æ•µãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ¡ãƒ³ãƒãƒ¼ã‚’æˆ¦é—˜ç›£è¦–å¯¾è±¡ã«ç™»éŒ²ã™ã‚‹
         /// </summary>
         public void SetEnemyTeam(TeamData team)
         {
-            // ‹Œƒf[ƒ^‚Ì”jŠü
+            // æ—§ãƒ‡ãƒ¼ã‚¿ã®ç ´æ£„
             m_EnemyDatas.Reset();
 
-            // Vƒf[ƒ^‚Ì“o˜^
+            // æ–°ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²
             m_EnemyDatas.SetUnitData(team);
 
-            // ‘¶İ‚·‚éƒLƒƒƒ‰‚ğ’Ê’m
+            // å­˜åœ¨ã™ã‚‹ã‚­ãƒ£ãƒ©ã‚’é€šçŸ¥
             m_UpdateEnemyMemberSubject.OnNext(m_EnemyDatas.GetExistBattlers());
         }
         #endregion

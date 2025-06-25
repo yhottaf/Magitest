@@ -1,4 +1,4 @@
-using fantec.Battle;
+ï»¿using fantec.Battle;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,44 +10,44 @@ namespace fantec.Battle.Model
     public interface IBattlerParamState : IDisposable, IResetable, IReloadable
     {
         IObservable<List<TokenCell>> OnUpdateTokenCellList { get; }
-        IObservable<AffectInfo> OnTakeBuffObservable { get; } // ƒoƒt‚ğó‚¯‚½Û‚ğw“Ç
+        IObservable<AffectInfo> OnTakeBuffObservable { get; } // ãƒãƒ•ã‚’å—ã‘ãŸéš›ã‚’è³¼èª­
 
-        int CurrentUnitID{ get; } // ‚»‚ÌƒJ[ƒh‚ÌŒÅ—LID (ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹‚ğ”­“®‚·‚é‚Ì‚ÉŒ©‚é’l)
+        int CurrentUnitID{ get; } // ãã®ã‚«ãƒ¼ãƒ‰ã®å›ºæœ‰ID (ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«ã‚’ç™ºå‹•ã™ã‚‹ã®ã«è¦‹ã‚‹å€¤)
 
-        int CurrentATK { get; } // Œ»İ‚ÌUŒ‚—Í
-        int CurrentSPD { get; } // Œ»İ‚Ì‘f‘‚³
-        int CurrentDEX { get; } // Œ»İ‚Ì–½’†—¦
-        int CurrentLUK { get; } // Œ»İ‚Ì‰^
-        int CurrentVIT { get; } // Œ»İ‚ÌˆÙí‘Ï«’l
-        int CurrentDMG { get; } // Œ»İ‚Ìƒ_ƒ[ƒWãŒÀ’l
-        int CurrentHP { get; } // Œ»İ‚Ì‘Ì—Í’l
-        int CurrentMaxHP { get; } // Œ»İ‚ÌÅ‘å‘Ì—Í’l
-        int CurrentMOVE { get; } // Œ»İ‚ÌˆÚ“®—Í
+        int CurrentATK { get; } // ç¾åœ¨ã®æ”»æ’ƒåŠ›
+        int CurrentSPD { get; } // ç¾åœ¨ã®ç´ æ—©ã•
+        int CurrentDEX { get; } // ç¾åœ¨ã®å‘½ä¸­ç‡
+        int CurrentLUK { get; } // ç¾åœ¨ã®é‹
+        int CurrentVIT { get; } // ç¾åœ¨ã®ç•°å¸¸è€æ€§å€¤
+        int CurrentDMG { get; } // ç¾åœ¨ã®ãƒ€ãƒ¡ãƒ¼ã‚¸ä¸Šé™å€¤
+        int CurrentHP { get; } // ç¾åœ¨ã®ä½“åŠ›å€¤
+        int CurrentMaxHP { get; } // ç¾åœ¨ã®æœ€å¤§ä½“åŠ›å€¤
+        int CurrentMOVE { get; } // ç¾åœ¨ã®ç§»å‹•åŠ›
 
-        int OriginalATK { get; } // Œ³‚ÌUŒ‚—Í
-        int OriginalSPD { get; } // Œ³‚Ì‘f‘‚³
-        int OriginalDEX { get; } // Œ³‚Ì–½’†—¦
-        int OriginalLUK { get; } // Œ³‚Ì‰^
-        int OriginalVIT { get; } // Œ³‚Ìó‘ÔˆÙí‘Ï«’l
-        int OriginalDMG { get; } // Œ³‚Ìƒ_ƒ[ƒWãŒÀ’l
-        int OriginalMaxHP { get; }// Œ³‚ÌÅ‘å‘Ì—Í’l
-        int OriginalMOVE { get; } // Œ³‚ÌˆÚ“®—Í
+        int OriginalATK { get; } // å…ƒã®æ”»æ’ƒåŠ›
+        int OriginalSPD { get; } // å…ƒã®ç´ æ—©ã•
+        int OriginalDEX { get; } // å…ƒã®å‘½ä¸­ç‡
+        int OriginalLUK { get; } // å…ƒã®é‹
+        int OriginalVIT { get; } // å…ƒã®çŠ¶æ…‹ç•°å¸¸è€æ€§å€¤
+        int OriginalDMG { get; } // å…ƒã®ãƒ€ãƒ¡ãƒ¼ã‚¸ä¸Šé™å€¤
+        int OriginalMaxHP { get; }// å…ƒã®æœ€å¤§ä½“åŠ›å€¤
+        int OriginalMOVE { get; } // å…ƒã®ç§»å‹•åŠ›
 
-        int BuffATK { get; }      // UŒ‚—Í‚Ìƒoƒt’l
-        int BuffSPD { get; }      // ‘f‘‚³‚Ìƒoƒt’l
-        int BuffDEX { get; }      // –½’†—¦‚Ìƒoƒt’l
-        int BuffLUK { get; }      // ‰^‚Ìƒoƒt’l
-        int BuffVIT { get; }      // ó‘ÔˆÙí‘Ï«‚Ìƒoƒt’l
-        int BuffDMG { get; }      // ƒ_ƒ[ƒWãŒÀ’l‚Ìƒoƒt’l
-        int BuffMaxHP { get; }    // Å‘å‘Ì—Í’l‚Ìƒoƒt’l
-        int BuffMOVE { get; }     // ˆÚ“®—Í‚Ìƒoƒt’l
-        int Spec { get; }         // ƒoƒtŠÜ‚ß‚½”\—Í‚Ì‡Œv’l
+        int BuffATK { get; }      // æ”»æ’ƒåŠ›ã®ãƒãƒ•å€¤
+        int BuffSPD { get; }      // ç´ æ—©ã•ã®ãƒãƒ•å€¤
+        int BuffDEX { get; }      // å‘½ä¸­ç‡ã®ãƒãƒ•å€¤
+        int BuffLUK { get; }      // é‹ã®ãƒãƒ•å€¤
+        int BuffVIT { get; }      // çŠ¶æ…‹ç•°å¸¸è€æ€§ã®ãƒãƒ•å€¤
+        int BuffDMG { get; }      // ãƒ€ãƒ¡ãƒ¼ã‚¸ä¸Šé™å€¤ã®ãƒãƒ•å€¤
+        int BuffMaxHP { get; }    // æœ€å¤§ä½“åŠ›å€¤ã®ãƒãƒ•å€¤
+        int BuffMOVE { get; }     // ç§»å‹•åŠ›ã®ãƒãƒ•å€¤
+        int Spec { get; }         // ãƒãƒ•å«ã‚ãŸèƒ½åŠ›ã®åˆè¨ˆå€¤
 
-        float RatioHP { get; }    // HP‚ÌŠ„‡‚Ìæ“¾
+        float RatioHP { get; }    // HPã®å‰²åˆã®å–å¾—
 
-        bool IsConfusion { get; } // ¬—‚µ‚Ä‚¢‚é‚©”Û‚©
+        bool IsConfusion { get; } // æ··ä¹±ã—ã¦ã„ã‚‹ã‹å¦ã‹
 
-        bool IsShield { get; }    // ƒV[ƒ‹ƒh‚ª•t—^‚³‚ê‚Ä‚¢‚é‚©”Û‚©
+        bool IsShield { get; }    // ã‚·ãƒ¼ãƒ«ãƒ‰ãŒä»˜ä¸ã•ã‚Œã¦ã„ã‚‹ã‹å¦ã‹
 
 
         List<TokenCell> TokenList { get; }
@@ -55,14 +55,14 @@ namespace fantec.Battle.Model
         StateHealth Health { get; }
 
 
-        void TakeToken(AffectInfo info);  // ƒg[ƒNƒ“‚ğ•t—^‚·‚é
-        void TakeDispel(AffectInfo info); // ƒoƒtŒnƒg[ƒNƒ“‚ğ‚P‚Âæ‚èœ‚­
-        void TakeAbnormalRecobery(AffectInfo info); // ó‘ÔˆÙí‚ğæ‚èœ‚­
-        void RemoveToken(TokenCell tokenCell);      // w’è‚Ìƒg[ƒNƒ“‚ğæ‚èœ‚­
-        void RemoveToken(IEnumerable<TokenCell> tokenCells); // w’è‚Ìƒg[ƒNƒ“‚ğ‚Ü‚Æ‚ß‚Äæ‚èœ‚­
-        void Progress(AffectTurnConsumeType buffType);       // •Û—L‚µ‚Ä‚¢‚éƒg[ƒNƒ“‚Ìƒ^[ƒ“‚ği‚ß‚é
-        int GetBuffValue(AffectCategoryType categoryType);   // w’èƒJƒeƒSƒŠ‚ÌƒoƒO‡Œv’l‚ğæ“¾
-        int GetAttributeResisCurrentValue(AffectAttributeType attributeType); // w’è‘®«‚Ì‘Ï«’l‚ğæ“¾
+        void TakeToken(AffectInfo info);  // ãƒˆãƒ¼ã‚¯ãƒ³ã‚’ä»˜ä¸ã™ã‚‹
+        void TakeDispel(AffectInfo info); // ãƒãƒ•ç³»ãƒˆãƒ¼ã‚¯ãƒ³ã‚’ï¼‘ã¤å–ã‚Šé™¤ã
+        void TakeAbnormalRecobery(AffectInfo info); // çŠ¶æ…‹ç•°å¸¸ã‚’å–ã‚Šé™¤ã
+        void RemoveToken(TokenCell tokenCell);      // æŒ‡å®šã®ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å–ã‚Šé™¤ã
+        void RemoveToken(IEnumerable<TokenCell> tokenCells); // æŒ‡å®šã®ãƒˆãƒ¼ã‚¯ãƒ³ã‚’ã¾ã¨ã‚ã¦å–ã‚Šé™¤ã
+        void Progress(AffectTurnConsumeType buffType);       // ä¿æœ‰ã—ã¦ã„ã‚‹ãƒˆãƒ¼ã‚¯ãƒ³ã®ã‚¿ãƒ¼ãƒ³ã‚’é€²ã‚ã‚‹
+        int GetBuffValue(AffectCategoryType categoryType);   // æŒ‡å®šã‚«ãƒ†ã‚´ãƒªã®ãƒã‚°åˆè¨ˆå€¤ã‚’å–å¾—
+        int GetAttributeResisCurrentValue(AffectAttributeType attributeType); // æŒ‡å®šå±æ€§ã®è€æ€§å€¤ã‚’å–å¾—
     }
 
     public interface IBattlerParamStatePrivate:IBattlerParamState
@@ -74,31 +74,31 @@ namespace fantec.Battle.Model
     {
         public static void UpdateProgress(this IBattlerParamStatePrivate @this,AffectTurnConsumeType turnConsumeType)
         {
-            // ƒŠƒXƒg‚É•ÏŠ·
+            // ãƒªã‚¹ãƒˆã«å¤‰æ›
             var tokenList = @this.TokenList.ToList();
 
-            // ƒg[ƒNƒ“‚ğŒã‚ë‚©‚ç—ñ‹“ (—v‘f‚ğæ‚èœ‚¢‚½Û‚ÌƒYƒŒ‘Î‰‚Ì‚½‚ß‚ÉŒã‚ë‚©‚ç)
+            // ãƒˆãƒ¼ã‚¯ãƒ³ã‚’å¾Œã‚ã‹ã‚‰åˆ—æŒ™ (è¦ç´ ã‚’å–ã‚Šé™¤ã„ãŸéš›ã®ã‚ºãƒ¬å¯¾å¿œã®ãŸã‚ã«å¾Œã‚ã‹ã‚‰)
             for (int i = @this.TokenList.Count - 1; i >= 0; i--)
             {
                 var token = tokenList[i];
 
-                // ƒg[ƒNƒ“•t—^’¼Œã‚Å‚È‚­Aƒoƒtƒ^ƒCƒv‚ªˆê’v‚µ‚Ä‚¢‚ê‚Î
+                // ãƒˆãƒ¼ã‚¯ãƒ³ä»˜ä¸ç›´å¾Œã§ãªãã€ãƒãƒ•ã‚¿ã‚¤ãƒ—ãŒä¸€è‡´ã—ã¦ã„ã‚Œã°
                 if(token.IsFresh==false&& token.GetTurnConsumeType()==turnConsumeType)
                 {
-                    // ƒ^[ƒ“‚ğis‚³‚¹‚é
+                    // ã‚¿ãƒ¼ãƒ³ã‚’é€²è¡Œã•ã›ã‚‹
                     token.Progress();
                 }
 
-                //  Á”ï‰Â”\‚Å‚ ‚ê‚Î
+                //  æ¶ˆè²»å¯èƒ½ã§ã‚ã‚Œã°
                 if(token.IsConsumable)
                 {
-                    // æ‚èœ‚­
+                    // å–ã‚Šé™¤ã
                     @this.RemoveToken(token);
                 }
 
                 if(token.IsFresh==true&&AffectTurnConsumeType.TurnEnd==turnConsumeType)
                 {
-                    // ‘N“x‚ğ—‚Æ‚·
+                    // é®®åº¦ã‚’è½ã¨ã™
                     token.FleshDrop();
                 }
             }
@@ -110,28 +110,28 @@ namespace fantec.Battle.Model
 
             foreach(var token in @this.TokenList)
             {
-                // Œø‰Êí•Ê‚ªˆê’v‚µ‚Ä‚¢‚ê‚Î
+                // åŠ¹æœç¨®åˆ¥ãŒä¸€è‡´ã—ã¦ã„ã‚Œã°
                 if(token.command.categoryType==categoryType)
                 {
-                    // w’è’lˆÈã‚ğğŒ‚Æ‚·‚éê‡
+                    // æŒ‡å®šå€¤ä»¥ä¸Šã‚’æ¡ä»¶ã¨ã™ã‚‹å ´åˆ
                     if(token.command.parentCategoryType.GetIsConditionsAbove())
                     {
-                        // ğŒ‚ğ–‚½‚µ‚Ä‚¢‚ê‚ÎŒø‰Ê—Ê‚ğ‰ÁZ
+                        // æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ã‚Œã°åŠ¹æœé‡ã‚’åŠ ç®—
                         if (token.GetIsAboveNormalizedValue(normalizedValue))
                             result += token.command.affectValue;
                     }
                     else
-                    // w’è’lˆÈ‰º‚ğğŒ‚Æ‚·‚éê‡
+                    // æŒ‡å®šå€¤ä»¥ä¸‹ã‚’æ¡ä»¶ã¨ã™ã‚‹å ´åˆ
                     if(token.command.parentCategoryType.GetIsConditionsBelow())
                     {
-                        // ğŒ‚ğ–‚½‚µ‚Ä‚¢‚ê‚ÎŒø‰Ê—Ê‚ğ‰ÁZ
+                        // æ¡ä»¶ã‚’æº€ãŸã—ã¦ã„ã‚Œã°åŠ¹æœé‡ã‚’åŠ ç®—
                         if (token.GetIsBelowNormalizedValue(normalizedValue))
                             result += token.command.affectValue;
                     }
-                    // ‚»‚êˆÈŠO‚Å‚ ‚ê‚Î
+                    // ãã‚Œä»¥å¤–ã§ã‚ã‚Œã°
                     else
                     {
-                        // Šî–{‚Í‚±‚±‚Å‰ÁZ‚³‚ê‚é
+                        // åŸºæœ¬ã¯ã“ã“ã§åŠ ç®—ã•ã‚Œã‚‹
                         result+=token.command.affectValue;
                     }
                 }

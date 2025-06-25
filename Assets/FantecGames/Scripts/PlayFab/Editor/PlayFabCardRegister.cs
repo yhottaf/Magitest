@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using Cysharp.Threading.Tasks;
 using fantec.Master;
 using Newtonsoft.Json;
@@ -26,7 +26,7 @@ namespace fantec
             PlayFabSettings.staticSettings.TitleId = "E23B7";
             PlayFabSettings.staticSettings.DeveloperSecretKey = "KXYWIP4D4FG5SOTJ8WCJW1FX8UBK3H69FYWP5UICQG8F3SQ8RC";
 
-            // JSON¨ƒAƒCƒeƒ€ƒŠƒXƒg‚Ö•ÏŠ·
+            // JSONâ†’ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(ItemDataJsonPath);
             string dataStr=streamReader.ReadToEnd();
             var itemDataList = JsonConvert.DeserializeObject<PlayerCardData[]>(dataStr);
@@ -37,17 +37,17 @@ namespace fantec
             {
                 catalogItemList.Add(new CatalogItem()
                 {
-                    // •\¦–¼
+                    // è¡¨ç¤ºå
                     DisplayName=$"{itemData.charaName}",
-                    // ƒXƒ^ƒbƒN‰Â”\
+                    // ã‚¹ã‚¿ãƒƒã‚¯å¯èƒ½
                     IsStackable=true,
-                    // ƒgƒŒ[ƒh‰Â”\
+                    // ãƒˆãƒ¬ãƒ¼ãƒ‰å¯èƒ½
                     IsTradable=false,
-                    // ƒAƒCƒeƒ€ƒNƒ‰ƒX
+                    // ã‚¢ã‚¤ãƒ†ãƒ ã‚¯ãƒ©ã‚¹
                     ItemClass="Card",
-                    // ƒAƒCƒeƒ€ID
+                    // ã‚¢ã‚¤ãƒ†ãƒ ID
                     ItemId=$"{itemData.cardId}",
-                    // ƒ^ƒO
+                    // ã‚¿ã‚°
                     Tags=new List<string>() { "Card"},
                 });
             }
@@ -65,7 +65,7 @@ namespace fantec
                 throw new PlayFabErrorException(result.Error);
             }
 
-            Debug.Log("PlayFab‚ÖƒJ[ƒhƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ã‚«ãƒ¼ãƒ‰ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
     }
 }

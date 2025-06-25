@@ -1,10 +1,8 @@
-using Cysharp.Threading.Tasks;
-using System.Collections.Generic;
+﻿using Cysharp.Threading.Tasks;
 using UnityEngine;
-using PlayFab.ClientModels;
-using PlayFab;
-using Newtonsoft.Json;
 using fantec.Menu.Notice.View;
+using fantec.Common;
+using UniRx;
 
 namespace fantec.Menu.Notice.Presenter
 {
@@ -15,48 +13,71 @@ namespace fantec.Menu.Notice.Presenter
         public Transform noticeListParent;
         [SerializeField]
         private NoticeView m_View;
-
+        private bool isCheckNotice;
         async void Start()
         {
-            var notices = await GetAllNoticesAsync();
+            m_View.InitCanvas();
+            m_View.ShowCanvas();
+
+            // 全お知らせデータの読み込み
+            var notices = MasterDataManager.Instance.NoticeMaster.dataList; 
             int i = 0;
             foreach (var notice in notices)
             {
                 var entry = Instantiate(noticeEntryPrefab, noticeListParent);
-                await entry.GetComponent<NoticeEntryCell>().Setup(notice,m_View.GetNoticeTextObj(),m_View.GetReceiveButton());
-                if(i==0)
+                await entry.GetComponent<NoticeEntryCell>().Setup(
+                    notice, 
+                    m_View.GetNoticeTextObj(), 
+                    m_View.GetReceiveButton(),
+                    m_View.GetNoticeHeader(),
+                    m_View.GetScheduleStartDate(),
+                    m_View.GetRewardCellPrefab(),
+                    m_View.GetScrollRect(),
+                    m_View.GetBtnTextObj()
+                    );
+                if (i == 0)
                 {
-                    // ���[�v�̏��߂Ȃ炻�̏��߂̂��m�点���ŏ��ɕ\��������
-                    entry.GetComponent<NoticeEntryCell>().ShowNotice(notice).Forget(); // �񓯊��ŌĂяo��
+                    // ループの初めならその初めのお知らせを最初に表示させる
+                    await entry.GetComponent<NoticeEntryCell>().ShowNotice(notice); // 非同期で呼び出し
+                    m_View.SetTitleTypeObj(notice);
                 }
                 i++;
             }
+
+            m_View.OnClickCloseButtonObservable.Subscribe(OnClickCloseButton).AddTo(this);
+            m_View.OnValueChangeCheckToggleObservable.Subscribe(isOn => { if (isOn) OnValueChangedToggle(isOn); }).AddTo(this);
         }
 
         /// <summary>
-        /// �S���m�点�f�[�^�ꗗ�̎擾
+        /// お知らせ画面を閉じる
         /// </summary>
-        /// <returns></returns>
-        private async UniTask<List<NoticeData>> GetAllNoticesAsync()
+        /// <param name="unit"></param>
+        private void OnClickCloseButton(Unit unit)
         {
-            var request = new ExecuteCloudScriptRequest
-            {
-                FunctionName = "GetAllNotices",
-                GeneratePlayStreamEvent = false
-            };
+            //SE 再生
 
-            var result = await PlayFabClientAPI.ExecuteCloudScriptAsync(request);
-            if (result.Error != null)
+
+            if(isCheckNotice)
             {
-                Debug.LogError("���m�点�擾���s: " + result.Error.GenerateErrorReport());
-                return null;
+                // 再度ログインしたときにお知らせを非表示にする
+                PlayerPrefsManager.IsNoticeFlag = true;
+
             }
+            else
+            {
+                // 再度ログインしたときまたお知らせを表示する
+                PlayerPrefsManager.IsNoticeFlag = false;
+            }
+            m_View.HideCanvas();
+        }
 
-            var json = result.Result.FunctionResult.ToString();
-
-            var noticeList = JsonConvert.DeserializeObject<NoticeListResponse>(json);
-            return noticeList?.notices;
+        /// <summary>
+        /// 本日はお知らせを再度表示しないかどうかのチェック
+        /// </summary>
+        /// <param name="enable"></param>
+        private void OnValueChangedToggle(bool enable)
+        {
+            isCheckNotice = enable;
         }
     }
-
 }

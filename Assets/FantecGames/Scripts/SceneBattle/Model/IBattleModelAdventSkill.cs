@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 
@@ -45,10 +45,10 @@ namespace fantec.Battle.Model
         public static void Lottery(this IBattleModelAdventSkill @this)
         {
             var head = @this.ReserveHead;
-            //TODO :ƒhƒ‰ƒCƒuƒXƒLƒ‹‚ÌğŒ’Ç‰Á
+            //TODO :ãƒ‰ãƒ©ã‚¤ãƒ–ã‚¹ã‚­ãƒ«ã®æ¡ä»¶è¿½åŠ 
             if(head.GetIsEnemy()==true)
             {
-                head.AdventSkill.AddDanger(); //“G‚Ìê‡
+                head.AdventSkill.AddDanger(); //æ•µã®å ´åˆ
             }
             else
             {
@@ -58,14 +58,14 @@ namespace fantec.Battle.Model
 
         public static void ReplacePlayerBattlers(this IBattleModelAdventSkill @this,IEnumerable<IBattler> battlers)
         {
-            @this.ReserveList.RemoveAll(battler=>battler.GetIsPlayer()); // ‘O‰ñ•ªƒNƒŠƒA
-            @this.ReserveList.AddRange(battlers);                        // XV‚·‚é
+            @this.ReserveList.RemoveAll(battler=>battler.GetIsPlayer()); // å‰å›åˆ†ã‚¯ãƒªã‚¢
+            @this.ReserveList.AddRange(battlers);                        // æ›´æ–°ã™ã‚‹
         }
 
         public static void ReplaceEnemyBattlers(this IBattleModelAdventSkill @this,IEnumerable<IBattler>battlers)
         {
-            @this.ReserveList.RemoveAll(battler => battler.GetIsEnemy()); // ‘O‰ñ•ªƒNƒŠƒA
-            @this.ReserveList.AddRange(battlers);                         // XV‚·‚é
+            @this.ReserveList.RemoveAll(battler => battler.GetIsEnemy()); // å‰å›åˆ†ã‚¯ãƒªã‚¢
+            @this.ReserveList.AddRange(battlers);                         // æ›´æ–°ã™ã‚‹
         }
 
         public static bool GetIsContains(this IBattleModelAdventSkill @this,IBattler battler)
@@ -76,25 +76,25 @@ namespace fantec.Battle.Model
         public static bool GetIsConsumable(this IBattleModelAdventSkill @this)
         {
             return
-                @this.ReserveHead.AdventSkill.IsConsumable == true; // Á”ï‰Â”\‚ÈƒXƒLƒ‹‚ª‘¶İ‚µ‚Ä‚¢‚é
+                @this.ReserveHead.AdventSkill.IsConsumable == true; // æ¶ˆè²»å¯èƒ½ãªã‚¹ã‚­ãƒ«ãŒå­˜åœ¨ã—ã¦ã„ã‚‹
         }
 
         public static IBattler GetReserveHeadBattler(this IBattleModelAdventSkill @this)
         {
             try { return @this.ReserveList.First(); }
-            catch { throw new InvalidOperationException("—v‘f‚ª‘¶İ‚µ‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidOperationException("è¦ç´ ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚"); }
         }
 
         public static IBattler GetReserveLastBattler(this IBattleModelAdventSkill @this)
         {
             try { return @this.ReserveList.Last(); }
-            catch { throw new InvalidOperationException("—v‘f‚ª‘¶İ‚µ‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidOperationException("è¦ç´ ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚"); }
         }
 
         public static IBattler GetReserveHeadPlayer(this IBattleModelAdventSkill @this)
         {
             try { return @this.ReserveList.Where(battler => battler.GetIsPlayer()).First(); }
-            catch { throw new InvalidOperationException("—v‘f‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidOperationException("è¦ç´ ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"); }
         }
 
         public static List<IBattler> GetSortByHeadInsertBattlerList(this IBattleModelAdventSkill @this)

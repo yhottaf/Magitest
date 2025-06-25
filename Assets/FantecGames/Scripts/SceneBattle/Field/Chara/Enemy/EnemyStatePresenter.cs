@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+﻿using fantec.Battle.Model;
 using UnityEngine;
 
 namespace fantec.Battle.Field.Chara

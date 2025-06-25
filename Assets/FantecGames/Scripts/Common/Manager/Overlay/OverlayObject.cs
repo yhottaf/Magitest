@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Common
 {
     /// <summary>
-    /// ƒI[ƒo[ƒŒƒCƒLƒƒƒ“ƒpƒX‚É¶¬‚·‚é‰æ–Ê‚Ìƒx[ƒXƒNƒ‰ƒX
+    /// ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚­ãƒ£ãƒ³ãƒ‘ã‚¹ã«ç”Ÿæˆã™ã‚‹ç”»é¢ã®ãƒ™ãƒ¼ã‚¹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public class OverlayObject : MonoBehaviour
     {

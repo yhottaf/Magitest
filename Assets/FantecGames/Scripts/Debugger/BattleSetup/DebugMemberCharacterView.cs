@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using fantec.Master;
 using System.Collections.Generic;
 using UnityEngine;
@@ -23,23 +23,23 @@ namespace fantec.Debugger.BattleSetup
 
         private void Awake()
         {
-            // ƒCƒ“ƒfƒbƒNƒX”Ô†‚ğg—p‚µ–¼‘Oİ’è
+            // ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç•ªå·ã‚’ä½¿ç”¨ã—åå‰è¨­å®š
             m_TitleText.text = $"Card / Index : {m_PositionIndex}";
 
             var model = ExSceneManager.GetRootComponent<DebugModel>();
             var unit = model.UnitList[m_PositionIndex];
 
             // ----------------------------------------------------------------------------------------------------
-            // ƒJ[ƒhƒhƒƒbƒvƒ_ƒEƒ“
+            // ã‚«ãƒ¼ãƒ‰ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
             // ----------------------------------------------------------------------------------------------------
 
             {
-                // ‹ó—pƒ_ƒ~[‚Ìì¬
+                // ç©ºç”¨ãƒ€ãƒŸãƒ¼ã®ä½œæˆ
                 var optionList = new List<string>();
                 optionList.Add("NONE");
                 m_CardDataDic.Add(0, null);
 
-                // ƒ}ƒXƒ^[‚©‚çƒhƒƒbƒvƒ_ƒEƒ“ƒIƒvƒVƒ‡ƒ“‚É“ü‚ê‚Ş
+                // ãƒã‚¹ã‚¿ãƒ¼ã‹ã‚‰ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã«å…¥ã‚Œè¾¼ã‚€
                 var playerCardDataList = MasterDataManager.Instance.PlayerCardMaster.dataList;
                 for (int i = 0; i < playerCardDataList.Count; i++)
                 {
@@ -50,7 +50,7 @@ namespace fantec.Debugger.BattleSetup
                 m_CardDropDown.ClearOptions();
                 m_CardDropDown.AddOptions(optionList);
 
-                // ƒhƒƒbƒvƒ_ƒEƒ“‚Å’l‚ª•Ï‰»‚µ‚½Û‚Éƒƒ“ƒo[‚ğ•ÏX‚·‚é‚æ‚¤‚É
+                // ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³ã§å€¤ãŒå¤‰åŒ–ã—ãŸéš›ã«ãƒ¡ãƒ³ãƒãƒ¼ã‚’å¤‰æ›´ã™ã‚‹ã‚ˆã†ã«
                 m_CardDropDown.OnValueChangedAsObservable()
                     .Select(index => m_CardDataDic[index])
                     .Subscribe(data =>
@@ -70,13 +70,13 @@ namespace fantec.Debugger.BattleSetup
                     })
                     .AddTo(this);
 
-                // ”z—ñ‚Ì0”Ô–Ú‚ÍA‰½‚à‘I‚ñ‚Å‚¢‚È‚¢‚±‚Æ‚ğ¦‚·uNONEv@
-                // ‚È‚Ì‚Å+1‚µ‚½’l‚©‚çƒ†ƒjƒbƒgƒf[ƒ^‚Æ‚È‚é‚Ì‚Å+1‚µ‚½’l‚©‚çŒ©‚é
+                // é…åˆ—ã®0ç•ªç›®ã¯ã€ä½•ã‚‚é¸ã‚“ã§ã„ãªã„ã“ã¨ã‚’ç¤ºã™ã€ŒNONEã€ã€€
+                // ãªã®ã§+1ã—ãŸå€¤ã‹ã‚‰ãƒ¦ãƒ‹ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã¨ãªã‚‹ã®ã§+1ã—ãŸå€¤ã‹ã‚‰è¦‹ã‚‹
                 m_CardDropDown.value = m_PositionIndex + 1; 
             }
 
             // ----------------------------------------------------------------------------------------------------
-            // ƒŒƒAƒŠƒeƒBƒhƒƒbƒvƒ_ƒEƒ“
+            // ãƒ¬ã‚¢ãƒªãƒ†ã‚£ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
             // ----------------------------------------------------------------------------------------------------
 
             {
@@ -96,11 +96,11 @@ namespace fantec.Debugger.BattleSetup
             }
 
             // ----------------------------------------------------------------------------------------------------
-            // ŒÀ“Êƒhƒƒbƒvƒ_ƒEƒ“
+            // é™å‡¸ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
             // ----------------------------------------------------------------------------------------------------
 
             //{
-            //    var optionList = new List<string>() { "“Ê0", "“Ê1", "“Ê2", "“Ê3", "“Ê4", "“Ê5", "“Ê6" };
+            //    var optionList = new List<string>() { "å‡¸0", "å‡¸1", "å‡¸2", "å‡¸3", "å‡¸4", "å‡¸5", "å‡¸6" };
             //    m_OverLimitDropDwon.ClearOptions();
             //    m_OverLimitDropDwon.AddOptions(optionList);
             //    m_OverLimitDropDwon.OnValueChangedAsObservable()
@@ -112,7 +112,7 @@ namespace fantec.Debugger.BattleSetup
             //}
 
             // ----------------------------------------------------------------------------------------------------
-            // ”z’uƒhƒƒbƒvƒ_ƒEƒ“
+            // é…ç½®ãƒ‰ãƒ­ãƒƒãƒ—ãƒ€ã‚¦ãƒ³
             // ----------------------------------------------------------------------------------------------------
 
             {
@@ -129,10 +129,10 @@ namespace fantec.Debugger.BattleSetup
             }
 
             // ----------------------------------------------------------------------------------------------------
-            // ƒŒƒxƒ‹
+            // ãƒ¬ãƒ™ãƒ«
             // ----------------------------------------------------------------------------------------------------
 
-            // ƒJ[ƒhƒŒƒxƒ‹ƒŒƒxƒ‹w“Ç
+            // ã‚«ãƒ¼ãƒ‰ãƒ¬ãƒ™ãƒ«ãƒ¬ãƒ™ãƒ«è³¼èª­
             m_CardLevelField.text = "1";
             m_CardLevelField.OnEndEditAsObservable()
                 .Where(value => string.IsNullOrEmpty(value) == false)

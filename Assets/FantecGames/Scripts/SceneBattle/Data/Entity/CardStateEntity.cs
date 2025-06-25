@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Master;
 
 namespace fantec.Battle
@@ -10,8 +10,8 @@ namespace fantec.Battle
         public readonly int SPD;
         public readonly int damageRange;
         public readonly int originId;
-        public readonly int Move;             // ˆÚ“®—Í
-        public readonly string CharaName;     // ƒLƒƒƒ‰ƒl[ƒ€ 
+        public readonly int Move;             // ç§»å‹•åŠ›
+        public readonly string CharaName;     // ã‚­ãƒ£ãƒ©ãƒãƒ¼ãƒ  
 
         public CardStateEntity(AbstructCardData cardData, int level,bool leader)
         {

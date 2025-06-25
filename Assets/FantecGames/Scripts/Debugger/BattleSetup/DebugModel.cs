@@ -1,4 +1,4 @@
-using fantec.Common;
+﻿using fantec.Common;
 using fantec.Master;
 using System.Collections.Generic;
 using System.Linq;

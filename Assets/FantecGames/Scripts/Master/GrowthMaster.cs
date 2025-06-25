@@ -1,11 +1,11 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using UnityEngine;
 
 namespace fantec.Master
 {
     [System.Serializable]
-    public class GrowthData : IData // ƒXƒe[ƒ^ƒX‚ğ‰ü—Ç‚µ‚½‚¢ê‡‚Í‚±‚Ì€–Ú‚É‘‚â‚·
+    public class GrowthData : IData // ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’æ”¹è‰¯ã—ãŸã„å ´åˆã¯ã“ã®é …ç›®ã«å¢—ã‚„ã™
     {
         public int level;
         public float HP;
@@ -20,7 +20,7 @@ namespace fantec.Master
         public GrowthData GetData(int level)
         {
             try { return dataList[level - 1]; }
-            catch { throw new IndexOutOfRangeException($"[level : {level}] ‚Íƒf[ƒ^‚Ì”ÍˆÍŠO‚Å‚·B"); }
+            catch { throw new IndexOutOfRangeException($"[level : {level}] ã¯ãƒ‡ãƒ¼ã‚¿ã®ç¯„å›²å¤–ã§ã™ã€‚"); }
         }
     }
 }

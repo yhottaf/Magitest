@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using System.IO;
 using System.Collections.Generic;
 using UnityEngine;
@@ -29,7 +29,7 @@ namespace fantec
         
             var result=new PlayFabResult<UpdateCatalogItemsResult>();
 
-            // JSON¨ƒoƒ“ƒhƒ‹ƒf[ƒ^‚Ö•ÏŠ·
+            // JSONâ†’ãƒãƒ³ãƒ‰ãƒ«ãƒ‡ãƒ¼ã‚¿ã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(RewardStageDataFilePath);
             string dataStr=streamReader.ReadToEnd();
             var bundleDataList = JsonConvert.DeserializeObject<RewardStageData[]>(dataStr);
@@ -53,20 +53,20 @@ namespace fantec
                             {
                                 BundledResultTables = bundledResultTables,
                             },
-                            // Á”ïŒ^‚Ì’è‹`
+                            // æ¶ˆè²»å‹ã®å®šç¾©
                             Consumable = new CatalogItemConsumableInfo()
                             {
                                 UsagePeriod = 5,
                             },
-                            //ƒXƒ^ƒbƒN‰Â”\
+                            //ã‚¹ã‚¿ãƒƒã‚¯å¯èƒ½
                             IsStackable=false,
-                            // ƒgƒŒ[ƒh‰Â”\
+                            // ãƒˆãƒ¬ãƒ¼ãƒ‰å¯èƒ½
                             IsTradable=false,
-                            // ƒAƒCƒeƒ€ƒNƒ‰ƒX
+                            // ã‚¢ã‚¤ãƒ†ãƒ ã‚¯ãƒ©ã‚¹
                             ItemClass="Reward",
-                            // ƒAƒCƒeƒ€ID
+                            // ã‚¢ã‚¤ãƒ†ãƒ ID
                             ItemId="RewardStage"+itemData.tableId,
-                            // ƒ^ƒO
+                            // ã‚¿ã‚°
                             Tags=new List<string>(){"Reward"},
                         }
                     },
@@ -85,7 +85,7 @@ namespace fantec
             }
             else
             {
-                Debug.Log("PlayFab‚Öƒoƒ“ƒhƒ‹ƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+                Debug.Log("PlayFabã¸ãƒãƒ³ãƒ‰ãƒ«ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
             }
         }
 
@@ -102,7 +102,7 @@ namespace fantec
 
             var result = new PlayFabResult<UpdateCatalogItemsResult>();
 
-            // JSON¨ƒoƒ“ƒhƒ‹ƒf[ƒ^‚Ö•ÏŠ·
+            // JSONâ†’ãƒãƒ³ãƒ‰ãƒ«ãƒ‡ãƒ¼ã‚¿ã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(InitialRewardDataFilePath);
             string dataStr = streamReader.ReadToEnd();
             var bundleDataList = JsonConvert.DeserializeObject<InitialRewardStageData[]>(dataStr);
@@ -114,7 +114,7 @@ namespace fantec
             {
                 bundledResultTables.Clear();
 
-                // ƒAƒCƒeƒ€‚Ì“o˜^
+                // ã‚¢ã‚¤ãƒ†ãƒ ã®ç™»éŒ²
                 if(itemData.itemId1.Equals("-1")==false)
                 {
                     for(int i=0;i<itemData.quantity1;i++)
@@ -136,13 +136,13 @@ namespace fantec
                         bundledResultTables.Add("Item" + itemData.itemId3);
                     }
                 }
-                // Magi(ƒ†ƒjƒbƒg)‚Ì“o˜^
+                // Magi(ãƒ¦ãƒ‹ãƒƒãƒˆ)ã®ç™»éŒ²
                 for(int i=0;i<itemData.cardId.Length;i++)
                 {
                     bundledResultTables.Add(itemData.cardId[i].ToString());
                 }
 
-                // –³Î‚Ì“o˜^
+                // ç„¡å„ŸçŸ³ã®ç™»éŒ²
                 var virtualCurrency = new Dictionary<string, uint>();
                 if(itemData.VC>0)
                 {
@@ -158,20 +158,20 @@ namespace fantec
                             BundledItems=bundledResultTables,
                             BundledVirtualCurrencies=virtualCurrency,
                         },
-                        // Á”ïŒ^‚Ì’è‹`
+                        // æ¶ˆè²»å‹ã®å®šç¾©
                         Consumable=new CatalogItemConsumableInfo()
                         {
                             UsagePeriod=5,
                         },
-                        // ƒXƒ^ƒbƒN‰Â”\
+                        // ã‚¹ã‚¿ãƒƒã‚¯å¯èƒ½
                         IsStackable=true,
-                        // ƒgƒŒ[ƒh‰Â”\
+                        // ãƒˆãƒ¬ãƒ¼ãƒ‰å¯èƒ½
                         IsTradable=false,
-                        // ƒAƒCƒeƒ€ƒNƒ‰ƒX
+                        // ã‚¢ã‚¤ãƒ†ãƒ ã‚¯ãƒ©ã‚¹
                         ItemClass="Card",
-                        // ƒAƒCƒeƒ€ID
+                        // ã‚¢ã‚¤ãƒ†ãƒ ID
                         ItemId=$"{itemData.cardId}",
-                        // ƒ^ƒO
+                        // ã‚¿ã‚°
                         Tags=new List<string>() { "Card"},
                     } },
                     CatalogVersion="Main",
@@ -188,7 +188,7 @@ namespace fantec
 
             bundledResultTables.Clear();
 
-            Debug.Log("PlayFab‚Öƒoƒ“ƒhƒ‹ƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ãƒãƒ³ãƒ‰ãƒ«ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
     }
 }

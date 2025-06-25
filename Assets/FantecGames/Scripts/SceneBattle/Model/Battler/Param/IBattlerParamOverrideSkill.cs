@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UniRx;
 
@@ -6,55 +6,55 @@ namespace fantec.Battle.Model
 {
     public interface IBattlerParamOverrideSkill : IDisposable,IResetable,IActionNotify
     {
-        /// <summary> —\–ñó‘Ô‚Ì•Ï“®‚ğŠÄ‹ </summary>
+        /// <summary> äºˆç´„çŠ¶æ…‹ã®å¤‰å‹•ã‚’ç›£è¦– </summary>
         IObservable<bool> OnIsReserveReactive { get; }
-        /// <summary> ••ˆóó‘Ô‚Ì•Ï“®‚ğŠÄ‹ </summary>
+        /// <summary> å°å°çŠ¶æ…‹ã®å¤‰å‹•ã‚’ç›£è¦– </summary>
         IObservable<bool> OnIsSealedReactive { get; }
-        /// <summary> ”­“®’†‚Å‚ ‚é‚©”Û‚©‚ğŠÄ‹ </summary>
+        /// <summary> ç™ºå‹•ä¸­ã§ã‚ã‚‹ã‹å¦ã‹ã‚’ç›£è¦– </summary>
         IObservable<bool> OnIsInActivationReactive { get; }
 
-        /// <summary> ƒXƒLƒ‹‚ª”­“®‚µ‚½‚©ŠÄ‹ </summary>
+        /// <summary> ã‚¹ã‚­ãƒ«ãŒç™ºå‹•ã—ãŸã‹ç›£è¦– </summary>
         IObservable<OverrideSkillEntity> OnCutinObservable { get; }
-        /// <summary> ƒXƒLƒ‹‚É”º‚Á‚½s“®ŠÄ‹ </summary>
+        /// <summary> ã‚¹ã‚­ãƒ«ã«ä¼´ã£ãŸè¡Œå‹•ç›£è¦– </summary>
         IObservable<AffectInfo> OnActivationObservable { get; }
-        /// <summary> ”­“®‚µ‚½ƒXƒLƒ‹‚ªI—¹‚µ‚½‚©ŠÄ‹ </summary>
+        /// <summary> ç™ºå‹•ã—ãŸã‚¹ã‚­ãƒ«ãŒçµ‚äº†ã—ãŸã‹ç›£è¦– </summary>
         IObservable<Unit> OnDeactivationObservable { get; }
 
-        /// <summary> ƒuƒ‰[‚ğŠÄ‹  </summary>
+        /// <summary> ãƒ–ãƒ©ãƒ¼ã‚’ç›£è¦–  </summary>
         IObservable<Unit> OnBlurObservable { get; }
 
-        /// <summary> ƒf[ƒ^–{‘Ì‚ÌƒŠƒXƒg </summary>
+        /// <summary> ãƒ‡ãƒ¼ã‚¿æœ¬ä½“ã®ãƒªã‚¹ãƒˆ </summary>
         List<OverrideSkillEntity> EntityList { get; }
 
-        /// <summary> ”­“®‚·‚éƒf[ƒ^‚Ì–{‘Ì </summary>
+        /// <summary> ç™ºå‹•ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ã®æœ¬ä½“ </summary>
         OverrideSkillEntity Entity { get; }
 
-        /// <summary> ••ˆóó‘Ô‚©”Û‚© </summary>
+        /// <summary> å°å°çŠ¶æ…‹ã‹å¦ã‹ </summary>
         bool IsSealed { get; }
-        /// <summary> —\–ñó‘Ô‚©”Û‚© </summary>
+        /// <summary> äºˆç´„çŠ¶æ…‹ã‹å¦ã‹ </summary>
         bool IsReserve { get; }
-        /// <summary> ”­“®’†‚©”Û‚© </summary>
+        /// <summary> ç™ºå‹•ä¸­ã‹å¦ã‹ </summary>
         bool IsActive { get; }
-        /// <summary> —\–ñ‰Â”\‚Èó‘Ô‚©”Û‚© </summary>
+        /// <summary> äºˆç´„å¯èƒ½ãªçŠ¶æ…‹ã‹å¦ã‹ </summary>
         bool IsReserveable { get; }
 
 
-        /// <summary> ƒXƒLƒ‹‚ğÁ”ï‚·‚é </summary>
+        /// <summary> ã‚¹ã‚­ãƒ«ã‚’æ¶ˆè²»ã™ã‚‹ </summary>
         public void Consume();
-        /// <summary> ƒXƒLƒ‹‚ğI—¹‚·‚é </summary>
+        /// <summary> ã‚¹ã‚­ãƒ«ã‚’çµ‚äº†ã™ã‚‹ </summary>
         public void Deactivation();
-        /// <summary> —\–ñó‘Ô‚Ì•ÏX </summary>
+        /// <summary> äºˆç´„çŠ¶æ…‹ã®å¤‰æ›´ </summary>
         void SetIsReserve(bool enable);
-        /// <summary> ••ˆóó‘Ô‚Ì•ÏX </summary>
+        /// <summary> å°å°çŠ¶æ…‹ã®å¤‰æ›´ </summary>
         void SetIsSealed(bool enable);
 
-        /// <summary> ƒ~ƒ…[ƒgó‘Ô‚É‚·‚é </summary>
+        /// <summary> ãƒŸãƒ¥ãƒ¼ãƒˆçŠ¶æ…‹ã«ã™ã‚‹ </summary>
         void SetMute(bool enable);
 
-        /// <summary> ”­“®‚Å‚«‚éƒXƒLƒ‹‚ª‚ ‚é‚©‚ğ‚İ‚é </summary>
+        /// <summary> ç™ºå‹•ã§ãã‚‹ã‚¹ã‚­ãƒ«ãŒã‚ã‚‹ã‹ã‚’ã¿ã‚‹ </summary>
         void SetEntity(int[]orignIds);
 
-        /// <summary> ƒuƒ‰[‚ğ—LŒøó‘Ô‚É‚·‚é </summary>
+        /// <summary> ãƒ–ãƒ©ãƒ¼ã‚’æœ‰åŠ¹çŠ¶æ…‹ã«ã™ã‚‹ </summary>
         void ActivateBlur();
     }
 }

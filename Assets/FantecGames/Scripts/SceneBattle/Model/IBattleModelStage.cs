@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using fantec.Common;
 
@@ -6,62 +6,62 @@ namespace fantec.Battle.Model
 {
     public interface IBattleModelStage :ILocatable,IDisposable,IResetable
     {
-        /// <summary> ƒXƒe[ƒWƒf[ƒ^‚Ìî•ñXVŠÄ‹ </summary>
+        /// <summary> ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®æƒ…å ±æ›´æ–°ç›£è¦– </summary>
         IObservable<IBattleModelStage> OnUpdateStageDataObservable { get; }
-        ///<summary> Œ»İ‚ÌƒEƒF[ƒu”XVŠÄ‹ </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–æ•°æ›´æ–°ç›£è¦– </summary>
         IObservable<int> OnCurrentWaveIndexReactive { get; }
-        ///<summary> Œ»İ‚Ìƒ^[ƒ“Œo‰ßXVŠÄ‹ </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¿ãƒ¼ãƒ³çµŒéæ›´æ–°ç›£è¦– </summary>
         IObservable<int> OnCurrentTurnIndexReactive { get; }
-        /// <summary> ƒ^[ƒ“‚ÌÅŒã‚És“®‚·‚éÒ </summary>
+        /// <summary> ã‚¿ãƒ¼ãƒ³ã®æœ€å¾Œã«è¡Œå‹•ã™ã‚‹è€… </summary>
         IObservable<IBattler> OnLastActingUnit { get; }
 
-        /// <summary> Ÿ‚ÌƒEƒF[ƒu‚Ö </summary>
+        /// <summary> æ¬¡ã®ã‚¦ã‚§ãƒ¼ãƒ–ã¸ </summary>
         void NextWave();
-        /// <summary> Ÿ‚Ìƒ^[ƒ“‚Ö </summary>
+        /// <summary> æ¬¡ã®ã‚¿ãƒ¼ãƒ³ã¸ </summary>
         void NextTurn();
-        /// <summary> Å‰‚Ìƒ^[ƒ“‚Ö </summary>
+        /// <summary> æœ€åˆã®ã‚¿ãƒ¼ãƒ³ã¸ </summary>
         void ResetTurn();
-        ///<summary> ƒ^[ƒ“‚ğ’¼Úİ’è </summary>
+        ///<summary> ã‚¿ãƒ¼ãƒ³ã‚’ç›´æ¥è¨­å®š </summary>
         void SetTurn(int turnIndex);
-        ///<summary> ƒXƒe[ƒWƒf[ƒ^‚ğİ’è‚·‚é </summary>
+        ///<summary> ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹ </summary>
         void SetStageEntity(StageEntity stageEntity);
-        ///<summary> ƒEƒF[ƒu‚ğ’¼Úİ’è </summary>
+        ///<summary> ã‚¦ã‚§ãƒ¼ãƒ–ã‚’ç›´æ¥è¨­å®š </summary>
         void SetWave(int waveIndex);
-        ///<summary> ‚»‚Ìƒ^[ƒ“‚ÌÅŒã‚És“®‚·‚éƒ†ƒjƒbƒg‚ğ’¼Úİ’è </summary>
+        ///<summary> ãã®ã‚¿ãƒ¼ãƒ³ã®æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã‚’ç›´æ¥è¨­å®š </summary>
         void SetLastActingUnit(IBattler battler);
-        ///<summary> “Gƒƒ“ƒo[‚ğXV </summary>
+        ///<summary> æ•µãƒ¡ãƒ³ãƒãƒ¼ã‚’æ›´æ–° </summary>
         void UpdateMember();
-        ///<summary> BGM–¼‚Ìæ“¾ </summary>
+        ///<summary> BGMåã®å–å¾— </summary>
         string GetBattleBgmName();
-        ///<summary> ”wŒi–¼‚Ìæ“¾ </summary>
+        ///<summary> èƒŒæ™¯åã®å–å¾— </summary>
         string GetBattleBgName();
 
         string GetFieldImgName();
 
 
-        ///<summary> ƒXƒe[ƒWƒf[ƒ^ </summary>
+        ///<summary> ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ </summary>
         StageEntity Entity { get; }
-        ///<summary> Œ»İ‚ÌƒEƒF[ƒu‚Ì“Gƒp[ƒeƒB[ƒf[ƒ^ </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–ã®æ•µãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿ </summary>
         TeamData CurrentWaveTeamData { get; }
-        ///<summary> Œ»İ‚ÌƒEƒF[ƒu” </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–æ•° </summary>
         int CurrentWave { get; }
-        ///<summary> Œ»İ‚ÌƒEƒF[ƒuƒCƒ“ƒfƒbƒNƒX </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ </summary>
         int CurrentWaveIndex { get; }
-        ///<summary> Å‘åƒEƒF[ƒu‚É“’B‚µ‚Ä‚¢‚é‚©”Û‚© </summary>
+        ///<summary> æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã«åˆ°é”ã—ã¦ã„ã‚‹ã‹å¦ã‹ </summary>
         bool IsMaxWave { get; }
-        ///<summary> Å‰‚ÌƒEƒF[ƒu‚Å‚ ‚é‚©”Û‚© </summary>
+        ///<summary> æœ€åˆã®ã‚¦ã‚§ãƒ¼ãƒ–ã§ã‚ã‚‹ã‹å¦ã‹ </summary>
         bool IsFirstWave { get; }
-        ///<summary> ƒ{ƒXƒEƒF[ƒu‚Å‚ ‚é‚©”Û‚© </summary>
+        ///<summary> ãƒœã‚¹ã‚¦ã‚§ãƒ¼ãƒ–ã§ã‚ã‚‹ã‹å¦ã‹ </summary>
         bool IsBossWave { get; }
-        ///<summary> Œ»İ‚Ìƒ^[ƒ“” </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¿ãƒ¼ãƒ³æ•° </summary>
         int CurrentTurn { get; }
-        ///<summary> Œ»İ‚Ìƒ^[ƒ“ƒCƒ“ƒfƒbƒNƒX </summary>
+        ///<summary> ç¾åœ¨ã®ã‚¿ãƒ¼ãƒ³ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ </summary>
         int CurrentTurnIndex { get; }
-        ///<summary> Å‘åƒ^[ƒ“‚É“’B‚µ‚Ä‚¢‚é‚©”Û‚© </summary>
+        ///<summary> æœ€å¤§ã‚¿ãƒ¼ãƒ³ã«åˆ°é”ã—ã¦ã„ã‚‹ã‹å¦ã‹ </summary>
         bool IsMaxTurn { get;}
-        ///<summary> Å‰‚Ìƒ^[ƒ“‚Å‚ ‚é‚©”Û‚© </summary>
+        ///<summary> æœ€åˆã®ã‚¿ãƒ¼ãƒ³ã§ã‚ã‚‹ã‹å¦ã‹ </summary>
         bool IsFirstTurn { get; }
-        ///<summary> ƒ^[ƒ“‚ÌÅŒã‚És“®‚·‚éƒ†ƒjƒbƒg </summary>
+        ///<summary> ã‚¿ãƒ¼ãƒ³ã®æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆ </summary>
         IBattler LastActingUnit { get; }
     }
 }

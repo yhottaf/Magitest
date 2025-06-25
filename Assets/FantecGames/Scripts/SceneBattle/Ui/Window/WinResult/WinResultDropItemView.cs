@@ -1,4 +1,4 @@
-using DG.Tweening;
+﻿using DG.Tweening;
 using JetBrains.Annotations;
 using NUnit.Framework;
 using System;

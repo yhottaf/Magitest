@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace fantec.Battle
@@ -20,7 +20,7 @@ namespace fantec.Battle
         public static string ToStringQuickly(this Index @this)
         {
             try { return m_IndexNameDic[(int)@this]; }
-            catch { throw new KeyNotFoundException($"[index : {@this}] ‚ª key ‚Æ‚µ‚Ä“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new KeyNotFoundException($"[index : {@this}] ãŒ key ã¨ã—ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UniRx;
 using System.Linq;
@@ -26,15 +26,15 @@ namespace fantec.Battle.Manager.Pool
                     m_Pools[index] = a;
                     m_Pools[index].PreloadAsync(3, 1).Subscribe();
                 }
-                catch (IndexOutOfRangeException) { throw new IndexOutOfRangeException($"[index : {index}] ‚Í”z—ñ‚Ì”ÍˆÍŠO‚Å‚·B"); }
-                catch (NullReferenceException) { throw new NullReferenceException($"[index : {index}] “à‚Ì—v‘f‚ª null ‚Å‚·B"); }
+                catch (IndexOutOfRangeException) { throw new IndexOutOfRangeException($"[index : {index}] ã¯é…åˆ—ã®ç¯„å›²å¤–ã§ã™ã€‚"); }
+                catch (NullReferenceException) { throw new NullReferenceException($"[index : {index}] å†…ã®è¦ç´ ãŒ null ã§ã™ã€‚"); }
             }
         }
 
         public TObject Rent(int index)
         {
             try { return m_Pools[index].Rent() as TObject; }
-            catch { throw new IndexOutOfRangeException($"[index : {index}] ‚Íƒv[ƒ‹‚Ì”ÍˆÍŠO‚Å‚·B"); }
+            catch { throw new IndexOutOfRangeException($"[index : {index}] ã¯ãƒ—ãƒ¼ãƒ«ã®ç¯„å›²å¤–ã§ã™ã€‚"); }
         }
 
         public TObject Rent(string key)
@@ -48,8 +48,8 @@ namespace fantec.Battle.Manager.Pool
                 }
                 else throw new InvalidCastException();
             }
-            catch (InvalidCastException) { throw new InvalidCastException("ƒLƒƒƒXƒg‚É¸”s‚µ‚Ü‚µ‚½B"); }
-            catch (InvalidOperationException) { throw new InvalidOperationException($"[key : {key}] ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB"); }
+            catch (InvalidCastException) { throw new InvalidCastException("ã‚­ãƒ£ã‚¹ãƒˆã«å¤±æ•—ã—ã¾ã—ãŸã€‚"); }
+            catch (InvalidOperationException) { throw new InvalidOperationException($"[key : {key}] ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚"); }
         }
 
         public void Return(TObject effectObject)

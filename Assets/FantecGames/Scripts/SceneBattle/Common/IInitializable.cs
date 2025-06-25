@@ -1,8 +1,8 @@
-
+ï»¿
 namespace fantec
 {
     /// <summary>
-    /// ‰Šú‰»‚Ì‹­§
+    /// åˆæœŸåŒ–ã®å¼·åˆ¶
     /// </summary>
     public interface IInitializable
     {

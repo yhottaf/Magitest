@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System;
 using System.Collections.Generic;
 using UniRx;
@@ -8,7 +8,7 @@ namespace fantec.Battle
     public class Affect
     {
         /// <summary>
-        /// ƒXƒLƒ‹‚ğ”­“®‚·‚é
+        /// ã‚¹ã‚­ãƒ«ã‚’ç™ºå‹•ã™ã‚‹
         /// </summary>
         public static void Activation(AffectInfoBox infoBox, Action onCompleted)
         {
@@ -20,7 +20,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// •¡”l•ª‚ÌƒXƒLƒ‹‚ğ staggeredi‡‚É‚¸‚ç‚µ‚Äj”­“®‚µA‚·‚×‚ÄŠ®—¹‚µ‚½‚ç onCompleted ‚ğŒÄ‚Ô
+        /// è¤‡æ•°äººåˆ†ã®ã‚¹ã‚­ãƒ«ã‚’ staggeredï¼ˆé †ã«ãšã‚‰ã—ã¦ï¼‰ç™ºå‹•ã—ã€ã™ã¹ã¦å®Œäº†ã—ãŸã‚‰ onCompleted ã‚’å‘¼ã¶
         /// </summary>
         public static void Activation(List<AffectInfoBox> infoBoxes, Action onCompleted)
         {
@@ -39,7 +39,7 @@ namespace fantec.Battle
                 var infoBox = infoBoxes[i];
                 float delay = i * delayPerIndex;
 
-                // w’èŠÔŒã‚ÉŠe‰‰oŠJn
+                // æŒ‡å®šæ™‚é–“å¾Œã«å„æ¼”å‡ºé–‹å§‹
                 DOVirtual.DelayedCall(delay, () =>
                 {
                     Activation(infoBox, () =>
@@ -55,7 +55,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œø‰Ê‚ğ”½‰f‚·‚é
+        /// åŠ¹æœã‚’åæ˜ ã™ã‚‹
         /// </summary>
         public static void Excute(AffectInfoBox infoBox)
         {
@@ -63,7 +63,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œø‰Ê‚ğ”½‰f‚·‚é
+        /// åŠ¹æœã‚’åæ˜ ã™ã‚‹
         /// </summary>
         public static void Execute(IEnumerable<AffectInfo> infos)
         {
@@ -71,19 +71,19 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œø‰Ê‚ğ”½‰f‚·‚é
+        /// åŠ¹æœã‚’åæ˜ ã™ã‚‹
         /// </summary>
         public static void Execute(AffectInfo info)
         {
             switch (info.Command.categoryType)
             {
                 case AffectCategoryType.EMPTY:
-                    // ‰½‚à‚µ‚È‚¢
+                    // ä½•ã‚‚ã—ãªã„
                     break;
 
-                case AffectCategoryType.AttackNormal:      // ’Êíƒ_ƒ[ƒW(%)
-                case AffectCategoryType.AttackFixed:       // ŒÅ’è’lƒ_ƒ[ƒW
-                case AffectCategoryType.AttackRatio:       // Š„‡ƒ_ƒ[ƒW
+                case AffectCategoryType.AttackNormal:      // é€šå¸¸ãƒ€ãƒ¡ãƒ¼ã‚¸(%)
+                case AffectCategoryType.AttackFixed:       // å›ºå®šå€¤ãƒ€ãƒ¡ãƒ¼ã‚¸
+                case AffectCategoryType.AttackRatio:       // å‰²åˆãƒ€ãƒ¡ãƒ¼ã‚¸
                     TakeDamage(info);
                     break;
                 case AffectCategoryType.HealRatio:
@@ -101,9 +101,9 @@ namespace fantec.Battle
 
 
                 case AffectCategoryType.NONE:
-                    throw new Exception($"[skillId: {info.Entity.skillId}] [targetType: {info.Command.categoryType.GetCommandString()}] ‚ÌƒJƒeƒSƒŠ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                    throw new Exception($"[skillId: {info.Entity.skillId}] [targetType: {info.Command.categoryType.GetCommandString()}] ã®ã‚«ãƒ†ã‚´ãƒªãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
                 default:
-                    throw new Exception($"[{info.Command.categoryType}] ‚Í–¢‘Î‰‚Å‚·B");
+                    throw new Exception($"[{info.Command.categoryType}] ã¯æœªå¯¾å¿œã§ã™ã€‚");
             }
         }
 
@@ -127,8 +127,8 @@ namespace fantec.Battle
             {
                 if (target.State.Health.IsDead) continue;
 
-                info.CalcHitType(target);   // UŒ‚‚ª–½’†‚·‚é‚©‚ÌŒvZ
-                info.CalcAffect(target);    // Œø‰Ê—Ê‚ÌŒvZ
+                info.CalcHitType(target);   // æ”»æ’ƒãŒå‘½ä¸­ã™ã‚‹ã‹ã®è¨ˆç®—
+                info.CalcAffect(target);    // åŠ¹æœé‡ã®è¨ˆç®—
 
                 target.State.Health.TakeDamage(info);
 

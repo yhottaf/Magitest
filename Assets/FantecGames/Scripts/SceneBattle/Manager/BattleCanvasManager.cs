@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle.Manager
 {
@@ -46,7 +46,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚ğƒLƒƒƒ“ƒoƒXÀ•W‚É•ÏŠ·‚µ‚Ä•Ô‚·
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’ã‚­ãƒ£ãƒ³ãƒã‚¹åº§æ¨™ã«å¤‰æ›ã—ã¦è¿”ã™
         /// </summary>
         /// <param name="worldPos"></param>
         public Vector2 GetWorldToScreenPointForMain(Vector2 worldPos)
@@ -55,7 +55,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒ[ƒ‹ƒhÀ•W‚ğƒLƒƒƒ“ƒoƒXÀ•W‚É•ÏŠ·‚µ‚Ä•Ô‚·
+        /// ãƒ¯ãƒ¼ãƒ«ãƒ‰åº§æ¨™ã‚’ã‚­ãƒ£ãƒ³ãƒã‚¹åº§æ¨™ã«å¤‰æ›ã—ã¦è¿”ã™
         /// </summary>
         /// <param name="worldPos"></param>
         public Vector2 GetWorldToScreenPointForOver(Vector2 worldPos)

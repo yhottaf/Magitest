@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UniRx;
 using PlayFab;
@@ -15,7 +15,7 @@ namespace fantec.PlayFabClient
         public static List<CardData> CardDatas { get; private set; }
 
         /// <summary>
-        /// PlayFab ‚©‚ç Client ‚Öƒf[ƒ^‚ğ“¯Šú‚·‚éB
+        /// PlayFab ã‹ã‚‰ Client ã¸ãƒ‡ãƒ¼ã‚¿ã‚’åŒæœŸã™ã‚‹ã€‚
         /// </summary>
         /// <param name="inventory"></param>
         public static void SyncPlayFabToClient(IEnumerable<ItemInstance>inventory)
@@ -45,13 +45,13 @@ namespace fantec.PlayFabClient
                     ? ParseIntList(posStr)
                     : new List<int> { 7, 7, 7, 7, 7 };
 
-                // ŒÀ“Ê”‚È‚Ç‚Ìİ’è‚ª‚ ‚é‚È‚ç‚±‚±‚ÆCardData‚É‹LÚ
+                // é™å‡¸æ•°ãªã©ã®è¨­å®šãŒã‚ã‚‹ãªã‚‰ã“ã“ã¨CardDataã«è¨˜è¼‰
                 CardDatas.Add(new CardData(cardId,rarityType,totalExp,cardData.PurchaseDate.Value,1,positionIndex));
             }
         }
 
         /// <summary>
-        /// ƒŒƒAƒŠƒeƒB‚ğã‚°‚é‚Æ‚«‚Ég—p‚·‚é
+        /// ãƒ¬ã‚¢ãƒªãƒ†ã‚£ã‚’ä¸Šã’ã‚‹ã¨ãã«ä½¿ç”¨ã™ã‚‹
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
@@ -84,7 +84,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒŒƒAƒŠƒeƒB‚ğ‰º‚°‚é‚Æ‚«‚Ég—p‚·‚é
+        /// ãƒ¬ã‚¢ãƒªãƒ†ã‚£ã‚’ä¸‹ã’ã‚‹ã¨ãã«ä½¿ç”¨ã™ã‚‹
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
@@ -117,7 +117,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ŒoŒ±’l‚ğXV‚·‚é
+        /// çµŒé¨“å€¤ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <param name="cardId"></param>
         /// <param name="exp"></param>
@@ -145,10 +145,10 @@ namespace fantec.PlayFabClient
             }
         }
 
-        // ƒfƒBƒŒƒNƒgƒŠ(ƒJ[ƒh‚Ì•Ò¬) ‚ÌƒJ[ƒh‚Ì”z’uêŠ‚ğ•Û‘¶‚·‚é
+        // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª(ã‚«ãƒ¼ãƒ‰ã®ç·¨æˆ) ã®ã‚«ãƒ¼ãƒ‰ã®é…ç½®å ´æ‰€ã‚’ä¿å­˜ã™ã‚‹
         public static async UniTask UpdateCardPositionIndex(int cardId, List<int> positionIndex)
         {
-            // -1 ‚Íu‹ó‚«ƒXƒƒbƒgv‚ğˆÓ–¡‚·‚é‚Ì‚ÅAPlayFab‚É‚Í•Û‘¶‚¹‚¸ return
+            // -1 ã¯ã€Œç©ºãã‚¹ãƒ­ãƒƒãƒˆã€ã‚’æ„å‘³ã™ã‚‹ã®ã§ã€PlayFabã«ã¯ä¿å­˜ã›ãš return
             if (cardId == -1)
             {
                 return;
@@ -175,10 +175,10 @@ namespace fantec.PlayFabClient
             }
         }
 
-        // ŒÀ“ÊƒŒƒxƒ‹‚âƒXƒLƒ‹ƒŒƒxƒ‹‚ÌXV(•K—v‚ ‚ê‚Î)‚à‚±‚±‚É‹LÚ‚·‚é‚æ‚¤‚É‚·‚é
+        // é™å‡¸ãƒ¬ãƒ™ãƒ«ã‚„ã‚¹ã‚­ãƒ«ãƒ¬ãƒ™ãƒ«ã®æ›´æ–°(å¿…è¦ã‚ã‚Œã°)ã‚‚ã“ã“ã«è¨˜è¼‰ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
 
         /// <summary>
-        /// ƒJ[ƒh‚Ìî•ñ‚ğæ“¾‚·‚é
+        /// ã‚«ãƒ¼ãƒ‰ã®æƒ…å ±ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         /// <param name="cardId"></param>
         /// <returns></returns>
@@ -188,7 +188,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        ///  ƒ[ƒh‚Ég—p‚·‚é
+        ///  ãƒ­ãƒ¼ãƒ‰æ™‚ã«ä½¿ç”¨ã™ã‚‹
         /// </summary>
         /// <param name="value"></param>
         /// <returns></returns>
@@ -198,7 +198,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒVƒŠƒAƒ‰ƒCƒYŠÖ” (•Û‘¶‚Ég—p‚·‚é)
+        /// ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºé–¢æ•° (ä¿å­˜æ™‚ã«ä½¿ç”¨ã™ã‚‹)
         /// </summary>
         /// <param name="list"></param>
         /// <returns></returns>

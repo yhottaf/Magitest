@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,24 +6,24 @@ namespace fantec.Utilities
 {
     public class SpriteNumber : MonoBehaviour
     {
-        [Header("QÆ")]
+        [Header("å‚ç…§")]
         [SerializeField]private Sprite[] m_NumberSprites=new Sprite[10];
         [SerializeField] private GameObject m_NumberOriginalObject;
 
-        [Header("İ’è")]
+        [Header("è¨­å®š")]
         [SerializeField] private int m_LimitValue = 999999;
         [SerializeField] private float m_Size = 1;
         [SerializeField] private float m_Spacing = 1;
 
-        [Header("ó‘Ô")]
+        [Header("çŠ¶æ…‹")]
         [SerializeField] private int m_Value;
 
         private List<SpriteRenderer> m_NumberRendererList;
 
-        // ’l
+        // å€¤
         private int Value => m_Value;
 
-        // Œ…”
+        // æ¡æ•°
         public int LimitDigit => GetDigit(m_LimitValue);
 
         private void Awake()
@@ -32,7 +32,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ƒAƒ‹ƒtƒ@’lİ’è
+        /// ã‚¢ãƒ«ãƒ•ã‚¡å€¤è¨­å®š
         /// </summary>
         /// <param name="value"></param>
         public void SetAlpha(float value)
@@ -47,7 +47,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ƒTƒCƒYİ’è
+        /// ã‚µã‚¤ã‚ºè¨­å®š
         /// </summary>
         public void SetScale(float scale)
         {
@@ -55,21 +55,21 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ”’l‰æ‘œ‚ğ•\¦
+        /// æ•°å€¤ç”»åƒã‚’è¡¨ç¤º
         /// </summary>
-        /// <param name="value">”’l</param>
-        /// <param name="ratio">ÅãˆÊeƒIƒuƒWƒFƒNƒg‚Ì”{—¦</param>
+        /// <param name="value">æ•°å€¤</param>
+        /// <param name="ratio">æœ€ä¸Šä½è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã®å€ç‡</param>
         public void Show(int value)
         {
             m_Value = value;
 
-            // ‰Šú‰»
+            // åˆæœŸåŒ–
             Init();
 
-            // Œ…”æ“¾
+            // æ¡æ•°å–å¾—
             var digit = GetDigit(value);
 
-            // Œ…”§ŒÀ
+            // æ¡æ•°åˆ¶é™
             if(digit>LimitDigit)
             {
                 value = m_LimitValue;
@@ -80,76 +80,76 @@ namespace fantec.Utilities
             {
                 var numRenderer = m_NumberRendererList[i];
 
-                // ‰æ‘œ‚ğ•\¦
+                // ç”»åƒã‚’è¡¨ç¤º
                 numRenderer.gameObject.SetActive(true);
 
-                // ‰æ‘œƒTƒCƒYİ’è
+                // ç”»åƒã‚µã‚¤ã‚ºè¨­å®š
                 numRenderer.transform.localScale = Vector3.one * m_Size;
 
-                // ’†S‚Ö‡‚í‚¹‚é
+                // ä¸­å¿ƒã¸åˆã‚ã›ã‚‹
                 var width = numRenderer.bounds.size.x;
 
-                // ˆÊ’u’²®
+                // ä½ç½®èª¿æ•´
                 var adjustX = ((width) * i - (width * digit) / 2) + width / 2;
 
-                // Šg‘å—¦‚É‘Î‚·‚éÀÛ‚ÌƒTƒCƒY‚Æ‚Ì”ä—¦
+                // æ‹¡å¤§ç‡ã«å¯¾ã™ã‚‹å®Ÿéš›ã®ã‚µã‚¤ã‚ºã¨ã®æ¯”ç‡
                 var ratio=numRenderer.transform.lossyScale.magnitude/numRenderer.transform.localScale.magnitude;
 
-                // ƒ^[ƒQƒbƒgˆÊ’uæ“¾
+                // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆä½ç½®å–å¾—
                 var position=new Vector3(
                     numRenderer.transform.localPosition.x-(adjustX*m_Spacing)/ratio,
                     numRenderer.transform.localPosition.y,
                     numRenderer.transform.localPosition.z);
 
-                // ˆÊ’uİ’è
+                // ä½ç½®è¨­å®š
                 numRenderer.transform.localPosition= position;
 
-                // Œ»İƒ`ƒFƒbƒN’†‚Ì”’l‚ğæ“¾
+                // ç¾åœ¨ãƒã‚§ãƒƒã‚¯ä¸­ã®æ•°å€¤ã‚’å–å¾—
                 var digitNum = GetPointDigit(value,i+1);
 
-                // ”’l‚É‡‚í‚¹‚½‰æ‘œ‚É·‚µ‘Ö‚¦
+                // æ•°å€¤ã«åˆã‚ã›ãŸç”»åƒã«å·®ã—æ›¿ãˆ
                 numRenderer.sprite = GetNumberSprite(digitNum);
             }
         }
 
         /// <summary>
-        /// ‰Šú‰»
+        /// åˆæœŸåŒ–
         /// </summary>
         public void Init()
         {
-            // –¢‰Šú‰»‚Ìê‡
+            // æœªåˆæœŸåŒ–ã®å ´åˆ
             if(m_NumberRendererList==null)
             {
                 m_NumberRendererList = new List<SpriteRenderer>();
 
-                // •¡»—p‚Ìˆ×‰B‚·
+                // è¤‡è£½ç”¨ã®ç‚ºéš ã™
                 m_NumberOriginalObject.gameObject.SetActive(false);
 
                 for(int i=0;i<LimitDigit;i++)
                 {
                     var numRenderer = Instantiate(m_NumberOriginalObject).GetComponent<SpriteRenderer>();
 
-                    numRenderer.gameObject.SetActive(true);           @// •\¦
-                    numRenderer.transform.parent = this.transform;  @  // q‚Æ‚µ‚Ä“o˜^
-                    numRenderer.transform.localPosition = Vector3.zero; // ˆÊ’uİ’è
+                    numRenderer.gameObject.SetActive(true);           ã€€// è¡¨ç¤º
+                    numRenderer.transform.parent = this.transform;  ã€€  // å­ã¨ã—ã¦ç™»éŒ²
+                    numRenderer.transform.localPosition = Vector3.zero; // ä½ç½®è¨­å®š
 
-                    // ”’lƒIƒuƒWƒFƒNƒgƒŠƒXƒg‚É“o˜^
+                    // æ•°å€¤ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãƒªã‚¹ãƒˆã«ç™»éŒ²
                     m_NumberRendererList.Add(numRenderer);
                 }
             }
-            else // ‰Šú‰»‚³‚ê‚Ä‚¢‚ê‚Î
+            else // åˆæœŸåŒ–ã•ã‚Œã¦ã„ã‚Œã°
             {
-                // ‘S‚Ä
+                // å…¨ã¦
                 foreach(var numObj in m_NumberRendererList)
                 {
-                    numObj.transform.localPosition=Vector3.zero;       // ˆÊ’u‰Šú‰»
-                    numObj.gameObject.SetActive(false);                // ‰B‚·
+                    numObj.transform.localPosition=Vector3.zero;       // ä½ç½®åˆæœŸåŒ–
+                    numObj.gameObject.SetActive(false);                // éš ã™
                 }
             }
         }
 
         /// <summary>
-        /// ®”‚ÌŒ…”‚ğ•Ô‚·
+        /// æ•´æ•°ã®æ¡æ•°ã‚’è¿”ã™
         /// </summary>
         /// <param name="num"></param>
         /// <returns></returns>
@@ -160,7 +160,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ®”‚Ì’†‚©‚çw’è‚µ‚½Œ…”‚Ì’l‚ğ•Ô‚·
+        /// æ•´æ•°ã®ä¸­ã‹ã‚‰æŒ‡å®šã—ãŸæ¡æ•°ã®å€¤ã‚’è¿”ã™
         /// </summary>
         /// <param name="num"></param>
         /// <param name="digit"></param>
@@ -182,7 +182,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ˆêŒ…•ª‚Ì”’l‰æ‘œ‚ğæ“¾
+        /// ä¸€æ¡åˆ†ã®æ•°å€¤ç”»åƒã‚’å–å¾—
         /// </summary>
         /// <param name="number"></param>
         /// <returns></returns>

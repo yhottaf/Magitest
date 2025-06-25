@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Model;
 using UnityEngine;
 using UniRx;
@@ -6,7 +6,7 @@ using UniRx;
 namespace fantec.Battle.Utiles
 {
     /// <summary>
-    /// ƒQ[ƒ€‘¬“x‚Ì‰Â•Ï‚É‘Î‰‚µ‚½ MonoBehavior
+    /// ã‚²ãƒ¼ãƒ é€Ÿåº¦ã®å¯å¤‰ã«å¯¾å¿œã—ãŸ MonoBehavior
     /// </summary>
     public abstract class SpeedableBehaviour : MonoBehaviour
     {
@@ -24,11 +24,11 @@ namespace fantec.Battle.Utiles
         }
 
         /// <summary>
-        /// ‰‰o‚É‚æ‚é’â~’†‚Å‚à“®‚«‘±‚¯‚é‚©”Û‚©‚Ìİ’è
+        /// æ¼”å‡ºã«ã‚ˆã‚‹åœæ­¢ä¸­ã§ã‚‚å‹•ãç¶šã‘ã‚‹ã‹å¦ã‹ã®è¨­å®š
         /// </summary>
         /// <param name="enabled">
-        /// true   “®‚¯‚é
-        /// false  “®‚¯‚È‚¢
+        /// true   å‹•ã‘ã‚‹
+        /// false  å‹•ã‘ãªã„
         /// </param>
         protected void SetThroughDirectingPause(bool enabled)
         {
@@ -36,7 +36,7 @@ namespace fantec.Battle.Utiles
             OnSetCurrentTimeScale(m_TimeScale);
         }
 
-        // ‰‰o‚Å‚Ìƒ|[ƒYó‘ÔXV
+        // æ¼”å‡ºã§ã®ãƒãƒ¼ã‚ºçŠ¶æ…‹æ›´æ–°æ™‚
         private void OnUpdateDirectingPause(bool enable)
         {
             m_IsDirectingPause = enable;
@@ -45,29 +45,29 @@ namespace fantec.Battle.Utiles
             OnSetCurrentTimeScale(enable ? 0 : m_TimeScale);
         }
 
-        // ƒQ[ƒ€‘¬“x‚ÌXV
+        // ã‚²ãƒ¼ãƒ é€Ÿåº¦ã®æ›´æ–°æ™‚
         private void OnUpdateCurrentTimeScale(float speed)
         {
             m_TimeScale = speed;
 
-            // ‰‰o’â~‚ª–³Œø‚Å‚ ‚é‚©A‘f’Ê‚è‚Å‚«‚éê‡
+            // æ¼”å‡ºåœæ­¢ãŒç„¡åŠ¹ã§ã‚ã‚‹ã‹ã€ç´ é€šã‚Šã§ãã‚‹å ´åˆ
             if(m_IsDirectingPause==false||m_IsIgnoreDirectingPause)
             {
-                // ‘¬“x‚ğ”½‰f
+                // é€Ÿåº¦ã‚’åæ˜ 
                 OnSetCurrentTimeScale(speed);
             }
         }
 
-        // –³‹‚Ì‘¬“x
+        // ç„¡è¦–ã®é€Ÿåº¦
         private void OnUpdateIgnoreTimeScale(float timeScale)
         {
             OnSetIgnoreTimeScale(timeScale);
         }
 
-        // ’Êí‚ÌƒQ[ƒ€‘¬“x‚ªXV‚³‚ê‚½Û‚ÉŒÄ‚Î‚ê‚é
+        // é€šå¸¸ã®ã‚²ãƒ¼ãƒ é€Ÿåº¦ãŒæ›´æ–°ã•ã‚ŒãŸéš›ã«å‘¼ã°ã‚Œã‚‹
         protected virtual void OnSetCurrentTimeScale(float timeScale) { }
 
-        // ƒVƒXƒeƒ€‘¬“x‚ªXV‚³‚ê‚½Û‚ÉŒÄ‚Î‚ê‚é
+        // ã‚·ã‚¹ãƒ†ãƒ é€Ÿåº¦ãŒæ›´æ–°ã•ã‚ŒãŸéš›ã«å‘¼ã°ã‚Œã‚‹
         protected virtual void OnSetIgnoreTimeScale(float timeScale) { }
     }
 }

@@ -1,20 +1,20 @@
-namespace fantec.Menu
+ï»¿namespace fantec.Menu
 {
     /// <summary>
-    /// ƒIƒvƒVƒ‡ƒ“‚Ìİ’è“à—e‚ğŠÇ—‚·‚é
+    /// ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®è¨­å®šå†…å®¹ã‚’ç®¡ç†ã™ã‚‹
     /// </summary>
     public class OptionManager
     {
         /// <summary>
-        /// Šî–{İ’è
+        /// åŸºæœ¬è¨­å®š
         /// </summary>
         public struct BasicData
         {
-            public bool bMessage;        // ƒXƒg[ƒŠ[ƒXƒLƒbƒv‚ÉŠm”FƒƒbƒZ[ƒW‚ğ•\¦‚·‚é‚©H
-            public bool bQuality;        // ‰æ¿‚Ì•i¿İ’è (true:•W€”Å false :ŠÈˆÕ”Å)
-            public bool bNoticeStamina;  // ƒXƒ^ƒ~ƒi‘S‰ñ•œ’Ê’m‚ğó‚¯æ‚é‚©H
-            public bool bNoticeMidnight; // [–é‘Ñ‚Í’Ê’m‚ğó‚¯æ‚ç‚È‚¢‚©H
-            public bool bNoticeBilling;  // w“ü‹àŠz‚ªˆê’è‹àŠz‚É’B‚µ‚½‚Æ‚«‚É’Ê’m‚ğó‚¯æ‚é‚©H
+            public bool bMessage;        // ã‚¹ãƒˆãƒ¼ãƒªãƒ¼ã‚¹ã‚­ãƒƒãƒ—æ™‚ã«ç¢ºèªãƒ¡ãƒƒã‚»ãƒ¼ã‚¸ã‚’è¡¨ç¤ºã™ã‚‹ã‹ï¼Ÿ
+            public bool bQuality;        // ç”»è³ªã®å“è³ªè¨­å®š (true:æ¨™æº–ç‰ˆ false :ç°¡æ˜“ç‰ˆ)
+            public bool bNoticeStamina;  // ã‚¹ã‚¿ãƒŸãƒŠå…¨å›å¾©é€šçŸ¥ã‚’å—ã‘å–ã‚‹ã‹ï¼Ÿ
+            public bool bNoticeMidnight; // æ·±å¤œå¸¯ã¯é€šçŸ¥ã‚’å—ã‘å–ã‚‰ãªã„ã‹ï¼Ÿ
+            public bool bNoticeBilling;  // è³¼å…¥é‡‘é¡ãŒä¸€å®šé‡‘é¡ã«é”ã—ãŸã¨ãã«é€šçŸ¥ã‚’å—ã‘å–ã‚‹ã‹ï¼Ÿ
 
             public BasicData(bool bMessage,bool bQuality,
                 bool bNoticeStamina,bool bNoticeMidnight,bool bNoticeBilling)
@@ -28,12 +28,12 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// ƒoƒgƒ‹İ’è
+        /// ãƒãƒˆãƒ«è¨­å®š
         /// </summary>
         public struct BattleData
         {
-            public bool bAuto;       // ƒoƒgƒ‹ŠJn‚ÉAUTO‚É‚·‚é‚©H
-            public bool bSkillCutIn; // ƒXƒLƒ‹‚ÌƒJƒbƒgƒCƒ“‚ğ•\¦‚·‚é‚©H
+            public bool bAuto;       // ãƒãƒˆãƒ«é–‹å§‹æ™‚ã«AUTOã«ã™ã‚‹ã‹ï¼Ÿ
+            public bool bSkillCutIn; // ã‚¹ã‚­ãƒ«ã®ã‚«ãƒƒãƒˆã‚¤ãƒ³ã‚’è¡¨ç¤ºã™ã‚‹ã‹ï¼Ÿ
 
             public BattleData(bool bAuto,bool bSkillCutIn)
             {
@@ -43,16 +43,16 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// ƒTƒEƒ“ƒhİ’è
+        /// ã‚µã‚¦ãƒ³ãƒ‰è¨­å®š
         /// </summary>
         public struct SoundData
         {
-            public float nVolumeBGM;   //BGM‚Ìƒ{ƒŠƒ…[ƒ€
-            public float nVolumeSE;    //SE‚Ìƒ{ƒŠƒ…[ƒ€
-            public float nVolumeVoice;  //ƒ{ƒCƒX‚Ìƒ{ƒŠƒ…[ƒ€
-            public bool nBGMToggle;    //BGM‚ÌƒgƒOƒ‹‚ÌƒIƒ“ƒIƒt
-            public bool nSEToggle;     //SE‚ÌƒgƒOƒ‹‚ÌƒIƒ“ƒIƒt
-            public bool nVoiceToggle;  //Voice‚ÌƒgƒOƒ‹‚ÌƒIƒ“ƒIƒt
+            public float nVolumeBGM;   //BGMã®ãƒœãƒªãƒ¥ãƒ¼ãƒ 
+            public float nVolumeSE;    //SEã®ãƒœãƒªãƒ¥ãƒ¼ãƒ 
+            public float nVolumeVoice;  //ãƒœã‚¤ã‚¹ã®ãƒœãƒªãƒ¥ãƒ¼ãƒ 
+            public bool nBGMToggle;    //BGMã®ãƒˆã‚°ãƒ«ã®ã‚ªãƒ³ã‚ªãƒ•
+            public bool nSEToggle;     //SEã®ãƒˆã‚°ãƒ«ã®ã‚ªãƒ³ã‚ªãƒ•
+            public bool nVoiceToggle;  //Voiceã®ãƒˆã‚°ãƒ«ã®ã‚ªãƒ³ã‚ªãƒ•
 
             public SoundData(float nVolumeBGM,float nVolumeSE,float nVolumeVoice,
                 bool nBGMToggle,bool nSEToggle,bool nVoiceToggle)

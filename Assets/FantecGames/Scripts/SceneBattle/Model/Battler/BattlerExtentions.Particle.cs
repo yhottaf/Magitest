@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using fantec.Battle.Model;
 
 namespace fantec.Battle
@@ -6,7 +6,7 @@ namespace fantec.Battle
     public partial class BattlerExtentions
     {
         /// <summary>
-        /// ƒ_ƒ[ƒWŒø‰Ê”½‰f‚Ìƒp[ƒeƒBƒNƒ‹Ä¶
+        /// ãƒ€ãƒ¡ãƒ¼ã‚¸åŠ¹æœåæ˜ æ™‚ã®ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«å†ç”Ÿ
         /// </summary>
         public static void PlayTakeDamageParticle(this IBattler @this,TakeDamageInfo info)
         {
@@ -14,54 +14,54 @@ namespace fantec.Battle
 
             if(affectInfo.GetIsAffectable())
             {
-                // TODO: ƒGƒtƒFƒNƒg•\¦‚â‚çƒqƒbƒg‰¹Ä¶‚â‚ç‚ğ‘‚­
-                // ƒGƒtƒFƒNƒg•\¦
+                // TODO: ã‚¨ãƒ•ã‚§ã‚¯ãƒˆè¡¨ç¤ºã‚„ã‚‰ãƒ’ãƒƒãƒˆéŸ³å†ç”Ÿã‚„ã‚‰ã‚’æ›¸ã
+                // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆè¡¨ç¤º
                 Locator.Resolve<IBattlePoolManager>().Rent(PoolableSpotParticle.GetIndex(info.AttributeType)).SetPosition(@this.GetCenterPosition()).Setup();
-                // ”’l”ñ•\¦‚ª–³Œø‚Ìê‡
+                // æ•°å€¤éè¡¨ç¤ºãŒç„¡åŠ¹ã®å ´åˆ
                 if (affectInfo.IsHideView==false)
                 {
-                    // ”’l•\¦
+                    // æ•°å€¤è¡¨ç¤º
                     Locator.Resolve<IBattlePoolManager>().Rent(PoolableNumeral.Index.Numeral_Damage).SetPosition(@this.GetCenterPosition()).Setup(info.valueInfo.affectValue);
                 }
             }
             else
             {
-                // Miss or Guard •\¦
+                // Miss or Guard è¡¨ç¤º
                // Locator.Resolve<IBattlePoolManager>().Rent(PoolableSpotParticle.GetIndex(info.affectInfo.HitType)).SetPosition(@this.GetCenterPosition()).Setup();
             }
         }
 
         /// <summary>
-        ///  ‰ñ•œŒø‰Ê”½‰f‚Ìƒp[ƒeƒBƒNƒ‹Ä¶
+        ///  å›å¾©åŠ¹æœåæ˜ æ™‚ã®ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«å†ç”Ÿ
         /// </summary>
         public static void PlayTakeHealParticle(this IBattler @this,TakeHealInfo info)
         {
             var affectInfo = info.affectInfo;
             
-            // Œø‰Ê‚ª”½‰f‚³‚ê‚éê‡
+            // åŠ¹æœãŒåæ˜ ã•ã‚Œã‚‹å ´åˆ
             if(affectInfo.GetIsAffectable())
             {
-                // TODO: Œø‰Ê‰¹‚ÌÄ¶
+                // TODO: åŠ¹æœéŸ³ã®å†ç”Ÿ
 
-                // ƒGƒtƒFƒNƒg•\¦
+                // ã‚¨ãƒ•ã‚§ã‚¯ãƒˆè¡¨ç¤º
                 Locator.Resolve<IBattlePoolManager>().Rent(PoolableSpotParticle.GetIndex(affectInfo.Command.categoryType)).SetPosition(@this.GetCenterPosition()).Setup();
 
-                // ”’l”ñ•\¦‚ª–³Œø‚Ìê‡
+                // æ•°å€¤éè¡¨ç¤ºãŒç„¡åŠ¹ã®å ´åˆ
                 if(affectInfo.IsHideView==false)
                 {
-                    // ”’l•\¦
+                    // æ•°å€¤è¡¨ç¤º
                     Locator.Resolve<IBattlePoolManager>().Rent(PoolableNumeral.Index.Numeral_Heal).SetPosition(@this.GetCenterPosition()).Setup(info.valueInfo.affectValue);
                 }
             }
             else
             {
-                // Miss •\‹L (‰ñ•œ¸”s)
+                // Miss è¡¨è¨˜ (å›å¾©å¤±æ•—)
             }
         }
 
         public static void PlayTakeBuffParticle(this IBattler @this,AffectInfo info)
         {
-            // Œø‰Ê‚ª”½‰f‚³‚ê‚éê‡
+            // åŠ¹æœãŒåæ˜ ã•ã‚Œã‚‹å ´åˆ
             if(info.GetIsAffectable())
             {
                 var categoryType = info.Command.categoryType;
@@ -69,11 +69,11 @@ namespace fantec.Battle
                 var center = @this.GetCenterPosition();
                 var target = @this.GetTargetPosition();
 
-                // TODO: Œø‰Ê‰¹Ä¶‚âAƒGƒtƒFƒNƒg•\¦
+                // TODO: åŠ¹æœéŸ³å†ç”Ÿã‚„ã€ã‚¨ãƒ•ã‚§ã‚¯ãƒˆè¡¨ç¤º
             }
             else
             {
-                // Miss •\¦
+                // Miss è¡¨ç¤º
             }
         }
     }

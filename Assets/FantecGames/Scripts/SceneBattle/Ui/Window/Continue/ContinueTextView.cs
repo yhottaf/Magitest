@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 
 namespace fantec.Battle.Ui.Window
@@ -9,7 +9,7 @@ namespace fantec.Battle.Ui.Window
 
         public void SetText(int paid,int free)
         {
-            m_OwnedText.text = $"Š—L‚µ‚Ä‚¢‚é‰Û‹àÎF{ToCommaSeparated(paid+free)}ŒÂ\n<size=33> (—L {ToCommaSeparated(paid)} / –³ {ToCommaSeparated(free)}) </size>";
+            m_OwnedText.text = $"æ‰€æœ‰ã—ã¦ã„ã‚‹èª²é‡‘çŸ³ï¼š{ToCommaSeparated(paid+free)}å€‹\n<size=33> (æœ‰å„Ÿ {ToCommaSeparated(paid)} / ç„¡å„Ÿ {ToCommaSeparated(free)}) </size>";
         }
 
         private string ToCommaSeparated(int value)

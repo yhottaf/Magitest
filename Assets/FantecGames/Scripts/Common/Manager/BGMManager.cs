@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Utilities;
 using fantec.Menu;
 using System.Threading;
@@ -38,11 +38,11 @@ namespace fantec.Common
             m_AudioA.volume = sound.nVolumeBGM;
             m_AudioB.volume = sound.nVolumeBGM;
 
-            m_MainAudio = m_AudioA; // ‰Šúó‘Ô
+            m_MainAudio = m_AudioA; // åˆæœŸçŠ¶æ…‹
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚ÅBGM‚ğÄ¶‚·‚éiAddressablesŒo—Rj
+        /// éåŒæœŸã§BGMã‚’å†ç”Ÿã™ã‚‹ï¼ˆAddressablesçµŒç”±ï¼‰
         /// </summary>
         public async UniTask PlayAsync(Type type, bool isLoop = false, float fadeTime = 1f,CancellationToken externalCts = default)
         {
@@ -59,18 +59,18 @@ namespace fantec.Common
 
             if (clip == null)
             {
-                Debug.LogWarning($"[BGMManager] BGM {type} ‚Ì“Ç‚İ‚İ‚É¸”s‚µ‚Ü‚µ‚½B");
+                Debug.LogWarning($"[BGMManager] BGM {type} ã®èª­ã¿è¾¼ã¿ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
                 return;
             }
 
-            // Ø‚è‘Ö‚¦æƒI[ƒfƒBƒIƒ\[ƒX‚Ì€”õ
+            // åˆ‡ã‚Šæ›¿ãˆå…ˆã‚ªãƒ¼ãƒ‡ã‚£ã‚ªã‚½ãƒ¼ã‚¹ã®æº–å‚™
             m_NextAudio = (m_MainAudio == m_AudioA) ? m_AudioB : m_AudioA;
             m_NextAudio.clip = clip;
             m_NextAudio.loop = isLoop;
             m_NextAudio.volume = 0f;
             m_NextAudio.Play();
 
-            // ƒtƒF[ƒhˆ—
+            // ãƒ•ã‚§ãƒ¼ãƒ‰å‡¦ç†
             float time = 0f;
             float startVolume = m_MainAudio?.volume ?? 0f;
             while (time < fadeTime)
@@ -83,14 +83,14 @@ namespace fantec.Common
                 await UniTask.Yield();
             }
 
-            // Š®—¹ˆ—
+            // å®Œäº†å‡¦ç†
             m_MainAudio?.Stop();
             m_MainAudio.volume = startVolume;
             m_MainAudio = m_NextAudio;
         }
 
         /// <summary>
-        /// AudioClip w’è‚ÅBGM‚ğÄ¶‚·‚é
+        /// AudioClip æŒ‡å®šã§BGMã‚’å†ç”Ÿã™ã‚‹
         /// </summary>
         /// <param name="clip"></param>
         /// <param name="isLoop"></param>
@@ -102,7 +102,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// BGM‚ğ’â~‚·‚é
+        /// BGMã‚’åœæ­¢ã™ã‚‹
         /// </summary>
         public void Stop()
         {
@@ -112,7 +112,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// BGM‚ğˆê’â~‚·‚é
+        /// BGMã‚’ä¸€æ™‚åœæ­¢ã™ã‚‹
         /// </summary>
         public void Pause()
         {
@@ -120,7 +120,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// BGM‚ğÄŠJ‚·‚é
+        /// BGMã‚’å†é–‹ã™ã‚‹
         /// </summary>
         public void Resume()
         {
@@ -128,7 +128,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// BGM‚ğƒ~ƒ…[ƒg‚É‚·‚é
+        /// BGMã‚’ãƒŸãƒ¥ãƒ¼ãƒˆã«ã™ã‚‹
         /// </summary>
         /// <param name="value"></param>
         public void Mute(bool value)
@@ -137,7 +137,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// BGM‚Ì‰¹—Ê‚ğ’²®‚·‚é
+        /// BGMã®éŸ³é‡ã‚’èª¿æ•´ã™ã‚‹
         /// </summary>
         /// <param name="value"></param>
         public void VolumeChange(float value)

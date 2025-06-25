@@ -1,4 +1,4 @@
-using System;
+Ôªøusing System;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
@@ -9,7 +9,7 @@ namespace fantec.Menu.Common.View
     {
         [SerializeField] private Button m_HomeButton;
         [SerializeField] private Button m_GachaButton;
-        [SerializeField] private Button m_QuestButton; // âºÇÃÉ{É^Éì Ç†Ç∆Ç≈è¡Ç∑
+        [SerializeField] private Button m_QuestButton; // ‰ªÆ„ÅÆ„Éú„Çø„É≥ „ÅÇ„Å®„ÅßÊ∂à„Åô
 
         [SerializeField] private GameObject[] m_FooterObjects;
 

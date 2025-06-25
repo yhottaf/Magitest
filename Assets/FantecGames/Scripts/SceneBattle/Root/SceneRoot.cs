@@ -1,51 +1,51 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using System.Threading;
 using UnityEngine;
 
 namespace fantec.Battle.Root
 {
-    // ƒV[ƒ“‚Ìƒ[ƒhŠ®—¹‚ğ‘Ò‚Á‚½‚èAƒlƒbƒgƒ[ƒNÚ‘±‚âİ’è‚Ìƒ[ƒh‚ªI‚í‚é‚Ü‚Åƒoƒgƒ‹‚ğŠJn‚³‚¹‚È‚¢B
-    // •¡”‚Ì‰Šú‰»ˆ—‚ªI‚í‚é‚Ü‚ÅUI‚ğ•\¦‚³‚¹‚È‚¢
-    // ƒQ[ƒ€ŠJn‚Ì GameManager ‚â UIManager ‚Ì€”õ‚ªŠ®—¹‚·‚é‚Ì‚ğ‘Ò‹@‚·‚é
+    // ã‚·ãƒ¼ãƒ³ã®ãƒ­ãƒ¼ãƒ‰å®Œäº†ã‚’å¾…ã£ãŸã‚Šã€ãƒãƒƒãƒˆãƒ¯ãƒ¼ã‚¯æ¥ç¶šã‚„è¨­å®šã®ãƒ­ãƒ¼ãƒ‰ãŒçµ‚ã‚ã‚‹ã¾ã§ãƒãƒˆãƒ«ã‚’é–‹å§‹ã•ã›ãªã„ã€‚
+    // è¤‡æ•°ã®åˆæœŸåŒ–å‡¦ç†ãŒçµ‚ã‚ã‚‹ã¾ã§UIã‚’è¡¨ç¤ºã•ã›ãªã„
+    // ã‚²ãƒ¼ãƒ é–‹å§‹æ™‚ã® GameManager ã‚„ UIManager ã®æº–å‚™ãŒå®Œäº†ã™ã‚‹ã®ã‚’å¾…æ©Ÿã™ã‚‹
 
-    // Unity‚Ì”ñ“¯Šúˆ—‚ğŒø—¦“I‚ÉŠÇ—‚·‚éƒNƒ‰ƒX
+    // Unityã®éåŒæœŸå‡¦ç†ã‚’åŠ¹ç‡çš„ã«ç®¡ç†ã™ã‚‹ã‚¯ãƒ©ã‚¹
 
 
-    [DefaultExecutionOrder(-1)] // ‘¼‚ÌMonoBehavior‚æ‚è‚àæ‚ÉÀs‚·‚é‚æ‚¤‚Éw’è
+    [DefaultExecutionOrder(-1)] // ä»–ã®MonoBehaviorã‚ˆã‚Šã‚‚å…ˆã«å®Ÿè¡Œã™ã‚‹ã‚ˆã†ã«æŒ‡å®š
     public class SceneRoot : MonoBehaviour
     {
         UniTaskCompletionSource<bool> _loadCompletedSource;
 
         /// <summary>
-        /// ƒV[ƒ“‚Ì‰Šú‰»‚ğ”ñ“¯Šú‚ÅÀs
+        /// ã‚·ãƒ¼ãƒ³ã®åˆæœŸåŒ–ã‚’éåŒæœŸã§å®Ÿè¡Œ
         /// </summary>
         async UniTaskVoid Awake()
         {
             var cts = CancellationTokenSource.CreateLinkedTokenSource(this.GetCancellationTokenOnDestroy());
             
-            // ƒV[ƒ“‚Ì‰Šú‰»‚ªŠ®—¹‚·‚é‚Ü‚ÅA”ñ“¯Šúˆ—‚Å‘Ò‹@B
-            // ƒIƒuƒWƒFƒNƒg‚ª”jŠü‚³‚ê‚½‚Æ‚«‚É‰Šú‰»ˆ—‚ğƒLƒƒƒ“ƒZƒ‹‚Å‚«‚é
+            // ã‚·ãƒ¼ãƒ³ã®åˆæœŸåŒ–ãŒå®Œäº†ã™ã‚‹ã¾ã§ã€éåŒæœŸå‡¦ç†ã§å¾…æ©Ÿã€‚
+            // ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç ´æ£„ã•ã‚ŒãŸã¨ãã«åˆæœŸåŒ–å‡¦ç†ã‚’ã‚­ãƒ£ãƒ³ã‚»ãƒ«ã§ãã‚‹
             await SceneInitializeAsync(cts);
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚ÅƒV[ƒ“‚Ì‰Šú‰»‚ğÀsBIRootInitiater ƒCƒ“ƒ^[ƒtƒF[ƒX‚ğÀ‘•‚µ‚½ƒRƒ“ƒ|[ƒlƒ“ƒg‚Ì‘S‚Ä‚Ì‰Šú‰»‚ªŠ®—¹‚·‚é‚Æ
-        /// _loadCompletedSource.TrySetResult(true)‚ğŒÄ‚Ño‚µA‰Šú‰»Š®—¹‚ğ’Ê’m‚·‚é
+        /// éåŒæœŸã§ã‚·ãƒ¼ãƒ³ã®åˆæœŸåŒ–ã‚’å®Ÿè¡Œã€‚IRootInitiater ã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹ã‚’å®Ÿè£…ã—ãŸã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆã®å…¨ã¦ã®åˆæœŸåŒ–ãŒå®Œäº†ã™ã‚‹ã¨
+        /// _loadCompletedSource.TrySetResult(true)ã‚’å‘¼ã³å‡ºã—ã€åˆæœŸåŒ–å®Œäº†ã‚’é€šçŸ¥ã™ã‚‹
         /// </summary>
         /// <param name="cts"></param>
         async UniTask SceneInitializeAsync(CancellationTokenSource cts)
         {
-            // ƒQ[ƒ€ƒIƒuƒWƒFƒNƒg‚ğˆê“I‚É”ñƒAƒNƒeƒBƒu‚É‚µ‚ÄA‰Šú‰»‚ªI‚í‚é‚Ü‚Å•\¦‚µ‚È‚¢
+            // ã‚²ãƒ¼ãƒ ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä¸€æ™‚çš„ã«éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ã«ã—ã¦ã€åˆæœŸåŒ–ãŒçµ‚ã‚ã‚‹ã¾ã§è¡¨ç¤ºã—ãªã„
             this.gameObject.SetActive(false);
 
-            // ”ñ“¯Šúƒ^ƒXƒN‚ÌŠ®—¹‚ğ‘Ò‹@‚·‚é‚½‚ß‚Ì•Ï”
+            // éåŒæœŸã‚¿ã‚¹ã‚¯ã®å®Œäº†ã‚’å¾…æ©Ÿã™ã‚‹ãŸã‚ã®å¤‰æ•°
             _loadCompletedSource = new UniTaskCompletionSource<bool>();
 
             foreach(var initializer in GetComponents<IRootInitiater>())
             {
                 await initializer.InitializeAsync(cts);
 
-                // ‚à‚µƒLƒƒƒ“ƒZƒ‹‚ª”­¶‚µ‚½‚çˆ—‚ğ’†’f
+                // ã‚‚ã—ã‚­ãƒ£ãƒ³ã‚»ãƒ«ãŒç™ºç”Ÿã—ãŸã‚‰å‡¦ç†ã‚’ä¸­æ–­
                 cts.Token.ThrowIfCancellationRequested();
             }
 
@@ -58,7 +58,7 @@ namespace fantec.Battle.Root
             }
         }
 
-        // ŠO•”‚©‚ç InitCompletedCheckAsync()‚ğŒÄ‚Ño‚µ‚Ä‰Šú‰»‚ªŠ®—¹‚µ‚½‚©‚Ç‚¤‚©‚ğ•Ô‚·
+        // å¤–éƒ¨ã‹ã‚‰ InitCompletedCheckAsync()ã‚’å‘¼ã³å‡ºã—ã¦åˆæœŸåŒ–ãŒå®Œäº†ã—ãŸã‹ã©ã†ã‹ã‚’è¿”ã™
         public UniTask<bool>InitCompletedCheckAsync()
         {
             return _loadCompletedSource.Task;

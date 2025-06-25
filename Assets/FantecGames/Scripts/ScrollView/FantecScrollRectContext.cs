@@ -1,10 +1,10 @@
-using fantec;
+ï»¿using fantec;
 using System;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// <see cref="FantecScrollRect{TItemData, TContext}"/> ‚ÌƒRƒ“ƒeƒLƒXƒgŠî’êƒNƒ‰ƒX.
+    /// <see cref="FantecScrollRect{TItemData, TContext}"/> ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆåŸºåº•ã‚¯ãƒ©ã‚¹.
     /// </summary>
     public class FantecScrollRectContext : IFantecScrollRectContext
     {

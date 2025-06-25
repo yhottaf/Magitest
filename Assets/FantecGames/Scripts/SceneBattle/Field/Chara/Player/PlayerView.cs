@@ -1,4 +1,4 @@
-using fantec.Battle.Utiles;
+ï»¿using fantec.Battle.Utiles;
 using UnityEngine;
 
 namespace fantec.Battle.Field.Chara
@@ -11,7 +11,7 @@ namespace fantec.Battle.Field.Chara
         public SortingView SortingView=> m_SortingView;
         //public BuffView BuffView=> m_BuffView;
 
-        // TODO: ƒp[ƒeƒBƒNƒ‹‚ÌÀ‘•‚Í‚±‚±‚Å‹LÚ
+        // TODO: ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã®å®Ÿè£…ã¯ã“ã“ã§è¨˜è¼‰
         [SerializeField] SpineView m_SpineView;
         [SerializeField] MovementView m_MovementView;
         [SerializeField] SortingView m_SortingView;
@@ -47,7 +47,7 @@ namespace fantec.Battle.Field.Chara
         public void Hide()
         {
             this.gameObject.SetActive(false);
-            m_MovementView.ResetBody(); // ƒAƒ‹ƒtƒ@’l‚ğŒ³‚É–ß‚µ‚Ä‚¨‚­
+            m_MovementView.ResetBody(); // ã‚¢ãƒ«ãƒ•ã‚¡å€¤ã‚’å…ƒã«æˆ»ã—ã¦ãŠã
         }
 
         public void SetThroughPause(bool enabled)

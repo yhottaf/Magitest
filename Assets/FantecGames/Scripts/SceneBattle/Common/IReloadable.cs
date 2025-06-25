@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle
 {
     /// <summary>
-    /// Ä•`‰æ‚È‚Ç‚Ég—p‚³‚ê‚é
+    /// å†æç”»ãªã©ã«ä½¿ç”¨ã•ã‚Œã‚‹
     /// </summary>
     public interface IReloadable
     {

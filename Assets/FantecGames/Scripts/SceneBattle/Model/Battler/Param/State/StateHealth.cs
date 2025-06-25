@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 
 namespace fantec.Battle.Model
@@ -20,7 +20,7 @@ namespace fantec.Battle.Model
         public IObservable<AffectInfo> OnRevivalObservable => m_RevivalSubject;
         private readonly Subject<AffectInfo>m_RevivalSubject=new Subject<AffectInfo>();
 
-        public float NormalizedHealth => (float)m_CurrentHealth / m_MaxHealth; // Š„‡
+        public float NormalizedHealth => (float)m_CurrentHealth / m_MaxHealth; // å‰²åˆ
         public int MaxHealth => m_MaxHealth;
         public int CurrentHealth => m_CurrentHealth;
         public bool IsDead => m_CurrentHealth <= 0;

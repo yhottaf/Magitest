@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System;
 using System.Linq;
 using fantec.Master;
@@ -7,18 +7,18 @@ using UniRx;
 namespace fantec.Common
 {
     /// <summary>
-    /// ƒV[ƒ“ŠÔ‚Å’l‚ğó‚¯“n‚·ˆ×‚Ég—p‚·‚é
-    /// ó‚¯“n‚µ‚É•K—v‚È•Ï”AGet Set ŠÖ”‚Ì‚İ‹LÚ
+    /// ã‚·ãƒ¼ãƒ³é–“ã§å€¤ã‚’å—ã‘æ¸¡ã™ç‚ºã«ä½¿ç”¨ã™ã‚‹
+    /// å—ã‘æ¸¡ã—ã«å¿…è¦ãªå¤‰æ•°ã€Get Set é–¢æ•°ã®ã¿è¨˜è¼‰
     /// </summary>
     [CreateAssetMenu(fileName = "BridgingData", menuName = "Data/BridgingData", order = 1)]
     public class BridgingData : ScriptableObject
     {
         [Header("Battle")]
-        [Tooltip("–¡•û‚Ìƒ`[ƒ€‚ÌƒŠƒXƒg")]
+        [Tooltip("å‘³æ–¹ã®ãƒãƒ¼ãƒ ã®ãƒªã‚¹ãƒˆ")]
         [SerializeField] private TeamData m_TeamData;
-        [Tooltip("ƒoƒgƒ‹‚Ég—p‚³‚ê‚éƒXƒe[ƒWƒf[ƒ^")]
+        [Tooltip("ãƒãƒˆãƒ«ã«ä½¿ç”¨ã•ã‚Œã‚‹ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿")]
         [SerializeField] private StageData m_StageData;
-        [Tooltip("ƒT[ƒo[‚Ì’Š‘IŒ‹‰Ê")]
+        [Tooltip("ã‚µãƒ¼ãƒãƒ¼ã®æŠ½é¸çµæœ")]
         [SerializeField] private LotteryForBattleData m_LotteryData;
 
         [Header("ADV")]
@@ -52,17 +52,17 @@ namespace fantec.Common
 
         public StageData GetStageData()
         {
-            return m_StageData ?? throw new ArgumentNullException("ƒXƒe[ƒWƒf[ƒ^‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            return m_StageData ?? throw new ArgumentNullException("ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
 
         public TeamData GetTeamData()
         {
-            return m_TeamData ?? throw new ArgumentNullException("ƒ`[ƒ€ƒƒ“ƒo[‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            return m_TeamData ?? throw new ArgumentNullException("ãƒãƒ¼ãƒ ãƒ¡ãƒ³ãƒãƒ¼ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
         }
 
         public LotteryForBattleData GetLotteryData()
         {
-            return m_LotteryData ?? throw new ArgumentNullException("ƒT[ƒo[‚Ì’Š‘IŒ‹‰Ê‚ª“ü‚Á‚Ä‚¢‚Ü‚¹‚ñB");
+            return m_LotteryData ?? throw new ArgumentNullException("ã‚µãƒ¼ãƒãƒ¼ã®æŠ½é¸çµæœãŒå…¥ã£ã¦ã„ã¾ã›ã‚“ã€‚");
         }
 
         public TeamData GetCleanTeamData()
@@ -72,7 +72,7 @@ namespace fantec.Common
             {
                 return new TeamData(result);
             }
-            else { throw new Exception("ƒƒ“ƒo[‚ğ1–¼ˆÈãİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B"); }
+            else { throw new Exception("ãƒ¡ãƒ³ãƒãƒ¼ã‚’1åä»¥ä¸Šè¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚"); }
         }
 
         public string GetAdvSeetName()

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Utiles;
 using System.Threading;
 using UniRx;
@@ -14,33 +14,33 @@ namespace fantec.Battle.Manager
     }
 
     /// <summary>
-    /// ƒoƒgƒ‹‚Ì—¬‚ê‚ğŠÇ—
+    /// ãƒãƒˆãƒ«ã®æµã‚Œã‚’ç®¡ç†
     /// </summary>
     /// 
-    // Boot -> Init -> Admission -> Gimmick -> WaveSetup -> Move -> Combat -> Judge -> WaveSetup ‚Ö–ß‚é 
+    // Boot -> Init -> Admission -> Gimmick -> WaveSetup -> Move -> Combat -> Judge -> WaveSetup ã¸æˆ»ã‚‹ 
     //                                                                              -> Win
     //                                                                              -> Lose
     public partial class BattleFlowManager : SpeedableBehaviour,IBattleFlowManager,IRegistable
     {
-        /// <summary> Œ»İ‚Ìƒtƒ[ (‰Šú’l‚Í Boot) </summary>
+        /// <summary> ç¾åœ¨ã®ãƒ•ãƒ­ãƒ¼ (åˆæœŸå€¤ã¯ Boot) </summary>
         private FlowBase m_CurrentFlow=new FlowBoot();
 
-        /// <summary> ‘JˆÚ‘Ò‚¿‚Ìƒtƒ[ </summary>
+        /// <summary> é·ç§»å¾…ã¡ã®ãƒ•ãƒ­ãƒ¼ </summary>
         private FlowBase m_ReserveFlow = null;
 
-        /// <summary> CompositeDisposable‚Í“KØ‚ÉDispose()‚ğŒÄ‚Ño‚µA•s—v‚ÈƒŠƒ\[ƒX‚ğ‰ğ•ú‚·‚éB  
-        /// ƒƒ‚ƒŠƒŠ[ƒN‚ÌŒ´ˆö‚ğ”rœ‚·‚é
-        /// ƒtƒ[‚ªØ‚è‘Ö‚í‚Á‚½ƒ^ƒCƒ~ƒ“ƒO‚Å Clear‚³‚ê‚é
+        /// <summary> CompositeDisposableã¯é©åˆ‡ã«Dispose()ã‚’å‘¼ã³å‡ºã—ã€ä¸è¦ãªãƒªã‚½ãƒ¼ã‚¹ã‚’è§£æ”¾ã™ã‚‹ã€‚  
+        /// ãƒ¡ãƒ¢ãƒªãƒªãƒ¼ã‚¯ã®åŸå› ã‚’æ’é™¤ã™ã‚‹
+        /// ãƒ•ãƒ­ãƒ¼ãŒåˆ‡ã‚Šæ›¿ã‚ã£ãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ Clearã•ã‚Œã‚‹
         /// </summary>
         private CompositeDisposable m_OnChangeFlowDisposables=new CompositeDisposable();
 
-        /// <summary> ƒIƒuƒWƒFƒNƒg‚ª”jŠü‚³‚ê‚½ƒ^ƒCƒ~ƒ“ƒO‚Å Dispose()‚³‚ê‚é ƒƒ‚ƒŠ‰ğ•ú </summary>
+        /// <summary> ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒç ´æ£„ã•ã‚ŒãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ Dispose()ã•ã‚Œã‚‹ ãƒ¡ãƒ¢ãƒªè§£æ”¾ </summary>
         private CompositeDisposable m_OnDestroyDisposables=new CompositeDisposable();
 
-        /// <summary> ”jŠü‚³‚ê‚½ƒ^ƒCƒ~ƒ“ƒO‚ÅƒLƒƒƒ“ƒZƒŒ[ƒVƒ‡ƒ“ </summary>
+        /// <summary> ç ´æ£„ã•ã‚ŒãŸã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§ã‚­ãƒ£ãƒ³ã‚»ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³ </summary>
         private CancellationToken m_OnDestroyCancellationToken;
 
-        /// <summary> ‘¬“x‰Â•Ï‚É‘Î‰‚µ‚½ Sequence </summary>
+        /// <summary> é€Ÿåº¦å¯å¤‰ã«å¯¾å¿œã—ãŸ Sequence </summary>
         private SaveableSequence m_Sequence=new SaveableSequence();
 
         private bool m_IsQuitting = false;
@@ -67,14 +67,14 @@ namespace fantec.Battle.Manager
 
             m_CurrentFlow.OnEnter(this, null);
 
-            // ‰‰o‚Å‚Í’â~‚µ‚È‚¢‚æ‚¤‚É
+            // æ¼”å‡ºã§ã¯åœæ­¢ã—ãªã„ã‚ˆã†ã«
             SetThroughDirectingPause(true);
         }
 
         private void OnDestroy()
         {
 #if UNITY_EDITOR
-            // ƒGƒfƒBƒ^[‚ªI—¹‚µ‚Ä‚¢‚½‚ç
+            // ã‚¨ãƒ‡ã‚£ã‚¿ãƒ¼ãŒçµ‚äº†ã—ã¦ã„ãŸã‚‰
             if (m_IsQuitting) return;
 #endif
             m_CurrentFlow.OnExit(this,null);
@@ -94,7 +94,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒtƒ[‚ğƒ^ƒCƒvw’è‚Å•ÏX‚·‚é
+        /// ãƒ•ãƒ­ãƒ¼ã‚’ã‚¿ã‚¤ãƒ—æŒ‡å®šã§å¤‰æ›´ã™ã‚‹
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public void ChangeFlow<T>() where T : FlowBase,new()
@@ -103,30 +103,30 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒtƒ[‚ğƒCƒ“ƒXƒ^ƒ“ƒXw’è‚Å•ÏX‚·‚é
+        /// ãƒ•ãƒ­ãƒ¼ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹æŒ‡å®šã§å¤‰æ›´ã™ã‚‹
         /// </summary>
         private void ChangeFlow(FlowBase flow)
         {
-            var nextFlow = flow;              // Ÿ‚Ìƒtƒ[•Û
-            var prevFlow = m_CurrentFlow;     // Œ»İ‚Ìƒtƒ[‚ğ‘O‰ñ‚Ìƒtƒ[‚Æ‚µ‚Ä•Û
+            var nextFlow = flow;              // æ¬¡ã®ãƒ•ãƒ­ãƒ¼ä¿æŒ
+            var prevFlow = m_CurrentFlow;     // ç¾åœ¨ã®ãƒ•ãƒ­ãƒ¼ã‚’å‰å›ã®ãƒ•ãƒ­ãƒ¼ã¨ã—ã¦ä¿æŒ
 
-            if(m_ReserveFlow!=null)           // —\–ñ’†‚Ìƒtƒ[‚ª‚ ‚é
+            if(m_ReserveFlow!=null)           // äºˆç´„ä¸­ã®ãƒ•ãƒ­ãƒ¼ãŒã‚ã‚‹æ™‚
             {
-                if(m_ReserveFlow!=flow)       // ‘JˆÚ—\’è‚Ìƒtƒ[‚Æˆá‚Á‚Ä‚¢‚ê‚Î
+                if(m_ReserveFlow!=flow)       // é·ç§»äºˆå®šã®ãƒ•ãƒ­ãƒ¼ã¨é•ã£ã¦ã„ã‚Œã°
                 {
-                    nextFlow = m_ReserveFlow; // Ÿ‚Ìƒtƒ[‚ğ—\–ñ’†‚Ìƒtƒ[‚É•ÏX
+                    nextFlow = m_ReserveFlow; // æ¬¡ã®ãƒ•ãƒ­ãƒ¼ã‚’äºˆç´„ä¸­ã®ãƒ•ãƒ­ãƒ¼ã«å¤‰æ›´
                 }
-                m_ReserveFlow = null;         // —\–ñ‚ğ‹ó‚É‚·‚é
+                m_ReserveFlow = null;         // äºˆç´„ã‚’ç©ºã«ã™ã‚‹
             }
 
-            m_OnChangeFlowDisposables.Clear();     // ƒtƒ[“à‚Å‚Ìw“ÇƒNƒŠƒA
-            prevFlow.OnExit(this,nextFlow);        // ‘O‰ñ‚Ìƒtƒ[‚ÌI—¹’Ê’m
-            m_CurrentFlow = nextFlow;              // Ÿ‚Ìƒtƒ[‚Ö•ÏX
-            m_CurrentFlow.OnEnter(this, prevFlow); // Ÿ‚Ìƒtƒ[ŠJn’Ê’m
+            m_OnChangeFlowDisposables.Clear();     // ãƒ•ãƒ­ãƒ¼å†…ã§ã®è³¼èª­ã‚¯ãƒªã‚¢
+            prevFlow.OnExit(this,nextFlow);        // å‰å›ã®ãƒ•ãƒ­ãƒ¼ã®çµ‚äº†é€šçŸ¥
+            m_CurrentFlow = nextFlow;              // æ¬¡ã®ãƒ•ãƒ­ãƒ¼ã¸å¤‰æ›´
+            m_CurrentFlow.OnEnter(this, prevFlow); // æ¬¡ã®ãƒ•ãƒ­ãƒ¼é–‹å§‹é€šçŸ¥
         }
 
         /// <summary>
-        /// ‘JˆÚ—\–ñ‚·‚é
+        /// é·ç§»äºˆç´„ã™ã‚‹
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public void ChangeFlowReserve<T>() where T:FlowBase,new()
@@ -135,7 +135,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒoƒgƒ‹‚ğI—¹‚·‚éÛ‚ÉŒÄ‚Ô
+        /// ãƒãƒˆãƒ«ã‚’çµ‚äº†ã™ã‚‹éš›ã«å‘¼ã¶
         /// </summary>
         public void Exit()
         {

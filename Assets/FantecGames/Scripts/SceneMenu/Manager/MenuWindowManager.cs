@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using fantec.Utilities;
 using System.Collections.Generic;
 using UnityEngine;
@@ -11,15 +11,17 @@ namespace fantec.Menu.Manager
         [SerializeField] private GameObject m_Footer;
         [SerializeField] private Transform m_ContentParent;
 
-        //Overlay‚Å‚ÌƒEƒBƒ“ƒhƒE
+        //Overlayã§ã®ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦
         [SerializeField] private OverlayObject m_Home;
         [SerializeField] private OverlayObject m_Gacha;
         [SerializeField] private OverlayObject m_PartySelect;
+        [SerializeField] private OverlayObject m_CardDetail;
         [SerializeField] private OverlayObject m_MenuModal;
         [SerializeField] private OverlayObject m_Profile;
         [SerializeField] private OverlayObject m_Notice;
+        [SerializeField] private OverlayObject m_InputGuard;
 
-        //ƒ‚[ƒ_ƒ‹
+        //ãƒ¢ãƒ¼ãƒ€ãƒ«
         [SerializeField] private OverlayObject m_NameChangeModal;
         [SerializeField] private OverlayObject m_PlayerNameEditModal;
         [SerializeField] private OverlayObject m_EnemyDetailModal;
@@ -34,6 +36,7 @@ namespace fantec.Menu.Manager
             Home,
             Gacha,
             Profile,
+            CardDetail,
             Menu,
             PlayerNameEdit,
             PartySelect,
@@ -42,7 +45,8 @@ namespace fantec.Menu.Manager
             StaminaItemDetail,
             NameChange,
             Notice,
-            NoContents,//–¢À‘•ƒ‚[ƒ_ƒ‹
+            InputGuard,
+            NoContents,//æœªå®Ÿè£…ãƒ¢ãƒ¼ãƒ€ãƒ«
         }
 
         public CreateType NowWindow { get; private set; } = CreateType.Home;
@@ -59,13 +63,13 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// ‰æ–Ê‚ğì¬
+        /// ç”»é¢ã‚’ä½œæˆ
         /// </summary>
-        /// <param name="type">ì¬‚µ‚½‚¢ƒvƒŒƒ[ƒ“ƒ^[‚Ìí•Ê</param>
-        /// <returns>ì¬‚Å‚«‚½‚©”Û‚©</returns>
+        /// <param name="type">ä½œæˆã—ãŸã„ãƒ—ãƒ¬ã‚¼ãƒ³ã‚¿ãƒ¼ã®ç¨®åˆ¥</param>
+        /// <returns>ä½œæˆã§ããŸã‹å¦ã‹</returns>
         public bool Create(CreateType type)
         {
-            //“¯‚¶‰æ–Ê‚ğ•¡”•\¦‚·‚é‚±‚Æ‚Í‚³‚¹‚È‚¢
+            //åŒã˜ç”»é¢ã‚’è¤‡æ•°è¡¨ç¤ºã™ã‚‹ã“ã¨ã¯ã•ã›ãªã„
             if(m_OverlayObjectDictionary.ContainsKey(type))
             {
                 return false;
@@ -93,102 +97,114 @@ namespace fantec.Menu.Manager
             switch(type)
             {
                 //-----------------------------------------------------------------------
-                // ‰æ–ÊŒn
+                // ç”»é¢ç³»
                 //-----------------------------------------------------------------------
-                //ƒz[ƒ€
+                //ãƒ›ãƒ¼ãƒ 
                 case CreateType.Home:
                     IndicateAll();
                     CreateWindow(m_Home);
                     return true;
 
-                    //ƒKƒ`ƒƒ
+                    //ã‚¬ãƒãƒ£
                 case CreateType.Gacha:
                     CreateWindow(m_Gacha);
                     return true;
 
-                    // oŒ‚ƒp[ƒeƒB‘I‘ğ
+                    // å‡ºæ’ƒãƒ‘ãƒ¼ãƒ†ã‚£é¸æŠ
                 case CreateType.PartySelect:
                     IndicateContent();
                     CreateWindow(m_PartySelect);
                     return true;
 
-                    //ƒvƒƒtƒB[ƒ‹
+                    // ã‚«ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆ
+                case CreateType.CardDetail:
+                    IndicateContent();
+                    CreateWindow(m_CardDetail);
+                    return true;
+
+                    //ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«
                 case CreateType.Profile:
                     CreateWindow(m_Profile);
                     return true;
 
-                    // ‚¨’m‚ç‚¹
+                    // ãŠçŸ¥ã‚‰ã›
                 case CreateType.Notice:
                     IndicateContent();
                     CreateWindow(m_Notice);
                     return true;
 
+                    // å…¥åŠ›åˆ¶é™
+                case CreateType.InputGuard:
+                    IndicateContent();
+                    CreateWindow(m_InputGuard);
+                    return true;
+
                     //--------------------------------------------------------------------
-                    // ƒ‚[ƒ_ƒ‹Œn
+                    // ãƒ¢ãƒ¼ãƒ€ãƒ«ç³»
                     //--------------------------------------------------------------------
 
-                    //ƒƒjƒ…[
+                    //ãƒ¡ãƒ‹ãƒ¥ãƒ¼
                 case CreateType.Menu:
                     CreateModal(m_MenuModal);
                     return true;
 
-                    // ƒfƒBƒŒƒNƒgƒŠ‚Ìƒp[ƒeƒB–¼•ÏX
+                    // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ãƒ¼ãƒ†ã‚£åå¤‰æ›´
                 case CreateType.NameChange:
                     CreateModal(m_NameChangeModal);
                     return true;
 
-                    //ƒvƒŒƒCƒ„[–¼“ü—Í
+                    //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åå…¥åŠ›
                 case CreateType.PlayerNameEdit:
                     CreateModal(m_PlayerNameEditModal);
                     return true;
 
-                    // “G‚ÌÚ×î•ñ
+                    // æ•µã®è©³ç´°æƒ…å ±
                 case CreateType.EnemyDetail:
                     CreateModal(m_NoContentsModal);
                     return true;
 
-                    // ƒAƒCƒeƒ€‚ÌÚ×î•ñ
+                    // ã‚¢ã‚¤ãƒ†ãƒ ã®è©³ç´°æƒ…å ±
                 case CreateType.ItemDetail:
                     CreateModal(m_NoContentsModal);
                     return true;
 
-                    //–¢À‘•ƒ‚[ƒ_ƒ‹
+                    //æœªå®Ÿè£…ãƒ¢ãƒ¼ãƒ€ãƒ«
                 case CreateType.NoContents:
                     CreateModal(m_NoContentsModal);
                     return true;
 
                 default:
-                    Debug.LogError("‘¶İ‚µ‚È‚¢ƒ^ƒCƒv‚ªŒÄ‚Î‚ê‚Ü‚µ‚½F " + type);
+                    Debug.LogError("å­˜åœ¨ã—ãªã„ã‚¿ã‚¤ãƒ—ãŒå‘¼ã°ã‚Œã¾ã—ãŸï¼š " + type);
                     return false;
             }
         }
 
         /// <summary>
-        /// ‰æ–Ê‚ğ”jŠü (ƒEƒBƒ“ƒhƒE‚ğ”jŠü‚·‚é‚Æ‚«‚Í‚±‚ê‚ğ•K‚¸ŒÄ‚Ô‚±‚Æ)
+        /// ç”»é¢ã‚’ç ´æ£„ (ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’ç ´æ£„ã™ã‚‹ã¨ãã¯ã“ã‚Œã‚’å¿…ãšå‘¼ã¶ã“ã¨)
         /// </summary>
-        /// <param name="type">”jŠü‚µ‚½‚¢‰æ–Ê‚Ìí•Ê</param>
-        /// <returns>”jŠü‚Å‚«‚½‚©”Û‚©</returns>
+        /// <param name="type">ç ´æ£„ã—ãŸã„ç”»é¢ã®ç¨®åˆ¥</param>
+        /// <returns>ç ´æ£„ã§ããŸã‹å¦ã‹</returns>
         public bool Remove(CreateType type)
         {
-            // ‘¶İ‚µ‚È‚¢‰æ–Ê‚Í”jŠü‚Å‚«‚È‚¢
+            // å­˜åœ¨ã—ãªã„ç”»é¢ã¯ç ´æ£„ã§ããªã„
             if (!m_OverlayObjectDictionary.ContainsKey(type)) return false;
 
-            // ‰æ–Ê‚Ì”jŠü
+            // ç”»é¢ã®ç ´æ£„
             Destroy(m_OverlayObjectDictionary[type].gameObject);
 
-            // Dictionary ‚©‚çæ‚èœ‚­
+            // Dictionary ã‹ã‚‰å–ã‚Šé™¤ã
             m_OverlayObjectDictionary.Remove(type);
 
-            // ”jŠü¬Œ÷
+            // ç ´æ£„æˆåŠŸ
             return true;
         }
 
         /// <summary>
-        /// ‰æ–Ê‚ğ‘S‚Ä”jŠü
+        /// ç”»é¢ã‚’å…¨ã¦ç ´æ£„
         /// </summary>
         public void RemoveAll()
         {
-            // ‰æ–Ê‚Ì”jŠü
+            // ç”»é¢ã®ç ´æ£„
             foreach(var createType in m_OverlayObjectDictionary.Keys)
             {
                 Destroy(m_OverlayObjectDictionary[createType].gameObject);
@@ -197,25 +213,25 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// •\¦’†‚Ì‰æ–Ê‚ğ‚·‚×‚Äæ‚èœ‚­
+        /// è¡¨ç¤ºä¸­ã®ç”»é¢ã‚’ã™ã¹ã¦å–ã‚Šé™¤ã
         /// </summary>
         public void Clear()
         {
             foreach(var overlayDic in m_OverlayObjectDictionary)
             {
-                // ’†g‚ª‘¶İ‚µ‚Ä‚¢‚ê‚Î
+                // ä¸­èº«ãŒå­˜åœ¨ã—ã¦ã„ã‚Œã°
                 if(overlayDic.Value)
                 {
                     Destroy(overlayDic.Value.gameObject);
                 }
             }
 
-            // ’†g‚à‰Šú‰»
+            // ä¸­èº«ã‚‚åˆæœŸåŒ–
             m_OverlayObjectDictionary = new Dictionary<CreateType, OverlayObject>();
         }
 
         /// <summary>
-        /// ƒwƒbƒ_[&ƒtƒbƒ^[&ƒRƒ“ƒeƒ“ƒc‚Ì‡”Ô‚ğ‘JˆÚæ‚É‚æ‚Á‚Ä®—‚·‚é
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼&ãƒ•ãƒƒã‚¿ãƒ¼&ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ã®é †ç•ªã‚’é·ç§»å…ˆã«ã‚ˆã£ã¦æ•´ç†ã™ã‚‹
         /// </summary>
         /// <param name="footerType"></param>
         public void OrganizeSibling(FooterType footerType)
@@ -234,7 +250,7 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// ƒwƒbƒ_[&ƒtƒbƒ^[ / ƒRƒ“ƒeƒ“ƒc ‚Ì‡”Ô‚Å•\¦‚·‚é
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼&ãƒ•ãƒƒã‚¿ãƒ¼ / ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ ã®é †ç•ªã§è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private void IndicateAll()
         {
@@ -244,7 +260,7 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// ƒRƒ“ƒeƒ“ƒc / ƒwƒbƒ_[&ƒtƒbƒ^[ ‚Ì‡”Ô‚Å•\¦‚·‚é
+        /// ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ / ãƒ˜ãƒƒãƒ€ãƒ¼&ãƒ•ãƒƒã‚¿ãƒ¼ ã®é †ç•ªã§è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private void IndicateContent()
         {
@@ -255,7 +271,7 @@ namespace fantec.Menu.Manager
 
 
         /// <summary>
-        /// ƒwƒbƒ_[ / ƒRƒ“ƒeƒ“ƒc / ƒtƒbƒ^[ ‚Ì‡”Ô‚Å•\¦‚·‚é
+        /// ãƒ˜ãƒƒãƒ€ãƒ¼ / ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ / ãƒ•ãƒƒã‚¿ãƒ¼ ã®é †ç•ªã§è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private void IndicateContentAndHeader()
         {
@@ -265,7 +281,7 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// ƒtƒbƒ^[ / ƒRƒ“ƒeƒ“ƒc / ƒwƒbƒ_[ ‚Ì‡”Ô‚Å•\¦‚·‚é
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ / ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ / ãƒ˜ãƒƒãƒ€ãƒ¼ ã®é †ç•ªã§è¡¨ç¤ºã™ã‚‹
         /// </summary>
         private void IndicateContentAndFooter()
         {
@@ -276,7 +292,7 @@ namespace fantec.Menu.Manager
 
 
         /// <summary>
-        /// ƒtƒbƒ^[‚ğÅ‘O–Ê‚É‚·‚é
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ã‚’æœ€å‰é¢ã«ã™ã‚‹
         /// </summary>
         public void FotterSetAsLastSibiling()
         {
@@ -284,7 +300,7 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// ƒtƒbƒ^[‚ğÅŒã–Ê‚É‚·‚é
+        /// ãƒ•ãƒƒã‚¿ãƒ¼ã‚’æœ€å¾Œé¢ã«ã™ã‚‹
         /// </summary>
         public void FotterSetAsFirstSibling()
         {

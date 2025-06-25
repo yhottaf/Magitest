@@ -1,9 +1,9 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle
 {
     /// <summary>
-    /// ‰Šú’l‚É–ß‚·Û‚Ég—p‚³‚ê‚é
+    /// åˆæœŸå€¤ã«æˆ»ã™éš›ã«ä½¿ç”¨ã•ã‚Œã‚‹
     /// </summary>
     public interface IResetable
     {

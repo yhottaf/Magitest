@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using fantec.Master;
 using UnityEngine;
 
@@ -7,17 +7,17 @@ namespace fantec.Battle
     public class StageEntity
     {
         public readonly (TeamData teamData, bool isBoss)[] waveDatas;
-        public readonly StageDifficultyType difficultyType; // “ïˆÕ“xí•Ê
-        public readonly int stageId;                        // ƒXƒe[ƒWID
-        public readonly int stamina;                        // Á”ïƒXƒ^ƒ~ƒi
-        public readonly string stageName;                   // ƒXƒe[ƒW–¼
-        public readonly string normalBgm;                   // ’ÊíBGM
-        public readonly string bossBgm;                     // ƒ{ƒXí‚ÌBGM
-        public readonly string normalBg;                    // ’Êí”wŒi
-        public readonly string bossBg;                      // ƒ{ƒXí”wŒi
-        public readonly string FieldImg;                    // ƒtƒB[ƒ‹ƒh‚Ì‰æ‘œ
-        public readonly int maxWave;                        // Å‘åƒEƒF[ƒu”
-        public readonly int maxWaveIndex;                   // Å‘åƒEƒF[ƒuƒCƒ“ƒfƒbƒNƒX”
+        public readonly StageDifficultyType difficultyType; // é›£æ˜“åº¦ç¨®åˆ¥
+        public readonly int stageId;                        // ã‚¹ãƒ†ãƒ¼ã‚¸ID
+        public readonly int stamina;                        // æ¶ˆè²»ã‚¹ã‚¿ãƒŸãƒŠ
+        public readonly string stageName;                   // ã‚¹ãƒ†ãƒ¼ã‚¸å
+        public readonly string normalBgm;                   // é€šå¸¸BGM
+        public readonly string bossBgm;                     // ãƒœã‚¹æˆ¦æ™‚ã®BGM
+        public readonly string normalBg;                    // é€šå¸¸èƒŒæ™¯
+        public readonly string bossBg;                      // ãƒœã‚¹æˆ¦èƒŒæ™¯
+        public readonly string FieldImg;                    // ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ç”»åƒ
+        public readonly int maxWave;                        // æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–æ•°
+        public readonly int maxWaveIndex;                   // æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹æ•°
         public readonly int rewardTableId;
         public readonly int rewardExp;
         
@@ -34,7 +34,7 @@ namespace fantec.Battle
             this.rewardTableId = data.rewardTableId;
             this.rewardExp = data.rewardExp;
             this.FieldImg = data.fieldImg;
-            // ƒXƒe[ƒW‚ÌŠ„‚è“–‚Ä
+            // ã‚¹ãƒ†ãƒ¼ã‚¸ã®å‰²ã‚Šå½“ã¦
             var waveDataList = MasterDataManager.Instance.GetMaster<WaveMaster>(data.waveMasterKey).GetDataList();
             maxWaveIndex = waveDataList.GetMaxWaveIndex();
             maxWave=waveDataList.GetMaxWave();

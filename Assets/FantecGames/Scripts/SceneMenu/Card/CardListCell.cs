@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UniRx;
 using fantec.Common;
 using FantecScrollView;
@@ -19,10 +19,10 @@ namespace fantec.Menu.Card
         [SerializeField]
         private GameObject m_NewMarkObject;
 
-     //  [SerializeField] ‚¨‹C‚É“ü‚èƒJ[ƒh‚ğİ’è‚·‚é‚È‚ç
+     //  [SerializeField] ãŠæ°—ã«å…¥ã‚Šã‚«ãƒ¼ãƒ‰ã‚’è¨­å®šã™ã‚‹ãªã‚‰
     //    private GameObject m_FavoriteObject; 
 
-        private bool isPartyInclude;   //‚±‚ÌƒJ[ƒh‚ª•Ò¬’†‚©”»’è
+        private bool isPartyInclude;   //ã“ã®ã‚«ãƒ¼ãƒ‰ãŒç·¨æˆä¸­ã‹åˆ¤å®š
 
         public override void Initialize()
         {
@@ -38,7 +38,7 @@ namespace fantec.Menu.Card
                 await m_View.UpdateView(itemData.cardId);
                 m_View.UpdateCardInfo(itemData.cardId);
 
-                // TODOF‚¨‹C‚É“ü‚èƒJ[ƒh‚Ìİ’è‚ğ‚·‚é‚È‚ç‚±‚±‚É‹LÚ
+                // TODOï¼šãŠæ°—ã«å…¥ã‚Šã‚«ãƒ¼ãƒ‰ã®è¨­å®šã‚’ã™ã‚‹ãªã‚‰ã“ã“ã«è¨˜è¼‰
                 //if (LocalDataManager.Instance.LocalData.IsFavorite(itemData.cardId))
                 //{
                 //    m_FavoriteObject.SetActive(true);
@@ -48,24 +48,24 @@ namespace fantec.Menu.Card
                 //    m_FavoriteObject.SetActive(false);
                 //}
 
-                // •Ò¬‚Å‚«‚È‚¢ƒLƒƒƒ‰‚ğ‚Ü‚Æ‚ß‚½IDƒŠƒXƒg‚ğì¬
+                // ç·¨æˆã§ããªã„ã‚­ãƒ£ãƒ©ã‚’ã¾ã¨ã‚ãŸIDãƒªã‚¹ãƒˆã‚’ä½œæˆ
                 isPartyInclude = MenuManager.Instance.CardOrgamization(itemData);
 
                 if (isPartyInclude)
                 {
-                    // •Ò¬’†‚Å‚ ‚é‚È‚çƒOƒŒ[‚Å•\¦
+                    // ç·¨æˆä¸­ã§ã‚ã‚‹ãªã‚‰ã‚°ãƒ¬ãƒ¼ã§è¡¨ç¤º
                     m_View.SetGrayColor();
                 }
                 else
                 {
-                    // •Ò¬‚µ‚Ä‚¢‚È‚¢‚Ì‚Å‚ ‚ê‚Î’ÊíƒJƒ‰[‚Å•\¦
+                    // ç·¨æˆã—ã¦ã„ãªã„ã®ã§ã‚ã‚Œã°é€šå¸¸ã‚«ãƒ©ãƒ¼ã§è¡¨ç¤º
                     m_View.SetNormalColor();
                 }
 
-                // •Ò¬’†‚Ì•\¦
+                // ç·¨æˆä¸­ã®è¡¨ç¤º
                 m_OrganizationObject.SetActive(isPartyInclude);
 
-                // NEWƒ}[ƒN‚Ì•\¦
+                // NEWãƒãƒ¼ã‚¯ã®è¡¨ç¤º
                 m_NewMarkObject.SetActive(LocalDataManager.Instance.LocalData.IsNew(itemData.cardId));
                 LocalDataManager.Instance.LocalData.AddCheckCard(itemData.cardId);
             });
@@ -77,7 +77,7 @@ namespace fantec.Menu.Card
         }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickButton(Unit unit)
@@ -86,7 +86,7 @@ namespace fantec.Menu.Card
         }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“‚ğ’·‰Ÿ‚µ‚µ‚½ (1•bŠÔˆÈã)
+        /// ãƒœã‚¿ãƒ³ã‚’é•·æŠ¼ã—ã—ãŸæ™‚ (1ç§’é–“ä»¥ä¸Š)
         /// </summary>
         /// <param name="unit"></param>
         private void OnLongTapButton(Unit unit)

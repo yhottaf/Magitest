@@ -1,11 +1,11 @@
-using fantec;
+ï»¿using fantec;
 using System;
 using UnityEngine;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// <see cref="FantecGridView{TItemData, TContext}"/> ‚ÌƒRƒ“ƒeƒLƒXƒgƒCƒ“ƒ^[ƒtƒF[ƒX.
+    /// <see cref="FantecGridView{TItemData, TContext}"/> ã®ã‚³ãƒ³ãƒ†ã‚­ã‚¹ãƒˆã‚¤ãƒ³ã‚¿ãƒ¼ãƒ•ã‚§ãƒ¼ã‚¹.
     /// </summary>
     public interface IFantecGridViewContext : IFantecScrollRectContext, IFantecCellGroupContext
     {

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Utilities;
 using System.Collections.Generic;
 using System.Threading;
@@ -8,32 +8,32 @@ namespace fantec.Common
 {
     public enum VoicePlayType
     {
-        /// <summary> •Ê Clip‚Æ‚µ‚ÄÄ¶ </summary>
+        /// <summary> åˆ¥ Clipã¨ã—ã¦å†ç”Ÿ </summary>
         LAYERED,
 
-        /// <summary> “¯‚¶Ä¶’†‚Ì Clip‚ğ~‚ß‚ÄÄ¶ </summary>
+        /// <summary> åŒã˜å†ç”Ÿä¸­ã® Clipã‚’æ­¢ã‚ã¦å†ç”Ÿ </summary>
         OVERRIDE,
 
-        /// <summary> “¯‚¶ Clip‚ªÄ¶’†‚Ìê‡‚ÍÄ¶‚µ‚È‚¢ </summary>
+        /// <summary> åŒã˜ ClipãŒå†ç”Ÿä¸­ã®å ´åˆã¯å†ç”Ÿã—ãªã„ </summary>
         CANCELD,
     }
 
     /// <summary>
-    /// Voice ƒtƒ@ƒCƒ‹–¼‚Æˆê’v‚·‚é‚æ‚¤‚É
+    /// Voice ãƒ•ã‚¡ã‚¤ãƒ«åã¨ä¸€è‡´ã™ã‚‹ã‚ˆã†ã«
     /// </summary>
     public enum VoiceClipName
     {
 
-        //---------  ƒVƒXƒeƒ€Œn  ----------------//
+        //---------  ã‚·ã‚¹ãƒ†ãƒ ç³»  ----------------//
 
-        SystemButtonDownNo,   //ƒ{ƒ^ƒ“‰Ÿ‰º-”Û’è
-        SystemButtonDownYes,  //ƒ{ƒ^ƒ“‰Ÿ‰º-m’è
-        SystemTapScreen,      //‰æ–Êƒ^ƒbƒv
-        SystemLoginPop,      //ƒ^ƒCƒgƒ‹‰æ–Êƒ^ƒbƒv
+        SystemButtonDownNo,   //ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚-å¦å®š
+        SystemButtonDownYes,  //ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚-è‚¯å®š
+        SystemTapScreen,      //ç”»é¢ã‚¿ãƒƒãƒ—
+        SystemLoginPop,      //ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã‚¿ãƒƒãƒ—
 
 
-        //---------  ŠÂ‹«‰¹  -------------------//
-        //UŒ‚‰¹‚È‚ÇB
+        //---------  ç’°å¢ƒéŸ³  -------------------//
+        //æ”»æ’ƒéŸ³ãªã©ã€‚
     }
 
 
@@ -42,10 +42,10 @@ namespace fantec.Common
         private Dictionary<string, MultipleSource> m_SourceDictionary = new Dictionary<string, MultipleSource>();
 
         /// <summary>
-        /// ƒNƒŠƒbƒv‚ğ“Ç‚İ‚Ş
+        /// ã‚¯ãƒªãƒƒãƒ—ã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         /// <param name="clip"></param>
-        /// <param name="clipCount">•¡»‚µ‚½‚¢ƒNƒŠƒbƒv”</param>
+        /// <param name="clipCount">è¤‡è£½ã—ãŸã„ã‚¯ãƒªãƒƒãƒ—æ•°</param>
         public void LoadClipData(AudioClip clip, int clipCount = 1)
         {
             MultipleSource source = new GameObject(clip.name).AddComponent<MultipleSource>();
@@ -60,7 +60,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚ÅƒNƒŠƒbƒvƒf[ƒ^‚ğ“Ç‚İ‚Ş
+        /// éåŒæœŸã§ã‚¯ãƒªãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         /// <param name="clipNameType"></param>
         /// <param name="clipCount"></param>
@@ -74,7 +74,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚Å‚Ü‚Æ‚ß‚ÄƒNƒŠƒbƒvƒf[ƒ^‚ğ“Ç‚İ‚Ş
+        /// éåŒæœŸã§ã¾ã¨ã‚ã¦ã‚¯ãƒªãƒƒãƒ—ãƒ‡ãƒ¼ã‚¿ã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         public async UniTask LoadClipDataAsync(SEClipName[] clipNames, int clipCount, CancellationToken cts)
         {
@@ -85,7 +85,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒNƒŠƒbƒv‚ğæ‚èœ‚­
+        /// ã‚¯ãƒªãƒƒãƒ—ã‚’å–ã‚Šé™¤ã
         /// </summary>
         /// <param name="clipNameType"></param>
         public void RemoveClipData(VoiceClipName clipNameType)
@@ -99,7 +99,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ‚Ü‚Æ‚ß‚ÄƒNƒŠƒbƒv‚ğæ‚èœ‚­
+        /// ã¾ã¨ã‚ã¦ã‚¯ãƒªãƒƒãƒ—ã‚’å–ã‚Šé™¤ã
         /// </summary>
         /// <param name="clipNames"></param>
         public void RemoveClipData(VoiceClipName[] clipNames)
@@ -154,7 +154,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// •¡”‚ÌƒNƒŠƒbƒv‚ğw’è‚µ‚»‚Ì’†‚©‚çƒ‰ƒ“ƒ_ƒ€‚É‚P‚ÂÄ¶
+        /// è¤‡æ•°ã®ã‚¯ãƒªãƒƒãƒ—ã‚’æŒ‡å®šã—ãã®ä¸­ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«ï¼‘ã¤å†ç”Ÿ
         /// </summary>
         /// <param name="clipNames"></param>
         /// <param name="playType"></param>
@@ -168,7 +168,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒ{ƒŠƒ…[ƒ€‚Ìİ’è
+        /// ãƒœãƒªãƒ¥ãƒ¼ãƒ ã®è¨­å®š
         /// </summary>
         /// <param name="value"></param>
         public void VolumeChange(float value)
@@ -180,7 +180,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// Voice‚ğƒ~ƒ…[ƒg‚É‚·‚é‚©‚Ç‚¤‚©
+        /// Voiceã‚’ãƒŸãƒ¥ãƒ¼ãƒˆã«ã™ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         /// <param name="value"></param>
         public void VoiceMute(bool value)

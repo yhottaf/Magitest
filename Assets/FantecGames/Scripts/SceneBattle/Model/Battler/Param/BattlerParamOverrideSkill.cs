@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -7,7 +7,7 @@ namespace fantec.Battle.Model
 {
     public class BattlerParamOverrideSkill : IBattlerParamOverrideSkill
     {
-        // •Û—L‚µ‚Ä‚¢‚éÅ‘å‚ÌƒXƒLƒ‹”BƒI[ƒoƒ‰ƒCƒh`ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh‚Ì4í
+        // ä¿æœ‰ã—ã¦ã„ã‚‹æœ€å¤§ã®ã‚¹ã‚­ãƒ«æ•°ã€‚ã‚ªãƒ¼ãƒãƒ©ã‚¤ãƒ‰ï½ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã®4ç¨®
         public const int RESEREVE_MAX_COUNT = 4;
         public IObservable<bool> OnIsReserveReactive => m_IsReserveReactive;
         public IObservable<bool> OnIsSealedReactive => m_IsSealedReactive;
@@ -74,7 +74,7 @@ namespace fantec.Battle.Model
 
         public void Consume()
         {
-            m_IsReserveReactive.Value = false;          // —\–ñó‘Ô‰ğœ
+            m_IsReserveReactive.Value = false;          // äºˆç´„çŠ¶æ…‹è§£é™¤
 
             m_CutinSubject.OnNext(m_Entity);
         }
@@ -109,9 +109,9 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// ƒI[ƒo[ƒhƒ‰ƒCƒu‚Ì—\–ñ
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ–ã®äºˆç´„
         /// </summary>
-        /// <param name="originIds"> ˆÚ“®æ‚É‚¢‚éƒ†ƒjƒbƒg‚ÌŒÅ—LID‚ª“ü‚Á‚Ä‚­‚é </param>
+        /// <param name="originIds"> ç§»å‹•å…ˆã«ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã®å›ºæœ‰IDãŒå…¥ã£ã¦ãã‚‹ </param>
         public void SetEntity(int[]originIds)
         {
             m_Entity = null;
@@ -119,28 +119,28 @@ namespace fantec.Battle.Model
             {
                 foreach(var entity in m_EntityList)
                 {
-                    // ”­“®‚É•K—v‚ÈƒŠƒXƒg‚ªˆÚ“®—\’è‚É‚¢‚éƒ†ƒjƒbƒgID‚ÆŠ®‘S‚Éˆê’v‚µ‚Ä‚¢‚½‚çA
-                    // ‚»‚ÌƒI[ƒo[ƒhƒ‰ƒCƒu‚ğg—p‚·‚é
+                    // ç™ºå‹•ã«å¿…è¦ãªãƒªã‚¹ãƒˆãŒç§»å‹•äºˆå®šã«ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆIDã¨å®Œå…¨ã«ä¸€è‡´ã—ã¦ã„ãŸã‚‰ã€
+                    // ãã®ã‚ªãƒ¼ãƒãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ–ã‚’ä½¿ç”¨ã™ã‚‹
                     var originSet = new HashSet<int>(originIds);
                     var triggerSet = new HashSet<int>(entity.triggerCardOriginId);
 
-                    if (originSet.SetEquals(triggerSet)) // Š®‘Sˆê’vi‡•s“¯j
+                    if (originSet.SetEquals(triggerSet)) // å®Œå…¨ä¸€è‡´ï¼ˆé †ä¸åŒï¼‰
                     {
                         m_Entity = entity;
                         break;
                     }
                 }
 
-                // “Á’è‚Ìí—Ş‚Ìƒ†ƒjƒbƒg“¯m‚ªd‚È‚ç‚È‚©‚Á‚½ê‡
+                // ç‰¹å®šã®ç¨®é¡ã®ãƒ¦ãƒ‹ãƒƒãƒˆåŒå£«ãŒé‡ãªã‚‰ãªã‹ã£ãŸå ´åˆ
                 if (m_Entity==null) 
                 {
-                    if (originIds.Length.Equals(2))// 2–‡ˆÈãd‚È‚Á‚½‚à‚Ì‚ªŒŸo‚³‚ê‚½‚È‚ç
+                    if (originIds.Length.Equals(2))// 2æšä»¥ä¸Šé‡ãªã£ãŸã‚‚ã®ãŒæ¤œå‡ºã•ã‚ŒãŸãªã‚‰
                     {
-                        m_Entity = m_EntityList[0];// ”­“®—\’è‚ğƒI[ƒo[ƒ‰ƒCƒh‚É (ì‚è‚ğ•Ï‚¦‚é•K—v‚ ‚è) 
+                        m_Entity = m_EntityList[0];// ç™ºå‹•äºˆå®šã‚’ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã« (ä½œã‚Šã‚’å¤‰ãˆã‚‹å¿…è¦ã‚ã‚Š) 
                     }
-                    else if(originIds.Length.Equals(3)) // ƒJ[ƒh‚ª”í‚ç‚¸3–‡d‚È‚Á‚Ä‚¢‚½‚ç
+                    else if(originIds.Length.Equals(3)) // ã‚«ãƒ¼ãƒ‰ãŒè¢«ã‚‰ãš3æšé‡ãªã£ã¦ã„ãŸã‚‰
                     {
-                        m_Entity = m_EntityList[2]; // ”­“®—\’è‚ğƒ[ƒ^‚Éİ’è
+                        m_Entity = m_EntityList[2]; // ç™ºå‹•äºˆå®šã‚’ã‚¼ã‚¿ã«è¨­å®š
                     }
                 }
             }

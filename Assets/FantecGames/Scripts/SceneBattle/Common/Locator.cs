@@ -1,30 +1,30 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 using System;
 
 namespace fantec.Battle
 {
     /// <summary>
-    /// ƒT[ƒrƒXƒƒP[ƒ^[
+    /// ã‚µãƒ¼ãƒ“ã‚¹ãƒ­ã‚±ãƒ¼ã‚¿ãƒ¼
     /// </summary>
     public static class Locator
     {
         /// <summary>
-        /// ’PˆêƒCƒ“ƒXƒ^ƒ“ƒX—pƒfƒBƒNƒVƒ‡ƒiƒŠ[
+        /// å˜ä¸€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ç”¨ãƒ‡ã‚£ã‚¯ã‚·ãƒ§ãƒŠãƒªãƒ¼
         /// </summary>
         private static Dictionary<Type, object> _instanceDict = new Dictionary<Type, object>();
 
         /// <summary>
-        /// ’PˆêƒCƒ“ƒXƒ^ƒ“ƒX‚ğ“o˜^‚·‚é
-        /// ŒÄ‚Ño‚·‚Æã‘‚«“o˜^‚·‚é
+        /// å˜ä¸€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’ç™»éŒ²ã™ã‚‹
+        /// å‘¼ã³å‡ºã™ã¨ä¸Šæ›¸ãç™»éŒ²ã™ã‚‹
         /// </summary>
         /// <typeparam name="T"></typeparam>
-        /// <param name="instance">ƒCƒ“ƒXƒ^ƒ“ƒX</param>
+        /// <param name="instance">ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</param>
         public static void Register<T>(T instance)where T : ILocatable
         {
             if(_instanceDict.ContainsKey(typeof(T)))
             {
-                Debug.Log($"{typeof(T)} ‚Ö‚Ìã‘‚«“o˜^‚ªs‚í‚ê‚Ü‚µ‚½B");
+                Debug.Log($"{typeof(T)} ã¸ã®ä¸Šæ›¸ãç™»éŒ²ãŒè¡Œã‚ã‚Œã¾ã—ãŸã€‚");
             }
             else
             {
@@ -33,10 +33,10 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œ^‚ğw’è‚µ‚Ä“o˜^‚³‚ê‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ“¾‚·‚é
+        /// å‹ã‚’æŒ‡å®šã—ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–å¾—ã™ã‚‹
         /// </summary>
-        /// <typeparam name="T">Œ^</typeparam>
-        /// <returns>ƒCƒ“ƒXƒ^ƒ“ƒX</returns>
+        /// <typeparam name="T">å‹</typeparam>
+        /// <returns>ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹</returns>
         public static T Resolve<T>() where T : class
         {
             Type type= typeof(T);
@@ -44,7 +44,7 @@ namespace fantec.Battle
             T instance;
             if(_instanceDict.ContainsKey(type))
             {
-                // –‘O‚É¶¬‚³‚ê‚½’PˆêƒCƒ“ƒXƒ^ƒ“ƒX‚ğ•Ô‚·
+                // äº‹å‰ã«ç”Ÿæˆã•ã‚ŒãŸå˜ä¸€ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’è¿”ã™
                 instance = _instanceDict[type] as T;
                 return instance;
             }
@@ -55,7 +55,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œ^‚ğw’è‚µ‚Ä“o˜^‚³‚ê‚Ä‚¢‚éƒCƒ“ƒXƒ^ƒ“ƒX‚ğæ‚èœ‚­
+        /// å‹ã‚’æŒ‡å®šã—ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã‚’å–ã‚Šé™¤ã
         /// </summary>
         /// <typeparam name="T"></typeparam>
         public static void Remove<T>() where T: ILocatable
@@ -64,7 +64,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// “o˜^’†‚Ì‚à‚Ì‚ğ‚·‚×‚ÄDispose
+        /// ç™»éŒ²ä¸­ã®ã‚‚ã®ã‚’ã™ã¹ã¦Dispose
         /// </summary>
         public static void Dispose()
         {
@@ -76,7 +76,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// “o˜^’†‚Ì‚à‚Ì‚ğ‚·‚×‚Äæ‚èœ‚­
+        /// ç™»éŒ²ä¸­ã®ã‚‚ã®ã‚’ã™ã¹ã¦å–ã‚Šé™¤ã
         /// </summary>
         public static void Clear()
         {

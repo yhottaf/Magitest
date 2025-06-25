@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using fantec.Battle.Model;
 using fantec.Common;
@@ -14,7 +14,7 @@ namespace fantec.Battle.Manager
     {
         public class FlowWaveSetup : FlowBase
         {
-            // TODO : Œ»İ‚±‚±‚Ü‚Å‚ÌƒEƒF[ƒu‘JˆÚ‚ªs‚í‚ê‚Ä‚¢‚éB
+            // TODO : ç¾åœ¨ã“ã“ã¾ã§ã®ã‚¦ã‚§ãƒ¼ãƒ–é·ç§»ãŒè¡Œã‚ã‚Œã¦ã„ã‚‹ã€‚
             public override void OnEnter(BattleFlowManager manager, FlowBase prevFlow)
             {
                 UniTask.Void(async () =>
@@ -26,10 +26,10 @@ namespace fantec.Battle.Manager
 
                     var cts = manager.m_OnDestroyCancellationToken;
 
-                    // ƒŠƒ[ƒh
+                    // ãƒªãƒ­ãƒ¼ãƒ‰
                     modelUnits.Reload();
 
-                    // ƒXƒe[ƒWXV
+                    // ã‚¹ãƒ†ãƒ¼ã‚¸æ›´æ–°
                     modelStage.UpdateMember();
 
                     var EnemyDatas = modelStage.CurrentWaveTeamData;
@@ -45,28 +45,28 @@ namespace fantec.Battle.Manager
                         await resourceManager.CasheSpriteAsync(CutinSpritePath, cts);
                     }
 
-                    //“Gƒ`[ƒ€İ’è
+                    //æ•µãƒãƒ¼ãƒ è¨­å®š
                     modelUnits.SetEnemyTeam(modelStage.CurrentWaveTeamData);
-                    // UŒ‚‡˜‚ğXV
+                    // æ”»æ’ƒé †åºã‚’æ›´æ–°
                     modelAdvent.SortBySpeed();
 
 
-                    //”»’èŒã‚©“üêŒã‚Å‚ ‚ê‚Î
+                    //åˆ¤å®šå¾Œã‹å…¥å ´å¾Œã§ã‚ã‚Œã°
                     if(prevFlow.GetType()==typeof(FlowJudge)||
                         prevFlow.GetType()==typeof(FlowAdmission))
                     {
-                        // BGM‚ğÄ¶
+                        // BGMã‚’å†ç”Ÿ
                         Locator.Resolve<IBattleSoundManager>().PlayBgm(modelStage.GetBattleBgmName());
                     }
 
-                    // ƒ{ƒXƒEƒF[ƒu‚Å‚ ‚ê‚Î
+                    // ãƒœã‚¹ã‚¦ã‚§ãƒ¼ãƒ–ã§ã‚ã‚Œã°
                     if (modelStage.IsBossWave)
                     {
 
                     }
                     else
                     {
-                        // ’Êí‚ÌƒEƒF[ƒu”•\¦ƒAƒjƒ[ƒVƒ‡ƒ“Ä¶
+                        // é€šå¸¸ã®ã‚¦ã‚§ãƒ¼ãƒ–æ•°è¡¨ç¤ºã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å†ç”Ÿ
                         OnChangeFlow(manager);
                     }
                 });
@@ -77,7 +77,7 @@ namespace fantec.Battle.Manager
                 var sequence = DOTween.Sequence();
 
                 sequence.AppendInterval(2.5f);
-                // ’Êíí“¬‚Ö
+                // é€šå¸¸æˆ¦é—˜ã¸
                 sequence.AppendCallback(() =>
                 {
                     manager.ChangeFlow<FlowCombat>();

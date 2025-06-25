@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using UnityEngine;
 
 namespace fantec.Battle.Manager.Pool
@@ -12,18 +12,18 @@ namespace fantec.Battle.Manager.Pool
 
         public virtual IndexingPopNumeralObject Setup(int num)
         {
-            // ƒTƒCƒY’²®
+            // ã‚µã‚¤ã‚ºèª¿æ•´
             this.transform.localScale = Vector3.one;
             var startPos = this.transform.localPosition;
-            // ƒpƒX‚Ì’è‹`F‰Eã ¨ ‰E’† ¨ ‰E‰ºi”¼‰~•—j
+            // ãƒ‘ã‚¹ã®å®šç¾©ï¼šå³ä¸Š â†’ å³ä¸­ â†’ å³ä¸‹ï¼ˆåŠå††é¢¨ï¼‰
             var path = new Vector3[]
             {
-    startPos + new Vector3(0.5f,  1.2f, 0f),  // ‰Eã
-    startPos + new Vector3(1.0f,  1.0f, 0f),  // ’†‰›
-    startPos + new Vector3(1.1f,  0.9f, 0f),  // ‰E‰ºi—‚¿‚éj
+    startPos + new Vector3(0.5f,  1.2f, 0f),  // å³ä¸Š
+    startPos + new Vector3(1.0f,  1.0f, 0f),  // ä¸­å¤®
+    startPos + new Vector3(1.1f,  0.9f, 0f),  // å³ä¸‹ï¼ˆè½ã¡ã‚‹ï¼‰
             };
 
-            // “Áê‰‰o’†‚ÉÄ¶‚³‚ê‚½ê‡
+            // ç‰¹æ®Šæ¼”å‡ºä¸­ã«å†ç”Ÿã•ã‚ŒãŸå ´åˆ
             if (base.m_IsDirectingPause)
             {
                 base.SetThroughDirectingPause(true);
@@ -31,7 +31,7 @@ namespace fantec.Battle.Manager.Pool
             }
             else 
             {
-                // İ’è‚ğ–ß‚·
+                // è¨­å®šã‚’æˆ»ã™
                 base.SetThroughDirectingPause(false);
                 base.m_SortingGroup.sortingLayerName = BD.SortingLayer.NAME_FIELD_DEFAULT;
             }

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Menu.Manager;
 using fantec.PlayFabClient;
@@ -21,8 +21,8 @@ namespace fantec.Menu.PartySortie
         [SerializeField]
         private List<GameObject> TargetPosition;
         [SerializeField]
-        private List<Image> TargetImage; // ”z’uêŠ‚ÌƒŒƒC‚ğ“–‚Ä‚é‚½‚ß‚ÌImageComponent
-                                         // ƒp[ƒeƒB[‚Ì•ÏX‚ğ’Ê’m‚·‚éSubject
+        private List<Image> TargetImage; // é…ç½®å ´æ‰€ã®ãƒ¬ã‚¤ã‚’å½“ã¦ã‚‹ãŸã‚ã®ImageComponent
+                                         // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®å¤‰æ›´ã‚’é€šçŸ¥ã™ã‚‹Subject
         public Subject<List<Tuple<int, List<int>>>> changeCardData = new Subject<List<Tuple<int, List<int>>>>();
 
         private int? m_CurrentDraggingIndex = null;
@@ -35,10 +35,10 @@ namespace fantec.Menu.PartySortie
                 int cellIndex = i;
                 var obj = m_CharaObjects[cellIndex];
 
-                // ‰‰ñw“Ç
+                // åˆå›è³¼èª­
                 RegisterInputHandlers(cellIndex);
 
-                // GameObject ‚ª—LŒø‰»‚³‚ê‚½‚Æ‚«‚ÉÄw“Ç
+                // GameObject ãŒæœ‰åŠ¹åŒ–ã•ã‚ŒãŸã¨ãã«å†è³¼èª­
                 obj.OnEnableAsObservable()
                     .Subscribe(_ =>
                     {
@@ -52,12 +52,12 @@ namespace fantec.Menu.PartySortie
         {
             if (m_CurrentDraggingIndex.HasValue)
             {
-                // ’·‰Ÿ‚µ‚Å¶¬‚³‚ê‚éƒS[ƒXƒg‚ÌˆÊ’u‚ÌXV
+                // é•·æŠ¼ã—ã§ç”Ÿæˆã•ã‚Œã‚‹ã‚´ãƒ¼ã‚¹ãƒˆã®ä½ç½®ã®æ›´æ–°
 
                 Vector3 mouseWorldPos = Input.mousePosition;
                 mouseWorldPos.z = 0f;
 
-                // Canvas‚É‡‚í‚¹‚½•ÏŠ·iWorldSpace‚Å‚â‚éê‡‚ÍƒJƒƒ‰‚ª•K—vj
+                // Canvasã«åˆã‚ã›ãŸå¤‰æ›ï¼ˆWorldSpaceã§ã‚„ã‚‹å ´åˆã¯ã‚«ãƒ¡ãƒ©ãŒå¿…è¦ï¼‰
                 Vector3 worldPos = Camera.main.ScreenToWorldPoint(mouseWorldPos);
                 worldPos.z = 0;
 
@@ -66,11 +66,11 @@ namespace fantec.Menu.PartySortie
         }
 
         /// <summary>
-        /// ’·‰Ÿ‚µ‚Ìˆ—
+        /// é•·æŠ¼ã—æ™‚ã®å‡¦ç†
         /// </summary>
         private void OnLongTap(int cellIndex)
         {
-            // SEÄ¶ˆ—H
+            // SEå†ç”Ÿå‡¦ç†ï¼Ÿ
             foreach (var obj in TargetImage)
             {
                 obj.raycastTarget = true;
@@ -80,12 +80,12 @@ namespace fantec.Menu.PartySortie
         }
 
         /// <summary>
-        /// ’·‰Ÿ‚µ‚ğ—£‚µ‚½‚Æ‚«
+        /// é•·æŠ¼ã—ã‚’é›¢ã—ãŸã¨ã
         /// </summary>
         /// <param name="cellIndex"></param>
         private async void OnLongTapEnd(int cellIndex)
         {
-            // PointerEventData ‚ğæ“¾‚µ‚Ä Raycast Œ‹‰Ê‚©‚çƒqƒbƒg‚µ‚½ UI ‚ğ“Á’è
+            // PointerEventData ã‚’å–å¾—ã—ã¦ Raycast çµæœã‹ã‚‰ãƒ’ãƒƒãƒˆã—ãŸ UI ã‚’ç‰¹å®š
             PointerEventData eventData = new PointerEventData(UnityEngine.EventSystems.EventSystem.current)
             {
                 position = Input.mousePosition
@@ -100,17 +100,17 @@ namespace fantec.Menu.PartySortie
                 {
                     if (result.gameObject == TargetImage[i].gameObject)
                     {
-                        // ƒ^ƒbƒv‚µ‚Ä‚¢‚½Magi
+                        // ã‚¿ãƒƒãƒ—ã—ã¦ã„ãŸMagi
                         CardData Tapcard = CardManager.GetCardData(GetCardId(cellIndex));
 
-                        // Šù‚É‚»‚ÌˆÊ’u‚ğg‚Á‚Ä‚¢‚éMagi‚ª‚¢‚é‚©Šm”F
+                        // æ—¢ã«ãã®ä½ç½®ã‚’ä½¿ã£ã¦ã„ã‚‹MagiãŒã„ã‚‹ã‹ç¢ºèª
                         int? targetIndex = null;
                         for (int j = 0; j < m_CharaObjects.Count; j++)
                         {
                             if (j == cellIndex) continue;
 
                             int cardId = GetCardId(j);
-                            if (cardId == -1 || cardId == 0) continue; // -1 ‚Ü‚½‚Í 0 ‚Ìê‡‚ÍƒXƒLƒbƒv
+                            if (cardId == -1 || cardId == 0) continue; // -1 ã¾ãŸã¯ 0 ã®å ´åˆã¯ã‚¹ã‚­ãƒƒãƒ—
 
                             if (m_CharaObjects[j].PositionIndex == i)
                             {
@@ -121,58 +121,58 @@ namespace fantec.Menu.PartySortie
 
                         List<Tuple<int, List<int>>> updatedCardData = new List<Tuple<int, List<int>>>();
 
-                        //@—£‚µ‚½êŠ‚É•Ê‚ÌMagi‚ªŠù‚É”z’u‚³‚ê‚Ä‚¢‚½ê‡B
+                        //ã€€é›¢ã—ãŸå ´æ‰€ã«åˆ¥ã®MagiãŒæ—¢ã«é…ç½®ã•ã‚Œã¦ã„ãŸå ´åˆã€‚
                         if (targetIndex.HasValue)
                         {
-                            // “ü‚ê‘Ö‚¦ˆ—
+                            // å…¥ã‚Œæ›¿ãˆå‡¦ç†
                             int swapIndex = targetIndex.Value;
                             CardData swapCard = CardManager.GetCardData(GetCardId(swapIndex));
 
                             int draggingOld = Tapcard.positionIndex[PlayerPrefsManager.SelectPartyIndex];
                             int swapOld = swapCard.positionIndex[PlayerPrefsManager.SelectPartyIndex];
 
-                            // “ü‚ê‘Ö‚¦
+                            // å…¥ã‚Œæ›¿ãˆ
                             Tapcard.positionIndex[PlayerPrefsManager.SelectPartyIndex] = swapOld;
                             swapCard.positionIndex[PlayerPrefsManager.SelectPartyIndex] = draggingOld;
 
                             m_CharaObjects[cellIndex].SetPositionIndex(swapOld);
                             m_CharaObjects[swapIndex].SetPositionIndex(draggingOld);
 
-                            // SpineˆÊ’uXV
+                            // Spineä½ç½®æ›´æ–°
                             m_CharaObjects[cellIndex].transform.position = TargetPosition[swapOld].transform.position;
                             m_CharaObjects[swapIndex].transform.position = TargetPosition[draggingOld].transform.position;
 
-                            // ƒT[ƒo[‚Ö•Û‘¶
+                            // ã‚µãƒ¼ãƒãƒ¼ã¸ä¿å­˜
                             await UniTask.WhenAll(
                                 CardManager.UpdateCardPositionIndex(Tapcard.cardId, Tapcard.positionIndex),
                                 CardManager.UpdateCardPositionIndex(swapCard.cardId, swapCard.positionIndex)
                             );
 
-                            // XVƒf[ƒ^‚ğƒŠƒXƒg‚É’Ç‰Á
+                            // æ›´æ–°ãƒ‡ãƒ¼ã‚¿ã‚’ãƒªã‚¹ãƒˆã«è¿½åŠ 
                             updatedCardData.Add(new Tuple<int, List<int>>(Tapcard.cardId, Tapcard.positionIndex));
                             updatedCardData.Add(new Tuple<int, List<int>>(swapCard.cardId, swapCard.positionIndex));
 
-                            Debug.Log($"ƒJ[ƒhID {Tapcard.cardId} ‚Æ {swapCard.cardId} ‚Ì positionIndex ‚ğ“ü‚ê‘Ö‚¦‚Ü‚µ‚½");
+                            Debug.Log($"ã‚«ãƒ¼ãƒ‰ID {Tapcard.cardId} ã¨ {swapCard.cardId} ã® positionIndex ã‚’å…¥ã‚Œæ›¿ãˆã¾ã—ãŸ");
                         }
                         else
                         {
-                            // ’Êí”z’ui•ÏX‚ª‚ ‚éê‡‚Ì‚İj
+                            // é€šå¸¸é…ç½®ï¼ˆå¤‰æ›´ãŒã‚ã‚‹å ´åˆã®ã¿ï¼‰
                             if (Tapcard.positionIndex[PlayerPrefsManager.SelectPartyIndex] != i)
                             {
                                 Tapcard.positionIndex[PlayerPrefsManager.SelectPartyIndex] = i;
                                 m_CharaObjects[cellIndex].SetPositionIndex(i);
 
-                                // ƒT[ƒo[‚É•ÏX‚ğ‘—M
+                                // ã‚µãƒ¼ãƒãƒ¼ã«å¤‰æ›´ã‚’é€ä¿¡
                                 await CardManager.UpdateCardPositionIndex(Tapcard.cardId, Tapcard.positionIndex);
                                 m_CharaObjects[cellIndex].transform.position = TargetPosition[i].transform.position;
 
                                 updatedCardData.Add(new Tuple<int, List<int>>(Tapcard.cardId, Tapcard.positionIndex));
 
-                                Debug.Log($"ƒJ[ƒhID {Tapcard.cardId} ‚Ì ˆÊ’u ‚ğ {i + 1}”Ô–Ú ‚Éİ’è‚µ‚Ü‚µ‚½");
+                                Debug.Log($"ã‚«ãƒ¼ãƒ‰ID {Tapcard.cardId} ã® ä½ç½® ã‚’ {i + 1}ç•ªç›® ã«è¨­å®šã—ã¾ã—ãŸ");
                             }
                             else
                             {
-                                //Debug.LogWarning($"ˆÊ’u {i+1}”Ô–Ú ‚Í‘O‰ñ‚Æ“¯‚¶êŠ‚È‚Ì‚Å•ÏX‚µ‚Ü‚¹‚ñ‚Å‚µ‚½B");
+                                //Debug.LogWarning($"ä½ç½® {i+1}ç•ªç›® ã¯å‰å›ã¨åŒã˜å ´æ‰€ãªã®ã§å¤‰æ›´ã—ã¾ã›ã‚“ã§ã—ãŸã€‚");
                             }
                         }
 
@@ -181,7 +181,7 @@ namespace fantec.Menu.PartySortie
                             changeCardData.OnNext(updatedCardData);
                         }
 
-                        // •ÏXˆ—‚ªI‚í‚Á‚½‚ ‚Æ‚É9‚Â‚Ìƒ}ƒX‚ÌƒŒƒCƒLƒƒƒXƒg‚ğƒIƒt‚É‚·‚é
+                        // å¤‰æ›´å‡¦ç†ãŒçµ‚ã‚ã£ãŸã‚ã¨ã«9ã¤ã®ãƒã‚¹ã®ãƒ¬ã‚¤ã‚­ãƒ£ã‚¹ãƒˆã‚’ã‚ªãƒ•ã«ã™ã‚‹
                         foreach (var obj in TargetImage)
                         {
                             obj.raycastTarget = false;
@@ -191,7 +191,7 @@ namespace fantec.Menu.PartySortie
                     }
                 }
             }
-            // ’·‰Ÿ‚µ‚ğ—£‚µ‚½êŠ‚ª‰½‚à‚È‚©‚Á‚½ê‡A‚»‚Ì‚Ü‚Ü9‚Â‚Ìƒ}ƒX‚ÌƒŒƒCƒLƒƒƒXƒg‚ğƒIƒt‚Éİ’è
+            // é•·æŠ¼ã—ã‚’é›¢ã—ãŸå ´æ‰€ãŒä½•ã‚‚ãªã‹ã£ãŸå ´åˆã€ãã®ã¾ã¾9ã¤ã®ãƒã‚¹ã®ãƒ¬ã‚¤ã‚­ãƒ£ã‚¹ãƒˆã‚’ã‚ªãƒ•ã«è¨­å®š
             foreach (var obj in TargetImage)
             {
                 obj.raycastTarget = false;
@@ -199,13 +199,13 @@ namespace fantec.Menu.PartySortie
         }
 
         /// <summary>
-        /// Œ©‚½–Ú‚Ì•ÏX
+        /// è¦‹ãŸç›®ã®å¤‰æ›´
         /// </summary>
         public async UniTask PartySetting(int PartyID,CancellationToken cts)
         {
             PartyData partyData = UserDataManager.PartyList[PartyID];
 
-            // ˆê•Û‘¶—p
+            // ä¸€æ™‚ä¿å­˜ç”¨
             List<int> positionIndexes = new List<int>();
             List<CardData> cardDatas = new List<CardData>();
 
@@ -229,15 +229,15 @@ namespace fantec.Menu.PartySortie
                           positionIndex: new List<int> { dummyPosition, dummyPosition, dummyPosition, dummyPosition, dummyPosition });
 
                     cardDatas.Add(dummyData);
-                    positionIndexes.Add(dummyPosition);// ‰¼‚Ì”’l
+                    positionIndexes.Add(dummyPosition);// ä»®ã®æ•°å€¤
                     m_CharaObjects[i].gameObject.SetActive(false);
                 }
             }
 
 
-            //ƒ_ƒ~[‚ÌêŠˆÈŠO‚Ì“¯‚¶”’l‚ª‚P‚Â‚Å‚à”í‚Á‚Ä‚¢‚½‚çtrue 
+            //ãƒ€ãƒŸãƒ¼ã®å ´æ‰€ä»¥å¤–ã®åŒã˜æ•°å€¤ãŒï¼‘ã¤ã§ã‚‚è¢«ã£ã¦ã„ãŸã‚‰true 
             bool anyValue = positionIndexes
-                                   .Where(x => x != dummyPosition) // ƒ_ƒ~[‚ÌêŠ‚ÍœŠO
+                                   .Where(x => x != dummyPosition) // ãƒ€ãƒŸãƒ¼ã®å ´æ‰€ã¯é™¤å¤–
                                    .GroupBy(x => x)
                                    .Any(g => g.Count() > 1); 
 
@@ -251,10 +251,10 @@ namespace fantec.Menu.PartySortie
                 }
             }
 
-            // •À—ñ‚ÅSettings‚ğÀs
+            // ä¸¦åˆ—ã§Settingsã‚’å®Ÿè¡Œ
             var settingTasks = new List<UniTask>();
 
-            // ÅI“I‚Èİ’è”½‰f
+            // æœ€çµ‚çš„ãªè¨­å®šåæ˜ 
             for (int i = 0; i < m_CharaObjects.Count; i++)
             {
                 int index = i;
@@ -267,7 +267,7 @@ namespace fantec.Menu.PartySortie
 
 
 
-            // transform.position‚Ìİ’èiSettingsŒã‚És‚¤j
+            // transform.positionã®è¨­å®šï¼ˆSettingså¾Œã«è¡Œã†ï¼‰
             for (int i = 0; i < m_CharaObjects.Count; i++)
             {
                 if (cardDatas[i].positionIndex[0] == 9)
@@ -279,12 +279,12 @@ namespace fantec.Menu.PartySortie
             }
         }
 
-        // ˆêŠ‡‚Å•Ò¬‚É•K—v‚Èî•ñ‚ğPlayFab‚É•Û‘¶‚·‚é
+        // ä¸€æ‹¬ã§ç·¨æˆã«å¿…è¦ãªæƒ…å ±ã‚’PlayFabã«ä¿å­˜ã™ã‚‹
         public async UniTask PartySlotSave(int PartyID)
         {
             PartyData partyData = UserDataManager.PartyList[PartyID];
 
-            // ˆê•Û‘¶—p
+            // ä¸€æ™‚ä¿å­˜ç”¨
             List<int> positionIndexes = new List<int>();
             List<CardData> cardDatas = new List<CardData>();
 
@@ -307,12 +307,12 @@ namespace fantec.Menu.PartySortie
                           positionIndex: new List<int> { dummyPosition, dummyPosition, dummyPosition, dummyPosition, dummyPosition });
 
                     cardDatas.Add(dummyData);
-                    positionIndexes.Add(100);// ‰¼‚Ì”’l
+                    positionIndexes.Add(100);// ä»®ã®æ•°å€¤
                     m_CharaObjects[i].gameObject.SetActive(false);
                 }
             }
 
-            // UIİ’è‚ÆTask‚Ì€”õ
+            // UIè¨­å®šã¨Taskã®æº–å‚™
             var updateTasks = new List<UniTask>();
 
             for (int i = 0; i < m_CharaObjects.Count; i++)
@@ -324,7 +324,7 @@ namespace fantec.Menu.PartySortie
                 updateTasks.Add(CardManager.UpdateCardPositionIndex(cardId, cardDatas[i].positionIndex));
             }
 
-            // ‚·‚×‚Ä‚ÌXV‚ğ•À—ñ‚Å‘Ò‚Â
+            // ã™ã¹ã¦ã®æ›´æ–°ã‚’ä¸¦åˆ—ã§å¾…ã¤
             await UniTask.WhenAll(updateTasks);
         }
 
@@ -342,14 +342,14 @@ namespace fantec.Menu.PartySortie
         {
             var obj = m_CharaObjects[cellIndex];
 
-            // w“Ç‚Ì‹£‡‚â‘½d“o˜^‚ğ–h‚®‚½‚ß‚ÉAˆê“x”jŠüiAddTo(obj)‚µ‚Ä‚¢‚ê‚Î©“®“I‚ÉOKj
+            // è³¼èª­ã®ç«¶åˆã‚„å¤šé‡ç™»éŒ²ã‚’é˜²ããŸã‚ã«ã€ä¸€åº¦ç ´æ£„ï¼ˆAddTo(obj)ã—ã¦ã„ã‚Œã°è‡ªå‹•çš„ã«OKï¼‰
             obj.OnPointerDownAsObservable
                 .Subscribe(_ =>
                 {
                     OnLongTap(cellIndex);
                     m_CurrentDraggingIndex = cellIndex;
                 })
-                .AddTo(this); // GameObject‚ÉƒoƒCƒ“ƒh‚µ‚ÄÄ“o˜^‚É©“®”jŠü
+                .AddTo(this); // GameObjectã«ãƒã‚¤ãƒ³ãƒ‰ã—ã¦å†ç™»éŒ²æ™‚ã«è‡ªå‹•ç ´æ£„
 
             obj.OnPointerUpAsObservable
                 .Subscribe(_ =>
@@ -360,12 +360,12 @@ namespace fantec.Menu.PartySortie
                 .AddTo(this);
         }
 
-        // Œ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ìƒp[ƒeƒB‚Ì’†‚Å’N‚ªƒŠ[ƒ_[‚È‚Ì‚©A‚»‚ÌƒJ[ƒhID‚ğ•Ô‚·
+        // ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ‘ãƒ¼ãƒ†ã‚£ã®ä¸­ã§èª°ãŒãƒªãƒ¼ãƒ€ãƒ¼ãªã®ã‹ã€ãã®ã‚«ãƒ¼ãƒ‰IDã‚’è¿”ã™
         public int GetLeaderCardID()
         {
             int leaderCardId = -1;
             PartyData partyData = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex];
-            // Å‰‚É -1 ‚Å‚È‚¢ƒJ[ƒhID‚ğ’T‚·
+            // æœ€åˆã« -1 ã§ãªã„ã‚«ãƒ¼ãƒ‰IDã‚’æ¢ã™
             for (int i = 0; i < partyData.MemberList.Count; i++)
             {
                 if (partyData.MemberList[i] != -1)
@@ -374,7 +374,7 @@ namespace fantec.Menu.PartySortie
                     break;
                 }
             }
-            Debug.Log($"ƒŠ[ƒ_[‚Í {leaderCardId} ‚Å‚·");
+            Debug.Log($"ãƒªãƒ¼ãƒ€ãƒ¼ã¯ {leaderCardId} ã§ã™");
             return leaderCardId;
         }
     }

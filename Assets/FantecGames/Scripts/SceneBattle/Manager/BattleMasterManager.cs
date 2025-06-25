@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Master;
 using fantec.Common;
 using Cysharp.Threading.Tasks;
@@ -36,7 +36,7 @@ namespace fantec.Battle.Manager
 
         public async UniTask LoadAsync(CancellationToken cts)
         {
-            // TODO : ƒT[ƒo[‚©‚ç“Ç‚İ‚İ‚Æ‚Ì•ªŠò
+            // TODO : ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰èª­ã¿è¾¼ã¿ã¨ã®åˆ†å²
             await MasterDataManager.Instance.LoadMasterDataForLocalAsync(cts);
         }
     }

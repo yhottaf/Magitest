@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
@@ -6,59 +6,59 @@ using UnityEngine;
 namespace fantec
 {
     /// <summary>
-    /// <see cref="JsonUtility"/> ‚É•s‘«‚µ‚Ä‚¢‚é‹@”\‚ğ’ñ‹Ÿ‚µ‚Ü‚·B
+    /// <see cref="JsonUtility"/> ã«ä¸è¶³ã—ã¦ã„ã‚‹æ©Ÿèƒ½ã‚’æä¾›ã—ã¾ã™ã€‚
     /// </summary>
     public static class JsonHelper
     {
         /// <summary>
-        /// w’è‚µ‚½ string ‚ğ Root ƒIƒuƒWƒFƒNƒg‚ğ‚½‚È‚¢ JSON ”z—ñ‚Æ‰¼’è‚µ‚ÄƒfƒVƒŠƒAƒ‰ƒCƒY‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸ string ã‚’ Root ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒãŸãªã„ JSON é…åˆ—ã¨ä»®å®šã—ã¦ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã¾ã™ã€‚
         /// </summary>
         public static T[] FromJson<T>(string json)
         {
-            // ƒ‹[ƒg—v‘f‚ª‚ ‚ê‚Î•ÏŠ·‚Å‚«‚é‚Ì‚Å
-            // “ü—Í‚³‚ê‚½JSON‚É‘Î‚µ‚Ä(š)‚Ìs‚ğ’Ç‰Á‚·‚é
+            // ãƒ«ãƒ¼ãƒˆè¦ç´ ãŒã‚ã‚Œã°å¤‰æ›ã§ãã‚‹ã®ã§
+            // å…¥åŠ›ã•ã‚ŒãŸJSONã«å¯¾ã—ã¦(â˜…)ã®è¡Œã‚’è¿½åŠ ã™ã‚‹
             //
             // e.g.
-            // š {
-            // š     "array":
+            // â˜… {
+            // â˜…     "array":
             //        [
             //            ...
             //        ]
-            // š }
+            // â˜… }
             //
             string dummy_json = $"{{\"{DummyNode<T>.ROOT_NAME}\": {json}}}";
 
-            // ƒ_ƒ~[‚Ìƒ‹[ƒg‚ÉƒfƒVƒŠƒAƒ‰ƒCƒY‚µ‚Ä‚©‚ç’†g‚Ì”z—ñ‚ğ•Ô‚·
+            // ãƒ€ãƒŸãƒ¼ã®ãƒ«ãƒ¼ãƒˆã«ãƒ‡ã‚·ãƒªã‚¢ãƒ©ã‚¤ã‚ºã—ã¦ã‹ã‚‰ä¸­èº«ã®é…åˆ—ã‚’è¿”ã™
             var obj = JsonUtility.FromJson<DummyNode<T>>(dummy_json);
             return obj.array;
         }
 
         /// <summary>
-        /// w’è‚µ‚½”z—ñ‚âƒŠƒXƒg‚È‚Ç‚ÌƒRƒŒƒNƒVƒ‡ƒ“‚ğ Root ƒIƒuƒWƒFƒNƒg‚ğ‚½‚È‚¢ JSON ”z—ñ‚É•ÏŠ·‚µ‚Ü‚·B
+        /// æŒ‡å®šã—ãŸé…åˆ—ã‚„ãƒªã‚¹ãƒˆãªã©ã®ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³ã‚’ Root ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’æŒãŸãªã„ JSON é…åˆ—ã«å¤‰æ›ã—ã¾ã™ã€‚
         /// </summary>
         /// <remarks>
-        /// 'prettyPrint' ‚É‚Í”ñ‘Î‰B®Œ`‚µ‚½‚©‚Á‚½‚ç•Ê“r•ÏŠ·‚µ‚ÄB
+        /// 'prettyPrint' ã«ã¯éå¯¾å¿œã€‚æ•´å½¢ã—ãŸã‹ã£ãŸã‚‰åˆ¥é€”å¤‰æ›ã—ã¦ã€‚
         /// </remarks>
         public static string ToJson<T>(IEnumerable<T> collection)
         {
-            string json = JsonUtility.ToJson(new DummyNode<T>(collection)); // ƒ_ƒ~[ƒ‹[ƒg‚²‚ÆƒVƒŠƒAƒ‹‰»‚·‚é
+            string json = JsonUtility.ToJson(new DummyNode<T>(collection)); // ãƒ€ãƒŸãƒ¼ãƒ«ãƒ¼ãƒˆã”ã¨ã‚·ãƒªã‚¢ãƒ«åŒ–ã™ã‚‹
             int start = DummyNode<T>.ROOT_NAME.Length + 4;
             int len = json.Length - start - 1;
-            return json.Substring(start, len); // ’Ç‰Áƒ‹[ƒg‚Ì•¶š‚ğæ‚èœ‚¢‚Ä•Ô‚·
+            return json.Substring(start, len); // è¿½åŠ ãƒ«ãƒ¼ãƒˆã®æ–‡å­—ã‚’å–ã‚Šé™¤ã„ã¦è¿”ã™
         }
 
-        // “à•”‚Åg—p‚·‚éƒ_ƒ~[‚Ìƒ‹[ƒg—v‘f
+        // å†…éƒ¨ã§ä½¿ç”¨ã™ã‚‹ãƒ€ãƒŸãƒ¼ã®ãƒ«ãƒ¼ãƒˆè¦ç´ 
         [Serializable]
         private struct DummyNode<T>
         {
-            // •â‘«:
-            // ˆ—’†‚Éˆêg—p‚·‚é”ñŒöŠJƒNƒ‰ƒX‚Ì‚½‚ß‘½­İŒv‚ª•Ï‚Å‚à‹C‚É‚µ‚È‚¢
+            // è£œè¶³:
+            // å‡¦ç†ä¸­ã«ä¸€æ™‚ä½¿ç”¨ã™ã‚‹éå…¬é–‹ã‚¯ãƒ©ã‚¹ã®ãŸã‚å¤šå°‘è¨­è¨ˆãŒå¤‰ã§ã‚‚æ°—ã«ã—ãªã„
 
-            // JSON‚É•t—^‚·‚éƒ_ƒ~[ƒ‹[ƒg‚Ì–¼Ì
+            // JSONã«ä»˜ä¸ã™ã‚‹ãƒ€ãƒŸãƒ¼ãƒ«ãƒ¼ãƒˆã®åç§°
             public const string ROOT_NAME = nameof(array);
-            // ‹^—“I‚Èq—v‘f
+            // ç–‘ä¼¼çš„ãªå­è¦ç´ 
             public T[] array;
-            // ƒRƒŒƒNƒVƒ‡ƒ“—v‘f‚ğw’è‚µ‚ÄƒIƒuƒWƒFƒNƒg‚ğì¬‚·‚é
+            // ã‚³ãƒ¬ã‚¯ã‚·ãƒ§ãƒ³è¦ç´ ã‚’æŒ‡å®šã—ã¦ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œæˆã™ã‚‹
             public DummyNode(IEnumerable<T> collection) => this.array = collection.ToArray();
         }
     }

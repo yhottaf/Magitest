@@ -1,4 +1,4 @@
-using fantec.Utilities;
+﻿using fantec.Utilities;
 
 namespace fantec.Debugger
 {

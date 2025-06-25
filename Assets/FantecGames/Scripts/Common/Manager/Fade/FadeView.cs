@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using DG.Tweening;
 using Cysharp.Threading.Tasks;
@@ -10,7 +10,7 @@ namespace fantec.Common
         [SerializeField] private CanvasGroup m_CanvasGroup;
 
         /// <summary>
-        /// ™X‚É‰æ‘œ‚ğ“§‰ß‚³‚¹‚Ä‚¢‚­
+        /// å¾ã€…ã«ç”»åƒã‚’é€éã•ã›ã¦ã„ã
         /// </summary>
         /// <param name="duration"></param>
         /// <param name="onFinish"></param>
@@ -26,7 +26,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚ÅƒtƒF[ƒhƒCƒ“
+        /// éåŒæœŸã§ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
         /// </summary>
         public async UniTask FadeInAsync(float duration = 1)
         {
@@ -37,10 +37,10 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ™X‚É‰æ‘œ‚ğ‰æ‘œ‚Å•¢‚í‚¹‚é
+        /// å¾ã€…ã«ç”»åƒã‚’ç”»åƒã§è¦†ã‚ã›ã‚‹
         /// </summary>
-        /// <param name="duration">ƒtƒF[ƒh‚É‚©‚¯‚éŠÔ</param>
-        /// <param name="onFinish">ƒtƒF[ƒhŠ®—¹Œã‚ÌƒAƒNƒVƒ‡ƒ“</param>
+        /// <param name="duration">ãƒ•ã‚§ãƒ¼ãƒ‰ã«ã‹ã‘ã‚‹æ™‚é–“</param>
+        /// <param name="onFinish">ãƒ•ã‚§ãƒ¼ãƒ‰å®Œäº†å¾Œã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³</param>
         public void FadeOut(float duration=1,Action onFinish=null)
         {
             this.transform.SetAsLastSibling();
@@ -50,7 +50,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚ÅƒtƒF[ƒhƒAƒEƒg
+        /// éåŒæœŸã§ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¢ã‚¦ãƒˆ
         /// </summary>
         public async UniTask FadeOutAsync(float duration=1)
         {

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Extensions;
 using fantec.Utilities;
 using System.Threading;
@@ -29,9 +29,9 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒI[ƒo[ƒŒƒCƒLƒƒƒ“ƒpƒX‚Ì’‡ŠÔ‚Æ‚µ‚ÄŒ}‚¦“ü‚ê‚é
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ¬ã‚¤ã‚­ãƒ£ãƒ³ãƒ‘ã‚¹ã®ä»²é–“ã¨ã—ã¦è¿ãˆå…¥ã‚Œã‚‹
         /// </summary>
-        /// <param name="overlayObject">Š½Œ}‘ÎÛ</param>
+        /// <param name="overlayObject">æ­“è¿å¯¾è±¡</param>
         public void Add(OverlayObject overlayObject)
         {
             RectTransform rectTransform=overlayObject.GetComponent<RectTransform>();

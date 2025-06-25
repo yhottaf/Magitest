@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using System.Collections.Generic;
 using UnityEngine;
@@ -27,7 +27,7 @@ namespace fantec.Master
         public OtherSkillData GetData(AffectCategoryType categoryType,AffectEfficacyType efficacyType)
         {
             try { return GetData(m_CategoryToDataIdDic[(int)categoryType] + (int)efficacyType); }
-            catch (InvalidOperationException) { throw new InvalidOperationException($"[{categoryType} / {efficacyType}] \n[”÷A¬A’†...]‚È‚Ç‚ğ•t—^‚µ–Y‚ê‚Ä‚¢‚é‰Â”\«‚ª‚ ‚è‚Ü‚·B"); }
+            catch (InvalidOperationException) { throw new InvalidOperationException($"[{categoryType} / {efficacyType}] \n[å¾®ã€å°ã€ä¸­...]ãªã©ã‚’ä»˜ä¸ã—å¿˜ã‚Œã¦ã„ã‚‹å¯èƒ½æ€§ãŒã‚ã‚Šã¾ã™ã€‚"); }
         }
     }
 }

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
@@ -14,25 +14,25 @@ namespace Fantec.Menu
     public class CardCellController : MonoBehaviour
     {
         /// <summary>
-        /// ƒJ[ƒh‰æ‘œ
+        /// ã‚«ãƒ¼ãƒ‰ç”»åƒ
         /// </summary>
         [SerializeField]
         private Image m_CharacterImage;
 
         /// <summary>
-        /// ƒŒƒAƒŠƒeƒBƒtƒŒ[ƒ€‰æ‘œ
+        /// ãƒ¬ã‚¢ãƒªãƒ†ã‚£ãƒ•ãƒ¬ãƒ¼ãƒ ç”»åƒ
         /// </summary>
         [SerializeField]
         private Image m_RarityFrameImage;
 
         /// <summary>
-        /// ƒŒƒAƒŠƒeƒB”wŒi‰æ‘œ
+        /// ãƒ¬ã‚¢ãƒªãƒ†ã‚£èƒŒæ™¯ç”»åƒ
         /// </summary>
         //[SerializeField]
         //private Image m_RarityBgImage;
 
         ///// <summary>
-        ///// ƒ\[ƒg‚ÌƒŒƒAƒŠƒeƒB‰º’n‰æ‘œ
+        ///// ã‚½ãƒ¼ãƒˆæ™‚ã®ãƒ¬ã‚¢ãƒªãƒ†ã‚£ä¸‹åœ°ç”»åƒ
         ///// </summary>
         //[SerializeField]
         //private Image m_RaritySortBaseImage;
@@ -53,15 +53,15 @@ namespace Fantec.Menu
         public IObservable<Unit> OnLongClickButtonObservable => m_Button.OnLongTapAsObservable(1f);
 
         /// <summary>
-        /// Œ©‚½–Ú‚ğXV‚·‚é
+        /// è¦‹ãŸç›®ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
-        /// <param name="cardId">ƒJ[ƒhID</param>
-        /// <param name="isInit">‰Šú’l‚ğ•\¦‚·‚é‚©</param>
+        /// <param name="cardId">ã‚«ãƒ¼ãƒ‰ID</param>
+        /// <param name="isInit">åˆæœŸå€¤ã‚’è¡¨ç¤ºã™ã‚‹ã‹</param>
         public async UniTask UpdateView(int cardId, bool isInit = false)
         {
             SetNormalColor();
 
-            // ƒLƒƒƒ‰ƒNƒ^[‰æ‘œ
+            // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ç”»åƒ
             if (MasterDataManager.Instance.PlayerCardMaster.IsExist(cardId))
             {
                 int originId = MasterDataManager.Instance.PlayerCardMaster.GetData(cardId).originId;
@@ -72,14 +72,14 @@ namespace Fantec.Menu
             if (cardData != null)
             {
                 CardRarityType cardRarityType = isInit ? cardData.CardMasterData().rarityType : cardData.rarityType;
-                // ƒŒƒAƒŠƒeƒB”wŒi
+                // ãƒ¬ã‚¢ãƒªãƒ†ã‚£èƒŒæ™¯
          //       m_RarityBgImage.sprite = AssetManager.Instance.LoadAsset<Sprite>(AssetPath.GetSpriteRarityBackgroundPath((int)cardRarityType + 1));
-                // ƒŒƒAƒŠƒeƒBƒtƒŒ[ƒ€
+                // ãƒ¬ã‚¢ãƒªãƒ†ã‚£ãƒ•ãƒ¬ãƒ¼ãƒ 
                 m_RarityFrameImage.sprite = await AssetManager.Instance.LoadAssetAsync<Sprite>(AssetPath.GetSpriteRarityFramePath((int)cardRarityType + 1));
-                // ƒŒƒAƒŠƒeƒBƒfƒRƒŒ[ƒVƒ‡ƒ“
+                // ãƒ¬ã‚¢ãƒªãƒ†ã‚£ãƒ‡ã‚³ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
          //       m_RaritySortBaseImage.sprite = AssetManager.Instance.LoadAsset<Sprite>(AssetPath.GetSpriteRaritySortBasePath((int)cardRarityType + 1));
 
-                // ƒNƒ‰ƒXƒAƒCƒRƒ“
+                // ã‚¯ãƒ©ã‚¹ã‚¢ã‚¤ã‚³ãƒ³
           //      m_ClassIconImage.sprite = AssetManager.Instance.LoadAsset<Sprite>(AssetPath.GetSpriteClassIconPath(cardData.CardMasterData().classType));
 
             }
@@ -88,18 +88,18 @@ namespace Fantec.Menu
                 fantec.Master.PlayerCardData masterData = MasterDataManager.Instance.PlayerCardMaster.GetData(cardId);
                 CardRarityType cardRarityType = masterData.rarityType;
           //      m_RarityBgImage.sprite = AssetManager.Instance.LoadAsset<Sprite>(AssetPath.GetSpriteRarityBackgroundPath((int)cardRarityType + 1));
-                // ƒŒƒAƒŠƒeƒBƒtƒŒ[ƒ€
+                // ãƒ¬ã‚¢ãƒªãƒ†ã‚£ãƒ•ãƒ¬ãƒ¼ãƒ 
                 m_RarityFrameImage.sprite = await AssetManager.Instance.LoadAssetAsync<Sprite>(AssetPath.GetSpriteRarityFramePath((int)cardRarityType + 1));
-                // ƒŒƒAƒŠƒeƒBƒfƒRƒŒ[ƒVƒ‡ƒ“
+                // ãƒ¬ã‚¢ãƒªãƒ†ã‚£ãƒ‡ã‚³ãƒ¬ãƒ¼ã‚·ãƒ§ãƒ³
              //   m_RaritySortBaseImage.sprite = AssetManager.Instance.LoadAsset<Sprite>(AssetPath.GetSpriteRaritySortBasePath((int)cardRarityType + 1));
 
-                // ƒNƒ‰ƒXƒAƒCƒRƒ“
+                // ã‚¯ãƒ©ã‚¹ã‚¢ã‚¤ã‚³ãƒ³
             //    m_ClassIconImage.sprite = AssetManager.Instance.LoadAsset<Sprite>(AssetPath.GetSpriteClassIconPath(masterData.classType));
             }
         }
 
         /// <summary>
-        /// ƒ\[ƒg‚Ég—p‚·‚éƒJ[ƒh‰º•”‚Ìî•ñ
+        /// ã‚½ãƒ¼ãƒˆæ™‚ã«ä½¿ç”¨ã™ã‚‹ã‚«ãƒ¼ãƒ‰ä¸‹éƒ¨ã®æƒ…å ±
         /// </summary>
         /// <param name="cardId"></param>
         public void UpdateCardInfo(int cardId)
@@ -142,7 +142,7 @@ namespace Fantec.Menu
         }
 
         /// <summary>
-        /// ’Êí‚Ì•\¦‚É‚·‚é
+        /// é€šå¸¸ã®è¡¨ç¤ºã«ã™ã‚‹
         /// </summary>
         public void SetNormalColor()
         {
@@ -150,7 +150,7 @@ namespace Fantec.Menu
         }
 
         /// <summary>
-        /// ƒOƒŒ[ƒAƒEƒg‚³‚¹‚é
+        /// ã‚°ãƒ¬ãƒ¼ã‚¢ã‚¦ãƒˆã•ã›ã‚‹
         /// </summary>
         public void SetGrayColor()
         {

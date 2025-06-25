@@ -1,4 +1,4 @@
-public enum StoreId
+﻿public enum StoreId
 {
     MainStore,
     DummyStore,

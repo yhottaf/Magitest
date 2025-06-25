@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Utiles;
 using fantec.Common;
 using Spine.Unity;
@@ -17,11 +17,11 @@ namespace fantec.Battle.Field.Chara
             Attack, Wait, Damage, Spells, Run
         }
 
-        private const string ANIM_NAME_ATTACK = "attack";// ‹ß‹——£UŒ‚‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
-        private const string ANIM_NAME_IDLE = "wait";    // ‘Ò‹@ƒAƒjƒ[ƒVƒ‡ƒ“
-        private const string ANIM_NAME_DAMAGE = "damage";// ƒ_ƒ[ƒWƒAƒjƒ[ƒVƒ‡ƒ“
-        private const string ANIM_NAME_SPELL = "spell"; // ‰“‹——£UŒ‚‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
-      //  private const string ANIM_NAME_RUN = "wait";     // ˆÚ“®‚ÌƒAƒjƒ[ƒVƒ‡ƒ“
+        private const string ANIM_NAME_ATTACK = "attack";// è¿‘è·é›¢æ”»æ’ƒã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+        private const string ANIM_NAME_IDLE = "wait";    // å¾…æ©Ÿã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+        private const string ANIM_NAME_DAMAGE = "damage";// ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+        private const string ANIM_NAME_SPELL = "spell"; // é è·é›¢æ”»æ’ƒã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
+      //  private const string ANIM_NAME_RUN = "wait";     // ç§»å‹•æ™‚ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
 
         private const int ANIM_TRACK_INDEX = 0;
 
@@ -79,7 +79,7 @@ namespace fantec.Battle.Field.Chara
             m_SkeletonAnimation.skeleton.SetColor(color);
         }
 
-        public void PlayIdle() { if(GetIsAnimationExists(ANIM_NAME_TYPE.Wait))PlayLoopAnimation(ANIM_NAME_TYPE.Wait); } // TODO:ƒXƒpƒCƒ“ƒf[ƒ^‚ÌƒAƒjƒ[ƒVƒ‡ƒ“–¼‚ğIdle‚Å‘‚«o‚µ
+        public void PlayIdle() { if(GetIsAnimationExists(ANIM_NAME_TYPE.Wait))PlayLoopAnimation(ANIM_NAME_TYPE.Wait); } // TODO:ã‚¹ãƒ‘ã‚¤ãƒ³ãƒ‡ãƒ¼ã‚¿ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³åã‚’Idleã§æ›¸ãå‡ºã—
         public void PlayAttack()=>PlayOneTimeAnimation(ANIM_NAME_TYPE.Attack);
         public void PlayDamage()=>PlayOneTimeAnimation(ANIM_NAME_TYPE.Damage);
         public void PlaySpell() => PlayOneTimeAnimation(ANIM_NAME_TYPE.Spells);
@@ -141,14 +141,14 @@ namespace fantec.Battle.Field.Chara
         private void AnimationExistsCheck(ANIM_NAME_TYPE nameType)
         {
             if(GetIsAnimationExists(nameType)==false) {
-                Debug.LogWarning($"[skinNname : {m_SkeletonAnimation.name}] [animationName : {GetAnimationName(nameType)}] ‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+                Debug.LogWarning($"[skinNname : {m_SkeletonAnimation.name}] [animationName : {GetAnimationName(nameType)}] ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
             }
         }
 
         public void LoadShader()
         {
             Shader loadedShader = Shader.Find("Spine/Skeleton");
-            // SkeletonDataAsset ¨ AtlasAssets ¨ Material‚ğ’H‚é
+            // SkeletonDataAsset â†’ AtlasAssets â†’ Materialã‚’è¾¿ã‚‹
             var atlasAssets = m_SkeletonAnimation.skeletonDataAsset.atlasAssets;
             foreach (var atlasAsset in atlasAssets)
             {
@@ -156,10 +156,10 @@ namespace fantec.Battle.Field.Chara
                 foreach (var mat in materials)
                 {
                     mat.shader = loadedShader;
-                    Debug.Log($"Shader‚ğ“K—p‚µ‚Ü‚µ‚½IMaterial: {mat.name}");
+                    Debug.Log($"Shaderã‚’é©ç”¨ã—ã¾ã—ãŸï¼Material: {mat.name}");
                 }
             }
-            Debug.Log("Shaderƒ[ƒhŠ®—¹Iƒ}ƒeƒŠƒAƒ‹‚É“K—p‚µ‚Ü‚µ‚½I");
+            Debug.Log("Shaderãƒ­ãƒ¼ãƒ‰å®Œäº†ï¼ãƒãƒ†ãƒªã‚¢ãƒ«ã«é©ç”¨ã—ã¾ã—ãŸï¼");
         }
         #endregion
     }

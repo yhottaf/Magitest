@@ -1,4 +1,4 @@
-using fantec.Utilities;
+﻿using fantec.Utilities;
 using UniRx;
 
 namespace fantec.Menu.NameChange.Controller

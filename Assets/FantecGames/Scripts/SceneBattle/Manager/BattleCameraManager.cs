@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Utiles;
 using UnityEngine;
 
@@ -60,7 +60,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒ^[ƒQƒbƒg‚ğƒJƒƒ‰‚Ì’†S‚É‚Æ‚ç‚¦‚é
+        /// ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚’ã‚«ãƒ¡ãƒ©ã®ä¸­å¿ƒã«ã¨ã‚‰ãˆã‚‹
         /// </summary>
         public void MoveToTarget(Vector3 position)
         {
@@ -72,7 +72,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒJƒƒ‰‚ğŒ³‚ÌˆÊ’u‚É–ß‚·
+        /// ã‚«ãƒ¡ãƒ©ã‚’å…ƒã®ä½ç½®ã«æˆ»ã™
         /// </summary>
         public void MoveToDefault()
         {
@@ -82,7 +82,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒY[ƒ€ƒCƒ“
+        /// ã‚ºãƒ¼ãƒ ã‚¤ãƒ³
         /// </summary>
         public void ZoomIn()
         {
@@ -92,7 +92,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒY[ƒ€ƒAƒEƒg
+        /// ã‚ºãƒ¼ãƒ ã‚¢ã‚¦ãƒˆ
         /// </summary>
         public void ZoomOut()
         {
@@ -102,7 +102,7 @@ namespace fantec.Battle.Manager
         }
 
         /// <summary>
-        /// ƒY[ƒ€ó‘Ô‚ğƒfƒtƒHƒ‹ƒg‚É–ß‚·
+        /// ã‚ºãƒ¼ãƒ çŠ¶æ…‹ã‚’ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã«æˆ»ã™
         /// </summary>
         public void ZoomDefault()
         {

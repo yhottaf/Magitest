@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using UniRx;
 using UnityEngine;
 
@@ -10,16 +10,16 @@ namespace fantec.Battle.Manager
         {
             public override void OnEnter(BattleFlowManager manager, FlowBase prevFlow)
             {
-                Locator.Resolve<Ui.IHudInputGuardView>().Show();  // “ü—Í§ŒÀ
-                Locator.Resolve<IBattleSoundManager>().StopBgm(); // BGM‚ğ~‚ß‚é
-                // TODO: LoseƒAƒjƒ[ƒVƒ‡ƒ“ˆ—“ü‚ê‚é 2025/04/09
-                var anim = Locator.Resolve<IBattleAnimationManager>().Play<ILoseAnimation>(); // ƒAƒjƒ[ƒVƒ‡ƒ“Ä¶
+                Locator.Resolve<Ui.IHudInputGuardView>().Show();  // å…¥åŠ›åˆ¶é™
+                Locator.Resolve<IBattleSoundManager>().StopBgm(); // BGMã‚’æ­¢ã‚ã‚‹
+                // TODO: Loseã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å‡¦ç†å…¥ã‚Œã‚‹ 2025/04/09
+                var anim = Locator.Resolve<IBattleAnimationManager>().Play<ILoseAnimation>(); // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å†ç”Ÿ
 
                 anim.OnEnd.Subscribe(_ =>
                 {
-                    Locator.Resolve<Ui.IHudInputGuardView>().Hide();            // “ü—Í‰ğ•ú
-                    Locator.Resolve<IBattleSoundManager>().PlayBgmResultLose(); // BGMÄ¶
-                    CreateContinueModal();                                      // ƒRƒ“ƒeƒjƒ…[ƒ‚[ƒ_ƒ‹‚Ì•\¦
+                    Locator.Resolve<Ui.IHudInputGuardView>().Hide();            // å…¥åŠ›è§£æ”¾
+                    Locator.Resolve<IBattleSoundManager>().PlayBgmResultLose(); // BGMå†ç”Ÿ
+                    CreateContinueModal();                                      // ã‚³ãƒ³ãƒ†ãƒ‹ãƒ¥ãƒ¼ãƒ¢ãƒ¼ãƒ€ãƒ«ã®è¡¨ç¤º
                 }).AddTo(anim.ClosedDisposables);
 
             }
@@ -51,7 +51,7 @@ namespace fantec.Battle.Manager
                     }
                     else
                     {
-                        // TODO:Î‚ª‘«‚è‚Ü‚¹‚ñƒ‚[ƒ_ƒ‹
+                        // TODO:çŸ³ãŒè¶³ã‚Šã¾ã›ã‚“ãƒ¢ãƒ¼ãƒ€ãƒ«
                         Locator.Resolve<IBattleFlowManager>().ChangeFlow<FlowRevive>();
                     }
                 });

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle
 {
@@ -24,7 +24,7 @@ namespace fantec.Battle
                 Numeral=7,
                 BlowScreen=8,
 
-                // 100ˆÈã‚ÍƒAƒjƒ[ƒVƒ‡ƒ“—Ìˆæ
+                // 100ä»¥ä¸Šã¯ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³é ˜åŸŸ
             }
         }
     }

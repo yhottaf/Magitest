@@ -1,4 +1,4 @@
-using System.Collections;
+﻿using System.Collections;
 using UnityEngine;
 using System.Linq;
 using System.Collections.Generic;
@@ -16,16 +16,16 @@ namespace fantec.Battle
         {
             return @this
                 .Where(info =>
-                info.Command.isFirst &&                            // �ŏ��ɌĂ΂��
-                info.Command.categoryType.GetIsAttack() == false); // �U���ȊO
+                info.Command.isFirst &&                            // 最初に呼ばれる
+                info.Command.categoryType.GetIsAttack() == false); // 攻撃以外
         }
 
         public static IEnumerable<AffectInfo>GetLateInfos(this IEnumerable<AffectInfo>@this)
         {
             return @this
                 .Where(info =>
-                info.Command.isFirst == false &&                   // �ŏ��ɌĂ΂ꂸ
-                info.Command.categoryType.GetIsAttack() == false); // �U���ȊO
+                info.Command.isFirst == false &&                   // 最初に呼ばれず
+                info.Command.categoryType.GetIsAttack() == false); // 攻撃以外
         }
 
         public static IEnumerable<AffectInfo>GetMainInfos(this IEnumerable<AffectInfo>@this)

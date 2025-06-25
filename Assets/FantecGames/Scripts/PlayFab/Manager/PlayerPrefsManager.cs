@@ -1,8 +1,8 @@
-using fantec.Menu;
+ï»¿using fantec.Menu;
 using UnityEngine;
 
 /// <summary>
-/// PlayerPrefs ‚ğŠÇ—‚·‚éƒ‰ƒbƒp[ƒNƒ‰ƒX
+/// PlayerPrefs ã‚’ç®¡ç†ã™ã‚‹ãƒ©ãƒƒãƒ‘ãƒ¼ã‚¯ãƒ©ã‚¹
 /// </summary>
 public static class PlayerPrefsManager
 {
@@ -27,7 +27,7 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ƒ[ƒ‹ƒAƒhƒŒƒX‚ğg‚Á‚ÄƒƒOƒCƒ“Ï‚İ‚È‚çtrue
+    /// ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹ã‚’ä½¿ã£ã¦ãƒ­ã‚°ã‚¤ãƒ³æ¸ˆã¿ãªã‚‰true
     /// </summary>
     public static bool IsLoginEmailAddres
     {
@@ -40,8 +40,8 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ƒƒOƒCƒ“ƒ{[ƒiƒX‚ğŠl“¾‚µ‚½‚Æ‚«‚Étrue‚ğƒZƒbƒg‚·‚é
-    /// ƒƒOƒCƒ“ƒ{[ƒiƒX‰‰o‚ğ•\¦‚µ‚½‚çfalse‚É–ß‚·
+    /// ãƒ­ã‚°ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹ã‚’ç²å¾—ã—ãŸã¨ãã«trueã‚’ã‚»ãƒƒãƒˆã™ã‚‹
+    /// ãƒ­ã‚°ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹æ¼”å‡ºã‚’è¡¨ç¤ºã—ãŸã‚‰falseã«æˆ»ã™
     /// </summary>
     public static bool HasLoginBonus
     {
@@ -54,10 +54,23 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ƒp[ƒeƒB[–¼‚Ìİ’è
+    /// ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«ãŠçŸ¥ã‚‰ã›ã‚’è¡¨ç¤ºã—ãªã„ã‹ã©ã†ã‹ è¡¨ç¤ºã—ãªã„ãªã‚‰true
     /// </summary>
-    /// <param name="name">ƒp[ƒeƒB[–¼</param>
-    /// <param name="index">ƒp[ƒeƒB[‚ÌƒCƒ“ƒfƒbƒNƒX</param>
+    public static bool IsNoticeFlag
+    {
+        get => bool.TryParse(PlayerPrefs.GetString("IsNoticeFlag"), out var result) && result;
+        set
+        {
+            PlayerPrefs.SetString("IsNoticeFlag", value.ToString());
+            PlayerPrefs.Save();
+        }
+    }
+
+    /// <summary>
+    /// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼åã®è¨­å®š
+    /// </summary>
+    /// <param name="name">ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼å</param>
+    /// <param name="index">ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹</param>
     public static void SetPartyName(string name,int index)
     {
         PlayerPrefs.SetString($"PartyName{index}",name);
@@ -66,11 +79,11 @@ public static class PlayerPrefsManager
 
     public static string GetPartyName(int index)
     {
-        return PlayerPrefs.GetString($"PartyName{index}", $"ƒfƒBƒŒƒNƒgƒŠ{index + 1}");
+        return PlayerPrefs.GetString($"PartyName{index}", $"ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒª{index + 1}");
     }
 
     /// <summary>
-    /// ‘I‘ğ‚µ‚Ä‚¢‚éƒp[ƒeƒB[‚ÌƒCƒ“ƒfƒbƒNƒX
+    /// é¸æŠã—ã¦ã„ã‚‹ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
     /// </summary>
     public static int SelectPartyIndex
     {
@@ -83,11 +96,11 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ƒIƒvƒVƒ‡ƒ“‚Ìİ’è
+    /// ã‚ªãƒ—ã‚·ãƒ§ãƒ³ã®è¨­å®š
     /// </summary>
-    /// <param name="basic">Šî–{İ’è</param>
-    /// <param name="battle">ƒoƒgƒ‹</param>
-    /// <param name="sound">ƒTƒEƒ“ƒh</param>
+    /// <param name="basic">åŸºæœ¬è¨­å®š</param>
+    /// <param name="battle">ãƒãƒˆãƒ«</param>
+    /// <param name="sound">ã‚µã‚¦ãƒ³ãƒ‰</param>
     public static void SetOptionData(OptionManager.BasicData basic,OptionManager.BattleData battle,OptionManager.SoundData sound)
     {
         SetBool("OptionBasicMessage", basic.bMessage);
@@ -113,9 +126,9 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// Šî–{İ’èæ“¾
+    /// åŸºæœ¬è¨­å®šå–å¾—
     /// </summary>
-    /// <returns>Šî–{İ’è</returns>
+    /// <returns>åŸºæœ¬è¨­å®š</returns>
     public static OptionManager.BasicData GetOptionBasicData()
     {
         return new OptionManager.BasicData(
@@ -128,7 +141,7 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ƒoƒgƒ‹İ’èæ“¾
+    /// ãƒãƒˆãƒ«è¨­å®šå–å¾—
     /// </summary>
     /// <returns></returns>
     public static OptionManager.BattleData GetOptionBattleData()
@@ -140,7 +153,7 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ƒTƒEƒ“ƒhİ’èæ“¾
+    /// ã‚µã‚¦ãƒ³ãƒ‰è¨­å®šå–å¾—
     /// </summary>
     private const float m_DefaultVolume = 0.65f;
 
@@ -169,7 +182,7 @@ public static class PlayerPrefsManager
     }
 
     /// <summary>
-    /// ‘O‰ñƒvƒŒƒC‚µ‚½ƒNƒGƒXƒgID
+    /// å‰å›ãƒ—ãƒ¬ã‚¤ã—ãŸã‚¯ã‚¨ã‚¹ãƒˆID
     /// </summary>
     public static int LastTimeQuestId
     {

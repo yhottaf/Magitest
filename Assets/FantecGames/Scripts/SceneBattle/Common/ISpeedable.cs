@@ -1,9 +1,9 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace fantec
 {
     /// <summary>
-    /// ���x�ω\
+    /// 速度可変可能
     /// </summary>
     public interface ISpeedable
     {

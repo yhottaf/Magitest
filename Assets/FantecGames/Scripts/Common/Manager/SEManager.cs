@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Utilities;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,32 +9,32 @@ namespace fantec.Common
 {
     public enum SEPlayType
     {
-        /// <summary> •Ê Clip‚Æ‚µ‚ÄÄ¶ </summary>
+        /// <summary> åˆ¥ Clipã¨ã—ã¦å†ç”Ÿ </summary>
         LAYERED,
 
-        /// <summary> “¯‚¶Ä¶’†‚Ì Clip‚ğ~‚ß‚ÄÄ¶ </summary>
+        /// <summary> åŒã˜å†ç”Ÿä¸­ã® Clipã‚’æ­¢ã‚ã¦å†ç”Ÿ </summary>
         OVERRIDE,
 
-        /// <summary> “¯‚¶ Clip‚ªÄ¶’†‚Ìê‡‚ÍÄ¶‚µ‚È‚¢ </summary>
+        /// <summary> åŒã˜ ClipãŒå†ç”Ÿä¸­ã®å ´åˆã¯å†ç”Ÿã—ãªã„ </summary>
         CANCELD,
     }
 
     /// <summary>
-    /// SE ƒtƒ@ƒCƒ‹–¼‚Æˆê’v‚·‚é‚æ‚¤‚É
+    /// SE ãƒ•ã‚¡ã‚¤ãƒ«åã¨ä¸€è‡´ã™ã‚‹ã‚ˆã†ã«
     /// </summary>
     public enum SEClipName
     {
 
-        //---------  ƒVƒXƒeƒ€Œn  ----------------//
+        //---------  ã‚·ã‚¹ãƒ†ãƒ ç³»  ----------------//
 
-        SystemButtonDownNo,   //ƒ{ƒ^ƒ“‰Ÿ‰º-”Û’è
-        SystemButtonDownYes,  //ƒ{ƒ^ƒ“‰Ÿ‰º-m’è
-        SystemTapScreen,      //‰æ–Êƒ^ƒbƒv
-        SystemLoginPop,      //ƒ^ƒCƒgƒ‹‰æ–Êƒ^ƒbƒv
+        SystemButtonDownNo,   //ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚-å¦å®š
+        SystemButtonDownYes,  //ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚-è‚¯å®š
+        SystemTapScreen,      //ç”»é¢ã‚¿ãƒƒãƒ—
+        SystemLoginPop,      //ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã‚¿ãƒƒãƒ—
 
 
-        //---------  ŠÂ‹«‰¹  -------------------//
-        //UŒ‚‰¹‚È‚ÇB
+        //---------  ç’°å¢ƒéŸ³  -------------------//
+        //æ”»æ’ƒéŸ³ãªã©ã€‚
     }
 
 

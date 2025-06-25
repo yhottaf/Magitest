@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 
 using Cysharp.Threading.Tasks;
 using Newtonsoft.Json;
@@ -32,7 +32,7 @@ namespace fantec
 
             if(getResult.Error!=null)
             {
-                Debug.LogError("TitleDataæ“¾¸”s: "+getResult.Error.GenerateErrorReport());
+                Debug.LogError("TitleDataå–å¾—å¤±æ•—: "+getResult.Error.GenerateErrorReport());
                 return;
             }
 
@@ -48,13 +48,13 @@ namespace fantec
                     .ToList();  
             }
 
-            // ‚·‚Å‚ÉŠÜ‚Ü‚ê‚Ä‚¢‚È‚¢ê‡‚Ì‚İ’Ç‰Á
+            // ã™ã§ã«å«ã¾ã‚Œã¦ã„ãªã„å ´åˆã®ã¿è¿½åŠ 
             if(!versions.Contains(currentVersion))
             {
                 versions.Add(currentVersion);
             }
 
-            // ƒZƒ}ƒ“ƒeƒBƒbƒN‡‚Éƒ\[ƒg
+            // ã‚»ãƒãƒ³ãƒ†ã‚£ãƒƒã‚¯é †ã«ã‚½ãƒ¼ãƒˆ
             versions = versions
                 .Select(v => new Version(v))
                 .OrderBy(v => v)
@@ -74,11 +74,11 @@ namespace fantec
 
             if(setResult.Error!=null)
             {
-                Debug.LogError("TitleDataXV¸”s: " + setResult.Error.GenerateErrorReport());
+                Debug.LogError("TitleDataæ›´æ–°å¤±æ•—: " + setResult.Error.GenerateErrorReport());
                 return;
             }
 
-            Debug.Log($"AssetVersions ‚Éƒo[ƒWƒ‡ƒ“ {currentVersion} ‚ğ’Ç‰Á•Û‘¶‚µ‚Ü‚µ‚½: {newValue}");
+            Debug.Log($"AssetVersions ã«ãƒãƒ¼ã‚¸ãƒ§ãƒ³ {currentVersion} ã‚’è¿½åŠ ä¿å­˜ã—ã¾ã—ãŸ: {newValue}");
         }
     }
 }

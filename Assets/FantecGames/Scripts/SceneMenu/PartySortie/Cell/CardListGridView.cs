@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using FantecScrollView;
 using fantec.Common;
 using System;

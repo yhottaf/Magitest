@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Master;
 using fantec.Menu.Card.View;
@@ -26,14 +26,14 @@ namespace fantec.Menu.Card.Presernter
         [SerializeField]
         private CardListView m_View;
 
-        private List<CardData> m_PlayerCardList;// ƒ\[ƒg“™‚É‘Î‰‚Å‚«‚é‚æ‚¤‚ÉƒRƒs[‚ğ‚Æ‚Á‚Ä‚¨‚­
-        private List<CardData> m_BeforeList;    // Œ»İ‚Ì•`‰æ‚µ‚Ä‚¢‚éƒ\[ƒg‚ğ˜M‚é‘O‚Ì¶‚ÌƒŠƒXƒg
+        private List<CardData> m_PlayerCardList;// ã‚½ãƒ¼ãƒˆç­‰ã«å¯¾å¿œã§ãã‚‹ã‚ˆã†ã«ã‚³ãƒ”ãƒ¼ã‚’ã¨ã£ã¦ãŠã
+        private List<CardData> m_BeforeList;    // ç¾åœ¨ã®æç”»ã—ã¦ã„ã‚‹ã‚½ãƒ¼ãƒˆã‚’å¼„ã‚‹å‰ã®ç”Ÿã®ãƒªã‚¹ãƒˆ
 
-        private List<int> previousMemberList=new List<int>();// •ÏX‘O‚Ì•Ò¬ƒŠƒXƒgî•ñ
+        private List<int> previousMemberList=new List<int>();// å¤‰æ›´å‰ã®ç·¨æˆãƒªã‚¹ãƒˆæƒ…å ±
 
         private CancellationTokenSource _cts = new CancellationTokenSource();
 
-        // ƒJ[ƒhID‚Æƒ|ƒWƒVƒ‡ƒ“ƒCƒ“ƒfƒbƒNƒX‚ÌƒZƒbƒg‚ğ•Û‚·‚éƒŠƒXƒg
+        // ã‚«ãƒ¼ãƒ‰IDã¨ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ã‚»ãƒƒãƒˆã‚’ä¿æŒã™ã‚‹ãƒªã‚¹ãƒˆ
         private List<Tuple<int, List<int>>> cardPositionList = new List<Tuple<int, List<int>>>();
         private List<Tuple<int, List<int>>> PrevPositionList = new List<Tuple<int, List<int>>>();
 
@@ -41,14 +41,14 @@ namespace fantec.Menu.Card.Presernter
 
         private void OnEnable()
         {
-            // ŠMagiƒŠƒXƒg‚ÌXV
+            // æ‰€æŒMagiãƒªã‚¹ãƒˆã®æ›´æ–°
             if (m_BeforeList != null)
             {
                 ViewUpdate();
             }
 
-            // •Ò¬‚ğ‚¢‚¶‚é‚Ü‚¦‚Ìƒf[ƒ^‚ğƒoƒbƒNƒAƒbƒv‚µ‚Ä‚¨‚­
-            // (•Ò¬‚ğ”jŠü‚µ‚Ü‚·‚©H¨‚Í‚¢‚ÅŒ³‚É–ß‚·‚½‚ß)
+            // ç·¨æˆã‚’ã„ã˜ã‚‹ã¾ãˆã®ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã—ã¦ãŠã
+            // (ç·¨æˆã‚’ç ´æ£„ã—ã¾ã™ã‹ï¼Ÿâ†’ã¯ã„ã§å…ƒã«æˆ»ã™ãŸã‚)
             CopyDefaultPartyData();
         }
 
@@ -63,46 +63,46 @@ namespace fantec.Menu.Card.Presernter
             m_View.OnClickCheckYesButtonObservable.Subscribe(OnClickCheckYesButton).AddTo(this);
             m_View.OnClickCheckNoButtonObservable.Subscribe(OnClickCheckNoButton).AddTo(this);
 
-            // ƒLƒƒƒ‰ƒNƒ^[ƒZƒ‹‰Šú‰»
+            // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚»ãƒ«åˆæœŸåŒ–
             Initialized();
 
  
             m_PartySortie.changeCardData.Subscribe(updatedList =>
             {
-                // ƒ}ƒM‚ÌêŠ‚ğ•ÏX‚µ‚½Û‚Éw“Ç‚³‚ê‚é
+                // ãƒã‚®ã®å ´æ‰€ã‚’å¤‰æ›´ã—ãŸéš›ã«è³¼èª­ã•ã‚Œã‚‹
                 foreach (var tuple in updatedList)
                 {
                     SaveCardPosition(tuple.Item1,tuple.Item2);
                     MenuManager.Instance.ChangePartyData = CheckMemberListChanges();
-                    Debug.Log($"ƒp[ƒeƒB‚ğXV: {(MenuManager.Instance.ChangePartyData ? "‚µ‚½" : "‚µ‚Ä‚È‚¢")}");
+                    Debug.Log($"ãƒ‘ãƒ¼ãƒ†ã‚£ã‚’æ›´æ–°: {(MenuManager.Instance.ChangePartyData ? "ã—ãŸ" : "ã—ã¦ãªã„")}");
                 
                 }
             }).AddTo(this);
 
             m_View.OnNextSwipe.Subscribe(_ =>
             {
-                // ƒXƒƒCƒv‚ªs‚í‚ê‚½Û‚Éw“Ç‚³‚ê‚é
+                // ã‚¹ãƒ¯ã‚¤ãƒ—ãŒè¡Œã‚ã‚ŒãŸéš›ã«è³¼èª­ã•ã‚Œã‚‹
                 Initialized();
                 CopyDefaultPartyData();
-                Debug.Log($"-----------------(ƒfƒBƒŒƒNƒgƒŠ”Ô†F{PlayerPrefsManager.SelectPartyIndex+1})------------------------");
+                Debug.Log($"-----------------(ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªç•ªå·ï¼š{PlayerPrefsManager.SelectPartyIndex+1})------------------------");
             }).AddTo(this);
         }
 
         /// <summary>
-        /// ƒLƒƒƒ‰ƒNƒ^[ƒZƒ‹‰Šú‰»ˆ—
+        /// ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã‚»ãƒ«åˆæœŸåŒ–å‡¦ç†
         /// </summary>
         private void Initialized()
         {
-            // ƒvƒŒƒCƒ„[‚ªŠ‚·‚éƒ}ƒM‚ğID¸‡‚Åæ“¾
+            // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒæ‰€æŒã™ã‚‹ãƒã‚®ã‚’IDæ˜‡é †ã§å–å¾—
             m_PlayerCardList = CardManager.CardDatas;
             m_PlayerCardList.Sort((a, b) => a.cardId.CompareTo(b.cardId));
 
 
 
-            // ƒOƒŠƒbƒh‚É•\¦
+            // ã‚°ãƒªãƒƒãƒ‰ã«è¡¨ç¤º
             m_GridView.UpdateContents(m_PlayerCardList);
 
-            // ID¸‡‚Å•À‚×‚ç‚ê‚Ä‚¢‚é¶ƒf[ƒ^‚ğ•Û
+            // IDæ˜‡é †ã§ä¸¦ã¹ã‚‰ã‚Œã¦ã„ã‚‹ç”Ÿãƒ‡ãƒ¼ã‚¿ã‚’ä¿æŒ
             m_BeforeList = new List<CardData>(m_PlayerCardList);
         }
 
@@ -113,46 +113,46 @@ namespace fantec.Menu.Card.Presernter
             m_GridView.UpdateContents(m_PlayerCardList);
         }
 
-        // •’Ê‚Éƒ^ƒbƒv‚µ‚½
+        // æ™®é€šã«ã‚¿ãƒƒãƒ—ã—ãŸæ™‚
         private void OnClickCharacterCell(int index)
         {
             CardData data = m_PlayerCardList[index];
             MenuManager.Instance.SelectCardId = data.cardId;
-            Debug.Log($"‘I‘ğID:{data.cardId}");
+            Debug.Log($"é¸æŠID:{data.cardId}");
 
             if (MenuManager.Instance.SelectCardId == 0)
             {
-                Debug.Log("ƒLƒƒƒ‰ƒNƒ^[‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+                Debug.Log("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒé¸æŠã•ã‚Œã¦ã„ã¾ã›ã‚“");
                 return;
             }
 
-            // Œ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ìƒƒ“ƒo[IDƒŠƒXƒg‚ğæ“¾
+            // ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ãƒ¡ãƒ³ãƒãƒ¼IDãƒªã‚¹ãƒˆã‚’å–å¾—
             //List<int> MemberList = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex].MemberList;
             PartyData partyData = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex];
 
             if (partyData.MemberList.Contains(data.cardId))
             {
-                //‘I‘ğ‚µ‚½ƒJ[ƒh‚ªƒfƒBƒŒƒNƒgƒŠ‚É•Ò¬’†‚È‚ç
+                //é¸æŠã—ãŸã‚«ãƒ¼ãƒ‰ãŒãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã«ç·¨æˆä¸­ãªã‚‰
                 int cardindex = partyData.MemberList.IndexOf(data.cardId);
                 CardData TargetCardData = CardManager.GetCardData(data.cardId);
-                partyData.MemberList[cardindex] = -1; // ‹ó‚ğ”z’u‚·‚éB
+                partyData.MemberList[cardindex] = -1; // ç©ºã‚’é…ç½®ã™ã‚‹ã€‚
                 SaveCardPosition(partyData.MemberList[cardindex], TargetCardData.positionIndex);
-                // ƒfƒBƒŒƒNƒgƒŠ‚Ö‚Ì”½‰f
-                UpdateContents().Forget(); // © ”ñ“¯Šú‚ÅŒÄ‚Ño‚µ
+                // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¸ã®åæ˜ 
+                UpdateContents().Forget(); // â† éåŒæœŸã§å‘¼ã³å‡ºã—
             }
             else
             if (partyData.MemberList.Contains(-1))
             {
-                // ƒp[ƒeƒB[‚É‹ó‚«‚ª‚ ‚Á‚½‚çA‚»‚ÌƒCƒ“ƒfƒbƒNƒX‚ğ’²‚×A‚»‚±‚É‘I‘ğ‚µ‚½Magi‚ğ“ü‚ê‚±‚Ş
+                // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã«ç©ºããŒã‚ã£ãŸã‚‰ã€ãã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’èª¿ã¹ã€ãã“ã«é¸æŠã—ãŸMagiã‚’å…¥ã‚Œã“ã‚€
                 int emptyIndex = partyData.MemberList.IndexOf(-1);
                 partyData.MemberList[emptyIndex] = data.cardId;
 
 
-                // ƒ^ƒbƒv‚µ‚½ƒJ[ƒhî•ñ‚ÆŒ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ÌƒCƒ“ƒfƒbƒNƒX‚ğ•Ï”‚É•Û‘¶
+                // ã‚¿ãƒƒãƒ—ã—ãŸã‚«ãƒ¼ãƒ‰æƒ…å ±ã¨ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã‚’å¤‰æ•°ã«ä¿å­˜
                 CardData TargetCardData = CardManager.GetCardData(data.cardId);
                 int selectedIndex = PlayerPrefsManager.SelectPartyIndex;
 
-                // ƒ^ƒbƒv‚µ‚½ƒJ[ƒhˆÈŠO‚Ì•Ò¬’†‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğW‚ß‚é
+                // ã‚¿ãƒƒãƒ—ã—ãŸã‚«ãƒ¼ãƒ‰ä»¥å¤–ã®ç·¨æˆä¸­ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’é›†ã‚ã‚‹
                 HashSet<int> usedPositions = new HashSet<int>();
                 for (int i = 0; i < partyData.MemberList.Count; i++)
                 {
@@ -164,14 +164,14 @@ namespace fantec.Menu.Card.Presernter
                     usedPositions.Add(pos);
                 }
 
-                // g—p‚³‚ê‚Ä‚¢‚È‚¢PlaceMentPoint‚ğ’T‚µA‘O—ñ‚©‚ç©“®•Ò¬‚µ‚Ä‚¢‚­
+                // ä½¿ç”¨ã•ã‚Œã¦ã„ãªã„PlaceMentPointã‚’æ¢ã—ã€å‰åˆ—ã‹ã‚‰è‡ªå‹•ç·¨æˆã—ã¦ã„ã
                 List<int> PlaceMentPoint = new List<int>() { 1, 5, 2, 4, 8, 6, 0, 7, 3 };
 
                 foreach (int point in PlaceMentPoint)
                 {
                     if (!usedPositions.Contains(point))
                     {
-                        // ƒJ[ƒh‚ÌêŠ‚ğˆê“I‚É•Û‘¶
+                        // ã‚«ãƒ¼ãƒ‰ã®å ´æ‰€ã‚’ä¸€æ™‚çš„ã«ä¿å­˜
                         TargetCardData.positionIndex[selectedIndex] = point;
                         SaveCardPosition(data.cardId,TargetCardData.positionIndex);
                         MenuManager.Instance.ChangePartyData = true;
@@ -180,57 +180,57 @@ namespace fantec.Menu.Card.Presernter
                     }
                 }
 
-                // ƒvƒŒƒCƒ„[‚ªŠ‚·‚éƒ}ƒM‚ğID¸‡‚Åæ“¾
+                // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãŒæ‰€æŒã™ã‚‹ãƒã‚®ã‚’IDæ˜‡é †ã§å–å¾—
                 m_PlayerCardList = CardManager.CardDatas;
                 m_PlayerCardList.Sort((a, b) => a.cardId.CompareTo(b.cardId));
 
-                // ƒfƒBƒŒƒNƒgƒŠ‚Ö‚Ì”½‰f
-                UpdateContents().Forget(); // © ”ñ“¯Šú‚ÅŒÄ‚Ño‚µ
+                // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã¸ã®åæ˜ 
+                UpdateContents().Forget(); // â† éåŒæœŸã§å‘¼ã³å‡ºã—
             }
             m_GridView.UpdateContents(m_PlayerCardList);
-            // ƒp[ƒeƒBî•ñ‚ğXV‚µ‚½‚©‚Ç‚¤‚©‚ğ‚İ‚é
+            // ãƒ‘ãƒ¼ãƒ†ã‚£æƒ…å ±ã‚’æ›´æ–°ã—ãŸã‹ã©ã†ã‹ã‚’ã¿ã‚‹
             MenuManager.Instance.ChangePartyData = CheckMemberListChanges();
-            Debug.Log($"ƒp[ƒeƒB‚ğXV: {(MenuManager.Instance.ChangePartyData ? "‚µ‚½" : "‚µ‚Ä‚È‚¢")}");
+            Debug.Log($"ãƒ‘ãƒ¼ãƒ†ã‚£ã‚’æ›´æ–°: {(MenuManager.Instance.ChangePartyData ? "ã—ãŸ" : "ã—ã¦ãªã„")}");
         }
 
-        // ’·‰Ÿ‚µ‚µ‚½‚Æ‚«(1•bŠÔ)
-        // Ú×‰æ–Ê‚ğŠJ‚­‚æ‚¤‚É‚·‚é
+        // é•·æŠ¼ã—ã—ãŸã¨ã(1ç§’é–“)
+        // è©³ç´°ç”»é¢ã‚’é–‹ãã‚ˆã†ã«ã™ã‚‹
         private void OnLongTapCharacterCell(int index)
         {
             CardData data = m_BeforeList[index];
             MenuManager.Instance.SelectCardId = data.cardId;
-            Debug.Log($"‘I‘ğID:{data.cardId}");
+            Debug.Log($"é¸æŠID:{data.cardId}");
 
             if(MenuManager.Instance.SelectCardId==0)
             {
-                Debug.Log("ƒLƒƒƒ‰ƒNƒ^[‚ª‘I‘ğ‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ");
+                Debug.Log("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ãŒé¸æŠã•ã‚Œã¦ã„ã¾ã›ã‚“");
                 return;
             }
 
             LocalDataManager.Instance.LocalData.AddCheckCard(data.cardId);
-            Debug.Log("Ú×‰æ–Ê‚ğ•\¦‚³‚¹‚é");
-            MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.NoContents);
+            Debug.Log("è©³ç´°ç”»é¢ã‚’è¡¨ç¤ºã•ã›ã‚‹");
+            MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.CardDetail);
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌŒ©‚½–Ú‚ğ”½‰f 
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®è¦‹ãŸç›®ã‚’åæ˜  
         /// </summary>
         /// <returns></returns>
         private async UniTask UpdateContents()
         {
-            // ƒp[ƒeƒB[‚Ì“à—e‚ğXV
+            // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®å†…å®¹ã‚’æ›´æ–°
             await m_PartySortie.PartySetting(PlayerPrefsManager.SelectPartyIndex, _cts.Token);
 
             m_ProgressView.ChangeProgress(PlayerPrefsManager.SelectPartyIndex);
         }
 
-        // SortieView‚ğ•Â‚¶‚é
+        // SortieViewã‚’é–‰ã˜ã‚‹
         private void OnClickBackButton(Unit unit)
         {
             List<int> MemberList = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex].MemberList;
             if (MemberList.All(id => id == -1 || id == 0))
             {
-                // ‚·‚×‚Ä -1 ‚Ü‚½‚Í 0 ‚Å\¬‚³‚ê‚Ä‚¢‚éê‡‚Ìˆ—
+                // ã™ã¹ã¦ -1 ã¾ãŸã¯ 0 ã§æ§‹æˆã•ã‚Œã¦ã„ã‚‹å ´åˆã®å‡¦ç†
                 m_View.SetNoticeWindow(true);
                 return;
             }
@@ -245,11 +245,11 @@ namespace fantec.Menu.Card.Presernter
 
             UserDataManager.UpdatePlayFab().Forget();
             
-            // Œ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğƒZ[ƒu‚·‚é
+            // ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚»ãƒ¼ãƒ–ã™ã‚‹
             m_PartySortie.PartySlotSave(PlayerPrefsManager.SelectPartyIndex).Forget();
         }
 
-        // •Ò¬‚ª˜M‚ç‚ê‚Ä‚¢‚é‚©‚Ç‚¤‚©‚ğ•Ô‚·
+        // ç·¨æˆãŒå¼„ã‚‰ã‚Œã¦ã„ã‚‹ã‹ã©ã†ã‹ã‚’è¿”ã™
         public bool CheckMemberListChanges()
         {
             var partyData = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex];
@@ -261,26 +261,26 @@ namespace fantec.Menu.Card.Presernter
             bool isPositionListChanged = false;
 
 
-            // ƒTƒCƒY‚ªˆá‚¤ê‡‚Í•ÏX‚³‚ê‚½‚Æ‚İ‚È‚·
+            // ã‚µã‚¤ã‚ºãŒé•ã†å ´åˆã¯å¤‰æ›´ã•ã‚ŒãŸã¨ã¿ãªã™
             if (cardPositionList.Count != PrevPositionList.Count)
             {
                 isPositionListChanged = true;
             }
             else
             {
-                // ’†g‚ğ”äŠr
+                // ä¸­èº«ã‚’æ¯”è¼ƒ
                 foreach (var current in cardPositionList)
                 {
                     var previous = PrevPositionList.FirstOrDefault(p => p.Item1 == current.Item1);
 
                     if (previous == null)
                     {
-                        // ‘O‚ÌƒŠƒXƒg‚É‘¶İ‚µ‚È‚¢ê‡‚à•ÏX‚Æ‚İ‚È‚·
+                        // å‰ã®ãƒªã‚¹ãƒˆã«å­˜åœ¨ã—ãªã„å ´åˆã‚‚å¤‰æ›´ã¨ã¿ãªã™
                         isPositionListChanged = true;
                         break;
                     }
 
-                    // è“®‚ÅƒŠƒXƒg‚Ì“à—e‚ğ”äŠr‚·‚é
+                    // æ‰‹å‹•ã§ãƒªã‚¹ãƒˆã®å†…å®¹ã‚’æ¯”è¼ƒã™ã‚‹
                     if (previous.Item2.Count != current.Item2.Count ||
                         !previous.Item2.Zip(current.Item2, (a, b) => a == b).All(equal => equal))
                     {
@@ -293,17 +293,17 @@ namespace fantec.Menu.Card.Presernter
 
             if (isMemberListChanged)
             {
-                Debug.Log($"[Check] MemberList ‚Ì“à—e‚ª•ÏX‚³‚ê‚Ä‚¢‚Ü‚·B\nBefore: {string.Join(", ", previousMemberList)}\nAfter: {string.Join(", ", partyData.MemberList)}");
+                Debug.Log($"[Check] MemberList ã®å†…å®¹ãŒå¤‰æ›´ã•ã‚Œã¦ã„ã¾ã™ã€‚\nBefore: {string.Join(", ", previousMemberList)}\nAfter: {string.Join(", ", partyData.MemberList)}");
             }
 
             if (isPositionListChanged)
             {
-                Debug.Log("[Check] PositionList ‚Ì“à—e‚ª•ÏX‚³‚ê‚Ä‚¢‚Ü‚·B");
-                Debug.Log($"êŠ‚ğ•ÏX‘O: {string.Join(", ", PrevPositionList.Select(x => $"{x.Item1}: {string.Join(", ", x.Item2)}"))}");
-                Debug.Log($"êŠ‚ğ•ÏXŒã: {string.Join(", ", cardPositionList.Select(x => $"{x.Item1}: {string.Join(", ", x.Item2)}"))}");
+                Debug.Log("[Check] PositionList ã®å†…å®¹ãŒå¤‰æ›´ã•ã‚Œã¦ã„ã¾ã™ã€‚");
+                Debug.Log($"å ´æ‰€ã‚’å¤‰æ›´å‰: {string.Join(", ", PrevPositionList.Select(x => $"{x.Item1}: {string.Join(", ", x.Item2)}"))}");
+                Debug.Log($"å ´æ‰€ã‚’å¤‰æ›´å¾Œ: {string.Join(", ", cardPositionList.Select(x => $"{x.Item1}: {string.Join(", ", x.Item2)}"))}");
             }
 
-            // êŠ‚ğ•Ï‚¦‚½‚©A•Ò¬‚Ì“à—e‚ğ˜M‚Á‚½ê‡‚Í true ‚ğ•Ô‚·
+            // å ´æ‰€ã‚’å¤‰ãˆãŸã‹ã€ç·¨æˆã®å†…å®¹ã‚’å¼„ã£ãŸå ´åˆã¯ true ã‚’è¿”ã™
             if (isMemberListChanged || isPositionListChanged)
             {
                 return true;
@@ -313,72 +313,72 @@ namespace fantec.Menu.Card.Presernter
         }
 
         /// <summary>
-        /// ƒJ[ƒhID‚Æƒ|ƒWƒVƒ‡ƒ“ƒCƒ“ƒfƒbƒNƒX‚ÌƒyƒA‚ğ•Û‘¶‚·‚é
-        /// ‚à‚µƒJ[ƒhID‚ª‘¶İ‚·‚éê‡‚Íã‘‚«‚·‚é
+        /// ã‚«ãƒ¼ãƒ‰IDã¨ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ãƒšã‚¢ã‚’ä¿å­˜ã™ã‚‹
+        /// ã‚‚ã—ã‚«ãƒ¼ãƒ‰IDãŒå­˜åœ¨ã™ã‚‹å ´åˆã¯ä¸Šæ›¸ãã™ã‚‹
         /// </summary>
-        /// <param name="cardId">ƒJ[ƒhID</param>
-        /// <param name="positionIndex">ƒ|ƒWƒVƒ‡ƒ“ƒCƒ“ƒfƒbƒNƒX</param>
+        /// <param name="cardId">ã‚«ãƒ¼ãƒ‰ID</param>
+        /// <param name="positionIndex">ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹</param>
         private void SaveCardPosition(int cardId, List<int> positionIndex)
         {
             if (cardId != -1)
             {
-                // ‚·‚Å‚É‘¶İ‚·‚é‚©Šm”F
+                // ã™ã§ã«å­˜åœ¨ã™ã‚‹ã‹ç¢ºèª
                 var existingItem = cardPositionList.FirstOrDefault(tuple => tuple.Item1 == cardId);
 
                 if (existingItem != null)
                 {
-                    // ‘¶İ‚·‚éê‡‚Ííœ‚µ‚Ä‚©‚ç’Ç‰Áiã‘‚«j
+                    // å­˜åœ¨ã™ã‚‹å ´åˆã¯å‰Šé™¤ã—ã¦ã‹ã‚‰è¿½åŠ ï¼ˆä¸Šæ›¸ãï¼‰
                     cardPositionList.Remove(existingItem);
-                    //Debug.Log($"ƒJ[ƒhID {cardId} ‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğ {positionIndex} ‚ÉXV‚µ‚Ü‚µ‚½B");
+                    //Debug.Log($"ã‚«ãƒ¼ãƒ‰ID {cardId} ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’ {positionIndex} ã«æ›´æ–°ã—ã¾ã—ãŸã€‚");
                 }
             }
 
 
-            //  cardId ‚ª -1 ‚Ìê‡A“¯‚¶ƒ|ƒWƒVƒ‡ƒ“‚É‚ ‚é‘¼‚ÌƒJ[ƒh‚ğíœ‚·‚é
+            //  cardId ãŒ -1 ã®å ´åˆã€åŒã˜ãƒã‚¸ã‚·ãƒ§ãƒ³ã«ã‚ã‚‹ä»–ã®ã‚«ãƒ¼ãƒ‰ã‚’å‰Šé™¤ã™ã‚‹
             if (cardId == -1)
             {
-                // PlayerPrefsManager.SelectPartyIndex ”Ô–Ú‚ÌˆÊ’u‚ğæ“¾
+                // PlayerPrefsManager.SelectPartyIndex ç•ªç›®ã®ä½ç½®ã‚’å–å¾—
                 int targetPosition = positionIndex[PlayerPrefsManager.SelectPartyIndex];
 
-                // “¯‚¶ˆÊ’u‚É‚ ‚é‘¼‚ÌƒJ[ƒh‚ğŒŸõ
+                // åŒã˜ä½ç½®ã«ã‚ã‚‹ä»–ã®ã‚«ãƒ¼ãƒ‰ã‚’æ¤œç´¢
                 var overlappingItems = cardPositionList
                     .Where(tuple => tuple.Item1 != cardId &&
                                     tuple.Item2.Count > PlayerPrefsManager.SelectPartyIndex &&
                                     tuple.Item2[PlayerPrefsManager.SelectPartyIndex] == targetPosition)
                     .ToList();
 
-                // íœˆ—
+                // å‰Šé™¤å‡¦ç†
                 foreach (var item in overlappingItems)
                 {
                     cardPositionList.Remove(item);
-                    Debug.Log($"d•¡‚ª”­¶‚µ‚½‚½‚ßAƒJ[ƒhID {item.Item1} ‚ğƒŠƒXƒg‚©‚çíœ‚µ‚Ü‚µ‚½B");
+                    Debug.Log($"é‡è¤‡ãŒç™ºç”Ÿã—ãŸãŸã‚ã€ã‚«ãƒ¼ãƒ‰ID {item.Item1} ã‚’ãƒªã‚¹ãƒˆã‹ã‚‰å‰Šé™¤ã—ã¾ã—ãŸã€‚");
                 }
             }
             else
             {
-                //  -1 ‚Ìê‡AƒŠƒXƒg‚Ì’†‚Å -1 ‚Ì‚à‚Ì‚ğ’T‚µ‚Ä’u‚«Š·‚¦‚é
+                //  -1 ã®å ´åˆã€ãƒªã‚¹ãƒˆã®ä¸­ã§ -1 ã®ã‚‚ã®ã‚’æ¢ã—ã¦ç½®ãæ›ãˆã‚‹
                 var negativeOneItem = cardPositionList.FirstOrDefault(tuple => tuple.Item1 == -1);
 
                 if (negativeOneItem != null)
                 {
-                    // -1 ‚Ìƒf[ƒ^‚ğíœ‚µ‚ÄV‚µ‚¢ƒJ[ƒhID‚Å’Ç‰Á‚·‚é
+                    // -1 ã®ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã—ã¦æ–°ã—ã„ã‚«ãƒ¼ãƒ‰IDã§è¿½åŠ ã™ã‚‹
                     cardPositionList.Remove(negativeOneItem);
-                    Debug.Log($"-1 ‚ÌƒJ[ƒhID‚ğíœ‚µAV‚µ‚¢ƒJ[ƒhID {cardId} ‚É’u‚«Š·‚¦‚Ü‚·B");
+                    Debug.Log($"-1 ã®ã‚«ãƒ¼ãƒ‰IDã‚’å‰Šé™¤ã—ã€æ–°ã—ã„ã‚«ãƒ¼ãƒ‰ID {cardId} ã«ç½®ãæ›ãˆã¾ã™ã€‚");
                 }
-                Debug.Log($"ƒJ[ƒhID {cardId} ‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğÅI“I‚É•Û‘¶‚µ‚Ü‚µ‚½: {string.Join(", ", positionIndex)}");
+                Debug.Log($"ã‚«ãƒ¼ãƒ‰ID {cardId} ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’æœ€çµ‚çš„ã«ä¿å­˜ã—ã¾ã—ãŸ: {string.Join(", ", positionIndex)}");
             }
-            // V‚µ‚¢ƒf[ƒ^‚ğ’Ç‰Á
+            // æ–°ã—ã„ãƒ‡ãƒ¼ã‚¿ã‚’è¿½åŠ 
             cardPositionList.Add(new Tuple<int, List<int>>(cardId, positionIndex));
         }
 
-        // •Ò¬‚ğ‚¢‚¶‚é‚Ü‚¦‚Ìƒf[ƒ^‚ğƒoƒbƒNƒAƒbƒv‚µ‚Ä‚¨‚­
+        // ç·¨æˆã‚’ã„ã˜ã‚‹ã¾ãˆã®ãƒ‡ãƒ¼ã‚¿ã‚’ãƒãƒƒã‚¯ã‚¢ãƒƒãƒ—ã—ã¦ãŠã
         private void CopyDefaultPartyData()
         {
             previousMemberList.Clear();
             PrevPositionList.Clear();
             cardPositionList.Clear();
 
-            // Œ»İ‚Ì MemberList ‚Ì“à—e‚ğƒRƒs[‚µ‚Ä•Û
+            // ç¾åœ¨ã® MemberList ã®å†…å®¹ã‚’ã‚³ãƒ”ãƒ¼ã—ã¦ä¿æŒ
             var partyData = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex];
             previousMemberList = new List<int>(partyData.MemberList);
 
@@ -390,23 +390,23 @@ namespace fantec.Menu.Card.Presernter
                 {
                     CardData carddata = CardManager.GetCardData(CardId);
 
-                    // **[‚¢ƒRƒs[**: V‚µ‚¢ƒŠƒXƒgƒCƒ“ƒXƒ^ƒ“ƒX‚É’l‚ğƒRƒs[‚·‚é
+                    // **æ·±ã„ã‚³ãƒ”ãƒ¼**: æ–°ã—ã„ãƒªã‚¹ãƒˆã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã«å€¤ã‚’ã‚³ãƒ”ãƒ¼ã™ã‚‹
                     List<int> posCopy = new List<int>(carddata.positionIndex);
 
-                    // Deep Copy‚µ‚½ƒŠƒXƒg‚ğg—p‚µ‚ÄTuple‚ğ¶¬‚·‚é
+                    // Deep Copyã—ãŸãƒªã‚¹ãƒˆã‚’ä½¿ç”¨ã—ã¦Tupleã‚’ç”Ÿæˆã™ã‚‹
                     PrevPositionList.Add(new Tuple<int, List<int>>(CardId, posCopy));
                     cardPositionList.Add(new Tuple<int, List<int>>(CardId, posCopy));
                 }
-                else// ‹ó‚Ìƒf[ƒ^‚ª“ü‚Á‚Ä‚¢‚½ê‡‚Íƒ_ƒ~[‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğ—p‚¢‚é
+                else// ç©ºã®ãƒ‡ãƒ¼ã‚¿ãŒå…¥ã£ã¦ã„ãŸå ´åˆã¯ãƒ€ãƒŸãƒ¼ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’ç”¨ã„ã‚‹
                 {
-                    // Deep Copy‚µ‚½ƒŠƒXƒg‚ğg—p‚µ‚ÄTuple‚ğ¶¬‚·‚é
+                    // Deep Copyã—ãŸãƒªã‚¹ãƒˆã‚’ä½¿ç”¨ã—ã¦Tupleã‚’ç”Ÿæˆã™ã‚‹
                     PrevPositionList.Add(new Tuple<int, List<int>>(-1, dummyPosition));
                     cardPositionList.Add(new Tuple<int, List<int>>(-1, dummyPosition));
                 }
             }
         }
 
-        // •Ò¬‚ğ•Û‘¶‚¹‚¸”jŠü‚µ‚Ü‚·‚©H¨‚Í‚¢‚ğ‰Ÿ‚µ‚½ê‡(Magi‚ªˆê‘Ì‚à•Ò¬‚³‚ê‚Ä‚¢‚Ü‚¹‚ñver)
+        // ç·¨æˆã‚’ä¿å­˜ã›ãšç ´æ£„ã—ã¾ã™ã‹ï¼Ÿâ†’ã¯ã„ã‚’æŠ¼ã—ãŸå ´åˆ(MagiãŒä¸€ä½“ã‚‚ç·¨æˆã•ã‚Œã¦ã„ã¾ã›ã‚“ver)
         private void OnClickNoticeYesButton(Unit unit)
         {
             RestorePreviousPartyData();
@@ -416,45 +416,45 @@ namespace fantec.Menu.Card.Presernter
             this.gameObject.SetActive(false);
         }
 
-        // •Ò¬‚ğ•Û‘¶‚¹‚¸”jŠü‚µ‚Ü‚·‚©H¨‚¢‚¢‚¦‚ğ‰Ÿ‚µ‚½ê‡(Magi‚ªˆê‘Ì‚à•Ò¬‚³‚ê‚Ä‚¢‚Ü‚¹‚ñver)
+        // ç·¨æˆã‚’ä¿å­˜ã›ãšç ´æ£„ã—ã¾ã™ã‹ï¼Ÿâ†’ã„ã„ãˆã‚’æŠ¼ã—ãŸå ´åˆ(MagiãŒä¸€ä½“ã‚‚ç·¨æˆã•ã‚Œã¦ã„ã¾ã›ã‚“ver)
         private void OnClickNoticeNoButton(Unit unit)
         {
             m_View.SetNoticeWindow(false);
         }
 
-        // Œ»İ‚Ì•Ò¬‚ğ•Û‘¶‚µ‚Ü‚·‚©H¨‚Í‚¢‚ğ‰Ÿ‚µ‚½ê‡
+        // ç¾åœ¨ã®ç·¨æˆã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿâ†’ã¯ã„ã‚’æŠ¼ã—ãŸå ´åˆ
         private void OnClickCheckYesButton(Unit unit)
         {
-            // •Ò¬‚ğ•Û‘¶‚·‚é
+            // ç·¨æˆã‚’ä¿å­˜ã™ã‚‹
             m_View.SetCheckWindow(false);
             foreach (var data in cardPositionList)
             {
                 CardManager.UpdateCardPositionIndex(data.Item1, data.Item2).Forget();
-                Debug.Log($"ƒJ[ƒhID {data.Item1} ‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğÅI“I‚É•Û‘¶‚µ‚Ü‚µ‚½: {string.Join(", ", data.Item2)}");
+                Debug.Log($"ã‚«ãƒ¼ãƒ‰ID {data.Item1} ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’æœ€çµ‚çš„ã«ä¿å­˜ã—ã¾ã—ãŸ: {string.Join(", ", data.Item2)}");
             }
 
-            // Œ»İ‚ÌƒfƒBƒŒƒNƒgƒŠ‚ğƒZ[ƒu‚·‚é
+            // ç¾åœ¨ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã‚’ã‚»ãƒ¼ãƒ–ã™ã‚‹
             m_GridView.UpdateContents(m_PlayerCardList);
             m_PartySortie.PartySlotSave(PlayerPrefsManager.SelectPartyIndex).Forget();
             UserDataManager.UpdatePlayFab().Forget();
             MenuManager.Instance.ChangePartyData = false;
         }
 
-        // Œ»İ‚Ì•Ò¬‚ğ•Û‘¶‚µ‚Ü‚·‚©H¨‚¢‚¢‚¦‚ğ‰Ÿ‚µ‚½ê‡
+        // ç¾åœ¨ã®ç·¨æˆã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿâ†’ã„ã„ãˆã‚’æŠ¼ã—ãŸå ´åˆ
         private void OnClickCheckNoButton(Unit unit)
         {
-            // •Ò¬‚ğ•Û‘¶‚¹‚¸”jŠü‚·‚é
+            // ç·¨æˆã‚’ä¿å­˜ã›ãšç ´æ£„ã™ã‚‹
             RestorePreviousPartyData();
 
             m_View.SetCheckWindow(false);
         }
 
         /// <summary>
-        /// •Ò¬‚ğŒ³‚Ìó‘Ô‚É–ß‚·ˆ—
+        /// ç·¨æˆã‚’å…ƒã®çŠ¶æ…‹ã«æˆ»ã™å‡¦ç†
         /// </summary>
         private void RestorePreviousPartyData()
         {
-            // ˜M‚é‚Ü‚¦‚Ì•Ò¬ƒf[ƒ^‚ğ•œŒ³‚·‚é
+            // å¼„ã‚‹ã¾ãˆã®ç·¨æˆãƒ‡ãƒ¼ã‚¿ã‚’å¾©å…ƒã™ã‚‹
             PartyData partyData = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex];
             partyData.MemberList.Clear();
             partyData.MemberList.AddRange(previousMemberList);
@@ -464,13 +464,13 @@ namespace fantec.Menu.Card.Presernter
                 var cardData = CardManager.GetCardData(prevData.Item1);
                 if (cardData != null)
                 {
-                    // •Û‘¶‚µ‚Ä‚¢‚½ˆÊ’uî•ñ‚ğ•œŒ³
+                    // ä¿å­˜ã—ã¦ã„ãŸä½ç½®æƒ…å ±ã‚’å¾©å…ƒ
                     cardData.positionIndex = new List<int>(prevData.Item2);
-                    Debug.Log($"[Restore] CardID: {prevData.Item1} ‚Ìƒ|ƒWƒVƒ‡ƒ“‚ğŒ³‚Ìó‘Ô‚É–ß‚µ‚Ü‚µ‚½: {string.Join(", ", prevData.Item2)}");
+                    Debug.Log($"[Restore] CardID: {prevData.Item1} ã®ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚’å…ƒã®çŠ¶æ…‹ã«æˆ»ã—ã¾ã—ãŸ: {string.Join(", ", prevData.Item2)}");
                 }
             }
 
-            // ƒrƒ…[‚ÌXV
+            // ãƒ“ãƒ¥ãƒ¼ã®æ›´æ–°
             UpdateContents().Forget();
             m_GridView.UpdateContents(m_BeforeList);
             MenuManager.Instance.ChangePartyData = false;

@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Model;
 using UnityEngine;
 
@@ -14,37 +14,37 @@ namespace fantec.Battle.Manager
                 var modelStage=Locator.Resolve<IBattleModelStage>();
                 var modelAdvent = Locator.Resolve<IBattleModelAdventSkill>();
 
-                // Bgm‚ğÄ¶‚·‚é
+                // Bgmã‚’å†ç”Ÿã™ã‚‹
                 Locator.Resolve<IBattleSoundManager>().PlayBgm(modelStage.GetBattleBgmName());
 
                 {
-                    // –¡•û•œŠˆ
+                    // å‘³æ–¹å¾©æ´»
                     var entity = ReviveEntity.GetEntity();
-                    var owner = modelUnits.PlayerDatas.GetExistBattlers().GetRandomBattler();// “K“–‚É–¡•û‚ğ”­“®Ò‚Éw’è
+                    var owner = modelUnits.PlayerDatas.GetExistBattlers().GetRandomBattler();// é©å½“ã«å‘³æ–¹ã‚’ç™ºå‹•è€…ã«æŒ‡å®š
                     var infoBox=new AffectInfoBox(entity, owner);
                     Affect.Execute(infoBox.infoList);
                 }
 
                 {
-                    // –¡•û‘S‰ñ•œˆ—
+                    // å‘³æ–¹å…¨å›å¾©å‡¦ç†
                     var entity = FullRecoveryEntity.GetEntity();
-                    var owner = modelUnits.PlayerDatas.GetExistBattlers().GetRandomBattler();  // “K“–‚É–¡•û‚ğ”­“®Ò‚Æ‚·‚é
+                    var owner = modelUnits.PlayerDatas.GetExistBattlers().GetRandomBattler();  // é©å½“ã«å‘³æ–¹ã‚’ç™ºå‹•è€…ã¨ã™ã‚‹
                     var infoBox = new AffectInfoBox(entity, owner).SetIsHideNumeral(true);
                     Affect.Execute(infoBox.infoList);
                 }
 
                 {
-                    // ‚»‚Ì‘¼Œø‰Ê‚ğæ‚¹‚é‚È‚ç‚±‚±‚É‹LÚ
+                    // ãã®ä»–åŠ¹æœã‚’ä¹—ã›ã‚‹ãªã‚‰ã“ã“ã«è¨˜è¼‰
 
                 }
 
-                // ‡”Ô‚ÌÄ’Š‘I
+                // é †ç•ªã®å†æŠ½é¸
                 modelAdvent.SortByHeadInsertDefinitelyFirstPlayer();
 
-                // ƒ^[ƒ“”‚ÌƒŠƒZƒbƒg‚ğs‚¤
+                // ã‚¿ãƒ¼ãƒ³æ•°ã®ãƒªã‚»ãƒƒãƒˆã‚’è¡Œã†
                 modelStage.ResetTurn();
 
-                // TODO: “ü—Í‰Â”\‚ÈUI‚ğ•œ‹A‚³‚¹‚é‚È‚ç‚±‚±‚Ås‚¤
+                // TODO: å…¥åŠ›å¯èƒ½ãªUIã‚’å¾©å¸°ã•ã›ã‚‹ãªã‚‰ã“ã“ã§è¡Œã†
 
                 manager.m_Sequence.Value = DOTween.Sequence(manager)
                     .AppendInterval(1.0f)

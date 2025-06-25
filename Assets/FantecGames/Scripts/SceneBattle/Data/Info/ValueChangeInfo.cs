@@ -1,23 +1,23 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle
 {
     public struct ValueChangeInfo
     {
-        // ŒvZ‚ÌŒ³‚Æ‚È‚Á‚½’l
+        // è¨ˆç®—ã®å…ƒã¨ãªã£ãŸå€¤
         public int affectValue;
 
-        // V‚µ‚¢ŒvZŒã‚Ì’l
+        // æ–°ã—ã„è¨ˆç®—å¾Œã®å€¤
         public int newValue;
 
-        // Œ³‚Ì’l
+        // å…ƒã®å€¤
         public int oldValue;
 
-        // Å‘å’l
+        // æœ€å¤§å€¤
         public int maxValue;
 
         /// <summary>
-        /// Œø‰Ê—Ê‚ÌãŒÀA‰ºŒÀ‚ğ”½‰f‚µ‚½’l
+        /// åŠ¹æœé‡ã®ä¸Šé™ã€ä¸‹é™ã‚’åæ˜ ã—ãŸå€¤
         /// </summary>
         public int ClampedNewValue
         {
@@ -25,20 +25,20 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ³‹K‰»‚µ‚½’l
+        /// æ­£è¦åŒ–ã—ãŸå€¤
         /// </summary>
         public float Normalized
         {
             get
             {
-                // MEMO: “¯‚¶’l“¯m‚ÅŠ„‚é‚Æ Nan ‚É‚È‚é‚½‚ß
+                // MEMO: åŒã˜å€¤åŒå£«ã§å‰²ã‚‹ã¨ Nan ã«ãªã‚‹ãŸã‚
                 if (ClampedNewValue == maxValue) return 1;
                 else return (float)ClampedNewValue / (float)maxValue;
             }
         }
 
         /// <summary>
-        /// ”½“]‚³‚¹‚½³‹K‰»‚µ‚½’l
+        /// åè»¢ã•ã›ãŸæ­£è¦åŒ–ã—ãŸå€¤
         /// </summary>
         public float InversionNormalized
         {
@@ -46,7 +46,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒI[ƒo[ƒtƒ[‚µ‚½’l
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã—ãŸå€¤
         /// </summary>
         public int Overflow
         {
@@ -54,7 +54,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒI[ƒo[ƒtƒ[‚µ‚½’l‚Åü‰ñ‚Å‚«‚é‰ñ”
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã—ãŸå€¤ã§å‘¨å›ã§ãã‚‹å›æ•°
         /// </summary>
         public int OverflowAroundCount
         {
@@ -62,7 +62,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒI[ƒo[ƒtƒ[‚Ì—]‚è
+        /// ã‚ªãƒ¼ãƒãƒ¼ãƒ•ãƒ­ãƒ¼ã®ä½™ã‚Š
         /// </summary>
         public int OverflowAroundSurplus
         {
@@ -70,7 +70,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Å‘å’l‚Å‚ ‚é‚©”Û‚©
+        /// æœ€å¤§å€¤ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public bool IsLimit
         {

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Master;
 using fantec.Menu.Manager;
@@ -28,7 +28,7 @@ namespace fantec.Menu.PartySelect.View
         {
             m_WaveText.text = data.labelText;
 
-            // ‘S‚Ä”ñ•\¦‚É‚·‚é
+            // å…¨ã¦éè¡¨ç¤ºã«ã™ã‚‹
             for(int i=0;i<m_EnemyInfoCells.Length;i++)
             {
                 m_EnemyInfoCells[i].SetActive(false);
@@ -36,25 +36,25 @@ namespace fantec.Menu.PartySelect.View
 
             AbstructCardData enemyData = null;
 
-            // ƒf[ƒ^”½‰f
+            // ãƒ‡ãƒ¼ã‚¿åæ˜ 
             for(int i=0;i<data.enemyInfoList.Count;i++)
             {
                 enemyData = null;
-                //’Êí‚Ì“G
+                //é€šå¸¸ã®æ•µ
                 if (MasterDataManager.Instance.EnemyCardMaster.IsExist(data.enemyInfoList[i]))
                 {
                     enemyData = MasterDataManager.Instance.EnemyCardMaster.GetData(data.enemyInfoList[i]);
 
                     
                 }
-                // ƒ{ƒXì‚éH TODO:‚Ü‚¾–¢’è
+                // ãƒœã‚¹ä½œã‚‹ï¼Ÿ TODO:ã¾ã æœªå®š
 
                 if(enemyData!=null)
                 {
-                    // ƒAƒCƒRƒ“
+                    // ã‚¢ã‚¤ã‚³ãƒ³
                     m_CharacterImages[i].sprite = await AssetManager.Instance.LoadAssetAsync<Sprite>(AssetPath.GetCharacterSpriteSpherePath(enemyData.originId));
 
-                    // ‘®«ƒAƒCƒRƒ“‚È‚Ç•\¦‚³‚¹‚é‚È‚ç‚±‚±‚É’Ç‰Á‚·‚é@ŒãX’Ç‰Á‚·‚éH TODO
+                    // å±æ€§ã‚¢ã‚¤ã‚³ãƒ³ãªã©è¡¨ç¤ºã•ã›ã‚‹ãªã‚‰ã“ã“ã«è¿½åŠ ã™ã‚‹ã€€å¾Œã€…è¿½åŠ ã™ã‚‹ï¼Ÿ TODO
 
                     int enemyInfo = data.enemyInfoList[i];
                     m_DetailButton[i].OnClickAsObservable().Subscribe(_=>OnTapDetailButton(enemyInfo)).AddTo(this);
@@ -64,11 +64,11 @@ namespace fantec.Menu.PartySelect.View
         }
 
         /// <summary>
-        /// Ú×ƒ{ƒ^ƒ“‰Ÿ‰º
+        /// è©³ç´°ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         private void OnTapDetailButton(int enemyId)
         {
-            // SEÄ¶‚³‚¹‚é
+            // SEå†ç”Ÿã•ã›ã‚‹
             MenuManager.Instance.EnemyDetailId = enemyId;
 
             MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.NoContents);

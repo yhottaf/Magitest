@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using System;
 
@@ -46,19 +46,19 @@ namespace fantec.Battle.Ui.Hud.Wave
         public void UpdateCurrentWaveText(int wave)
         {
             try { m_CurrentWaveText.text = wave.ToString(); }
-            catch { throw new IndexOutOfRangeException($"[index : {wave}] ”z—ñ‚Ì”ÍˆÍŠOA‚Ü‚½‚Í—v‘f‚ª‘¶İ‚µ‚È‚¢B"); }
+            catch { throw new IndexOutOfRangeException($"[index : {wave}] é…åˆ—ã®ç¯„å›²å¤–ã€ã¾ãŸã¯è¦ç´ ãŒå­˜åœ¨ã—ãªã„ã€‚"); }
         }
 
         public void UpdateMaxWaveText(int wave)
         {
             try { m_MaxWaveText.text = wave.ToString(); }
-            catch { throw new IndexOutOfRangeException($"[index : {wave}] ”z—ñ‚Ì”ÍˆÍŠOA‚Ü‚½‚Í—v‘f‚ª‘¶İ‚µ‚È‚¢B"); }
+            catch { throw new IndexOutOfRangeException($"[index : {wave}] é…åˆ—ã®ç¯„å›²å¤–ã€ã¾ãŸã¯è¦ç´ ãŒå­˜åœ¨ã—ãªã„ã€‚"); }
         }
 
         public void UpdateCurrentTurnText(int turn)
         {
             try { m_CurrentTurnText.text = turn.ToString(); }
-            catch { throw new IndexOutOfRangeException($"[index : {turn}] ”z—ñ‚Ì”ÍˆÍŠOA‚Ü‚½‚Í—v‘f‚ª‘¶İ‚µ‚È‚¢B"); }
+            catch { throw new IndexOutOfRangeException($"[index : {turn}] é…åˆ—ã®ç¯„å›²å¤–ã€ã¾ãŸã¯è¦ç´ ãŒå­˜åœ¨ã—ãªã„ã€‚"); }
         }
     }
 }

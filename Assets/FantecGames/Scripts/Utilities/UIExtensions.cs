@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UniRx.Triggers;
 using UnityEngine;
@@ -12,7 +12,7 @@ public static class UIExtensions
         return button
             .OnPointerDownAsObservable()
             .Throttle(TimeSpan.FromSeconds(pressSeconds))
-            .TakeUntil(button.OnPointerExitAsObservable()) // ‰Ÿ‚µ‚½‚Ü‚Üw‚ªƒ{ƒ^ƒ“—Ìˆæ‚©‚ç—£‚ê‚½‚çI—¹
+            .TakeUntil(button.OnPointerExitAsObservable()) // æŠ¼ã—ãŸã¾ã¾æŒ‡ãŒãƒœã‚¿ãƒ³é ˜åŸŸã‹ã‚‰é›¢ã‚ŒãŸã‚‰çµ‚äº†
             .TakeUntil(button.OnPointerUpAsObservable())
             .RepeatUntilDestroy(button)
             .AsUnitObservable();
@@ -31,9 +31,9 @@ public static class UIExtensions
     {
         return button
             .OnClickAsObservable()
-            .ThrottleFirst(TimeSpan.FromSeconds(duplicateSafetySeconds)) // ˜A‘Å–h~
+            .ThrottleFirst(TimeSpan.FromSeconds(duplicateSafetySeconds)) // é€£æ‰“é˜²æ­¢
             .SkipUntil(button.OnPointerDownAsObservable())
-            .TakeUntil(button.OnLongTapAsObservable(pressSafetySeconds)) // ’·‰Ÿ‚µŒã‚Éw‚ğ—£‚µ‚Ä‚àƒ^ƒbƒvƒCƒxƒ“ƒg‚ğ”­s‚µ‚È‚¢
+            .TakeUntil(button.OnLongTapAsObservable(pressSafetySeconds)) // é•·æŠ¼ã—å¾Œã«æŒ‡ã‚’é›¢ã—ã¦ã‚‚ã‚¿ãƒƒãƒ—ã‚¤ãƒ™ãƒ³ãƒˆã‚’ç™ºè¡Œã—ãªã„
             .RepeatUntilDestroy(button)
             .AsUnitObservable();
     }

@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using fantec.Master;
 using UnityEngine;
 
@@ -7,8 +7,8 @@ namespace fantec.Master
     [System.Serializable]
     public class AdventSkillData : AbstructSkillData
     {
-        public int triggerProbility; // ”­¶Šm—¦
-        public int iconId;           // ƒXƒLƒ‹ƒAƒCƒRƒ“‚È‚Ç‚ğİ’è‚·‚é‚È‚ç
+        public int triggerProbility; // ç™ºç”Ÿç¢ºç‡
+        public int iconId;           // ã‚¹ã‚­ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ãªã©ã‚’è¨­å®šã™ã‚‹ãªã‚‰
     }
 
     [ExcelAsset(AssetPath =AssetPath.MasterLocalDataFolderPath), CreateAssetMenu(fileName = "AdventSkillMaster", menuName = "ScriptableObjects/AdventSkillMaster")]

@@ -1,85 +1,85 @@
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using UnityEngine;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// �X�N���[���r���[���������邽�߂̒��ۊ��N���X.
-    /// �����X�N���[������уX�i�b�v�ɑΉ����Ă��܂�.
-    /// <see cref="FantecScrollView{TItemData, TContext}.Context"/> ���s�v�ȏꍇ��
-    /// ����� <see cref="FantecScrollView{TItemData}"/> ���g�p���܂�.
+    /// スクロールビューを実装するための抽象基底クラス.
+    /// 無限スクロールおよびスナップに対応しています.
+    /// <see cref="FantecScrollView{TItemData, TContext}.Context"/> が不要な場合は
+    /// 代わりに <see cref="FantecScrollView{TItemData}"/> を使用します.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
-    /// <typeparam name="TContext"><see cref="Context"/> �̌^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
+    /// <typeparam name="TContext"><see cref="Context"/> の型.</typeparam>
     public abstract class FantecScrollView<TItemData, TContext> : MonoBehaviour where TContext : class, new()
     {
         /// <summary>
-        /// �Z�����m�̊Ԋu.
+        /// セル同士の間隔.
         /// </summary>
         [SerializeField, Range(1e-2f, 1f)] protected float cellInterval = 0.2f;
 
         /// <summary>
-        /// �X�N���[���ʒu�̊.
+        /// スクロール位置の基準.
         /// </summary>
         /// <remarks>
-        /// ���Ƃ��΁A <c>0.5</c> ���w�肵�ăX�N���[���ʒu�� <c>0</c> �̏ꍇ, �����ɍŏ��̃Z�����z�u����܂�.
+        /// たとえば、 <c>0.5</c> を指定してスクロール位置が <c>0</c> の場合, 中央に最初のセルが配置されます.
         /// </remarks>
         [SerializeField, Range(0f, 1f)] protected float scrollOffset = 0.5f;
 
         /// <summary>
-        /// �Z�����z���Ĕz�u������ǂ���.
+        /// セルを循環して配置させるどうか.
         /// </summary>
         /// <remarks>
-        /// <c>true</c> �ɂ���ƍŌ�̃Z���̌�ɍŏ��̃Z��, �ŏ��̃Z���̑O�ɍŌ�̃Z�������Ԃ悤�ɂȂ�܂�.
-        /// �����X�N���[������������ꍇ�� <c>true</c> ���w�肵�܂�.
+        /// <c>true</c> にすると最後のセルの後に最初のセル, 最初のセルの前に最後のセルが並ぶようになります.
+        /// 無限スクロールを実装する場合は <c>true</c> を指定します.
         /// </remarks>
         [SerializeField] protected bool loop = false;
 
         /// <summary>
-        /// �Z���̐e�v�f�ƂȂ� <c>Transform</c>.
+        /// セルの親要素となる <c>Transform</c>.
         /// </summary>
         [SerializeField] protected Transform cellContainer = default;
 
         readonly IList<FantecCell<TItemData, TContext>> pool = new List<FantecCell<TItemData, TContext>>();
 
         /// <summary>
-        /// �������ς݂��ǂ���.
+        /// 初期化済みかどうか.
         /// </summary>
         protected bool initialized;
 
         /// <summary>
-        /// ���݂̃X�N���[���ʒu.
+        /// 現在のスクロール位置.
         /// </summary>
         protected float currentPosition;
 
         /// <summary>
-        /// �Z���� Prefab.
+        /// セルの Prefab.
         /// </summary>
         protected abstract GameObject CellPrefab { get; }
 
         /// <summary>
-        /// �A�C�e���ꗗ�̃f�[�^.
+        /// アイテム一覧のデータ.
         /// </summary>
         protected IList<TItemData> ItemsSource { get; set; } = new List<TItemData>();
 
         /// <summary>
-        /// <typeparamref name="TContext"/> �̃C���X�^���X.
-        /// �Z���ƃX�N���[���r���[�Ԃœ����C���X�^���X�����L����܂�. ���̎󂯓n�����Ԃ̕ێ��Ɏg�p���܂�.
+        /// <typeparamref name="TContext"/> のインスタンス.
+        /// セルとスクロールビュー間で同じインスタンスが共有されます. 情報の受け渡しや状態の保持に使用します.
         /// </summary>
         protected TContext Context { get; } = new TContext();
 
         /// <summary>
-        /// ���������s���܂�.
+        /// 初期化を行います.
         /// </summary>
         /// <remarks>
-        /// �ŏ��ɃZ������������钼�O�ɌĂяo����܂�.
+        /// 最初にセルが生成される直前に呼び出されます.
         /// </remarks>
         protected virtual void Initialize() { }
 
         /// <summary>
-        /// �n���ꂽ�A�C�e���ꗗ�Ɋ�Â��ĕ\�����e���X�V���܂�.
+        /// 渡されたアイテム一覧に基づいて表示内容を更新します.
         /// </summary>
-        /// <param name="itemsSource">�A�C�e���ꗗ.</param>
+        /// <param name="itemsSource">アイテム一覧.</param>
         protected virtual void UpdateContents(IList<TItemData> itemsSource)
         {
             ItemsSource = itemsSource;
@@ -87,19 +87,19 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// �Z���̃��C�A�E�g�������I�ɍX�V���܂�.
+        /// セルのレイアウトを強制的に更新します.
         /// </summary>
         protected virtual void Relayout() => UpdatePosition(currentPosition, false);
 
         /// <summary>
-        /// �Z���̃��C�A�E�g�ƕ\�����e�������I�ɍX�V���܂�.
+        /// セルのレイアウトと表示内容を強制的に更新します.
         /// </summary>
         protected virtual void Refresh() => UpdatePosition(currentPosition, true);
 
         /// <summary>
-        /// �X�N���[���ʒu���X�V���܂�.
+        /// スクロール位置を更新します.
         /// </summary>
-        /// <param name="position">�X�N���[���ʒu.</param>
+        /// <param name="position">スクロール位置.</param>
         protected virtual void UpdatePosition(float position) => UpdatePosition(position, false);
 
         void UpdatePosition(float position, bool forceRefresh)
@@ -200,13 +200,13 @@ namespace FantecScrollView
     }
 
     /// <summary>
-    /// <see cref="FantecScrollView{TItemData}"/> �̃R���e�L�X�g�N���X.
+    /// <see cref="FantecScrollView{TItemData}"/> のコンテキストクラス.
     /// </summary>
     public sealed class NullContext { }
 
     /// <summary>
-    /// �X�N���[���r���[���������邽�߂̒��ۊ��N���X.
-    /// �����X�N���[������уX�i�b�v�ɑΉ����Ă��܂�.
+    /// スクロールビューを実装するための抽象基底クラス.
+    /// 無限スクロールおよびスナップに対応しています.
     /// </summary>
     /// <typeparam name="TItemData"></typeparam>
     /// <seealso cref="FantecScrollView{TItemData, TContext}"/>

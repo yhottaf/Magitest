@@ -1,4 +1,4 @@
-using fantec.Battle.Ui.Window;
+﻿using fantec.Battle.Ui.Window;
 using UnityEngine;
 
 namespace fantec.Battle.Manager

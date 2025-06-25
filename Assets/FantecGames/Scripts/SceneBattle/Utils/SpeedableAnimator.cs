@@ -1,4 +1,4 @@
-using fantec.Battle.Utiles;
+ï»¿using fantec.Battle.Utiles;
 using UnityEngine;
 
 namespace fantec.Battle.Ui.Animation
@@ -17,7 +17,7 @@ namespace fantec.Battle.Ui.Animation
             if(m_Animator==null)m_Animator=this.GetComponent<Animator>();
             if(m_Animator==null)
             {
-                Debug.LogError("Animator ‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                Debug.LogError("Animator ãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 

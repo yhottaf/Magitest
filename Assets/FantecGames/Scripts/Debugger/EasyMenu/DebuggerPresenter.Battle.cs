@@ -1,4 +1,4 @@
-using fantec.Battle;
+ï»¿using fantec.Battle;
 using fantec.Battle.Manager;
 using fantec.Battle.Model;
 using UniRx;
@@ -20,7 +20,7 @@ namespace fantec.Debugger
 
             modelStage.OnUpdateStageDataObservable.Subscribe(stage =>
             {
-                Create("ƒEƒF[ƒu•ÏX", new DebuggerItemData()
+                Create("ã‚¦ã‚§ãƒ¼ãƒ–å¤‰æ›´", new DebuggerItemData()
                 {
                     inItemDatas=DebuggerInItemData.GetDatas("wave :",value=>
                     {
@@ -30,33 +30,33 @@ namespace fantec.Debugger
                     },stage.Entity.maxWave)
                 });
 
-                Create("ƒ^[ƒ“”•ÏX", new DebuggerItemData()
+                Create("ã‚¿ãƒ¼ãƒ³æ•°å¤‰æ›´", new DebuggerItemData()
                 {
-                    inItemDatas=DebuggerInItemData.GetDatas("ƒ^[ƒ“” : ",value=>
+                    inItemDatas=DebuggerInItemData.GetDatas("ã‚¿ãƒ¼ãƒ³æ•° : ",value=>
                     {
                         stage.SetTurn(value);
                     },31)
                 });
 
-                Create("ƒXƒe[ƒW", new DebuggerItemData()
+                Create("ã‚¹ãƒ†ãƒ¼ã‚¸", new DebuggerItemData()
                 {
                     inItemDatas = new DebuggerInItemData[]
                     {
-                        new DebuggerInItemData("ŠJn",()=>
+                        new DebuggerInItemData("é–‹å§‹",()=>
                         {
-                            // ƒuƒ‰ƒbƒNƒAƒEƒg‰æ–Ê‚ª‘¶İ‚µ‚Ä‚¢‚é‚©Šm‚©‚ß‚é
+                            // ãƒ–ãƒ©ãƒƒã‚¯ã‚¢ã‚¦ãƒˆç”»é¢ãŒå­˜åœ¨ã—ã¦ã„ã‚‹ã‹ç¢ºã‹ã‚ã‚‹
                            if(Locator.Resolve<IBattleAnimationManager>().GetIsExist(out IBlackoutAnimation animation))
                             {
-                                // ‘¶İ‚µ‚Ä‚¢‚½‚çÁ‚·
+                                // å­˜åœ¨ã—ã¦ã„ãŸã‚‰æ¶ˆã™
                                 animation.Hide();
                             }
                             flowManager.ChangeFlowReserve<BattleFlowManager.FlowRematch>();
                         }),
-                        new DebuggerInItemData("I—¹",()=>
+                        new DebuggerInItemData("çµ‚äº†",()=>
                         {
                             if(Locator.Resolve<IBattleAnimationManager>().GetIsExist(out IBlackoutAnimation animation))
                             {
-                                // ‘¶İ‚µ‚Ä‚¢‚½‚çÁ‚·
+                                // å­˜åœ¨ã—ã¦ã„ãŸã‚‰æ¶ˆã™
                                 animation.Hide();
                             }
                            flowManager.ChangeFlowReserve<BattleFlowManager.FlowWin>();
@@ -65,7 +65,7 @@ namespace fantec.Debugger
                 });
             });
 
-            Create("ƒQ[ƒ€‰Á‘¬", new DebuggerItemData()
+            Create("ã‚²ãƒ¼ãƒ åŠ é€Ÿ", new DebuggerItemData()
             {
                 inItemDatas=DebuggerInItemData.GetDatas("x ",value=>
                 {
@@ -73,7 +73,7 @@ namespace fantec.Debugger
                 },10)
             });
 
-            Create("ƒQ[ƒ€Œ¸‘¬", new DebuggerItemData()
+            Create("ã‚²ãƒ¼ãƒ æ¸›é€Ÿ", new DebuggerItemData()
             {
                 inItemDatas=DebuggerInItemData.GetDatas("x 0.",value=>
                 {
@@ -81,11 +81,11 @@ namespace fantec.Debugger
                 },9)
             });
 
-            Create("î•ñ", new DebuggerItemData
+            Create("æƒ…å ±", new DebuggerItemData
             {
                 inItemDatas=new DebuggerInItemData[]
                 {
-                    new DebuggerInItemData("ƒLƒƒƒ‰ƒNƒ^[",()=>
+                    new DebuggerInItemData("ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼",()=>
                     {
                         if(windowManager.GetIs(out IDebugStateWindow window))
                             windowManager.Close<IDebugStateWindow>();

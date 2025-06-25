@@ -1,6 +1,7 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Master;
+using fantec.Menu.Manager;
 using fantec.PlayfabCilent;
 using fantec.PlayFabClient;
 using PlayFab;
@@ -26,19 +27,19 @@ namespace fantec.Title
         private List<string> AllVersions = new List<string>();
 
         /// <summary>
-        /// ƒ^ƒbƒv‚ğó‚¯•t‚¯‚é‚©‚Ç‚¤‚©
+        /// ã‚¿ãƒƒãƒ—ã‚’å—ã‘ä»˜ã‘ã‚‹ã‹ã©ã†ã‹
         /// </summary>
         private bool isTapable = true;
 
         private bool isCanSceneChange = false;
 
-        // ƒAƒZƒbƒg‚Ìƒ[ƒhŠm”F‚©‚ç‰½•b‚ÅƒtƒF[ƒh‚ªn‚Ü‚é‚©(2•bw’è)
+        // ã‚¢ã‚»ãƒƒãƒˆã®ãƒ­ãƒ¼ãƒ‰ç¢ºèªã‹ã‚‰ä½•ç§’ã§ãƒ•ã‚§ãƒ¼ãƒ‰ãŒå§‹ã¾ã‚‹ã‹(2ç§’æŒ‡å®š)
         private readonly int AwaitSecond = 2000; 
 
         void Start()
         {
             Fade.FadeIn(0.5f);
-            m_View.OnClickTapButtonObservable.Where(_ => isTapable).Subscribe(OnClickTapButton).AddTo(this);                      //‘S‘Ì‰æ–Ê‚ğƒ^ƒbƒv‚µ‚½‚Æ‚«
+            m_View.OnClickTapButtonObservable.Where(_ => isTapable).Subscribe(OnClickTapButton).AddTo(this);                      //å…¨ä½“ç”»é¢ã‚’ã‚¿ãƒƒãƒ—ã—ãŸã¨ã
 
             //m_View.OnClickRetryButtonObservable
             //    .Subscribe(async _ =>
@@ -49,12 +50,12 @@ namespace fantec.Title
             //        }
             //        catch (Exception ex)
             //        {
-            //            Debug.LogError($"Retryƒ{ƒ^ƒ“‚Å‚ÌDL¸”s: {ex.Message}");
+            //            Debug.LogError($"Retryãƒœã‚¿ãƒ³ã§ã®DLå¤±æ•—: {ex.Message}");
             //            m_View.ShowRetryButton();
             //        }
             //    }).AddTo(this);
 
-            // m_View.OnClickDeleteUserDataBtnObservable.Where(_=>isTapable).Subscribe(OnClickDeleteUserData).AddTo(this);           // Test:ƒ†[ƒU[ƒf[ƒ^‚Ìíœƒ{ƒ^ƒ“
+            // m_View.OnClickDeleteUserDataBtnObservable.Where(_=>isTapable).Subscribe(OnClickDeleteUserData).AddTo(this);           // Test:ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã®å‰Šé™¤ãƒœã‚¿ãƒ³
             string versionStr = string.Empty;
 #if UNITY_EDITOR
             versionStr = $"Ver.{PlayerSettings.bundleVersion} ({System.Environment.OSVersion.VersionString})";
@@ -70,24 +71,24 @@ namespace fantec.Title
 
 
 
-            // BGMÄ¶ŠÖ”‚ğ‚±‚±‚ÉŒÄ‚Ño‚· ƒ^ƒCƒgƒ‹‰æ–Ê‚ÌBGM
+            // BGMå†ç”Ÿé–¢æ•°ã‚’ã“ã“ã«å‘¼ã³å‡ºã™ ã‚¿ã‚¤ãƒˆãƒ«ç”»é¢ã®BGM
             BGMManager.Instance.Play(m_View.m_audiosource, true);
         }
 
         /// <summary>
-        /// ƒ^ƒbƒvƒGƒŠƒA‰Ÿ‰º
+        /// ã‚¿ãƒƒãƒ—ã‚¨ãƒªã‚¢æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickTapButton(Unit unit)
         {
-            // SEÄ¶
+            // SEå†ç”Ÿ
             SEManager.Instance.Play(SEClipName.SystemLoginPop);
 
             Login().Forget();
         }
 
         /// <summary>
-        /// ƒ†[ƒU[ƒf[ƒ^‚Ìíœ‹@”\‚ÌŒÄ‚Ño‚µ
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã®å‰Šé™¤æ©Ÿèƒ½ã®å‘¼ã³å‡ºã—
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickDeleteUserData(Unit unit)
@@ -96,49 +97,49 @@ namespace fantec.Title
         }
 
         /// <summary>
-        /// ƒƒOƒCƒ“ˆ—
+        /// ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç†
         /// </summary>
         /// <returns></returns>
         private async UniTask Login()
         {
             isTapable = false;
 
-            //‚±‚±‚Éƒ}ƒXƒ^[ƒf[ƒ^‚Ì“Ç‚İ‚İˆ—‚ğ‘‚­
+            //ã“ã“ã«ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿å‡¦ç†ã‚’æ›¸ã
             await MasterDataManager.Instance.LoadMasterDataForLocalAsync(new CancellationToken());
 
-            //PlayFabƒƒOƒCƒ“
-            Debug.Log("PlayFabƒƒOƒCƒ“ŠJn");
+            //PlayFabãƒ­ã‚°ã‚¤ãƒ³
+            Debug.Log("PlayFabãƒ­ã‚°ã‚¤ãƒ³é–‹å§‹");
             await LoginManager.LoginAndUpdateLocalCacheAsync();
-            Debug.Log("PlayFabƒƒOƒCƒ“Š®—¹");
+            Debug.Log("PlayFabãƒ­ã‚°ã‚¤ãƒ³å®Œäº†");
 
-            // TODO ƒfƒoƒbƒO‚Åƒ[ƒJƒ‹‚É•Û‘¶‚³‚ê‚Ä‚¢‚éƒŠƒ\[ƒXƒf[ƒ^‚ğíœ‚µ‚½‚¢‚Æ‚«ƒRƒƒ“ƒgƒAƒEƒg‚ğŠO‚·
+            // TODO ãƒ‡ãƒãƒƒã‚°ã§ãƒ­ãƒ¼ã‚«ãƒ«ã«ä¿å­˜ã•ã‚Œã¦ã„ã‚‹ãƒªã‚½ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ã‚’å‰Šé™¤ã—ãŸã„ã¨ãã‚³ãƒ¡ãƒ³ãƒˆã‚¢ã‚¦ãƒˆã‚’å¤–ã™
             //PlayerPrefsManager.AssetBundleVersion = "";
             //bool success = Caching.ClearCache();
-            //Debug.Log(success ? "ƒLƒƒƒbƒVƒ…íœ¬Œ÷" : "ƒLƒƒƒbƒVƒ…íœ¸”s");
+            //Debug.Log(success ? "ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤æˆåŠŸ" : "ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤å¤±æ•—");
 
 
-            try //ƒo[ƒWƒ‡ƒ“Šm”F‚ÆA‚»‚ê‚É‰‚¶ƒ_ƒEƒ“ƒ[ƒh‚·‚é•K—v‚ª‚ ‚éƒŠƒ\[ƒXƒf[ƒ^‚ª‚ ‚é‚È‚çƒ_ƒEƒ“ƒ[ƒhˆ—
+            try //ãƒãƒ¼ã‚¸ãƒ§ãƒ³ç¢ºèªã¨ã€ãã‚Œã«å¿œã˜ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹å¿…è¦ãŒã‚ã‚‹ãƒªã‚½ãƒ¼ã‚¹ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚‹ãªã‚‰ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å‡¦ç†
             {
                 AllVersions = await FetchAllVersionsFromPlayFab();
-                Debug.Log("æ“¾‚µ‚½ƒo[ƒWƒ‡ƒ“: " + string.Join(", ", AllVersions));
+                Debug.Log("å–å¾—ã—ãŸãƒãƒ¼ã‚¸ãƒ§ãƒ³: " + string.Join(", ", AllVersions));
 
                 await DownLoadInitialAsset();
             }
             catch (Exception ex)
             {
-                Debug.LogError("ƒo[ƒWƒ‡ƒ“î•ñæ“¾ƒGƒ‰[ : " + ex.Message);
+                Debug.LogError("ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±å–å¾—ã‚¨ãƒ©ãƒ¼ : " + ex.Message);
             }
 
-            await UniTask.Delay(AwaitSecond);// 2•b‘Ò‚Â
+            await UniTask.Delay(AwaitSecond);// 2ç§’å¾…ã¤
 
-            if (isCanSceneChange)// XVƒf[ƒ^‚ÌŠm”F‚ªI‚í‚èŸ‘æƒV[ƒ“‘JˆÚŠJn
+            if (isCanSceneChange)// æ›´æ–°ãƒ‡ãƒ¼ã‚¿ã®ç¢ºèªãŒçµ‚ã‚ã‚Šæ¬¡ç¬¬ã‚·ãƒ¼ãƒ³é·ç§»é–‹å§‹
             {
                 Loading.Show();
 
                 PlayFabSettings.staticSettings.TitleId = "E23B7";
                 PlayFabSettings.staticSettings.DeveloperSecretKey = "KXYWIP4D4FG5SOTJ8WCJW1FX8UBK3H69FYWP5UICQG8F3SQ8RC";
                 UserDataManager.User.TutorialDictionary[TutorialId.InitialPresent] = false;
-                //‰‰ñƒƒOƒCƒ“‚Ìê‡
+                //åˆå›ãƒ­ã‚°ã‚¤ãƒ³ã®å ´åˆ
                 if (UserDataManager.User.TutorialDictionary[TutorialId.InitialPresent] == false)
                 {
                     await StoreManager.PurchaseItemAsync(StoreId.DummyStore, "Initial-Present", VirtualCurrencyNames.FS.Code);
@@ -146,7 +147,13 @@ namespace fantec.Title
                     await StoreManager.PurchaseItemAsync(StoreId.DummyStore, "MagiDarkPresent", VirtualCurrencyNames.FS.Code);
                 }
 
-                // Spine‚ÌƒXƒPƒ‹ƒgƒ“ƒf[ƒ^‚Ì“Ç‚İ‚İ‚Íd‚¢‚Ì‚Å‚±‚±‚Å–‘O‚É‘S‚Ä“Ç‚İ‚ñ‚ÅƒLƒƒƒbƒVƒ…‚É•Û‘¶‚µ‚Ä‚¨‚­
+                // ãŠçŸ¥ã‚‰ã›ã‚’ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰èª­ã¿è¾¼ã‚€
+                await MasterDataManager.Instance.LoadNoticeMasterDataFromServerAsync();
+
+                // ã‚«ã‚¿ãƒ­ã‚°ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã—ã¦ãŠã
+                MasterDataManager.Instance.Catalogs = await PlayFabClientAPI.GetCatalogItemsAsync(new GetCatalogItemsRequest { CatalogVersion = "Main" });
+
+                // Spineã®ã‚¹ã‚±ãƒ«ãƒˆãƒ³ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ã¯é‡ã„ã®ã§ã“ã“ã§äº‹å‰ã«å…¨ã¦èª­ã¿è¾¼ã‚“ã§ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ä¿å­˜ã—ã¦ãŠã
                 await LoadSkeletonData();
                 await LoadLive2DData();
 
@@ -159,7 +166,7 @@ namespace fantec.Title
             await UserDataManager.DeleteUserData();
         }
 
-        // ŠO•”ƒT[ƒo[‚©‚çƒŠƒ\[ƒX‚ğƒ_ƒEƒ“ƒ[ƒh‚·‚é (ƒ[ƒJƒ‹‚©‚ç‚Ìƒ_ƒEƒ“ƒ[ƒh‚à‰Â)
+        // å¤–éƒ¨ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰ãƒªã‚½ãƒ¼ã‚¹ã‚’ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ (ãƒ­ãƒ¼ã‚«ãƒ«ã‹ã‚‰ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚‚å¯)
         private async UniTask DownLoadInitialAsset(bool isRetry = false)
         {
             string installedVer = PlayerPrefsManager.AssetBundleVersion;
@@ -171,23 +178,22 @@ namespace fantec.Title
 
             if (needDownloadLabels.Count == 0)
             {
-                Debug.Log("ƒ_ƒEƒ“ƒ[ƒh‘ÎÛ‚ÌƒAƒZƒbƒg‚Í‚ ‚è‚Ü‚¹‚ñ");
+                Debug.Log("ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å¯¾è±¡ã®ã‚¢ã‚»ãƒƒãƒˆã¯ã‚ã‚Šã¾ã›ã‚“");
                 isCanSceneChange = true;
                 return;
             }
-            Debug.Log(isRetry ? "Äsƒ‚[ƒh: ƒLƒƒƒbƒVƒ…‚ğíœ‚µ‚ÄÄƒ_ƒEƒ“ƒ[ƒh’†..." : "‰ŠúƒAƒZƒbƒg‚Ìƒ_ƒEƒ“ƒ[ƒhŠJn");
-            // ƒ_ƒEƒ“ƒ[ƒh‚·‚éƒŠƒ\[ƒX‚ª‘¶İ‚·‚é‚È‚çAi’»ƒo[‚Ì•\¦
-            m_View.SetLoadingViewObj(true);
+            Debug.Log(isRetry ? "å†è©¦è¡Œãƒ¢ãƒ¼ãƒ‰: ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‰Šé™¤ã—ã¦å†ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­..." : "åˆæœŸã‚¢ã‚»ãƒƒãƒˆã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰é–‹å§‹");
+
 
             bool allSucceeded = true;
             long totalBytes = 0;
             long downloadedBytes = 0;
             List<long> labelSizes = new();
 
-            // ‚Ü‚¸‘Sƒ‰ƒxƒ‹‚ÌƒTƒCƒY‚ğæ“¾
+            // ã¾ãšå…¨ãƒ©ãƒ™ãƒ«ã®ã‚µã‚¤ã‚ºã‚’å–å¾—
             foreach (var label in needDownloadLabels)
             {
-                Debug.Log($"‚·ƒ‰ƒxƒ‹: {label}");
+                Debug.Log($"è©¦ã™ãƒ©ãƒ™ãƒ«: {label}");
                 var sizeHandle = Addressables.GetDownloadSizeAsync(label);
                 await sizeHandle.ToUniTask();
 
@@ -198,14 +204,14 @@ namespace fantec.Title
                 }
                 else
                 {
-                    Debug.LogError($"{label} ‚Ìƒ_ƒEƒ“ƒ[ƒhƒTƒCƒYæ“¾‚É¸”s‚µ‚Ü‚µ‚½");
+                    Debug.LogError($"{label} ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã‚µã‚¤ã‚ºå–å¾—ã«å¤±æ•—ã—ã¾ã—ãŸ");
                     allSucceeded = false;
                     return;
                 }
 
             }
 
-            // ƒoƒbƒNƒOƒ‰ƒEƒ“ƒh‚Å‚àƒ_ƒEƒ“ƒ[ƒh‚ªs‚í‚ê‚é‚æ‚¤‚É‚·‚é
+            // ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰ã§ã‚‚ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ãŒè¡Œã‚ã‚Œã‚‹ã‚ˆã†ã«ã™ã‚‹
             Application.runInBackground = true; 
 
             for (int i = 0; i < needDownloadLabels.Count; i++)
@@ -215,16 +221,21 @@ namespace fantec.Title
 
                 if (labelSize == 0)
                 {
-                    Debug.Log($"{label} ‚ÍƒLƒƒƒbƒVƒ…Ï‚İ‚Å‚·");
+                    Debug.Log($"{label} ã¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ¸ˆã¿ã§ã™");
                     downloadedBytes += labelSize;
                     continue;
+                }
+                else
+                {
+                    // ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ãƒªã‚½ãƒ¼ã‚¹ãŒå­˜åœ¨ã™ã‚‹ãªã‚‰ã€é€²æ—ãƒãƒ¼ã®è¡¨ç¤º
+                    m_View.SetLoadingViewObj(true);
                 }
 
                 try
                 {
                     var downloadHandle = Addressables.DownloadDependenciesAsync(label, true);
 
-                    // ƒvƒƒOƒŒƒX•\¦ƒ‹[ƒv
+                    // ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹è¡¨ç¤ºãƒ«ãƒ¼ãƒ—
                     while (!downloadHandle.IsDone)
                     {
                         float labelProgress = downloadHandle.PercentComplete;
@@ -236,28 +247,28 @@ namespace fantec.Title
                         m_View.UpdateProgressText(progressRate, $"{currentMB:F2} MB / {totalMB:F2} MB ({progressRate * 100:F1}%)");
 
                         await UniTask.Yield();
-                        // ƒGƒ‰[ƒ`ƒFƒbƒN (ƒ‹[ƒv’†‚É¸”s‚ª”­¶‚µ‚½ê‡‚à‘Î‰)
+                        // ã‚¨ãƒ©ãƒ¼ãƒã‚§ãƒƒã‚¯ (ãƒ«ãƒ¼ãƒ—ä¸­ã«å¤±æ•—ãŒç™ºç”Ÿã—ãŸå ´åˆã‚‚å¯¾å¿œ)
                         if (progressRate != 1.0f)
                         {
                             if (downloadHandle.Status == AsyncOperationStatus.Failed)
                             {
-                                Debug.LogError($"ƒ_ƒEƒ“ƒ[ƒh’†‚ÉƒGƒ‰[‚ª”­¶‚µ‚Ü‚µ‚½: {label}");
+                                Debug.LogError($"ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­ã«ã‚¨ãƒ©ãƒ¼ãŒç™ºç”Ÿã—ã¾ã—ãŸ: {label}");
                                 isCanSceneChange = false;
-                                throw new Exception($"ƒ_ƒEƒ“ƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½: {label} - {downloadHandle.OperationException?.Message}");
+                                throw new Exception($"ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸ: {label} - {downloadHandle.OperationException?.Message}");
                             }
                         }
                     }
 
-                    Debug.Log($"{label} ‚Ìƒ_ƒEƒ“ƒ[ƒhŠ®—¹I");
+                    Debug.Log($"{label} ã®ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å®Œäº†ï¼");
                 }
                 catch (Exception ex)
                 {
-                    Debug.LogError($"ƒ_ƒEƒ“ƒ[ƒh’†‚É—áŠO”­¶: {label} ¨ {ex.Message}");
+                    Debug.LogError($"ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰ä¸­ã«ä¾‹å¤–ç™ºç”Ÿ: {label} â†’ {ex.Message}");
 
-                    // RemoteProviderException ‚Ìê‡AisCanSceneChange ‚ğ false ‚É‚·‚é
+                    // RemoteProviderException ã®å ´åˆã€isCanSceneChange ã‚’ false ã«ã™ã‚‹
                     if (ex.Message.Contains("RemoteProviderException") || ex.Message.Contains("ConnectionError"))
                     {
-                        Debug.LogError("ƒŠƒ‚[ƒgƒvƒƒoƒCƒ_‚Ö‚ÌÚ‘±‚É¸”s‚µ‚Ü‚µ‚½BƒV[ƒ“‘JˆÚ‚ğ‹–‰Â‚µ‚Ü‚¹‚ñB");
+                        Debug.LogError("ãƒªãƒ¢ãƒ¼ãƒˆãƒ—ãƒ­ãƒã‚¤ãƒ€ã¸ã®æ¥ç¶šã«å¤±æ•—ã—ã¾ã—ãŸã€‚ã‚·ãƒ¼ãƒ³é·ç§»ã‚’è¨±å¯ã—ã¾ã›ã‚“ã€‚");
                         isCanSceneChange = false;
                     }
 
@@ -266,37 +277,37 @@ namespace fantec.Title
                 }
             }
 
-            // ƒ_ƒEƒ“ƒ[ƒhI—¹‚ÉƒoƒbƒNƒOƒ‰ƒEƒ“ƒh“®ì‚ğ–³Œø‚É‚·‚é@
+            // ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰çµ‚äº†æ™‚ã«ãƒãƒƒã‚¯ã‚°ãƒ©ã‚¦ãƒ³ãƒ‰å‹•ä½œã‚’ç„¡åŠ¹ã«ã™ã‚‹ã€€
             Application.runInBackground = false; 
 
             if (allSucceeded)
             {
-                // ¬Œ÷‚Ì‚İŒ»İ‚ÌƒAƒvƒŠ‚Ìƒo[ƒWƒ‡ƒ“‚ğ’[––‚É•Û‘¶‚µ‚Ä‚¨‚­
+                // æˆåŠŸæ™‚ã®ã¿ç¾åœ¨ã®ã‚¢ãƒ—ãƒªã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚’ç«¯æœ«ã«ä¿å­˜ã—ã¦ãŠã
                 PlayerPrefsManager.AssetBundleVersion = Application.version;
-                Debug.Log("‰ŠúƒAƒZƒbƒg‚Ìƒ`ƒFƒbƒNŠ®—¹BƒƒOƒCƒ“ˆ—ŠJn");
+                Debug.Log("åˆæœŸã‚¢ã‚»ãƒƒãƒˆã®ãƒã‚§ãƒƒã‚¯å®Œäº†ã€‚ãƒ­ã‚°ã‚¤ãƒ³å‡¦ç†é–‹å§‹");
                 isCanSceneChange = true;
 
             }
             else if (!isRetry)
             {
-                Debug.LogWarning("‰‰ñƒ_ƒEƒ“ƒ[ƒh¸”s ¨ ƒLƒƒƒbƒVƒ…íœ‚µ‚ÄÄs‚µ‚Ü‚·");
+                Debug.LogWarning("åˆå›ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å¤±æ•— â†’ ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤ã—ã¦å†è©¦è¡Œã—ã¾ã™");
 
                 bool cleared = Caching.ClearCache();
                 PlayerPrefsManager.AssetBundleVersion = "";
-                Debug.Log(cleared ? "ƒLƒƒƒbƒVƒ…íœ¬Œ÷" : "ƒLƒƒƒbƒVƒ…íœ¸”s");
+                Debug.Log(cleared ? "ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤æˆåŠŸ" : "ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‰Šé™¤å¤±æ•—");
 
                 await DownLoadInitialAsset(isRetry: true);
             }
             else
             {
-                Debug.LogError("ƒLƒƒƒbƒVƒ…‚ğíœ‚µ‚Ä‚àƒ_ƒEƒ“ƒ[ƒh¸”sBè“®ƒŠƒgƒ‰ƒC‚ğ‹–‰Â");
-                // TODO: è“®‚ÅƒŠƒgƒ‰ƒC‚ğŠJn‚·‚éƒ{ƒ^ƒ“‚Ì•\¦
+                Debug.LogError("ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‰Šé™¤ã—ã¦ã‚‚ãƒ€ã‚¦ãƒ³ãƒ­ãƒ¼ãƒ‰å¤±æ•—ã€‚æ‰‹å‹•ãƒªãƒˆãƒ©ã‚¤ã‚’è¨±å¯");
+                // TODO: æ‰‹å‹•ã§ãƒªãƒˆãƒ©ã‚¤ã‚’é–‹å§‹ã™ã‚‹ãƒœã‚¿ãƒ³ã®è¡¨ç¤º
                 //     m_View.ShowRetryButton();
             }
         }
 
-        // ƒT[ƒo[‚©‚çƒAƒvƒŠ‚ÌŒ»İ”zMÏ‚İƒo[ƒWƒ‡ƒ“î•ñ‚ğæ“¾‚·‚é
-        // ‚±‚Ìî•ñ‚ğŒ³‚ÉAssetBandle‚Ì“Ç‚İ‚İ‚ğs‚¤B ¨—á‚¦‚Î1.1.0‚Ü‚Å”zM‚µ‚Ä‚¢‚½ê‡A1.0.0`1.1.0•ª‚ÌƒŠƒ\[ƒX‚ğæ“¾‚³‚¹‚é
+        // ã‚µãƒ¼ãƒãƒ¼ã‹ã‚‰ã‚¢ãƒ—ãƒªã®ç¾åœ¨é…ä¿¡æ¸ˆã¿ãƒãƒ¼ã‚¸ãƒ§ãƒ³æƒ…å ±ã‚’å–å¾—ã™ã‚‹
+        // ã“ã®æƒ…å ±ã‚’å…ƒã«AssetBandleã®èª­ã¿è¾¼ã¿ã‚’è¡Œã†ã€‚ â†’ä¾‹ãˆã°1.1.0ã¾ã§é…ä¿¡ã—ã¦ã„ãŸå ´åˆã€1.0.0ï½1.1.0åˆ†ã®ãƒªã‚½ãƒ¼ã‚¹ã‚’å–å¾—ã•ã›ã‚‹
         public static async UniTask<List<string>> FetchAllVersionsFromPlayFab()
         {
             try
@@ -315,18 +326,18 @@ namespace fantec.Title
                 }
                 else
                 {
-                    throw new Exception("TitleData ‚É 'AssetVersions' ƒL[‚ª‘¶İ‚µ‚Ü‚¹‚ñ");
+                    throw new Exception("TitleData ã« 'AssetVersions' ã‚­ãƒ¼ãŒå­˜åœ¨ã—ã¾ã›ã‚“");
                 }
             }
             catch (Exception ex)
             {
-                Debug.LogError($"PlayFab TitleDataæ“¾¸”s: {ex.Message}");
+                Debug.LogError($"PlayFab TitleDataå–å¾—å¤±æ•—: {ex.Message}");
                 throw;
             }
         }
 
-        // ÅV‚ÌƒAƒvƒŠƒo[ƒWƒ‡ƒ“‚Å‚ ‚é‚©‚Ç‚¤‚©‚ğ’²‚×
-        // XVƒf[ƒ^‚ª‚ ‚ê‚ÎAppStore‚©GooglePlayConsole‚Ö‚ÌƒŠƒ“ƒN‚ğ•\¦‚³‚¹‚é
+        // æœ€æ–°ã®ã‚¢ãƒ—ãƒªãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã‚ã‚‹ã‹ã©ã†ã‹ã‚’èª¿ã¹
+        // æ›´æ–°ãƒ‡ãƒ¼ã‚¿ãŒã‚ã‚Œã°AppStoreã‹GooglePlayConsoleã¸ã®ãƒªãƒ³ã‚¯ã‚’è¡¨ç¤ºã•ã›ã‚‹
         private async UniTask VersionChecker()
         {
             string currentVersion = string.Empty;
@@ -336,25 +347,25 @@ namespace fantec.Title
             currentVersion = Application.version;
 #endif
 
-            // Œ»İ‚Ìƒo[ƒWƒ‡ƒ“‚æ‚èV‚µ‚¢‚à‚Ì‚ª‚ ‚é‚©‚Ç‚¤‚©‚ğƒ`ƒFƒbƒN
+            // ç¾åœ¨ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã‚ˆã‚Šæ–°ã—ã„ã‚‚ã®ãŒã‚ã‚‹ã‹ã©ã†ã‹ã‚’ãƒã‚§ãƒƒã‚¯
             var NewVersion = AllVersions
                 .Where(v => string.Compare(v, currentVersion) > 0)
                 .ToList();
 
             if (NewVersion.Count > 0)
             {
-                Debug.Log("V‚µ‚¢ƒo[ƒWƒ‡ƒ“‚ª‚ ‚è‚Ü‚·: " + string.Join(",", NewVersion));
+                Debug.Log("æ–°ã—ã„ãƒãƒ¼ã‚¸ãƒ§ãƒ³ãŒã‚ã‚Šã¾ã™: " + string.Join(",", NewVersion));
                 ShowUpdateLink();
             }
             else
             {
-                Debug.Log("ÅV‚Ìƒo[ƒWƒ‡ƒ“‚Å‚·");
+                Debug.Log("æœ€æ–°ã®ãƒãƒ¼ã‚¸ãƒ§ãƒ³ã§ã™");
             }
         }
 
         private void ShowUpdateLink()
         {
-            m_View.SetUpdateViewObj(true); // ƒAƒbƒvƒf[ƒg‚ğ‘£‚·UI‚Ì•\¦
+            m_View.SetUpdateViewObj(true); // ã‚¢ãƒƒãƒ—ãƒ‡ãƒ¼ãƒˆã‚’ä¿ƒã™UIã®è¡¨ç¤º
 
 #if UNITY_ANDROID
             m_View.OnClickUpdateButtonObservable.Subscribe(_ =>Application.OpenURL(m_View.GooglePlayUrl)).AddTo(this);
@@ -364,7 +375,7 @@ namespace fantec.Title
         }
 
         /// <summary>
-        /// ƒvƒŒƒCƒ„[‚Ìè‚¿‚ÌSpine‚ÌƒXƒPƒ‹ƒgƒ“ƒf[ƒ^‚Ì“Ç‚İ‚İ
+        /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã®æ‰‹æŒã¡ã®Spineã®ã‚¹ã‚±ãƒ«ãƒˆãƒ³ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
         /// </summary>
         /// <returns></returns>
         private async UniTask LoadSkeletonData()
@@ -375,7 +386,7 @@ namespace fantec.Title
                 {
                     PartyData partyData = UserDataManager.PartyList[i];
 
-                    // ˆê•Û‘¶—p
+                    // ä¸€æ™‚ä¿å­˜ç”¨
                     for (int j = 0; j < partyData.MemberList.Count; j++)
                     {
                         int cardId = partyData.MemberList[j];
@@ -394,12 +405,12 @@ namespace fantec.Title
             }
             catch (Exception ex)
             {
-                Debug.LogError($"ƒXƒPƒ‹ƒgƒ“ƒf[ƒ^‚Ì“Ç‚İ‚İ’†‚É—áŠO‚ª”­¶‚µ‚Ü‚µ‚½{ex}");
+                Debug.LogError($"ã‚¹ã‚±ãƒ«ãƒˆãƒ³ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿ä¸­ã«ä¾‹å¤–ãŒç™ºç”Ÿã—ã¾ã—ãŸ{ex}");
             }
         }
 
         /// <summary>
-        /// Live2DData‚Ìƒ[ƒh
+        /// Live2DDataã®ãƒ­ãƒ¼ãƒ‰
         /// </summary>
         /// <returns></returns>
         private async UniTask LoadLive2DData()
@@ -407,7 +418,7 @@ namespace fantec.Title
             CardData carddata = CardManager.GetCardData(UserDataManager.User.ProfileCardId);
             int originId = carddata.CardMasterData().originId;
 
-            // ƒ‚ƒfƒ‹‚Ìƒ[ƒh
+            // ãƒ¢ãƒ‡ãƒ«ã®ãƒ­ãƒ¼ãƒ‰
             await AssetManager.Instance.LoadAssetAsync<GameObject>(AssetPath.GetLive2DPath(originId));
         }
     }

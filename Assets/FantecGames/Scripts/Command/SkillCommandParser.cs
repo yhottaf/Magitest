@@ -1,4 +1,4 @@
-
+ï»¿
 using fantec.Common;
 using System;
 using System.Collections.Generic;
@@ -10,7 +10,7 @@ namespace fantec
     public class SkillCommandParser
     {
         /// <summary>
-        ///  ƒXƒLƒ‹ƒRƒ}ƒ“ƒh‚É•ÏŠ·‚·‚é
+        ///  ã‚¹ã‚­ãƒ«ã‚³ãƒãƒ³ãƒ‰ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static SkillCommand ConvertToSkillCommand(string commandStr)
         {
@@ -22,8 +22,8 @@ namespace fantec
                  efficacyType=GetEffecacyType(commandStr),
                  affectValue=ExtractToIntAbs(GetCategoryStr(commandStr)),
                  sustainTurn=ExtractToInt(GetTurnStr(commandStr)),
-                 actionCount=ExtractToIntAbs(GetCountStr(commandStr),1), // Å’á‚Å‚àˆê‰ñ‚Ís“®‚·‚é‚½‚ßu‚Pv‚ğƒfƒtƒH‚Éİ’è
-                 randomCount=ExtractToIntAbs(GetRandomStr(commandStr),1),// Å’á‚Å‚à1‘Ì‚Í‘ÎÛ‚Æ‚·‚é‚½‚ßu1v‚ğƒfƒtƒH‚Éİ’è
+                 actionCount=ExtractToIntAbs(GetCountStr(commandStr),1), // æœ€ä½ã§ã‚‚ä¸€å›ã¯è¡Œå‹•ã™ã‚‹ãŸã‚ã€Œï¼‘ã€ã‚’ãƒ‡ãƒ•ã‚©ã«è¨­å®š
+                 randomCount=ExtractToIntAbs(GetRandomStr(commandStr),1),// æœ€ä½ã§ã‚‚1ä½“ã¯å¯¾è±¡ã¨ã™ã‚‹ãŸã‚ã€Œ1ã€ã‚’ãƒ‡ãƒ•ã‚©ã«è¨­å®š
                  isFirst=ExtractToBool(GetIsFirstStr(commandStr)),
             };
         }
@@ -36,22 +36,22 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒh‚É•t‘®‚µ‚½Œø‰Ê‚ğ•t—^A‚Ü‚½‚Íì¬‚µƒŠƒXƒg‚ÉŠÜ‚ß‚é
+        /// ã‚³ãƒãƒ³ãƒ‰ã«ä»˜å±ã—ãŸåŠ¹æœã‚’ä»˜ä¸ã€ã¾ãŸã¯ä½œæˆã—ãƒªã‚¹ãƒˆã«å«ã‚ã‚‹
         /// </summary>
         public static List<SkillCommand>ConvertAddtionalCommand(SkillCommand command)
         {
             var resultCommandList=new List<SkillCommand>();
             var otherSkillMaster = MasterDataManager.Instance.OtherSkillMaster;
 
-            // ó‘ÔˆÙí‚Ìê‡
+            // çŠ¶æ…‹ç•°å¸¸ã®å ´åˆ
             if (command.categoryType.GetIsAbnormalCondition())
             {
                 if (command.efficacyType != AffectEfficacyType.NONE)
                 {
-                    // ƒXƒLƒ‹ƒf[ƒ^‚Ìæ“¾
+                    // ã‚¹ã‚­ãƒ«ãƒ‡ãƒ¼ã‚¿ã®å–å¾—
                     var skillData = otherSkillMaster.GetData(command.categoryType, command.efficacyType);
 
-                    // •t—^—¦‚ğŠ„‚è“–‚Ä
+                    // ä»˜ä¸ç‡ã‚’å‰²ã‚Šå½“ã¦
                     command.SetSuccessRate(skillData.successRate);
                 }
                 else
@@ -60,24 +60,24 @@ namespace fantec
                 }
             }
 
-            // •t‘®Œø‰Ê‚ª‚ ‚éê‡
+            // ä»˜å±åŠ¹æœãŒã‚ã‚‹å ´åˆ
             if(command.categoryType.GetIsAttachedEffect())
             {
-                // ƒXƒLƒ‹ƒf[ƒ^‚ÆƒRƒ}ƒ“ƒhƒŠƒXƒg‚ğ“WŠJ
+                // ã‚¹ã‚­ãƒ«ãƒ‡ãƒ¼ã‚¿ã¨ã‚³ãƒãƒ³ãƒ‰ãƒªã‚¹ãƒˆã‚’å±•é–‹
                 var skillData=otherSkillMaster.GetData(command.categoryType,command.efficacyType);
                 var additionalCommandList = ConvertToSkillCommand(skillData.addtionalCommands);
 
-                // eƒRƒ}ƒ“ƒh‚ÌŒø‰Ê‚ğˆøŒp‚¬
+                // è¦ªã‚³ãƒãƒ³ãƒ‰ã®åŠ¹æœã‚’å¼•ç¶™ã
                 additionalCommandList
                     .SetParentCategoryType(command.categoryType)
                     .SetRangeType(command.rangeType)
-                    .SetTurn(command.sustainTurn)                // ‘±ƒ^[ƒ“‚ÌƒZƒbƒg
+                    .SetTurn(command.sustainTurn)                // æŒç¶šã‚¿ãƒ¼ãƒ³ã®ã‚»ãƒƒãƒˆ
                     .SetIsFirst(command.isFirst);
 
-                // ’Ç‰Á‚Ìê—pŒø‰Ê‚ğ•t—^
+                // è¿½åŠ ã®å°‚ç”¨åŠ¹æœã‚’ä»˜ä¸
                 additionalCommandList.SetConditionValue(skillData.conditionValue);
 
-                // Œ‹‰Ê‚É’Ç‰Á
+                // çµæœã«è¿½åŠ 
                 resultCommandList.AddRange(additionalCommandList);
             }
             return resultCommandList;
@@ -91,7 +91,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒh‚ÌƒJƒeƒSƒŠ[‚ğæ“¾‚·‚é
+        /// ã‚³ãƒãƒ³ãƒ‰ã®ã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static AffectCategoryType GetCategoryType(string commandStr)
         {
@@ -99,12 +99,12 @@ namespace fantec
             {
                 if (commandStr.Contains(value.GetCommandString()))return value;
             }
-            Debug.LogError($"[commandStr : {commandStr}] ƒJƒeƒSƒŠ‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+            Debug.LogError($"[commandStr : {commandStr}] ã‚«ãƒ†ã‚´ãƒªãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
             return AffectCategoryType.NONE;
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒh•¶š—ñ‚©‚ç‘®«í•Ê‚ğæ“¾
+        /// ã‚³ãƒãƒ³ãƒ‰æ–‡å­—åˆ—ã‹ã‚‰å±æ€§ç¨®åˆ¥ã‚’å–å¾—
         /// </summary>
         public static AffectAttributeType GetAttributeType(string commandStr)
         {
@@ -116,7 +116,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒh•¶š—ñ‚©‚çŒø‰Ê”ÍˆÍí•Ê‚ğæ“¾
+        /// ã‚³ãƒãƒ³ãƒ‰æ–‡å­—åˆ—ã‹ã‚‰åŠ¹æœç¯„å›²ç¨®åˆ¥ã‚’å–å¾—
         /// </summary>
         public static AffectRangeType GetRangeType(string commandStr)
         {
@@ -128,7 +128,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒRƒ}ƒ“ƒh•¶š—ñ‚©‚çŒø‰Êí•Ê‚ğæ“¾
+        /// ã‚³ãƒãƒ³ãƒ‰æ–‡å­—åˆ—ã‹ã‚‰åŠ¹æœç¨®åˆ¥ã‚’å–å¾—
         /// </summary>
         public static AffectEfficacyType GetEffecacyType(string commandStr)
         {
@@ -147,9 +147,9 @@ namespace fantec
         public static string GetTurnStr(string commandStr)
         {
            
-            var category = ExtractToStr(commandStr, $"{GetCategoryType(commandStr).GetCommandString()}");  // ƒJƒeƒSƒŠ–¼‚ğ’Šo
-            if (string.IsNullOrEmpty(category)) return ExtractToStr(commandStr, @"T[+\-]*([0-9]+)");       // A/ƒJƒeƒSƒŠæ‚èœ‚«”Å
-            else return ExtractToStr(commandStr.Replace(category, ""), @"T[+\-]*([0-9]+)");                // B.’Êí”Å
+            var category = ExtractToStr(commandStr, $"{GetCategoryType(commandStr).GetCommandString()}");  // ã‚«ãƒ†ã‚´ãƒªåã‚’æŠ½å‡º
+            if (string.IsNullOrEmpty(category)) return ExtractToStr(commandStr, @"T[+\-]*([0-9]+)");       // A/ã‚«ãƒ†ã‚´ãƒªå–ã‚Šé™¤ãç‰ˆ
+            else return ExtractToStr(commandStr.Replace(category, ""), @"T[+\-]*([0-9]+)");                // B.é€šå¸¸ç‰ˆ
         }
 
         public static string GetCountStr(string commandStr)
@@ -164,7 +164,7 @@ namespace fantec
 
         public static string GetIsFirstStr(string commandStr)
         {
-            return ExtractToStr(commandStr, "‘¬");
+            return ExtractToStr(commandStr, "é€Ÿ");
         }
 
 
@@ -174,25 +174,25 @@ namespace fantec
         // --------------------------------------------------------------------------------------------------
 
         /// <summary>
-        /// •¶š—ñ‚©‚ç”’l‚ğ’Šo‚µ•Ô‚·(•„†‚ğl—¶‚µ‚È‚¢)
+        /// æ–‡å­—åˆ—ã‹ã‚‰æ•°å€¤ã‚’æŠ½å‡ºã—è¿”ã™(ç¬¦å·ã‚’è€ƒæ…®ã—ãªã„)
         /// </summary>
         public static int ExtractToIntAbs(string a,int defaultValue=0)
         {
             try { return string.IsNullOrEmpty(a) ? defaultValue : int.Parse(ExtractToStr(a, @"([0-9]+)")); }
-            catch { throw new FormatException($"[{a}] ‚Í”’l‚ÉƒLƒƒƒXƒg‚Å‚«‚Ü‚¹‚ñB"); }
+            catch { throw new FormatException($"[{a}] ã¯æ•°å€¤ã«ã‚­ãƒ£ã‚¹ãƒˆã§ãã¾ã›ã‚“ã€‚"); }
         }
 
         /// <summary>
-        /// •¶š—ñ‚©‚ç”’l‚ğ’Šo‚µ•Ô‚· (•„†‚ğl—¶‚·‚é)
+        /// æ–‡å­—åˆ—ã‹ã‚‰æ•°å€¤ã‚’æŠ½å‡ºã—è¿”ã™ (ç¬¦å·ã‚’è€ƒæ…®ã™ã‚‹)
         /// </summary>
         public static int ExtractToInt(string a, int defaultValue = 0)
         {
             try { return string.IsNullOrEmpty(a) ? defaultValue : int.Parse(ExtractToStr(a, @"[+\-]*([0-9]+)")); }
-            catch { throw new FormatException($"[{a}] ‚Í”’l‚ÉƒLƒƒƒXƒg‚Å‚«‚Ü‚¹‚ñB"); }
+            catch { throw new FormatException($"[{a}] ã¯æ•°å€¤ã«ã‚­ãƒ£ã‚¹ãƒˆã§ãã¾ã›ã‚“ã€‚"); }
         }
 
         /// <summary>
-        /// •¶š—ñ‚©‚ç—LŒø‰Â”Û‚ğ’Šo‚·‚é
+        /// æ–‡å­—åˆ—ã‹ã‚‰æœ‰åŠ¹å¯å¦ã‚’æŠ½å‡ºã™ã‚‹
         /// </summary>
         public static bool ExtractToBool(string a)
         {
@@ -200,10 +200,10 @@ namespace fantec
         }
 
         /// <summary>
-        /// •¶š—ñ‚©‚çw’è‚Ì•¶š—ñ‚ğ’Šo‚µ•Ô‚·
+        /// æ–‡å­—åˆ—ã‹ã‚‰æŒ‡å®šã®æ–‡å­—åˆ—ã‚’æŠ½å‡ºã—è¿”ã™
         /// </summary>
-        /// <param name="a">’Šo‚³‚ê‚é•¶š—ñ</param>
-        /// <param name="b">’Šo‚µ‚½‚¢•¶š—ñ</param>
+        /// <param name="a">æŠ½å‡ºã•ã‚Œã‚‹æ–‡å­—åˆ—</param>
+        /// <param name="b">æŠ½å‡ºã—ãŸã„æ–‡å­—åˆ—</param>
         public static string ExtractToStr(string a,string b)
         {
             var result = "";

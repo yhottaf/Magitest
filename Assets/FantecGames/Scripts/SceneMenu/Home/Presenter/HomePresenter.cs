@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using fantec.Menu.Manager;
 using fantec.PlayFabClient;
 using UnityEngine;
@@ -14,30 +14,34 @@ namespace fantec.Menu.Home.Presenter
         {
             try
             {
-            // ƒz[ƒ€‰æ–Ê‚ÌBGMÄ¶
+            // ãƒ›ãƒ¼ãƒ ç”»é¢ã®BGMå†ç”Ÿ
                 await BGMManager.Instance.PlayAsync(BGMManager.Type.Home, true);
 
 
-                // Œ»İƒ[ƒh’†‚ÌƒAƒhƒŒƒXˆê——‚ğŠm”F(ƒfƒoƒbƒO)
+                // ç¾åœ¨ãƒ­ãƒ¼ãƒ‰ä¸­ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ä¸€è¦§ã‚’ç¢ºèª(ãƒ‡ãƒãƒƒã‚°)
                 var loading = AssetManager.Instance.GetLoadedAudioClips();
                 foreach (var addr in loading)
                 {
-                    Debug.Log($"Œ»İƒLƒƒƒbƒVƒ…‚Éc‚Á‚Ä‚¢‚éAudio: {addr}");
+                    Debug.Log($"ç¾åœ¨ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æ®‹ã£ã¦ã„ã‚‹Audio: {addr}");
                 }
             }
             catch (System.Exception ex)
             {
-                Debug.LogError($"BGM Ä¶¸”s: {ex.Message}");
+                Debug.LogError($"BGM å†ç”Ÿå¤±æ•—: {ex.Message}");
             }
 
-            //–¼‘O‚ª–¢“ü—Í‚Ìê‡ƒ‚[ƒ_ƒ‹•\¦
+            //åå‰ãŒæœªå…¥åŠ›ã®å ´åˆãƒ¢ãƒ¼ãƒ€ãƒ«è¡¨ç¤º
             if (string.IsNullOrEmpty(PlayerProfileManager.UserDisplayName))
             {
                 MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.PlayerNameEdit);
             }
-            else // ‰¼‚Å“ü—ÍÏ‚È‚ç‚¨’m‚ç‚¹•\¦‚³‚¹‚æ‚¤‚Æ‚·‚é
+            else // ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åãŒå…¥åŠ›æ¸ˆã¿
             {
-                MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.Notice);
+                //è¡¨ç¤ºã—ãªã„ãƒ•ãƒ©ã‚°ãŒãŸã£ã¦ã„ãªã„ãªã‚‰ãŠçŸ¥ã‚‰ã›è¡¨ç¤º
+                if (!PlayerPrefsManager.IsNoticeFlag) 
+                {
+                    MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.Notice);
+                }
             }
         }
     }

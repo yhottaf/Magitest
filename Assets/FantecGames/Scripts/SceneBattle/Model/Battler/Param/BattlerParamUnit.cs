@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 
@@ -8,13 +8,13 @@ namespace fantec.Battle.Model
     public interface IBattlerParamUnit:IDisposable,IResetable
     {
         /// <summary>
-        /// ƒ†ƒjƒbƒg‚Ì–{‘ÌXVŠÄ‹
+        /// ãƒ¦ãƒ‹ãƒƒãƒˆã®æœ¬ä½“æ›´æ–°ç›£è¦–
         /// </summary>
         IObservable<IBattlerParamUnit> OnUnitDataObservable { get; }
 
         CardInfoEntity Entity { get; }
 
-        /// <summary> ƒ†ƒjƒbƒg‚Ì’†g‚ª‘¶İ‚·‚é‚©”Û‚© </summary>
+        /// <summary> ãƒ¦ãƒ‹ãƒƒãƒˆã®ä¸­èº«ãŒå­˜åœ¨ã™ã‚‹ã‹å¦ã‹ </summary>
         bool IsExist { get; }
     }
 
@@ -41,7 +41,7 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// ƒ†ƒjƒbƒgƒf[ƒ^‚É null ‚ğ“ü‚ê‚é
+        /// ãƒ¦ãƒ‹ãƒƒãƒˆãƒ‡ãƒ¼ã‚¿ã« null ã‚’å…¥ã‚Œã‚‹
         /// </summary>
         public void Reset()
         {

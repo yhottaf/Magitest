@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
@@ -7,7 +7,7 @@ namespace fantec.Battle.Model
 {
     public class BattlerParamAdventSkill : IBattlerParamAdventSkillPrivate
     {
-        // ƒtƒ…[ƒ`ƒƒ[ƒrƒ…[‚ÌÅ‘å•\¦” ‰¼‚Å5‚Éİ’è’† TODO
+        // ãƒ•ãƒ¥ãƒ¼ãƒãƒ£ãƒ¼ãƒ“ãƒ¥ãƒ¼ã®æœ€å¤§è¡¨ç¤ºæ•° ä»®ã§5ã«è¨­å®šä¸­ TODO
         public const int RESERVE_MAX_COUNT = 5;
 
         public IObservable<AffectInfo> OnActivationObservable => m_ActivationSubject;
@@ -48,33 +48,33 @@ namespace fantec.Battle.Model
         public ActionCapsule GetActionCapsule(int index)
         {
             try { return m_AdvanceActionCapsules[index];}
-            catch { throw new IndexOutOfRangeException($"{index}@‚Í—\–ñ‰Â”\‚È”ÍˆÍ‚ğ’´‚¦‚Ä‚¢‚Ü‚·B{nameof(RESERVE_MAX_COUNT)} ‚Ì’l‚ğ{index + 1}‚ÉXV‚µ‚Ä‚­‚¾‚³‚¢B"); }
+            catch { throw new IndexOutOfRangeException($"{index}ã€€ã¯äºˆç´„å¯èƒ½ãªç¯„å›²ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚{nameof(RESERVE_MAX_COUNT)} ã®å€¤ã‚’{index + 1}ã«æ›´æ–°ã—ã¦ãã ã•ã„ã€‚"); }
         }
 
         public void AddLottery()
         {
-            // ’ÊíUŒ‚‚ğ’Ç‰Á
+            // é€šå¸¸æ”»æ’ƒã‚’è¿½åŠ 
             this.AddLottelyAdvanceReserve();
 
-            // ƒXƒLƒ‹–{‘Ì‚ğXV‚·‚é
+            // ã‚¹ã‚­ãƒ«æœ¬ä½“ã‚’æ›´æ–°ã™ã‚‹
             this.UpdateReserve();
         }
 
         public void AddDanger()
         {
-            // ƒfƒ“ƒWƒƒ[—p‚ÌIDƒŠƒXƒg”z—ñ‚ğ’Š‘I
+            // ãƒ‡ãƒ³ã‚¸ãƒ£ãƒ¼ç”¨ã®IDãƒªã‚¹ãƒˆé…åˆ—ã‚’æŠ½é¸
             this.AddDangerAdvanceReserve();
 
-            //ƒXƒLƒ‹–{‘Ì‚ğXV‚·‚é
+            //ã‚¹ã‚­ãƒ«æœ¬ä½“ã‚’æ›´æ–°ã™ã‚‹
             this.UpdateReserve();
         }
 
         public void Consume()
         {
-            // Á”ï‰Â”\‚ÈƒXƒLƒ‹‚ª‚ ‚ê‚Î
+            // æ¶ˆè²»å¯èƒ½ãªã‚¹ã‚­ãƒ«ãŒã‚ã‚Œã°
             if(IsConsumable)
             {
-                // ƒŠƒXƒg‚Ìæ“ª‚©‚çÁ”ï
+                // ãƒªã‚¹ãƒˆã®å…ˆé ­ã‹ã‚‰æ¶ˆè²»
                 m_ReserveActionCopsule.Dequeue();
             }
         }

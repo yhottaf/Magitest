@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -12,8 +12,8 @@ namespace fantec.Battle.Ui.Window
         [SerializeField] private Text m_TableExpText;
         [SerializeField] private Text m_GainExpText;
         [SerializeField] private Text m_RequiredExpText;
-        [SerializeField] private Image m_GaugeFillDynamicImage; // ¡‰ñ‚Ì•ñV‚ÅŒoŒ±’l‚ª‚à‚ç‚¦‚é‘O‚ÌŒoŒ±’l
-        [SerializeField] private Image m_GaugeFillStaticImage;  // ŒoŒ±’l‚ª‘‚¦‚½•ª‚ÌƒQ[ƒWƒo[‚Ì‰æ‘œ
+        [SerializeField] private Image m_GaugeFillDynamicImage; // ä»Šå›ã®å ±é…¬ã§çµŒé¨“å€¤ãŒã‚‚ã‚‰ãˆã‚‹å‰ã®çµŒé¨“å€¤
+        [SerializeField] private Image m_GaugeFillStaticImage;  // çµŒé¨“å€¤ãŒå¢—ãˆãŸåˆ†ã®ã‚²ãƒ¼ã‚¸ãƒãƒ¼ã®ç”»åƒ
 
         private Sequence m_Sequence;
 
@@ -45,13 +45,13 @@ namespace fantec.Battle.Ui.Window
 
         public void PlayAnimation(int[] nextExps,float fillStart,float fillEnd,Action<int>onLevelUp,Action onCompleted)
         {
-            var loopCount = Mathf.FloorToInt(fillEnd); // ƒŒƒxƒ‹ƒAƒbƒv‚·‚é‰ñ”
-            var remainder = fillEnd - loopCount;       // ƒŒƒxƒ‹ƒAƒbƒv‚Ì—]‚èŒoŒ±’l
-            var level = 0;                             // ‰ÁZ‚³‚ê‚éƒŒƒxƒ‹
+            var loopCount = Mathf.FloorToInt(fillEnd); // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—ã™ã‚‹å›æ•°
+            var remainder = fillEnd - loopCount;       // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—ã®ä½™ã‚ŠçµŒé¨“å€¤
+            var level = 0;                             // åŠ ç®—ã•ã‚Œã‚‹ãƒ¬ãƒ™ãƒ«
 
             m_Sequence = DOTween.Sequence();
 
-            // ƒŒƒxƒ‹ƒAƒbƒv•ª
+            // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—åˆ†
             for(int i=0;i<loopCount;i++)
             {
                 if (loopCount == 0) break;
@@ -64,13 +64,13 @@ namespace fantec.Battle.Ui.Window
                 }));
             }
 
-            // —]‚è•ª
+            // ä½™ã‚Šåˆ†
             {
                 var to = remainder;
                 m_Sequence.Append(GetFillSequence(nextExps[nextExps.Length - 1], 0, to,Ease.OutCubic, null));
             }
 
-            // Š®—¹’Ê’m
+            // å®Œäº†é€šçŸ¥
             m_Sequence.OnComplete(() => onCompleted.Invoke());
         }
 

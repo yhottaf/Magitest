@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -26,7 +26,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒ^ƒCƒgƒ‹ƒeƒLƒXƒg‚ğ•\¦‚·‚é
+        /// ã‚¿ã‚¤ãƒˆãƒ«ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -38,7 +38,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒeƒLƒXƒg‚ğ•\¦‚·‚é
+        /// ãƒ†ã‚­ã‚¹ãƒˆã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         /// <param name="text"></param>
         /// <returns></returns>
@@ -50,7 +50,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ì¬‚³‚ê‚½ƒ{ƒ^ƒ“ƒNƒŠƒbƒN‚É“o˜^‚µ‚½ƒCƒxƒ“ƒg‚ğÀs‚·‚é
+        /// ä½œæˆã•ã‚ŒãŸãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯æ™‚ã«ç™»éŒ²ã—ãŸã‚¤ãƒ™ãƒ³ãƒˆã‚’å®Ÿè¡Œã™ã‚‹
         /// </summary>
         /// <param name="buttonName"></param>
         /// <param name="onClick"></param>
@@ -64,7 +64,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒ{ƒ^ƒ“ƒNƒŠƒbƒN‚Æ“¯‚Éƒ‚[ƒ_ƒ‹‚ğíœ‚Å‚«‚éBƒCƒxƒ“ƒg’Ç‰Á‚à‰Â”\
+        /// ãƒœã‚¿ãƒ³ã‚¯ãƒªãƒƒã‚¯ã¨åŒæ™‚ã«ãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’å‰Šé™¤ã§ãã‚‹ã€‚ã‚¤ãƒ™ãƒ³ãƒˆè¿½åŠ ã‚‚å¯èƒ½
         /// </summary>
         /// <param name="buttonName"></param>
         /// <param name="onClick"></param>
@@ -79,7 +79,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ‰Eã‚Ì•Â‚¶‚éƒ{ƒ^ƒ“‚ğ—LŒø‰»BƒCƒxƒ“ƒg’Ç‰Á‚à‰Â”\
+        /// å³ä¸Šã®é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³ã‚’æœ‰åŠ¹åŒ–ã€‚ã‚¤ãƒ™ãƒ³ãƒˆè¿½åŠ ã‚‚å¯èƒ½
         /// </summary>
         /// <param name="onClick"></param>
         /// <returns></returns>
@@ -92,7 +92,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ”wŒi‚ğ—LŒø‰»
+        /// èƒŒæ™¯ã‚’æœ‰åŠ¹åŒ–
         /// </summary>
         /// <returns></returns>
         public ModalView SetBackground()
@@ -102,7 +102,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒ‚[ƒ_ƒ‹‚ğ•Â‚¶‚é(”jŠü)
+        /// ãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’é–‰ã˜ã‚‹(ç ´æ£„)
         /// </summary>
         public void Close()
         {

@@ -1,10 +1,12 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Menu.Common;
 using fantec.Menu.Manager;
 using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
+using fantec.PlayFabClient;
+using System;
 
 namespace fantec.Menu
 {
@@ -24,8 +26,9 @@ namespace fantec.Menu
 
         private string m_NameStr;
 
-        private readonly int NameMinLimit = 3;  // PlayFab�̍Œᕶ������3����
+        private readonly int NameMinLimit = 3;  // PlayFabの最低文字数が3文字
         private readonly int NameLimit = 12;
+        private readonly int Delaytime = 2;
 
         void Start()
         {
@@ -39,7 +42,7 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// ���͓��e�̕ύX��
+        /// 入力内容の変更時
         /// </summary>
         private void OnValueChangedInputField(string value)
         {
@@ -47,7 +50,7 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// ���͏I����
+        /// 入力終了時
         /// </summary>
         private void OnEndEditInputField(string value)
         {
@@ -56,19 +59,34 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// ����{�^��������
+        /// 決定ボタン押下時
         /// </summary>
         private async UniTask OnClickSubmitButton()
         {
-            // SE�Đ�
-       //     SEManager.Instance.Play(SEClipName.SystemButtonDownYes);
+            // SE再生
+            //     SEManager.Instance.Play(SEClipName.SystemButtonDownYes);
+            bool isTutorial = false;
+            if (string.IsNullOrEmpty(PlayerProfileManager.UserDisplayName))
+            {
+                // 初回ダイアログ表示時
+                isTutorial = true;
+            }
 
-            var result = await PlayFabClient.PlayerProfileManager.UpdateUserDisplayNameAsync(m_NameStr);
+                var result = await PlayerProfileManager.UpdateUserDisplayNameAsync(m_NameStr);
 
             if (result.isSuccess)
             {
                 HeaderManager.Instance.UpdateUserNameText();
                 MenuWindowManager.Instance.Remove(MenuWindowManager.CreateType.PlayerNameEdit);
+                
+                // 今回初めて名前入力を行ったなら、入力後にお知らせ表示を行うようにする
+                if (isTutorial)
+                {
+                    MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.InputGuard);
+
+                    Observable.Timer(TimeSpan.FromSeconds(Delaytime))
+                        .Subscribe(_ => MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.Notice));
+                }
             }
             else
             {

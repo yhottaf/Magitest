@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+﻿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using UnityEngine;
 
@@ -14,7 +14,7 @@ namespace fantec.Battle.Manager
                 {
                     Locator.Resolve<IBattleWindowManager>().Clear();
 
-                    // TODO:UI�܂Ƃ߂ă��Z�b�g
+                    // TODO:UIまとめてリセット
 
 
                     manager.ChangeFlow<FlowInit>();

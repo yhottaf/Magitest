@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using fantec.Battle.Model;
 using fantec.Battle.Utiles;
 using UniRx;
@@ -26,7 +26,7 @@ namespace fantec.Battle.Field.Chara
 
             var overrideSkillStream = Locator.Resolve<IBattleModelOverrideSkill>().OnIsFook.DistinctUntilChanged();
 
-            // false ‚Ì‚Æ‚«
+            // false ã®ã¨ã
             overrideSkillStream
                 .Where(x => !x)
                 .Subscribe(_ =>
@@ -37,7 +37,7 @@ namespace fantec.Battle.Field.Chara
                     var entity = overrideModel.GetReserveHeadBattler()?.OverrideSkill?.Entity;
                     if (overrideModel.GetReserveHeadBattler() == m_Battler && entity != null)
                     {
-                        m_View.MovementView.StopBlurTrail(); // ’â~ˆ—
+                        m_View.MovementView.StopBlurTrail(); // åœæ­¢å‡¦ç†
                     }
                 });
         }
@@ -54,14 +54,14 @@ namespace fantec.Battle.Field.Chara
 
         public void OnOverrideCutin(OverrideSkillEntity data)
         {
-            m_View.SetThroughPause(true);             // Pause‚Éİ’è
-            m_View.SortingView.SetSortingNameBlack(); // ƒJƒbƒgƒCƒ“ˆÈŠO‚Ì”wŒi‚ğ”–ˆÃ‚­(•‚Ì“§‰ß‰æ‘œ‚ğo‚·)
+            m_View.SetThroughPause(true);             // Pauseã«è¨­å®š
+            m_View.SortingView.SetSortingNameBlack(); // ã‚«ãƒƒãƒˆã‚¤ãƒ³ä»¥å¤–ã®èƒŒæ™¯ã‚’è–„æš—ã(é»’ã®é€éç”»åƒã‚’å‡ºã™)
         }
 
         public void OnOverrideEnd(Unit unit)
         {
-            m_View.SetThroughPause(false); // Pause‚ğ–ß‚·
-            m_View.SortingView.SetSortingNameDefault(); // ƒ\[ƒg‡‚ğŒ³‚É–ß‚·
+            m_View.SetThroughPause(false); // Pauseã‚’æˆ»ã™
+            m_View.SortingView.SetSortingNameDefault(); // ã‚½ãƒ¼ãƒˆé †ã‚’å…ƒã«æˆ»ã™
             m_View.MovementView.StopBlurTrail();
         }
 
@@ -69,7 +69,7 @@ namespace fantec.Battle.Field.Chara
         {
             m_View.MovementView.PlayMoveTo(targetPosition,0.4f,()=>
             {
-                m_Battler.Transform.MoveCompleted();// ˆÚ“®‚ÌŠ®—¹’Ê’m‚ğ”ò‚Î‚·
+                m_Battler.Transform.MoveCompleted();// ç§»å‹•ã®å®Œäº†é€šçŸ¥ã‚’é£›ã°ã™
             });
         }
 
@@ -121,7 +121,7 @@ namespace fantec.Battle.Field.Chara
 
         public void OnTakeBuff(AffectInfo info)
         {
-            // TODO: ƒp[ƒeƒBƒNƒ‹‚ÌÀ‘•‚ğ‘‚­
+            // TODO: ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã®å®Ÿè£…ã‚’æ›¸ã
             Battler.PlayTakeBuffParticle(info);
 
             if(info.SkillType==SkillType.Style)
@@ -133,10 +133,10 @@ namespace fantec.Battle.Field.Chara
         public void OnTakeDamage(TakeDamageInfo info)
         {
             var damage = info.valueInfo.affectValue;
-            Debug.Log($"–¡•û‚Ì {Battler.State.Entity.CharaName} ‚É {damage} ‚Ìƒ_ƒ[ƒW!!");
+            Debug.Log($"å‘³æ–¹ã® {Battler.State.Entity.CharaName} ã« {damage} ã®ãƒ€ãƒ¡ãƒ¼ã‚¸!!");
             Debug.Log($"{Battler.State.Entity.CharaName} : {Battler.State.CurrentHP}/{Battler.State.OriginalMaxHP}");
-            m_View.SpineView.PlayDamage(); // ƒ_ƒ[ƒW‚ğó‚¯‚½ƒ‚[ƒVƒ‡ƒ“‚ÌÄ¶
-            m_View.MovementView.PlayKnockBack(m_Battler.GetKnockBackPosition()); // Œã•û‚É”ò‚Î‚·
+            m_View.SpineView.PlayDamage(); // ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’å—ã‘ãŸãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”Ÿ
+            m_View.MovementView.PlayKnockBack(m_Battler.GetKnockBackPosition()); // å¾Œæ–¹ã«é£›ã°ã™
             Locator.Resolve<IBattleCameraManager>().PlayShake(0.2f);
             Battler.PlayTakeDamageParticle(info);
         }
@@ -168,7 +168,7 @@ namespace fantec.Battle.Field.Chara
 
         public void OnMoveCompleted(Unit unit)
         {
-            //Debug.Log($"ƒvƒŒƒCƒ„[‘¤ :{Battler.State.Entity.CharaName} ‚ÌˆÚ“®Š®—¹‚ğ’Ê’m");
+            //Debug.Log($"ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å´ :{Battler.State.Entity.CharaName} ã®ç§»å‹•å®Œäº†ã‚’é€šçŸ¥");
         }
 
         public void OnActivateBlur(Unit unit)

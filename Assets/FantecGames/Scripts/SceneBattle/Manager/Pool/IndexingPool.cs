@@ -1,4 +1,4 @@
-using UniRx.Toolkit;
+﻿using UniRx.Toolkit;
 using UnityEngine;
 
 namespace fantec.Battle.Manager.Pool

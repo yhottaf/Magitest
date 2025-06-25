@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+﻿using fantec.Battle.Model;
 using NUnit.Framework;
 using System.Collections.Generic;
 using UniRx;

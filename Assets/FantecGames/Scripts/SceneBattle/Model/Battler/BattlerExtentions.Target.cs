@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+ï»¿using fantec.Battle.Model;
 using System;
 using System.Collections;
 using System.Collections.Generic;
@@ -14,29 +14,29 @@ namespace fantec.Battle
         // State
         // ---------------------------------------------------------------------------
 
-        // TODO : ˆê”ÔãAˆê”Ôã‚©‚ç^‚ñ’†Aˆê”Ô‰ºBˆê”ÔŒã‚ëA^‚ñ’†‚È‚Ç‚ğæ“¾‚Å‚«‚é‚æ‚¤‚É‰ü—Ç‚µ‚È‚¯‚Î‚È‚ç‚È‚¢
+        // TODO : ä¸€ç•ªä¸Šã€ä¸€ç•ªä¸Šã‹ã‚‰çœŸã‚“ä¸­ã€ä¸€ç•ªä¸‹ã€‚ä¸€ç•ªå¾Œã‚ã€çœŸã‚“ä¸­ãªã©ã‚’å–å¾—ã§ãã‚‹ã‚ˆã†ã«æ”¹è‰¯ã—ãªã‘ã°ãªã‚‰ãªã„
 
-        /// <summary> ‘¶İ‚µ‚Ä‚¢‚éƒoƒgƒ‰[‚ğæ“¾ </summary>
+        /// <summary> å­˜åœ¨ã—ã¦ã„ã‚‹ãƒãƒˆãƒ©ãƒ¼ã‚’å–å¾— </summary>
         public static IEnumerable<IBattler> GetExistBattlers(this IEnumerable<IBattler> battlers) =>
             battlers.Where(battler=>battler.Unit.IsExist==true);
 
-        /// <summary> ¶‘¶‚µ‚Ä‚¢‚éƒoƒgƒ‰[‚ğæ“¾ </summary>
+        /// <summary> ç”Ÿå­˜ã—ã¦ã„ã‚‹ãƒãƒˆãƒ©ãƒ¼ã‚’å–å¾— </summary>
         public static IEnumerable<IBattler> GetSurvivedBattlers(this IEnumerable<IBattler> battlers) =>
             battlers.Where(battler => battler.Unit.IsExist == true && battler.State.Health.IsDead == false);
 
-        /// <summary> €–S‚µ‚Ä‚¢‚éƒoƒgƒ‰[‚ğæ“¾ </summary>
+        /// <summary> æ­»äº¡ã—ã¦ã„ã‚‹ãƒãƒˆãƒ©ãƒ¼ã‚’å–å¾— </summary>
         public static IEnumerable<IBattler> GetDeadBattlers(this IEnumerable<IBattler> battlers) =>
             battlers.Where(battler => battler.Unit.IsExist == true && battler.State.Health.IsDead == true);
 
-        /// <summary> ©•ª‚ğæ“¾‚·‚é </summary>
+        /// <summary> è‡ªåˆ†ã‚’å–å¾—ã™ã‚‹ </summary>
         public static IEnumerable<IBattler> GetMyselfBattlers(this IEnumerable<IBattler> battlers, IBattler me) =>
             battlers.Where(battler => battler.Equals(me) == true);
 
-        /// <summary> ©•ªˆÈŠO‚Ìƒoƒgƒ‰[‚ğæ“¾‚·‚é  </summary>
+        /// <summary> è‡ªåˆ†ä»¥å¤–ã®ãƒãƒˆãƒ©ãƒ¼ã‚’å–å¾—ã™ã‚‹  </summary>
         public static IEnumerable<IBattler> GetBesidesMeBattler(this IEnumerable<IBattler> battlers, IBattler me) =>
             battlers.Where(battler => battler.Equals(me) == false);
 
-        /// <summary> ƒJ[ƒhƒNƒ‰ƒXƒ^ƒCƒv‚ªˆê’v‚·‚éBattler‚ğæ“¾‚·‚é </summary>
+        /// <summary> ã‚«ãƒ¼ãƒ‰ã‚¯ãƒ©ã‚¹ã‚¿ã‚¤ãƒ—ãŒä¸€è‡´ã™ã‚‹Battlerã‚’å–å¾—ã™ã‚‹ </summary>
         //public static IEnumerable<IBattler> GetClassMatchBattlers(this IEnumerable<IBattler> battlers, CardClassType classType) =>
         //    battlers.Where(battler => battler.Unit.Entity.classType == classType);
         #endregion
@@ -46,49 +46,49 @@ namespace fantec.Battle
         // Param
         // ------------------------------------------------------------------------------------
 
-        /// <summary> Battler”z—ñ‚©‚çƒ‰ƒ“ƒ_ƒ€‚É1‘Ìæ“¾‚·‚é  </summary>
+        /// <summary> Battleré…åˆ—ã‹ã‚‰ãƒ©ãƒ³ãƒ€ãƒ ã«1ä½“å–å¾—ã™ã‚‹  </summary>
         public static IBattler GetRandomBattler(this IEnumerable<IBattler>battlers)
         {
             try { return battlers.ElementAt(UnityEngine.Random.Range(0, battlers.Count())); }
             catch { throw new IndexOutOfRangeException($"[count: {battlers.Count()}]"); }
         }
 
-        /// <summary> HP ‚ªÅ‚à­‚È‚¢ Battler ‚ğæ“¾  </summary>
+        /// <summary> HP ãŒæœ€ã‚‚å°‘ãªã„ Battler ã‚’å–å¾—  </summary>
         public static IBattler GetMinimumHpBattler(this IEnumerable<IBattler> battlers)
         {
             try { return battlers.OrderBy(battler => battler.State.CurrentHP).First(); }
             catch { throw new IndexOutOfRangeException($"{GetBattlerLog(battlers)}"); }
         }
 
-        /// <summary> HP ‚ªÅ‚à‚‚¢ Battler ‚ğæ“¾  </summary>
+        /// <summary> HP ãŒæœ€ã‚‚é«˜ã„ Battler ã‚’å–å¾—  </summary>
         public static IBattler GetMaximumHpBattler(this  IEnumerable<IBattler>battlers)
         {
             try { return battlers.OrderByDescending(battler => battler.State.CurrentHP).FirstOrDefault(); }
             catch { throw new IndexOutOfRangeException($"{GetBattlerLog(battlers)}"); }
         }
 
-        /// <summary> ATK ‚ªÅ‚à­‚È‚¢ Battler ‚ğæ“¾  </summary>
+        /// <summary> ATK ãŒæœ€ã‚‚å°‘ãªã„ Battler ã‚’å–å¾—  </summary>
         public static IBattler GetMinimumAtkBattler(this IEnumerable<IBattler>battlers)
         {
             try { return battlers.OrderBy(battler => battler.State.CurrentATK).First(); }
             catch { throw new IndexOutOfRangeException($"{GetBattlerLog(battlers)}"); }
         }
 
-        /// <summary> ATK ‚ªÅ‚à‚‚¢ Battler ‚ğæ“¾  </summary>
+        /// <summary> ATK ãŒæœ€ã‚‚é«˜ã„ Battler ã‚’å–å¾—  </summary>
         public static IBattler GetMaximumAtkBattler(this IEnumerable<IBattler>battlers)
         {
             try { return battlers.OrderByDescending(battler => battler.State.CurrentATK).First(); }
             catch { throw new IndexOutOfRangeException($"{GetBattlerLog(battlers)}"); }
         }
 
-        /// <summary> SPD ‚ªÅ‚à­‚È‚¢ Battler ‚ğæ“¾  </summary>
+        /// <summary> SPD ãŒæœ€ã‚‚å°‘ãªã„ Battler ã‚’å–å¾—  </summary>
         public static IBattler GetMinimumSpdBattler(this IEnumerable<IBattler>battlers)
         {
             try { return battlers.OrderBy(battler => battler.State.CurrentSPD).FirstOrDefault(); }
             catch { throw new IndexOutOfRangeException($"{GetBattlerLog(battlers)}"); }
         }
 
-        /// <summary> SPD ‚ªÅ‚à‚‚¢ Battler ‚ğæ“¾  </summary>
+        /// <summary> SPD ãŒæœ€ã‚‚é«˜ã„ Battler ã‚’å–å¾—  </summary>
         public static IBattler GetMaximumSpdBattler(this IEnumerable<IBattler>battlers)
         {
             try { return battlers.OrderByDescending(battler => battler.State.CurrentSPD).First(); }
@@ -96,7 +96,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// w’èƒoƒgƒ‰[‚Æ“¯‚¶ positionIndex ‚ğ‚¿A‚©‚Â©g‚ğœ‚¢‚½ƒoƒgƒ‰[ˆê——‚ğæ“¾
+        /// æŒ‡å®šãƒãƒˆãƒ©ãƒ¼ã¨åŒã˜ positionIndex ã‚’æŒã¡ã€ã‹ã¤è‡ªèº«ã‚’é™¤ã„ãŸãƒãƒˆãƒ©ãƒ¼ä¸€è¦§ã‚’å–å¾—
         /// </summary>
         public static IEnumerable<IBattler> GetSamePositionIndexOthers(this IEnumerable<IBattler> battlers, IBattler me)
         {
@@ -104,25 +104,25 @@ namespace fantec.Battle
             return battlers.Where(b => !b.Equals(me) && b.Unit.Entity.positionIndex == myIndex);
         }
 
-        /// <summary> w’è‚µ‚½ŒÂ”•ªƒ‰ƒ“ƒ_ƒ€‚Éæ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> æŒ‡å®šã—ãŸå€‹æ•°åˆ†ãƒ©ãƒ³ãƒ€ãƒ ã«å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetRandomBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetRandomBattler);
 
-        /// <summary> HP ‚ªÅ‚à‚‚¢ Battler ‚ğw’è”æ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> HP ãŒæœ€ã‚‚é«˜ã„ Battler ã‚’æŒ‡å®šæ•°å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetMaximumHpBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetMaximumHpBattler);
 
-        /// <summary> HP ‚ªÅ‚à’á‚¢ Battler ‚ğw’è”æ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> HP ãŒæœ€ã‚‚ä½ã„ Battler ã‚’æŒ‡å®šæ•°å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetMinimumHpBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetMinimumHpBattler);
 
-        /// <summary> ATK ‚ªÅ‚à‚‚¢ Battler ‚ğw’è”æ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> ATK ãŒæœ€ã‚‚é«˜ã„ Battler ã‚’æŒ‡å®šæ•°å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetMaximumAtkBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetMaximumAtkBattler);
 
-        /// <summary> ATK ‚ªÅ‚à’á‚¢ Battler ‚ğw’è”æ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> ATK ãŒæœ€ã‚‚ä½ã„ Battler ã‚’æŒ‡å®šæ•°å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetMinimumAtkBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetMinimumAtkBattler);
 
-        /// <summary> SPD ‚ªÅ‚à‚‚¢ Battler ‚ğw’è”æ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> SPD ãŒæœ€ã‚‚é«˜ã„ Battler ã‚’æŒ‡å®šæ•°å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetMaximumSpdBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetMaximumSpdBattler);
 
-        /// <summary> SPD ‚ªÅ‚à’á‚¢ Battler ‚ğw’è”æ“¾ (”í‚è‚È‚µ)  </summary>
+        /// <summary> SPD ãŒæœ€ã‚‚ä½ã„ Battler ã‚’æŒ‡å®šæ•°å–å¾— (è¢«ã‚Šãªã—)  </summary>
         public static IEnumerable<IBattler> GetMinimumSpdBattler(this IEnumerable<IBattler> battlers, int count) => GetBattlerUnoverlapping(battlers, count, GetMinimumSpdBattler);
 
         #endregion
@@ -131,9 +131,9 @@ namespace fantec.Battle
         // Unique
         // ------------------------------------------------------------------------------------------
 
-        // TODO: AI‚ÌUŒ‚‘ÎÛ‚Ì—Dæ‡ˆÊ‚ğŒˆ’è‚·‚é
+        // TODO: AIã®æ”»æ’ƒå¯¾è±¡ã®å„ªå…ˆé †ä½ã‚’æ±ºå®šã™ã‚‹
         /// <summary>
-        /// UŒ‚‘ÎÛ‚Æ‚·‚é Battler ‚ğæ“¾‚·‚é
+        /// æ”»æ’ƒå¯¾è±¡ã¨ã™ã‚‹ Battler ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         /// <param name="battlers"></param>
         /// <param name="info"></param>
@@ -150,15 +150,15 @@ namespace fantec.Battle
                 if (battler.Unit.Entity.positionIndex == 2
                     || battler.Unit.Entity.positionIndex == 6
                     || battler.Unit.Entity.positionIndex == 3) 
-                    candidateBattlerList.Add(battler);// ‘O‰q‚É‚¢‚é‘Šè‚ğ‘_‚¤—\’èƒŠƒXƒg‚ÉŠi”[
+                    candidateBattlerList.Add(battler);// å‰è¡›ã«ã„ã‚‹ç›¸æ‰‹ã‚’ç‹™ã†äºˆå®šãƒªã‚¹ãƒˆã«æ ¼ç´
             }
 
-            // ’Š‘I‘ÎÛ‚ª‚¢‚ê‚Î
+            // æŠ½é¸å¯¾è±¡ãŒã„ã‚Œã°
             if (candidateBattlerList.Count != 0)
             {
-                return candidateBattlerList.GetMinimumHpBattler(); // ‘Šè‚Ì’†‚Åˆê”ÔHP‚Ì’á‚¢‘Šè‚ğ‘_‚¤
+                return candidateBattlerList.GetMinimumHpBattler(); // ç›¸æ‰‹ã®ä¸­ã§ä¸€ç•ªHPã®ä½ã„ç›¸æ‰‹ã‚’ç‹™ã†
             }
-            // ’Š‘I‘ÎÛ‚ª‚¢‚È‚¯‚ê‚Î
+            // æŠ½é¸å¯¾è±¡ãŒã„ãªã‘ã‚Œã°
             else
             {
                 return survivedBattlers.GetRandomBattler();
@@ -172,11 +172,11 @@ namespace fantec.Battle
         // ------------------------------------------------------------------------------------------
 
         /// <summary>
-        /// w’èŠÖ”‚ğ—˜—p‚µd•¡‚³‚¹‚¸‚Éw’èŒÂ”æ“¾‚·‚é
+        /// æŒ‡å®šé–¢æ•°ã‚’åˆ©ç”¨ã—é‡è¤‡ã•ã›ãšã«æŒ‡å®šå€‹æ•°å–å¾—ã™ã‚‹
         /// </summary>
         private static IEnumerable<IBattler>GetBattlerUnoverlapping(IEnumerable<IBattler>battlers,int count,Func<IEnumerable<IBattler>,IBattler>onFunc)
         {
-            if (count == 0) throw new Exception("0 ‚ğw’è‚·‚é‚±‚Æ‚Í‚Å‚«‚Ü‚¹‚ñB");
+            if (count == 0) throw new Exception("0 ã‚’æŒ‡å®šã™ã‚‹ã“ã¨ã¯ã§ãã¾ã›ã‚“ã€‚");
 
             var task = battlers.ToList();
             var result =new List<IBattler>();

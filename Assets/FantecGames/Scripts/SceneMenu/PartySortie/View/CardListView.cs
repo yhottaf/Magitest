@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -57,19 +57,19 @@ namespace fantec.Menu.Card.View
             m_bSortingOrder = value;
         }
 
-        // ƒ}ƒM‚ª1‘Ì‚à•Ò¬‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ‚Ìƒ_ƒCƒAƒƒO‚ğo‚·
+        // ãƒã‚®ãŒ1ä½“ã‚‚ç·¨æˆã•ã‚Œã¦ã„ã¾ã›ã‚“ã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å‡ºã™
         public void SetNoticeWindow(bool enable)
         {
             m_NoticeWindow.SetActive(enable);
         }
 
-        // •Ò¬‚ğ•Û‘¶‚µ‚Ü‚·‚©H ‚¢‚¢‚¦‚ğ‘I‚Ô‚Æ”jŠü‚³‚ê‚Ü‚· ‚Ìƒ_ƒCƒAƒƒO‚ğo‚·
+        // ç·¨æˆã‚’ä¿å­˜ã—ã¾ã™ã‹ï¼Ÿ ã„ã„ãˆã‚’é¸ã¶ã¨ç ´æ£„ã•ã‚Œã¾ã™ ã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’å‡ºã™
         public void SetCheckWindow(bool enable)
         {
             m_CheckWindow.SetActive(enable);
         }
 
-        // ƒXƒƒCƒv‚É‚æ‚Á‚ÄƒfƒbƒL‚Ì“à—e‚ª•ÏX‚³‚ê‚½‚±‚Æ‚ğ’Ê’m‚³‚¹‚é
+        // ã‚¹ãƒ¯ã‚¤ãƒ—ã«ã‚ˆã£ã¦ãƒ‡ãƒƒã‚­ã®å†…å®¹ãŒå¤‰æ›´ã•ã‚ŒãŸã“ã¨ã‚’é€šçŸ¥ã•ã›ã‚‹
         public void ChangePartyData()
         {
             changePartyData.OnNext(Unit.Default);

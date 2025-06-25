@@ -1,7 +1,7 @@
-namespace fantec.Utilities
+ï»¿namespace fantec.Utilities
 {
     /// <summary>
-    /// ƒV[ƒ“‚ğ‚Ü‚½‚¢‚Å‘±‚·‚éƒVƒ“ƒOƒ‹ƒgƒ“
+    /// ã‚·ãƒ¼ãƒ³ã‚’ã¾ãŸã„ã§æŒç¶šã™ã‚‹ã‚·ãƒ³ã‚°ãƒ«ãƒˆãƒ³
     /// </summary>
     public class PersistentSingleton<T> : Singleton<T> where T : Singleton<T>
     {

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,7 +52,7 @@ namespace fantec.Menu.PartySortie.View
         public IObservable<bool>OnValueChangedItemInfoToggleObservable=>m_ItemInfoToggle.OnValueChangedAsObservable();
 
         /// <summary>
-        /// ƒNƒGƒXƒg–¼‚ğXV‚·‚é
+        /// ã‚¯ã‚¨ã‚¹ãƒˆåã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <param name="questName"></param>
         public void UpdateQuestName(string questName)
@@ -61,7 +61,7 @@ namespace fantec.Menu.PartySortie.View
         }
 
         /// <summary>
-        /// ƒp[ƒeƒB–¼‚ğXV‚·‚é
+        /// ãƒ‘ãƒ¼ãƒ†ã‚£åã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <param name="name"></param>
         public void UpdateDirectoryName(string name)

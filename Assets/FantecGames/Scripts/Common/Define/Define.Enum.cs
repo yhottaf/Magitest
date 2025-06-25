@@ -1,25 +1,25 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.UI;
 
 /*
- * -----[ Enum ‹K–ñ ]-----
+ * -----[ Enum è¦ç´„ ]-----
  * 
- * 1.Enum–¼‚ÌŒã‚ë‚É Type ‚ğ‚Â‚¯‚é
- * 2.—v‘f‚Ìæ“ª‚É‚Í NONE ‚ğ“ü‚ê‚é
- * 3.Enum ‚ğƒCƒ“ƒfƒbƒNƒX‚Æ‚µ‚Ä‚à—˜—p‚·‚é‚±‚Æ‚ª‚ ‚éê‡‚Í NONE ‚É -1 ‚ğ“ü‚ê‚é
- * 4.”ì‘å‚µ‚Ä‚«‚½‚ç•Êƒtƒ@ƒCƒ‹‚É•ªŠ„
+ * 1.Enumåã®å¾Œã‚ã« Type ã‚’ã¤ã‘ã‚‹
+ * 2.è¦ç´ ã®å…ˆé ­ã«ã¯ NONE ã‚’å…¥ã‚Œã‚‹
+ * 3.Enum ã‚’ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã¨ã—ã¦ã‚‚åˆ©ç”¨ã™ã‚‹ã“ã¨ãŒã‚ã‚‹å ´åˆã¯ NONE ã« -1 ã‚’å…¥ã‚Œã‚‹
+ * 4.è‚¥å¤§ã—ã¦ããŸã‚‰åˆ¥ãƒ•ã‚¡ã‚¤ãƒ«ã«åˆ†å‰²
  * 
  */
 
 namespace fantec
 {
     // ----------------------------------------------------------------------------------------------------
-    // ƒJ[ƒh
+    // ã‚«ãƒ¼ãƒ‰
     // ----------------------------------------------------------------------------------------------------
 
     /// <summary>
-    /// ƒJ[ƒh‚ÌƒŒƒAƒŠƒeƒB‚Ìw’è
+    /// ã‚«ãƒ¼ãƒ‰ã®ãƒ¬ã‚¢ãƒªãƒ†ã‚£ã®æŒ‡å®š
     /// </summary>
     public enum CardRarityType
     {
@@ -30,7 +30,7 @@ namespace fantec
     public static partial class EnumExtentions
     {
         /// <summary>
-        /// ƒŒƒAƒŠƒeƒB‚É‰‚¶‚½Å‘åƒŒƒxƒ‹‚ğæ“¾‚·‚é
+        /// ãƒ¬ã‚¢ãƒªãƒ†ã‚£ã«å¿œã˜ãŸæœ€å¤§ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static int GetMaxLevel(this CardRarityType rarityType)
         {
@@ -42,12 +42,12 @@ namespace fantec
                 case CardRarityType.R4: return 70;
                 case CardRarityType.R5: return 80;
                 case CardRarityType.R6: return 100;
-                default: throw new Exception($"[{rarityType}] ‚Í‘ÎÛŠO‚Å‚·B");
+                default: throw new Exception($"[{rarityType}] ã¯å¯¾è±¡å¤–ã§ã™ã€‚");
             }
         }
 
         /// <summary>
-        /// ƒŒƒAƒŠƒeƒB‘Ñ‚É‰‚¶‚½Å¬ƒŒƒxƒ‹‚ğæ“¾‚·‚é
+        /// ãƒ¬ã‚¢ãƒªãƒ†ã‚£å¸¯ã«å¿œã˜ãŸæœ€å°ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static int GetMinLevel(this CardRarityType rarityType)
         {
@@ -59,70 +59,70 @@ namespace fantec
                 case CardRarityType.R4: return 50;
                 case CardRarityType.R5: return 60;
                 case CardRarityType.R6: return 80;
-                default: throw new Exception($"[{rarityType}] ‚Í‘ÎÛŠO‚Å‚·B");
+                default: throw new Exception($"[{rarityType}] ã¯å¯¾è±¡å¤–ã§ã™ã€‚");
             }
         }
     }
 
     // ----------------------------------------------------------------------------------------------------
-    // Œø‰Ê
+    // åŠ¹æœ
     // ----------------------------------------------------------------------------------------------------
 
     /// <summary>
-    /// Œø‰Ê‘®«
+    /// åŠ¹æœå±æ€§
     /// </summary>
     public enum AffectAttributeType
     {
         NONE,
-        ’Êí,
-        ‰Š,
-        •X,
-        –Ø,
-        ‹ó,
-        ‹à,
-        •,
+        é€šå¸¸,
+        ç‚,
+        æ°·,
+        æœ¨,
+        ç©º,
+        é‡‘,
+        é»’,
     }
 
 
     /// <summary>
-    /// Œø‰Ê—Êí•ÊiƒCƒ“ƒfƒbƒNƒX”Ô†‚ÍƒXƒLƒ‹ID‚É‰ÁZ‚·‚éŒ`‚Å—˜—p‚³‚ê‚Ü‚·j
+    /// åŠ¹æœé‡ç¨®åˆ¥ï¼ˆã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ç•ªå·ã¯ã‚¹ã‚­ãƒ«IDã«åŠ ç®—ã™ã‚‹å½¢ã§åˆ©ç”¨ã•ã‚Œã¾ã™ï¼‰
     /// </summary>
     public enum AffectEfficacyType
     {
         NONE = 0,
-        ”÷ = 1,
-        ¬ = 2,
-        ’† = 3,
-        ‘å = 4,
-        ’´ = 5,
-        ‹É = 6,
+        å¾® = 1,
+        å° = 2,
+        ä¸­ = 3,
+        å¤§ = 4,
+        è¶… = 5,
+        æ¥µ = 6,
     }
 
     public static partial class EnumExtentions
     {
         /// <summary>
-        /// Œø‰Ê—Êí•Ê‚ÌƒRƒ}ƒ“ƒh—p•¶š—ñ‚ğæ“¾‚·‚é
+        /// åŠ¹æœé‡ç¨®åˆ¥ã®ã‚³ãƒãƒ³ãƒ‰ç”¨æ–‡å­—åˆ—ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static string GetCommandString(this AffectEfficacyType @this)
         {
             switch (@this)
             {
                 case AffectEfficacyType.NONE: return "NONE";
-                case AffectEfficacyType.”÷: return "”÷";
-                case AffectEfficacyType.¬: return "¬";
-                case AffectEfficacyType.’†: return "’†";
-                case AffectEfficacyType.‘å: return "‘å";
-                case AffectEfficacyType.’´: return "’´";
-                case AffectEfficacyType.‹É: return "‹É";
+                case AffectEfficacyType.å¾®: return "å¾®";
+                case AffectEfficacyType.å°: return "å°";
+                case AffectEfficacyType.ä¸­: return "ä¸­";
+                case AffectEfficacyType.å¤§: return "å¤§";
+                case AffectEfficacyType.è¶…: return "è¶…";
+                case AffectEfficacyType.æ¥µ: return "æ¥µ";
 
-                default: throw new Exception($"[{@this}] ‚ÌƒRƒ}ƒ“ƒh—p•¶š—ñ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                default: throw new Exception($"[{@this}] ã®ã‚³ãƒãƒ³ãƒ‰ç”¨æ–‡å­—åˆ—ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
     }
 
 
     /// <summary>
-    /// Œø‰Ê”ÍˆÍ
+    /// åŠ¹æœç¯„å›²
     /// </summary>
     public enum AffectRangeType
     {
@@ -155,27 +155,27 @@ namespace fantec
             switch (rangeType)
             {
                 case AffectRangeType.NONE: return "NONE";
-                case AffectRangeType.EnemySingle: return "“G’P‘ÌN";
-                case AffectRangeType.EnemyAll: return "“G‘S‘ÌN";
-                case AffectRangeType.EnemyAllRandom: return "“G‘S‘ÌR";
-                case AffectRangeType.MySideAll: return "–¡•û‘S‘ÌN";
-                case AffectRangeType.MySideVanguard: return "–¡•û‘O‰qN";
-                case AffectRangeType.MySideRearguard: return "–¡•ûŒã‰qN";
-                case AffectRangeType.MySideAllRandom: return "–¡•û‘S‘ÌR";
-                case AffectRangeType.MySideSingle: return "–¡•û’P‘ÌN";
-                case AffectRangeType.Myself: return "©•ª©gN";
-                case AffectRangeType.BesidesMe: return "©•ªˆÈŠON";
-                case AffectRangeType.BesideMeRandom: return "©•ªˆÈŠOR";
-                case AffectRangeType.Gimmick: return "ƒMƒ~ƒbƒN";
+                case AffectRangeType.EnemySingle: return "æ•µå˜ä½“N";
+                case AffectRangeType.EnemyAll: return "æ•µå…¨ä½“N";
+                case AffectRangeType.EnemyAllRandom: return "æ•µå…¨ä½“R";
+                case AffectRangeType.MySideAll: return "å‘³æ–¹å…¨ä½“N";
+                case AffectRangeType.MySideVanguard: return "å‘³æ–¹å‰è¡›N";
+                case AffectRangeType.MySideRearguard: return "å‘³æ–¹å¾Œè¡›N";
+                case AffectRangeType.MySideAllRandom: return "å‘³æ–¹å…¨ä½“R";
+                case AffectRangeType.MySideSingle: return "å‘³æ–¹å˜ä½“N";
+                case AffectRangeType.Myself: return "è‡ªåˆ†è‡ªèº«N";
+                case AffectRangeType.BesidesMe: return "è‡ªåˆ†ä»¥å¤–N";
+                case AffectRangeType.BesideMeRandom: return "è‡ªåˆ†ä»¥å¤–R";
+                case AffectRangeType.Gimmick: return "ã‚®ãƒŸãƒƒã‚¯";
 
                 default:
-                    throw new Exception($"[rangeType : {rangeType}] ‚ÌƒRƒ}ƒ“ƒh—p•¶š—ñ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                    throw new Exception($"[rangeType : {rangeType}] ã®ã‚³ãƒãƒ³ãƒ‰ç”¨æ–‡å­—åˆ—ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 
 
         /// <summary>
-        /// ƒƒCƒ“ƒXƒLƒ‹‚Æ‚µ‚Ä¯•Ê‚·‚éÛ‚È‚Ç‚É—˜—p‚·‚é—Dæ‡ˆÊ
+        /// ãƒ¡ã‚¤ãƒ³ã‚¹ã‚­ãƒ«ã¨ã—ã¦è­˜åˆ¥ã™ã‚‹éš›ãªã©ã«åˆ©ç”¨ã™ã‚‹å„ªå…ˆé †ä½
         /// </summary>
         public static int GetPriority(this AffectRangeType rangeType)
         {
@@ -206,12 +206,12 @@ namespace fantec
                     return 5;
 
                 default:
-                    throw new Exception($"[rangeType : {rangeType}] ‚Ì—Dæ‡ˆÊ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                    throw new Exception($"[rangeType : {rangeType}] ã®å„ªå…ˆé †ä½ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 
         /// <summary>
-        /// ©•ªƒTƒCƒh‚Ö‚ÌŒø‰Ê‚©”Û‚©
+        /// è‡ªåˆ†ã‚µã‚¤ãƒ‰ã¸ã®åŠ¹æœã‹å¦ã‹
         /// </summary>
         public static bool GetIsMySide(this AffectRangeType rangeType)
         {
@@ -235,43 +235,43 @@ namespace fantec
 
 
     /// <summary>
-    /// ƒ^[ƒ“‚ÌÁ”ïƒ^ƒCƒ~ƒ“ƒOí•Ê
+    /// ã‚¿ãƒ¼ãƒ³ã®æ¶ˆè²»ã‚¿ã‚¤ãƒŸãƒ³ã‚°ç¨®åˆ¥
     /// </summary>
     public enum AffectTurnConsumeType
     {
         NONE,
-        TurnEnd,            // ƒ^[ƒ“I—¹Œã
-        SectionByOwner,     // ”­“®Ò‘¤
-        SectionByTarget,    // Œø‰Ê‘ÎÛ‘¤
+        TurnEnd,            // ã‚¿ãƒ¼ãƒ³çµ‚äº†å¾Œ
+        SectionByOwner,     // ç™ºå‹•è€…å´
+        SectionByTarget,    // åŠ¹æœå¯¾è±¡å´
     }
 
     /// <summary>
-    /// Œø‰Êí•Ê
+    /// åŠ¹æœç¨®åˆ¥
     /// </summary>
     public enum AffectCategoryType
     {
-        NONE,               // æ“¾¸”s‚È‚Ç‚Ì—áŠO—p
-        EMPTY,              // ‰½‚à‚µ‚È‚¢
-        DUMMY,              // ƒfƒoƒbƒO—pƒ_ƒ~[ƒXƒLƒ‹
+        NONE,               // å–å¾—å¤±æ•—æ™‚ãªã©ã®ä¾‹å¤–ç”¨
+        EMPTY,              // ä½•ã‚‚ã—ãªã„
+        DUMMY,              // ãƒ‡ãƒãƒƒã‚°ç”¨ãƒ€ãƒŸãƒ¼ã‚¹ã‚­ãƒ«
 
-        // UŒ‚
-        AttackNormal,       // ’Êíƒ_ƒ[ƒWi“j
-        AttackFixed,        // ŒÅ’è’lƒ_ƒ[ƒW
-        AttackRatio,        // Š„‡ƒ_ƒ[ƒWi“j
+        // æ”»æ’ƒ
+        AttackNormal,       // é€šå¸¸ãƒ€ãƒ¡ãƒ¼ã‚¸ï¼ˆï¼…ï¼‰
+        AttackFixed,        // å›ºå®šå€¤ãƒ€ãƒ¡ãƒ¼ã‚¸
+        AttackRatio,        // å‰²åˆãƒ€ãƒ¡ãƒ¼ã‚¸ï¼ˆï¼…ï¼‰
 
-        // ‰ñ•œ
-        HealRatio,          // Š„‡‰ñ•œi“j
-        HealFixed,          // ŒÅ’è’l‰ñ•œ
-        RegenRatio,         // Š„‡‘±‰ñ•œi“j
-        RegenFixed,         // ŒÅ’è’l‘±‰ñ•œ
-        Revival,            // ‘h‚é
-        Kill,               // E‚é
-        Dispel,             // ƒoƒt‚ğ‰ğœ
+        // å›å¾©
+        HealRatio,          // å‰²åˆå›å¾©ï¼ˆï¼…ï¼‰
+        HealFixed,          // å›ºå®šå€¤å›å¾©
+        RegenRatio,         // å‰²åˆæŒç¶šå›å¾©ï¼ˆï¼…ï¼‰
+        RegenFixed,         // å›ºå®šå€¤æŒç¶šå›å¾©
+        Revival,            // è˜‡ã‚‹
+        Kill,               // æ®ºã‚‹
+        Dispel,             // ãƒãƒ•ã‚’è§£é™¤
 
-        // ó‘Ô•Ï‰»
-        Shield,             // ƒV[ƒ‹ƒh
+        // çŠ¶æ…‹å¤‰åŒ–
+        Shield,             // ã‚·ãƒ¼ãƒ«ãƒ‰
 
-        // ó‘ÔˆÙí
+        // çŠ¶æ…‹ç•°å¸¸
         Poison,
         Burn,
         Frost,
@@ -281,38 +281,38 @@ namespace fantec
         Break,
         AbnormalHeal,
 
-        // ƒoƒtEƒfƒoƒt
-        ATK_Buff,           // UŒ‚—Íƒoƒt
-        BRK_Buff,           // ƒuƒŒƒCƒN—Íƒoƒt
-        DEF_Buff,           // –hŒä—Íƒoƒt
-        SPD_Buff,           // ƒXƒs[ƒhƒoƒt
-        DEX_Buff,           // –½’†—¦ƒoƒt
-        LUK_Buff,           // ‰^ƒoƒt
-        VIT_Buff,           // ó‘ÔˆÙí‘Ï«ƒoƒt
-        DMG_Buff,           // ƒ_ƒ[ƒWãŒÀƒoƒt
-        MOVE_Buff,          // ˆÚ“®ƒoƒt
-        ATK_Debuff,         // UŒ‚—Íƒfƒoƒt
-        BRK_Debuff,         // ƒuƒŒƒCƒN—Íƒfƒoƒt
-        DEF_Debuff,         // –hŒä—Íƒfƒoƒt
-        SPD_Debuff,         // ƒXƒs[ƒhƒfƒoƒt
-        DEX_Debuff,         // –½’†—¦ƒfƒoƒt
-        LUK_Debuff,         // ‰^ƒfƒoƒt
-        VIT_Debuff,         // ó‘ÔˆÙí‘Ï«ƒfƒoƒt
-        DMG_Debuff,         // ƒ_ƒ[ƒWãŒÀƒfƒoƒt
-        HP_Buff,            // ‘Ì—ÍãŒÀƒoƒt
-        HP_Debuff,          // ‘Ì—ÍãŒÀƒfƒoƒt
-        BP_Buff,            // ƒuƒŒƒCƒN‘Ï‹v’lãŒÀƒoƒt
-        BP_Debuff,          // ƒuƒŒƒCƒN‘Ï‹v’lãŒÀƒfƒoƒt
-        MOVE_Debuff,        // ˆÚ“®ƒfƒoƒt
-        AttributeResistBuff,    // ‘®«‘Ï«ƒoƒt
-        AttributeResistDebuff,  // ‘®«‘Ï«ƒfƒoƒt
-        KONSHIN_ATK,        // ‹t‹«UŒ‚—Íƒoƒt
-        KONSHIN_BRK,        // ‹t‹«ƒuƒŒƒCƒN—Íƒoƒt
-        GYAKKYOU_ATK,       // ŸÓgUŒ‚—Íƒoƒt
-        GYAKKYOU_BRK,       // ŸÓgƒuƒŒƒCƒN—Íƒoƒt
+        // ãƒãƒ•ãƒ»ãƒ‡ãƒãƒ•
+        ATK_Buff,           // æ”»æ’ƒåŠ›ãƒãƒ•
+        BRK_Buff,           // ãƒ–ãƒ¬ã‚¤ã‚¯åŠ›ãƒãƒ•
+        DEF_Buff,           // é˜²å¾¡åŠ›ãƒãƒ•
+        SPD_Buff,           // ã‚¹ãƒ”ãƒ¼ãƒ‰ãƒãƒ•
+        DEX_Buff,           // å‘½ä¸­ç‡ãƒãƒ•
+        LUK_Buff,           // é‹ãƒãƒ•
+        VIT_Buff,           // çŠ¶æ…‹ç•°å¸¸è€æ€§ãƒãƒ•
+        DMG_Buff,           // ãƒ€ãƒ¡ãƒ¼ã‚¸ä¸Šé™ãƒãƒ•
+        MOVE_Buff,          // ç§»å‹•ãƒãƒ•
+        ATK_Debuff,         // æ”»æ’ƒåŠ›ãƒ‡ãƒãƒ•
+        BRK_Debuff,         // ãƒ–ãƒ¬ã‚¤ã‚¯åŠ›ãƒ‡ãƒãƒ•
+        DEF_Debuff,         // é˜²å¾¡åŠ›ãƒ‡ãƒãƒ•
+        SPD_Debuff,         // ã‚¹ãƒ”ãƒ¼ãƒ‰ãƒ‡ãƒãƒ•
+        DEX_Debuff,         // å‘½ä¸­ç‡ãƒ‡ãƒãƒ•
+        LUK_Debuff,         // é‹ãƒ‡ãƒãƒ•
+        VIT_Debuff,         // çŠ¶æ…‹ç•°å¸¸è€æ€§ãƒ‡ãƒãƒ•
+        DMG_Debuff,         // ãƒ€ãƒ¡ãƒ¼ã‚¸ä¸Šé™ãƒ‡ãƒãƒ•
+        HP_Buff,            // ä½“åŠ›ä¸Šé™ãƒãƒ•
+        HP_Debuff,          // ä½“åŠ›ä¸Šé™ãƒ‡ãƒãƒ•
+        BP_Buff,            // ãƒ–ãƒ¬ã‚¤ã‚¯è€ä¹…å€¤ä¸Šé™ãƒãƒ•
+        BP_Debuff,          // ãƒ–ãƒ¬ã‚¤ã‚¯è€ä¹…å€¤ä¸Šé™ãƒ‡ãƒãƒ•
+        MOVE_Debuff,        // ç§»å‹•ãƒ‡ãƒãƒ•
+        AttributeResistBuff,    // å±æ€§è€æ€§ãƒãƒ•
+        AttributeResistDebuff,  // å±æ€§è€æ€§ãƒ‡ãƒãƒ•
+        KONSHIN_ATK,        // é€†å¢ƒæ”»æ’ƒåŠ›ãƒãƒ•
+        KONSHIN_BRK,        // é€†å¢ƒãƒ–ãƒ¬ã‚¤ã‚¯åŠ›ãƒãƒ•
+        GYAKKYOU_ATK,       // æ¸¾èº«æ”»æ’ƒåŠ›ãƒãƒ•
+        GYAKKYOU_BRK,       // æ¸¾èº«ãƒ–ãƒ¬ã‚¤ã‚¯åŠ›ãƒãƒ•
 
 
-        // “Áê
+        // ç‰¹æ®Š
         Guts,
     }
 
@@ -327,30 +327,30 @@ namespace fantec
                 case AffectCategoryType.EMPTY: return "EMPTY";
                 case AffectCategoryType.DUMMY: return "DUMMY";
 
-                case AffectCategoryType.AttackNormal: return "UŒ‚N";
-                case AffectCategoryType.AttackFixed: return "UŒ‚F";
-                case AffectCategoryType.AttackRatio: return "UŒ‚R";
-                case AffectCategoryType.HealRatio: return "‰ñ•œR";
-                case AffectCategoryType.HealFixed: return "‰ñ•œF";
-                case AffectCategoryType.AbnormalHeal: return "ˆÙí‰ñ•œ";
-                case AffectCategoryType.Revival: return "‘h¶";
-                case AffectCategoryType.Kill: return "‘¦€";
-                case AffectCategoryType.Dispel: return "ƒfƒBƒXƒyƒ‹";
-                case AffectCategoryType.Shield: return "‚";
-                case AffectCategoryType.Guts: return "ª«";
-                case AffectCategoryType.Poison: return "“Å";
-                case AffectCategoryType.Frost: return "“€";
-                case AffectCategoryType.Burn: return "‰Î";
-                case AffectCategoryType.Blind: return "ˆÃˆÅ";
-                case AffectCategoryType.Confusion: return "¬—";
-                case AffectCategoryType.Break: return "ƒuƒŒƒCƒN";
-                case AffectCategoryType.OverrideSealed:return "ƒI[ƒo[ƒ‰ƒCƒh••ˆó";
-                case AffectCategoryType.GYAKKYOU_ATK: return "‹t‹«U";
-                case AffectCategoryType.GYAKKYOU_BRK: return "‹t‹«”j";
-                case AffectCategoryType.KONSHIN_ATK: return "ŸÓgU";
-                case AffectCategoryType.KONSHIN_BRK: return "ŸÓg”j";
-                case AffectCategoryType.RegenRatio: return "ƒŠƒWƒFƒlR";
-                case AffectCategoryType.RegenFixed: return "ƒŠƒWƒFƒlF";
+                case AffectCategoryType.AttackNormal: return "æ”»æ’ƒN";
+                case AffectCategoryType.AttackFixed: return "æ”»æ’ƒF";
+                case AffectCategoryType.AttackRatio: return "æ”»æ’ƒR";
+                case AffectCategoryType.HealRatio: return "å›å¾©R";
+                case AffectCategoryType.HealFixed: return "å›å¾©F";
+                case AffectCategoryType.AbnormalHeal: return "ç•°å¸¸å›å¾©";
+                case AffectCategoryType.Revival: return "è˜‡ç”Ÿ";
+                case AffectCategoryType.Kill: return "å³æ­»";
+                case AffectCategoryType.Dispel: return "ãƒ‡ã‚£ã‚¹ãƒšãƒ«";
+                case AffectCategoryType.Shield: return "ç›¾";
+                case AffectCategoryType.Guts: return "æ ¹æ€§";
+                case AffectCategoryType.Poison: return "æ¯’";
+                case AffectCategoryType.Frost: return "å‡å‚·";
+                case AffectCategoryType.Burn: return "ç«å‚·";
+                case AffectCategoryType.Blind: return "æš—é—‡";
+                case AffectCategoryType.Confusion: return "æ··ä¹±";
+                case AffectCategoryType.Break: return "ãƒ–ãƒ¬ã‚¤ã‚¯";
+                case AffectCategoryType.OverrideSealed:return "ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰å°å°";
+                case AffectCategoryType.GYAKKYOU_ATK: return "é€†å¢ƒæ”»";
+                case AffectCategoryType.GYAKKYOU_BRK: return "é€†å¢ƒç ´";
+                case AffectCategoryType.KONSHIN_ATK: return "æ¸¾èº«æ”»";
+                case AffectCategoryType.KONSHIN_BRK: return "æ¸¾èº«ç ´";
+                case AffectCategoryType.RegenRatio: return "ãƒªã‚¸ã‚§ãƒR";
+                case AffectCategoryType.RegenFixed: return "ãƒªã‚¸ã‚§ãƒF";
                 case AffectCategoryType.ATK_Buff: return "ATK+";
                 case AffectCategoryType.BRK_Buff: return "BRK+";
                 case AffectCategoryType.DEF_Buff: return "DEF+";
@@ -371,16 +371,16 @@ namespace fantec
                 case AffectCategoryType.BP_Buff: return "BP+";
                 case AffectCategoryType.HP_Debuff: return "HP-";
                 case AffectCategoryType.BP_Debuff: return "BP-";
-                case AffectCategoryType.AttributeResistBuff: return "‘®‘Ï+";
-                case AffectCategoryType.AttributeResistDebuff: return "‘®‘Ï-";
+                case AffectCategoryType.AttributeResistBuff: return "å±è€+";
+                case AffectCategoryType.AttributeResistDebuff: return "å±è€-";
 
                 default:
-                    throw new Exception($"[categoryType : {categoryType}] ‚ÌƒRƒ}ƒ“ƒh—p•¶š—ñ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                    throw new Exception($"[categoryType : {categoryType}] ã®ã‚³ãƒãƒ³ãƒ‰ç”¨æ–‡å­—åˆ—ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 
         /// <summary>
-        /// ”­“®‡‚È‚Ç‚É—˜—p‚³‚ê‚é—Dæ‡ˆÊ
+        /// ç™ºå‹•é †ãªã©ã«åˆ©ç”¨ã•ã‚Œã‚‹å„ªå…ˆé †ä½
         /// </summary>
         public static int GetPriority(this AffectCategoryType categoryType)
         {
@@ -437,13 +437,13 @@ namespace fantec
                     return 3;
 
                 default:
-                    throw new Exception($"[categoryType : {categoryType}] ‚Ì—Dæ‡ˆÊ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                    throw new Exception($"[categoryType : {categoryType}] ã®å„ªå…ˆé †ä½ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 
 
         /// <summary>
-        /// ƒ^[ƒ“Á”ïƒ^ƒCƒ~ƒ“ƒOí•Ê‚ğæ“¾‚·‚é
+        /// ã‚¿ãƒ¼ãƒ³æ¶ˆè²»ã‚¿ã‚¤ãƒŸãƒ³ã‚°ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static AffectTurnConsumeType GetTurnConsumeType(this AffectCategoryType categoryType)
         {
@@ -471,7 +471,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒ_ƒ[ƒWŒn‚©”Û‚©
+        /// ãƒ€ãƒ¡ãƒ¼ã‚¸ç³»ã‹å¦ã‹
         /// </summary>
         public static bool GetIsAttack(this AffectCategoryType categoryType)
         {
@@ -527,7 +527,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ó‘ÔˆÙíŒn‚Å‚ ‚é‚©”Û‚©
+        /// çŠ¶æ…‹ç•°å¸¸ç³»ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsAbnormalCondition(this AffectCategoryType categoryType)
         {
@@ -546,7 +546,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒAƒCƒRƒ“‚ª‘¶İ‚·‚éƒXƒLƒ‹‚©”Û‚©
+        /// ã‚¢ã‚¤ã‚³ãƒ³ãŒå­˜åœ¨ã™ã‚‹ã‚¹ã‚­ãƒ«ã‹å¦ã‹
         /// </summary>
         public static bool GetIsBuffIconable(this AffectCategoryType categoryType)
         {
@@ -557,7 +557,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// UŒ‚“I‚ÈƒXƒLƒ‹‚©”Û‚©
+        /// æ”»æ’ƒçš„ãªã‚¹ã‚­ãƒ«ã‹å¦ã‹
         /// </summary>
         public static bool GetIsAggressive(this AffectCategoryType categoryType)
         {
@@ -568,18 +568,18 @@ namespace fantec
         }
 
         /// <summary>
-        /// •t‘®‚Ìê—pŒø‰Ê‚ª‚ ‚é‚©”Û‚©
+        /// ä»˜å±ã®å°‚ç”¨åŠ¹æœãŒã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsAttachedEffect(this AffectCategoryType categoryType)
         {
             switch (categoryType)
             {
-                case AffectCategoryType.Burn:          // ƒo[ƒ“
-                case AffectCategoryType.Frost:         // “€Œ‹
-                case AffectCategoryType.Blind:         // ˆÃ•
-                case AffectCategoryType.Confusion:     // ¬—
-                case AffectCategoryType.RegenRatio:     // Š„‡‘±‰ñ•œ (%)
-                case AffectCategoryType.RegenFixed:     // ŒÅ’è’l‘±‰ñ•œ
+                case AffectCategoryType.Burn:          // ãƒãƒ¼ãƒ³
+                case AffectCategoryType.Frost:         // å‡çµ
+                case AffectCategoryType.Blind:         // æš—é»’
+                case AffectCategoryType.Confusion:     // æ··ä¹±
+                case AffectCategoryType.RegenRatio:     // å‰²åˆæŒç¶šå›å¾© (%)
+                case AffectCategoryType.RegenFixed:     // å›ºå®šå€¤æŒç¶šå›å¾©
                     return true;
 
                 default: return false;
@@ -587,7 +587,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// Œø‰Ê•t—^’¼Œã‚É‘N“x‚ª•t—^‚³‚ê‚È‚¢‚à‚Ì‚Å‚ ‚é‚©”Û‚©
+        /// åŠ¹æœä»˜ä¸ç›´å¾Œã«é®®åº¦ãŒä»˜ä¸ã•ã‚Œãªã„ã‚‚ã®ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsUnfreshable(this AffectCategoryType categoryType)
         {
@@ -605,7 +605,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒXƒŠƒbƒvƒ_ƒ[ƒW‚ğ—^‚¦‚éŒn‚Å‚ ‚é‚©”Û‚©
+        /// ã‚¹ãƒªãƒƒãƒ—ãƒ€ãƒ¡ãƒ¼ã‚¸ã‚’ä¸ãˆã‚‹ç³»ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsSlipDamage(this AffectCategoryType categoryType)
         {
@@ -620,7 +620,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// Å‘å‘Ì—Í’l‚É‰e‹¿‚ğ—^‚¦‚é‚©”Û‚©
+        /// æœ€å¤§ä½“åŠ›å€¤ã«å½±éŸ¿ã‚’ä¸ãˆã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsMaxHealthable(this AffectCategoryType categoryType)
         {
@@ -635,7 +635,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒfƒBƒXƒyƒ‹‚ÌŒø‰Ê‘ÎÛ‚©”Û‚©
+        /// ãƒ‡ã‚£ã‚¹ãƒšãƒ«ã®åŠ¹æœå¯¾è±¡ã‹å¦ã‹
         /// </summary>
         public static bool GetIsDispelable(this AffectCategoryType categoryType)
         {
@@ -662,7 +662,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ‘±‰ñ•œŒn‚Å‚ ‚é‚©”Û‚©
+        /// æŒç¶šå›å¾©ç³»ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsRegen(this AffectCategoryType categoryType)
         {
@@ -678,7 +678,7 @@ namespace fantec
 
 
         /// <summary>
-        /// –hŒä’l‚É‰e‹¿‚·‚é‚©”Û‚©
+        /// é˜²å¾¡å€¤ã«å½±éŸ¿ã™ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsProtectable(this AffectCategoryType categoryType)
         {
@@ -694,7 +694,7 @@ namespace fantec
 
 
         /// <summary>
-        /// ƒx[ƒX‚Ì’l‚ğŒ³‚ÉŒvZ‚·‚é‚©”Û‚©
+        /// ãƒ™ãƒ¼ã‚¹ã®å€¤ã‚’å…ƒã«è¨ˆç®—ã™ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsCalcUseBaseValue(this AffectCategoryType categoryType)
         {
@@ -708,7 +708,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// Š„‡‚Å‚ÌŒvZ‚©”Û‚©
+        /// å‰²åˆã§ã®è¨ˆç®—ã‹å¦ã‹
         /// </summary>
         public static bool GetIsCalcRasio(this AffectCategoryType categoryType)
         {
@@ -724,7 +724,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// “Á’è”’lˆÈã‚ªğŒ‚Å‚ ‚é‚©”Û‚©
+        /// ç‰¹å®šæ•°å€¤ä»¥ä¸ŠãŒæ¡ä»¶ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsConditionsAbove(this AffectCategoryType categoryType)
         {
@@ -739,7 +739,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// “Á’è”’lˆÈ‰º‚ªğŒ‚Å‚ ‚é‚©”Û‚©
+        /// ç‰¹å®šæ•°å€¤ä»¥ä¸‹ãŒæ¡ä»¶ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool GetIsConditionsBelow(this AffectCategoryType categoryType)
         {
@@ -755,39 +755,39 @@ namespace fantec
     }
 
     /// <summary>
-    /// ˆÚ“®æí•Ê
+    /// ç§»å‹•å…ˆç¨®åˆ¥
     /// </summary>
     public enum AffectMoveType
     {
         NONE = -1,
-        ‹ß,     // ‹ßÚUŒ‚
-        ‰“,     // ‰“‹——£UŒ‚
+        è¿‘,     // è¿‘æ¥æ”»æ’ƒ
+        é ,     // é è·é›¢æ”»æ’ƒ
     }
 
     /// <summary>
-    /// ƒqƒbƒgí•Ê
+    /// ãƒ’ãƒƒãƒˆç¨®åˆ¥
     /// </summary>
     public enum AffectHitType
     {
         NONE,
-        ‘Å, a, “Ë,
+        æ‰“, æ–¬, çª,
     }
 
     /// <summary>
-    /// ƒI[ƒo[ƒ‰ƒCƒg‚Ìí—Ş
+    /// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒˆã®ç¨®é¡
     /// </summary>
     public enum AffectOverrideType
     {
         NONE,
         Override,
-        ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh,
-        ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh,
-        ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh,
+        ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰,
+        ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰,
+        ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰,
     }
 
 
     // ----------------------------------------------------------------------------------------------------
-    // ƒXƒe[ƒW
+    // ã‚¹ãƒ†ãƒ¼ã‚¸
     // ----------------------------------------------------------------------------------------------------
 
     public enum StageCategoryType
@@ -818,25 +818,25 @@ namespace fantec
     }
 
     // ----------------------------------------------------------------------------------------------------
-    // ƒAƒCƒeƒ€
+    // ã‚¢ã‚¤ãƒ†ãƒ 
     // ----------------------------------------------------------------------------------------------------
 
     /// <summary>
-    /// Á”ïƒAƒCƒeƒ€‚Ìí—Ş
+    /// æ¶ˆè²»ã‚¢ã‚¤ãƒ†ãƒ ã®ç¨®é¡
     /// </summary>
     public enum ConsumeItemEffectType
     {
         NONE,
-        ‹­‰»,
-        ‘fŞ,
-        ƒKƒ`ƒƒ,
-        ƒXƒ^ƒ~ƒi,
-        ƒNƒGƒXƒg,
-        ƒEƒHƒŒƒbƒg,
+        å¼·åŒ–,
+        ç´ æ,
+        ã‚¬ãƒãƒ£,
+        ã‚¹ã‚¿ãƒŸãƒŠ,
+        ã‚¯ã‚¨ã‚¹ãƒˆ,
+        ã‚¦ã‚©ãƒ¬ãƒƒãƒˆ,
     }
 
     // ----------------------------------------------------------------------------------------------------
-    // ƒtƒbƒ^[‚Ìí—Ş
+    // ãƒ•ãƒƒã‚¿ãƒ¼ã®ç¨®é¡
     // ----------------------------------------------------------------------------------------------------
     public enum FooterType
     {
@@ -849,7 +849,7 @@ namespace fantec
     }
 
     //------------------------------------------------------------------------------------------------------
-    //  ƒXƒNƒ[ƒ‹•ûŒü
+    //  ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å‘
     //------------------------------------------------------------------------------------------------------
     public enum ScrollDirection
     {
@@ -858,7 +858,7 @@ namespace fantec
     }
 
     //------------------------------------------------------------------------------------------------------
-    //  ƒXƒNƒ[ƒ‹‚Ì“®‚«
+    //  ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®å‹•ã
     //------------------------------------------------------------------------------------------------------
     public enum MovementType
     {
@@ -868,7 +868,7 @@ namespace fantec
     }
 
     //------------------------------------------------------------------------------------------------------
-    //  “®‚­•ûŒü
+    //  å‹•ãæ–¹å‘
     //------------------------------------------------------------------------------------------------------
 
     public enum MovementDirection

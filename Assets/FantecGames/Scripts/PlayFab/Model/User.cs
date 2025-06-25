@@ -1,11 +1,11 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.PlayfabCilent;
 using System.Collections.Generic;
 
 namespace fantec.PlayFabClient
 {
     /// <summary>
-    /// PlayFab ‚Ì UserData ‚Æ‚µ‚Ä‹L˜^‚·‚éƒ†[ƒU[î•ñ
+    /// PlayFab ã® UserData ã¨ã—ã¦è¨˜éŒ²ã™ã‚‹ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ±
     /// </summary>
     public class User
     {
@@ -14,19 +14,22 @@ namespace fantec.PlayFabClient
 
         public List<int> ClearQuestIdList { get; set; }
         public Dictionary<TutorialId, bool> TutorialDictionary { get; set; }
-        //ƒvƒƒtƒB[ƒ‹Ê^î•ñ‚âƒp[ƒeƒB[ƒŠƒXƒgî•ñ‚È‚Ç‚½‚¹‚½‚¢ê‡‚Í‚±‚±‚É‹LÚ
+
+        // ãŠçŸ¥ã‚‰ã›å†…ã®å ±é…¬ã‚’å—ã‘å–ã‚Šæ¸ˆã®keyã®ä¿å­˜
+        public Dictionary<string, bool> ClaimedNoticeDictionary { get; set; } = new();
+        //ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«å†™çœŸæƒ…å ±ã‚„ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒªã‚¹ãƒˆæƒ…å ±ãªã©æŒãŸã›ãŸã„å ´åˆã¯ã“ã“ã«è¨˜è¼‰
 
 
         /// <summary>
-        /// V‹Kƒ†[ƒU[ƒf[ƒ^‚ğì¬‚·‚é(V‹Kƒ†[ƒU[ƒf[ƒ^ì¬‚ÌÛ•K‚¸ì¬‚·‚×‚«ˆ—‚Í‘S‚Ä‚±‚±‚ÅŠÇ—‚·‚é)
+        /// æ–°è¦ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’ä½œæˆã™ã‚‹(æ–°è¦ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ä½œæˆã®éš›å¿…ãšä½œæˆã™ã¹ãå‡¦ç†ã¯å…¨ã¦ã“ã“ã§ç®¡ç†ã™ã‚‹)
         /// </summary>
         /// <returns></returns>
         public static User Create()
         {
             var user = new User()
             {
-                // ƒp[ƒeƒB[ƒf[ƒ^‚Ìì¬
-                PartyList=new List<PartyData>() // ‚Æ‚è‚ ‚¦‚¸ƒp[ƒeƒB[•Ò¬‚Ì˜g‚ğ5‚Âì‚ê‚é‚æ‚¤‚É—pˆÓ
+                // ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿ã®ä½œæˆ
+                PartyList = new List<PartyData>() // ã¨ã‚Šã‚ãˆãšãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ç·¨æˆã®æ ã‚’5ã¤ä½œã‚Œã‚‹ã‚ˆã†ã«ç”¨æ„
                 {
                     new PartyData(new List<int>(Define.PARTY_CAPACITY)),
                     new PartyData(new List<int>(Define.PARTY_CAPACITY)),
@@ -39,18 +42,20 @@ namespace fantec.PlayFabClient
 
                 TutorialDictionary = new Dictionary<TutorialId, bool>()
                 {
-                    {TutorialId.InitialPresent,false}, 
-                }
+                    { TutorialId.InitialPresent, false },
+                },
+
+                ClaimedNoticeDictionary = new Dictionary<string, bool>()
             };
 
-            // ¦ƒp[ƒeƒB‚É‚¢‚ê‚é‚½‚ß‚Ì‰ŠúƒLƒƒƒ‰3‘Ì‚ğ‚ ‚ç‚©‚¶‚ßİ’è‚µ‚Ä‚¨‚­
+            // â€»ãƒ‘ãƒ¼ãƒ†ã‚£ã«ã„ã‚Œã‚‹ãŸã‚ã®åˆæœŸã‚­ãƒ£ãƒ©3ä½“ã‚’ã‚ã‚‰ã‹ã˜ã‚è¨­å®šã—ã¦ãŠã
             List<int> cardIds = new List<int>() {10001100,10001101,10001102 };
 
-            // ƒvƒƒtƒB[ƒ‹ƒJ[ƒh‚Ìİ’è
+            // ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã‚«ãƒ¼ãƒ‰ã®è¨­å®š
             user.ProfileCardId = cardIds[0];
 
-            // ‰Šúƒp[ƒeƒB‚Ìİ’è
-            for(int i=0;i<user.PartyList.Count;i++) // •Ò¬˜g‘S‚Ä‚ğ“¯‚¶•Ò¬‚Å–„‚ß‚é
+            // åˆæœŸãƒ‘ãƒ¼ãƒ†ã‚£ã®è¨­å®š
+            for(int i=0;i<user.PartyList.Count;i++) // ç·¨æˆæ å…¨ã¦ã‚’åŒã˜ç·¨æˆã§åŸ‹ã‚ã‚‹
             {
                 for(int k=0;k<cardIds.Count;k++)
                 {
@@ -62,13 +67,26 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒ`ƒ…[ƒgƒŠƒAƒ‹ƒtƒ‰ƒO‚ğXV‚·‚é
+        /// ãƒãƒ¥ãƒ¼ãƒˆãƒªã‚¢ãƒ«ãƒ•ãƒ©ã‚°ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <param name="tutorialId"></param>
         /// <returns></returns>
         public async UniTask UpdateTutorialFlag(TutorialId tutorialId)
         {
             UserDataManager.User.TutorialDictionary[tutorialId] = true;
+            await UserDataManager.UpdatePlayFab();
+        }
+
+        /// <summary>
+        /// ãŠçŸ¥ã‚‰ã›å†…ã®ã‚¢ã‚¤ãƒ†ãƒ ã‚’å—ã‘å–ã£ãŸã‚‰å—ã‘å–ã‚Šæ¸ˆã¸ã¨æ›´æ–°ã™ã‚‹
+        /// </summary>
+        /// <param name="noticeKey"></param>
+        /// <returns></returns>
+        public async UniTask ClaimNoticeAsync(string noticeKey)
+        {
+            if (ClaimedNoticeDictionary.ContainsKey(noticeKey)) return;
+
+            ClaimedNoticeDictionary[noticeKey] = true;
             await UserDataManager.UpdatePlayFab();
         }
     }

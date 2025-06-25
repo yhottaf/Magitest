@@ -1,4 +1,4 @@
-using fantec.Master;
+ï»¿using fantec.Master;
 using System.Collections.Generic;
 
 namespace fantec.Battle
@@ -29,7 +29,7 @@ namespace fantec.Battle
             this.behaviorAI=cardData.behaviorAI;
         }
 
-        // ƒ{ƒX‚È‚Ç‚Ì“Áê‚ÈƒI[ƒ‰‚ğ‚Ü‚Æ‚Á‚½‚èAƒXƒP[ƒ‹’l‚ğ‚¢‚¶‚éê‡‚Í‚±‚±‚É‹LÚ
+        // ãƒœã‚¹ãªã©ã®ç‰¹æ®Šãªã‚ªãƒ¼ãƒ©ã‚’ã¾ã¨ã£ãŸã‚Šã€ã‚¹ã‚±ãƒ¼ãƒ«å€¤ã‚’ã„ã˜ã‚‹å ´åˆã¯ã“ã“ã«è¨˜è¼‰
     }
 
     public static class UnitEntityExtensions

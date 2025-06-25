@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using fantec.Common;
 using fantec.Menu.Manager;
 
@@ -27,15 +27,15 @@ namespace fantec.PlayFabClient
             for(int i=0;i<Define.PARTY_CAPACITY;i++)
             {
                 int cardId = memberList[i];
-                // cardId ‚ª 0 ‚Ü‚½‚Í -1 ‚Ìê‡‚ÍƒXƒLƒbƒv(ƒ_ƒ~[‚Å•Ò¬ƒf[ƒ^‚È‚µ)
+                // cardId ãŒ 0 ã¾ãŸã¯ -1 ã®å ´åˆã¯ã‚¹ã‚­ãƒƒãƒ—(ãƒ€ãƒŸãƒ¼ã§ç·¨æˆãƒ‡ãƒ¼ã‚¿ãªã—)
                 if (cardId == 0 || cardId == -1) continue;
 
                 CardData cardData=CardManager.GetCardData(cardId);
                 TeamData.Unit unit = new TeamData.Unit(cardData.rarityType, 
                     cardId, 
-                    cardData.CardMasterData().GetLevelByExp(cardData.totalExp), // ƒJ[ƒh‚ÌŒ»İ‚ÌƒŒƒxƒ‹æ“¾
-                    cardData.positionIndex[PlayerPrefsManager.SelectPartyIndex], // ƒJ[ƒh‚Ì”z’u‰ÓŠ
-                    cardData.OverrideSkillLevel,cardData.OverrideSkillLevel,cardData.OverrideSkillLevel,cardData.OverrideSkillLevel //ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹ƒŒƒxƒ‹ 
+                    cardData.CardMasterData().GetLevelByExp(cardData.totalExp), // ã‚«ãƒ¼ãƒ‰ã®ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«å–å¾—
+                    cardData.positionIndex[PlayerPrefsManager.SelectPartyIndex], // ã‚«ãƒ¼ãƒ‰ã®é…ç½®ç®‡æ‰€
+                    cardData.OverrideSkillLevel,cardData.OverrideSkillLevel,cardData.OverrideSkillLevel,cardData.OverrideSkillLevel //ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«ãƒ¬ãƒ™ãƒ« 
                     );
 
 
@@ -46,7 +46,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒp[ƒeƒB‚Ì‡ŒvSpec(í“¬—Í)‚ğ•Ô‚µ‚Ü‚·
+        /// ãƒ‘ãƒ¼ãƒ†ã‚£ã®åˆè¨ˆSpec(æˆ¦é—˜åŠ›)ã‚’è¿”ã—ã¾ã™
         /// </summary>
         /// <returns></returns>
         public int GetTotalSpec()
@@ -54,7 +54,7 @@ namespace fantec.PlayFabClient
             int totalSpec = 0;
             for(int i=0;i<Define.PARTY_CAPACITY;i++)
             {
-                // ƒJ[ƒhî•ñ
+                // ã‚«ãƒ¼ãƒ‰æƒ…å ±
                 int cardId = memberList[i];
                 CardData cardData =CardManager.GetCardData(cardId);
 

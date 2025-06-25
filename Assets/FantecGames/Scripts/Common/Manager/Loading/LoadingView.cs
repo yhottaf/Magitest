@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using DG.Tweening;
 using UnityEngine;
 using UnityEngine.UI;
@@ -52,7 +52,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒ‰ƒ“ƒ_ƒ€‚ÅƒLƒƒƒ‰ƒNƒ^[‰æ‘œ‚ğƒZƒbƒg‚·‚é
+        /// ãƒ©ãƒ³ãƒ€ãƒ ã§ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ç”»åƒã‚’ã‚»ãƒƒãƒˆã™ã‚‹
         /// </summary>
         private void SetChracterSprite()
         {

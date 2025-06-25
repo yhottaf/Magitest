@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Manager;
 using fantec.Common;
 using System.Collections.Generic;
@@ -29,10 +29,10 @@ namespace fantec.Battle.Model
             var normalEntity = NormalAttackEntity.GetEntity(cardData.attributeType);
             var overrideEntity = OverrideSkillEntityExtensions.ConvertToEntity(cardData.attributeType, new List<(int id, int level)>
             {
-                (cardData.OverrideId,unit.OverrideLevel),            // ƒŠƒXƒg‚Ì0”Ô–Ú‚ÉƒI[ƒo[ƒ‰ƒCƒh
-                (cardData.ExsaOverrideId,unit.ExsaOverrideLevel),    // ƒŠƒXƒg‚Ì1”Ô–Ú‚ÉƒGƒNƒT
-                (cardData.SectaOverrideId,unit.SectaOverrideLevel),  // ƒŠƒXƒg‚Ì2”Ô–Ú‚Éƒ[ƒ^
-                (cardData.QuetaOverrideId, unit.QuetaOverrideLevel), // ƒŠƒXƒg‚Ì3”Ô–Ú‚ÉƒNƒGƒ^‚ğ“ü‚ê‚é
+                (cardData.OverrideId,unit.OverrideLevel),            // ãƒªã‚¹ãƒˆã®0ç•ªç›®ã«ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+                (cardData.ExsaOverrideId,unit.ExsaOverrideLevel),    // ãƒªã‚¹ãƒˆã®1ç•ªç›®ã«ã‚¨ã‚¯ã‚µ
+                (cardData.SectaOverrideId,unit.SectaOverrideLevel),  // ãƒªã‚¹ãƒˆã®2ç•ªç›®ã«ã‚¼ã‚¿
+                (cardData.QuetaOverrideId, unit.QuetaOverrideLevel), // ãƒªã‚¹ãƒˆã®3ç•ªç›®ã«ã‚¯ã‚¨ã‚¿ã‚’å…¥ã‚Œã‚‹
             });
 
             var unitEntity = cardData.ToInfoEntity(unit.rarityType, unit.positionIndex);
@@ -43,7 +43,7 @@ namespace fantec.Battle.Model
             m_OverrideSkill.Setup(overrideEntity, normalEntity);
             m_AdventSkill.Setup(normalEntity);
 
-            // Unit‚Ìî•ñ‚ª•K—v‚È‚Ì‚ÅÅŒã‚ÉƒZƒbƒgƒAƒbƒv
+            // Unitã®æƒ…å ±ãŒå¿…è¦ãªã®ã§æœ€å¾Œã«ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
             m_Transform.Setup(this.GetBattlerPosition());
 
             base.SetupCompleted();

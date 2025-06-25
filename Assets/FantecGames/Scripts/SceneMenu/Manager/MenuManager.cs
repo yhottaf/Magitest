@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using UnityEngine;
 using System;
 using System.Collections.Generic;
@@ -7,6 +7,9 @@ using Cysharp.Threading.Tasks;
 using fantec.PlayFabClient;
 using System.Linq;
 using UniRx;
+using PlayFab;
+using PlayFab.ClientModels;
+using fantec.Master;
 
 
 namespace fantec.Menu.Manager
@@ -14,71 +17,71 @@ namespace fantec.Menu.Manager
     public class MenuManager : Singleton<MenuManager>
     {
         /// <summary>
-        /// ƒp[ƒeƒB•Ò¬‚Å“ü‚ê‘Ö‚¦‘O‚ÌID
+        /// ãƒ‘ãƒ¼ãƒ†ã‚£ç·¨æˆã§å…¥ã‚Œæ›¿ãˆå‰ã®ID
         /// </summary>
         [NonSerialized]
         public int PartyEditCardId;
 
         /// <summary>
-        /// ƒJ[ƒhƒŠƒXƒg“à‚Å‘I‘ğ‚µ‚½ID
+        /// ã‚«ãƒ¼ãƒ‰ãƒªã‚¹ãƒˆå†…ã§é¸æŠã—ãŸID
         /// </summary>
         [NonSerialized]
         public int SelectCardId;
 
         /// <summary>
-        /// ƒJ[ƒh“ü‚ê‘Ö‚¦‰æ–Ê‚Å‘I‘ğ‚µ‚½ID
+        /// ã‚«ãƒ¼ãƒ‰å…¥ã‚Œæ›¿ãˆç”»é¢ã§é¸æŠã—ãŸID
         /// </summary>
         [NonSerialized]
         public int CardChangeSelectId;
 
         /// <summary>
-        /// ƒ†[ƒU[‚ÌŠƒJ[ƒh‚ğ‹L‰¯
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ã®æ‰€æŒã‚«ãƒ¼ãƒ‰ã‚’è¨˜æ†¶
         /// </summary>
         [NonSerialized]
         public List<CardData> m_UserDataCardList;
 
         /// <summary>
-        /// ‘I‘ğ‚µ‚½ƒNƒGƒXƒgƒJƒeƒSƒŠ
+        /// é¸æŠã—ãŸã‚¯ã‚¨ã‚¹ãƒˆã‚«ãƒ†ã‚´ãƒª
         /// </summary>
         [NonSerialized]
         public int SelectStageGroupId;
 
         /// <summary>
-        /// ‘I‘ğ‚µ‚½ƒNƒGƒXƒgID
+        /// é¸æŠã—ãŸã‚¯ã‚¨ã‚¹ãƒˆID
         /// </summary>
         [NonSerialized]
-        public int SelectStageId= 1000001; // ‰¼‚ÌƒXƒe[ƒWID‚ğİ’è
+        public int SelectStageId= 1000001; // ä»®ã®ã‚¹ãƒ†ãƒ¼ã‚¸IDã‚’è¨­å®š
 
-        //[NonSerialized] // ƒXƒNƒ[ƒ‹Œ`®‚ÌƒNƒGƒXƒg‘I‘ğ‰æ–Ê‚ğì‚é‚È‚çg—p‚·‚é
+        //[NonSerialized] // ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«å½¢å¼ã®ã‚¯ã‚¨ã‚¹ãƒˆé¸æŠç”»é¢ã‚’ä½œã‚‹ãªã‚‰ä½¿ç”¨ã™ã‚‹
         //public int CenterStageId;
 
         /// <summary>
-        /// ‰{——‚·‚éƒAƒCƒeƒ€ID
+        /// é–²è¦§ã™ã‚‹ã‚¢ã‚¤ãƒ†ãƒ ID
         /// </summary>
         [NonSerialized]
         public int ItemDetailId;
 
         /// <summary>
-        /// ‰{——‚·‚é“Gî•ñ
-        /// int:“GID int:ƒŒƒxƒ‹
+        /// é–²è¦§ã™ã‚‹æ•µæƒ…å ±
+        /// int:æ•µID int:ãƒ¬ãƒ™ãƒ«
         /// </summary>
         [NonSerialized]
         public int EnemyDetailId;
 
         /// <summary>
-        /// ƒNƒGƒXƒg‘I‘ğŒn‚Ì‰æ–Ê‚©‚ç‘JˆÚ‚µ‚Ä‚«‚½‚©
+        /// ã‚¯ã‚¨ã‚¹ãƒˆé¸æŠç³»ã®ç”»é¢ã‹ã‚‰é·ç§»ã—ã¦ããŸã‹
         /// </summary>
         [NonSerialized]
         public bool MoveQuestSelect = false;
 
         /// <summary>
-        /// •Ò¬ó‘Ô‚É•ÏX‚ğ‰Á‚¦‚½‚©‚Ç‚¤‚©
+        /// ç·¨æˆçŠ¶æ…‹ã«å¤‰æ›´ã‚’åŠ ãˆãŸã‹ã©ã†ã‹
         /// </summary>
         [NonSerialized]
         public bool ChangePartyData = false;
 
         /// <summary>
-        /// Live2D‚ÌActiveó‘Ô‚ğƒRƒ“ƒgƒ[ƒ‹ ’Ê’m‚·‚éƒ^ƒCƒ~ƒ“ƒO‚Å”ñƒAƒNƒeƒBƒu‚È‚Ç‚É‚·‚é
+        /// Live2Dã®ActiveçŠ¶æ…‹ã‚’ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ« é€šçŸ¥ã™ã‚‹ã‚¿ã‚¤ãƒŸãƒ³ã‚°ã§éã‚¢ã‚¯ãƒ†ã‚£ãƒ–ãªã©ã«ã™ã‚‹
         /// </summary>
         [NonSerialized]
         public readonly Subject<Unit>onLive2DState=new Subject<Unit>();
@@ -91,40 +94,59 @@ namespace fantec.Menu.Manager
         }
 
         /// <summary>
-        /// ‘ÎÛ‚ÌŠƒJ[ƒh‚ªƒp[ƒeƒB‚É•Ò¬’†‚Å‚ ‚é‚©‚Ì”»’è
+        /// å¯¾è±¡ã®æ‰€æŒã‚«ãƒ¼ãƒ‰ãŒãƒ‘ãƒ¼ãƒ†ã‚£ã«ç·¨æˆä¸­ã§ã‚ã‚‹ã‹ã®åˆ¤å®š
         /// </summary>
         /// <param name="CardId"></param>
         public bool CardOrgamization(CardData itemData)
         {
-            // ‘Sƒp[ƒeƒB‚É•Ò¬‚³‚ê‚Ä‚¢‚éIDƒŠƒXƒg
+            // å…¨ãƒ‘ãƒ¼ãƒ†ã‚£ã«ç·¨æˆã•ã‚Œã¦ã„ã‚‹IDãƒªã‚¹ãƒˆ
             List<int> partyIdList = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex].MemberList;
 
             return partyIdList.Contains(itemData.cardId);
         }
 
         /// <summary>
-        /// •Ò¬ƒf[ƒ^‚Ì’†‚ª‰½‚à”z’u‚³‚ê‚Ä‚¢‚È‚¢ó‘Ô‚È‚çtrue,
-        /// 1‘Ì‚Å‚àMAGI‚ª”z’u‚³‚ê‚Ä‚¢‚é‚È‚çfalse‚ğ•Ô‚·
+        /// ç·¨æˆãƒ‡ãƒ¼ã‚¿ã®ä¸­ãŒä½•ã‚‚é…ç½®ã•ã‚Œã¦ã„ãªã„çŠ¶æ…‹ãªã‚‰true,
+        /// 1ä½“ã§ã‚‚MAGIãŒé…ç½®ã•ã‚Œã¦ã„ã‚‹ãªã‚‰falseã‚’è¿”ã™
         /// </summary>
         /// <param name="partyData"></param>
         /// <returns></returns>
         public bool IsEmptyMember(PartyData partyData)
         {
-            // ‘S‚Ä‚ª 0 ‚Ü‚½‚Í -1 ‚È‚ç trueA‚»‚êˆÈŠO‚ªŠÜ‚Ü‚ê‚Ä‚¢‚ê‚Î false
+            // å…¨ã¦ãŒ 0 ã¾ãŸã¯ -1 ãªã‚‰ trueã€ãã‚Œä»¥å¤–ãŒå«ã¾ã‚Œã¦ã„ã‚Œã° false
             return partyData.MemberList.All(id => id == -1 || id == 0);
         }
 
         /// <summary>
-        /// ƒLƒƒƒbƒVƒ…‚É•Û‘¶‚³‚ê‚Ä‚¢‚éLive2Dƒf[ƒ^‚ğŠm”F‚·‚é‚½‚ß‚ÌŠÖ”
+        /// ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«ä¿å­˜ã•ã‚Œã¦ã„ã‚‹Live2Dãƒ‡ãƒ¼ã‚¿ã‚’ç¢ºèªã™ã‚‹ãŸã‚ã®é–¢æ•°
         /// </summary>
         public void LoadedCheckLive2DData()
         {
-            // Œ»İƒ[ƒh’†‚ÌƒAƒhƒŒƒXˆê——‚ğŠm”F(ƒfƒoƒbƒO)
+            // ç¾åœ¨ãƒ­ãƒ¼ãƒ‰ä¸­ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ä¸€è¦§ã‚’ç¢ºèª(ãƒ‡ãƒãƒƒã‚°)
             var loading = AssetManager.Instance.GetLoadedLive2DModels();
             foreach (var addr in loading)
             {
-                Debug.Log($"Œ»İƒLƒƒƒbƒVƒ…‚Éc‚Á‚Ä‚¢‚éLive2Dƒf[ƒ^: {addr}");
+                Debug.Log($"ç¾åœ¨ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æ®‹ã£ã¦ã„ã‚‹Live2Dãƒ‡ãƒ¼ã‚¿: {addr}");
             }
+        }
+
+        // UTCã‚’æ—¥æœ¬æ™‚é–“ã«ã—ã¦æ–‡å­—åˆ—ã«ã—ã¦è¿”ã™
+        public string GetJSTScheduleTime(string now)
+        {
+            // UTCã¨ã—ã¦è§£æ
+            DateTime utcTime = DateTime.Parse(now, null, System.Globalization.DateTimeStyles.AdjustToUniversal); ;
+
+            // æ—¥æœ¬æ™‚é–“ï¼ˆJST = UTC+9ï¼‰ã«å¤‰æ›
+            DateTime jstTime = utcTime.AddHours(9);
+
+            // è¥¿æš¦ä¸‹2æ¡ã‚’å–å¾—
+            string year2Digit = (jstTime.Year % 100).ToString("D2");
+
+            // ãƒ•ã‚©ãƒ¼ãƒãƒƒãƒˆã—ã¦å‡ºåŠ›
+            string formatted = $"{year2Digit}/{jstTime.Month:D2}/{jstTime.Day:D2} {jstTime.Hour:D2}:{jstTime.Minute:D2}";
+
+            // 25/05/20 12:11 ã®å½¢å¼ã«ã—ã¦è¿”ã™
+            return formatted;
         }
     }
 }

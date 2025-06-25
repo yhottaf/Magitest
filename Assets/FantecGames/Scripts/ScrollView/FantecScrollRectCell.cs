@@ -1,15 +1,15 @@
-using fantec;
+﻿using fantec;
 using UnityEngine;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// <see cref="FantecScrollRect{TItemData, TContext}"/> �̃Z�����������邽�߂̒��ۊ��N���X.
-    /// <see cref="FantecCell{TItemData, TContext}.Context"/> ���s�v�ȏꍇ��
-    /// ����� <see cref="FantecScrollRectCell{TItemData}"/> ���g�p���܂�.
+    /// <see cref="FantecScrollRect{TItemData, TContext}"/> のセルを実装するための抽象基底クラス.
+    /// <see cref="FantecCell{TItemData, TContext}.Context"/> が不要な場合は
+    /// 代わりに <see cref="FantecScrollRectCell{TItemData}"/> を使用します.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
-    /// <typeparam name="TContext"><see cref="FantecCell{TItemData, TContext}.Context"/> �̌^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
+    /// <typeparam name="TContext"><see cref="FantecCell{TItemData, TContext}.Context"/> の型.</typeparam>
     public abstract class FantecScrollRectCell<TItemData, TContext> : FantecCell<TItemData, TContext>
         where TContext : class, IFantecScrollRectContext, new()
     {
@@ -27,14 +27,14 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// ���̃Z���̈ʒu���X�V���܂�.
+        /// このセルの位置を更新します.
         /// </summary>
         /// <param name="normalizedPosition">
-        /// �r���[�|�[�g�͈̔͂Ő��K�����ꂽ�X�N���[���ʒu.
-        /// <see cref="FantecScrollRect{TItemData, TContext}.reuseCellMarginCount"/> �̒l�Ɋ�Â���
-        ///  <c>0.0</c> ~ <c>1.0</c> �͈̔͂𒴂����l���n����邱�Ƃ�����܂�.
+        /// ビューポートの範囲で正規化されたスクロール位置.
+        /// <see cref="FantecScrollRect{TItemData, TContext}.reuseCellMarginCount"/> の値に基づいて
+        ///  <c>0.0</c> ~ <c>1.0</c> の範囲を超えた値が渡されることがあります.
         /// </param>
-        /// <param name="localPosition">���[�J���ʒu.</param>
+        /// <param name="localPosition">ローカル位置.</param>
         protected virtual void UpdatePosition(float normalizedPosition, float localPosition)
         {
             transform.localPosition = Context.ScrollDirection == ScrollDirection.Horizontal
@@ -44,9 +44,9 @@ namespace FantecScrollView
     }
 
     /// <summary>
-    /// <see cref="FantecScrollRect{TItemData}"/> �̃Z�����������邽�߂̒��ۊ��N���X.
+    /// <see cref="FantecScrollRect{TItemData}"/> のセルを実装するための抽象基底クラス.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
     /// <seealso cref="FantecScrollRectCell{TItemData, TContext}"/>
     public abstract class FantecScrollRectCell<TItemData> : FantecScrollRectCell<TItemData, FantecScrollRectContext>
     {

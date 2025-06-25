@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Utilities;
 using System;
 using UnityEngine;
@@ -30,7 +30,7 @@ namespace fantec.Debugger {
         public Action onClick;
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public DebuggerInItemData(string titleText,Action onClick)
         {
@@ -41,12 +41,12 @@ namespace fantec.Debugger {
         public DebuggerInItemData() { }
 
         /// <summary>
-        /// •¡”‚Ü‚Æ‚ß‚Ä“o˜^‚·‚éÛ‚Ég—p
+        /// è¤‡æ•°ã¾ã¨ã‚ã¦ç™»éŒ²ã™ã‚‹éš›ã«ä½¿ç”¨
         /// </summary>
-        /// <param name="titleText">•\¦ƒ^ƒCƒgƒ‹</param>
-        /// <param name="onClick">ƒNƒŠƒbƒN‚Ìˆ—</param>
-        /// <param name="count">‰ñ‚·‰ñ”</param>
-        /// <returns>DebuggerInItemData ‚Ì”z—ñ</returns>
+        /// <param name="titleText">è¡¨ç¤ºã‚¿ã‚¤ãƒˆãƒ«</param>
+        /// <param name="onClick">ã‚¯ãƒªãƒƒã‚¯æ™‚ã®å‡¦ç†</param>
+        /// <param name="count">å›ã™å›æ•°</param>
+        /// <returns>DebuggerInItemData ã®é…åˆ—</returns>
         public static DebuggerInItemData[]GetDatas(string titleText,Action<int>onClick,int count)
         {
             List<DebuggerInItemData>inItemDataList=new List<DebuggerInItemData>();

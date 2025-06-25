@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Battle.Manager;
 using System.Collections;
 using System.Collections.Generic;
@@ -9,9 +9,9 @@ namespace fantec.Battle
     public class TokenCell
     {
         public readonly SkillCommand command;
-        public int Turn { get; set; }@// ‘±ƒ^[ƒ“
-        public bool IsFresh { get; set; } // •t—^‚³‚ê‚½ƒ^[ƒ“‚©”Û‚©
-        public bool IsConsumable => Turn == 0; // Á”ï‰Â”\‚©”Û‚©
+        public int Turn { get; set; }ã€€// æŒç¶šã‚¿ãƒ¼ãƒ³
+        public bool IsFresh { get; set; } // ä»˜ä¸ã•ã‚ŒãŸã‚¿ãƒ¼ãƒ³ã‹å¦ã‹
+        public bool IsConsumable => Turn == 0; // æ¶ˆè²»å¯èƒ½ã‹å¦ã‹
 
         //  public TokenCell(AffectInfo info) : this(info.Command) { }
 
@@ -23,7 +23,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Turn‚ğis‚³‚¹‚é
+        /// Turnã‚’é€²è¡Œã•ã›ã‚‹
         /// </summary>
         public int Progress()
         {
@@ -35,7 +35,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ‘N“x‚ğ—‚Æ‚·
+        /// é®®åº¦ã‚’è½ã¨ã™
         /// </summary>
         public void FleshDrop()
         {
@@ -43,7 +43,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒ^[ƒ“‚ÌÁ”ïí•Ê‚ğæ“¾‚·‚é
+        /// ã‚¿ãƒ¼ãƒ³ã®æ¶ˆè²»ç¨®åˆ¥ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         /// <returns></returns>
         public AffectTurnConsumeType GetTurnConsumeType()
@@ -52,7 +52,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½ˆø”‚ªğŒ’lˆÈã‚©”Û‚©
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸå¼•æ•°ãŒæ¡ä»¶å€¤ä»¥ä¸Šã‹å¦ã‹
         /// </summary>
         public bool GetIsAboveNormalizedValue(float value)
         {
@@ -60,7 +60,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ³‹K‰»‚³‚ê‚½ˆø”‚ªğŒ’lˆÈ‰º‚©”Û‚©
+        /// æ­£è¦åŒ–ã•ã‚ŒãŸå¼•æ•°ãŒæ¡ä»¶å€¤ä»¥ä¸‹ã‹å¦ã‹
         /// </summary>
         public bool GetIsBelowNormalizedValue(float value)
         {
@@ -68,7 +68,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        ///  Entity‚É•ÏŠ·‚·‚é
+        ///  Entityã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public TokenEntity ToEntity()
         {
@@ -76,7 +76,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Entity ‚É•ÏŠ·‚·‚é (‘®«•t‚«)
+        /// Entity ã«å¤‰æ›ã™ã‚‹ (å±æ€§ä»˜ã)
         /// </summary>
         public TokenEntity ToEntity(AffectAttributeType attributeType)
         {

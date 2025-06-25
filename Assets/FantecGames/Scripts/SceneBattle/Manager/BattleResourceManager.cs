@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle;
 using fantec.Battle.Model;
 using System.Linq;
@@ -15,10 +15,10 @@ namespace fantec.Battle.Manager
         UniTask<T> LoadAsync<T>(string path, CancellationToken cts) where T : UnityEngine.Object;
         UniTask LoadVoiceAsync(string voiceName,CancellationToken cts);
 
-        // TODO: ‘¼‚Ì“Ç‚İ‚Ü‚È‚«‚á‚¢‚¯‚È‚¢‰æ‘œ‚ğ‹LÚ
+        // TODO: ä»–ã®èª­ã¿è¾¼ã¾ãªãã‚ƒã„ã‘ãªã„ç”»åƒã‚’è¨˜è¼‰
         Sprite GetDropItemSprite(int id);
 
-        // ƒJƒbƒgƒCƒ“ƒAƒCƒRƒ“‚È‚Ç
+        // ã‚«ãƒƒãƒˆã‚¤ãƒ³ã‚¢ã‚¤ã‚³ãƒ³ãªã©
         Sprite GetCutinSprite(IBattler battler);
         Sprite GetCutinSprite(int originId);
 
@@ -41,7 +41,7 @@ namespace fantec.Battle.Manager
         AudioClip GetBgm(string fileName);
         SkeletonDataAsset GetSkeleton(string path);
 
-        // ƒf[ƒ^ƒx[ƒX
+        // ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹
         //IEnumerable<Sprite> GetStateIconSprite(IEnumerable<TokenCell> tokencells);
         //Sprite GetStateIconSprite(TokenCell tokenCell);
         //Sprite GetStateIconSprite(AffectCategoryType categoryType, AffectAttributeType attributeType);
@@ -69,7 +69,7 @@ namespace fantec.Battle.Manager
         {
             Locator.Register<IBattleResourceManager>(this);
 
-            // TODO:ƒf[ƒ^ƒx[ƒX‚È‚Ç‚ğ‹Lq‚·‚é
+            // TODO:ãƒ‡ãƒ¼ã‚¿ãƒ™ãƒ¼ã‚¹ãªã©ã‚’è¨˜è¿°ã™ã‚‹
             m_EnvironSoundDatabase.Regist();
         }
 
@@ -127,7 +127,7 @@ namespace fantec.Battle.Manager
         public Sprite GetSprite(string path)
         {
             try { return m_SpriteCacheDic[path]; }
-            catch { throw new KeyNotFoundException($"ƒŠƒ\[ƒX‚ªƒLƒƒƒbƒVƒ…‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB[path: {path}]"); }
+            catch { throw new KeyNotFoundException($"ãƒªã‚½ãƒ¼ã‚¹ãŒã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚[path: {path}]"); }
         }
 
         public Sprite GetBg(string fileName)
@@ -143,7 +143,7 @@ namespace fantec.Battle.Manager
         public AudioClip GetAudio(string path)
         {
             try { return m_AudioCasheDic[path]; }
-            catch { throw new KeyNotFoundException($"ƒŠƒ\[ƒX‚ªƒLƒƒƒbƒVƒ…‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB[path : {path}]"); }
+            catch { throw new KeyNotFoundException($"ãƒªã‚½ãƒ¼ã‚¹ãŒã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚[path : {path}]"); }
         }
 
         public AudioClip GetBgm(string fileName)
@@ -154,7 +154,7 @@ namespace fantec.Battle.Manager
         public SkeletonDataAsset GetSkeleton(string path)
         {
             try { return m_SkeletonCasheDic[path]; }
-            catch { throw new KeyNotFoundException($"ƒŠƒ\[ƒX‚ªƒLƒƒƒbƒVƒ…‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB[path : {path}]"); }
+            catch { throw new KeyNotFoundException($"ãƒªã‚½ãƒ¼ã‚¹ãŒã‚­ãƒ£ãƒƒã‚·ãƒ¥ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚[path : {path}]"); }
         }
 
         #endregion
@@ -169,13 +169,13 @@ namespace fantec.Battle.Manager
         public Sprite GetCutinSprite(int originId)
         {
             string path = AssetPath.GetCharacterSpriteCutinPath(originId);
-            return GetSprite(path); // ƒLƒƒƒbƒVƒ…Ï‘O’ñB‚È‚¯‚ê‚Î—áŠO
+            return GetSprite(path); // ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ¸ˆå‰æã€‚ãªã‘ã‚Œã°ä¾‹å¤–
         }
 
         public Sprite GetDropItemSprite(int id)
         {
             string path = AssetPath.GetSpriteItemIcon(id);
-            return GetSprite(path); // “¯ã
+            return GetSprite(path); // åŒä¸Š
         }
 
         #endregion
@@ -203,7 +203,7 @@ namespace fantec.Battle.Manager
         public SkeletonDataAsset GetCharaSpine(int originId)
         {
             string path = AssetPath.GetCharacterSpinePath(originId);
-            return GetSkeleton(path); // ƒLƒƒƒbƒVƒ…Ï‘O’ñB‚È‚¯‚ê‚Î—áŠO
+            return GetSkeleton(path); // ã‚­ãƒ£ãƒƒã‚·ãƒ¥æ¸ˆå‰æã€‚ãªã‘ã‚Œã°ä¾‹å¤–
         }
         #endregion
     }

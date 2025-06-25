@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using fantec.Battle.Model;
 using System.Collections.Generic;
 using UniRx;
@@ -65,21 +65,21 @@ namespace fantec.Battle.Ui.Window
                      {
                          text.SetStateText(battler);
 
-                         // battler ‚ÌˆÊ’u‚ğæ“¾‚µAƒXƒNƒŠ[ƒ“À•W‚É•ÏŠ·‚µ‚Ä•\¦ˆÊ’u‚É”½‰f
-                         var offset = new Vector3(0, -0.5f, 0); // ­‚µ‰º•ûŒü‚É•\¦iD‚İ‚É‰‚¶‚Ä’²®j
+                         // battler ã®ä½ç½®ã‚’å–å¾—ã—ã€ã‚¹ã‚¯ãƒªãƒ¼ãƒ³åº§æ¨™ã«å¤‰æ›ã—ã¦è¡¨ç¤ºä½ç½®ã«åæ˜ 
+                         var offset = new Vector3(0, -0.5f, 0); // å°‘ã—ä¸‹æ–¹å‘ã«è¡¨ç¤ºï¼ˆå¥½ã¿ã«å¿œã˜ã¦èª¿æ•´ï¼‰
                          Vector3 worldPosition = battler.GetCenterPosition() + offset;
                          Vector2 screenPos = Locator.Resolve<IBattleCanvasManager>().GetWorldToScreenPointForOver(worldPosition);
                          text.GetComponent<RectTransform>().anchoredPosition = screenPos;
                      }).AddTo(ClosedDisposable);
                 battler.State.Health.OndeadObservable.Subscribe(_=>
                 {
-                    // ƒeƒLƒXƒg”ñ•\¦{”jŠü
+                    // ãƒ†ã‚­ã‚¹ãƒˆéè¡¨ç¤ºï¼‹ç ´æ£„
                     if (text != null)
                     {
                         text.gameObject.SetActive(false);
                     }
 
-                    // Dictionary ‚©‚çíœi‚ ‚ê‚Îj
+                    // Dictionary ã‹ã‚‰å‰Šé™¤ï¼ˆã‚ã‚Œã°ï¼‰
                     int posIndex = battler.Unit.Entity.positionIndex;
                     if (battler.GetIsPlayer())
                     {

@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using UnityEngine;
 
 namespace fantec.Battle.Manager
@@ -9,7 +9,7 @@ namespace fantec.Battle.Manager
         {
             public override void OnEnter(BattleFlowManager manager, FlowBase prevFlow)
             {
-                // “GA–¡•û‚ÌŒ‚”j‰‰o‚ð­‚µ‘Ò‚Á‚Ä‚©‚ç”»’è‚Ö
+                // æ•µã€å‘³æ–¹ã®æ’ƒç ´æ¼”å‡ºã‚’å°‘ã—å¾…ã£ã¦ã‹ã‚‰åˆ¤å®šã¸
                 manager.m_Sequence.Value = DOTween.Sequence()
                     .AppendInterval(1.0f)
                     .AppendCallback(() =>

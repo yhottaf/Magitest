@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using System;
 using UnityEngine;
 using UnityEngine.UI;
@@ -10,11 +10,12 @@ using fantec.Utilities;
 using fantec.PlayFabClient;
 using UniRx;
 using System.Data;
+using fantec.Menu.Manager;
 
 namespace fantec.Menu.Common
 {
     /// <summary>
-    /// ƒz[ƒ€‚Ìƒwƒbƒ_[ŠÇ—ƒNƒ‰ƒX
+    /// ãƒ›ãƒ¼ãƒ ã®ãƒ˜ãƒƒãƒ€ãƒ¼ç®¡ç†ã‚¯ãƒ©ã‚¹
     /// </summary>
     public class HeaderManager:Singleton<HeaderManager>
     {
@@ -30,17 +31,17 @@ namespace fantec.Menu.Common
         [SerializeField] private Image m_StaminaImage;
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‚ÌƒŠƒ`ƒƒ[ƒWŠÔ
+        /// ã‚¹ã‚¿ãƒŸãƒŠã®ãƒªãƒãƒ£ãƒ¼ã‚¸æ™‚é–“
         /// </summary>
         private DateTime m_NextFreeTicket = new DateTime();
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‚ªÅ‘å‚©‚Ç‚¤‚©
+        /// ã‚¹ã‚¿ãƒŸãƒŠãŒæœ€å¤§ã‹ã©ã†ã‹
         /// </summary>
         private bool isStaminaCapped;
 
         /// <summary>
-        /// APIÀs’†‚©‚Ç‚¤‚©
+        /// APIå®Ÿè¡Œä¸­ã‹ã©ã†ã‹
         /// </summary>
         private bool isApiProgress;
 
@@ -52,17 +53,17 @@ namespace fantec.Menu.Common
             UpdateStoneText();
             UpdateUserNameText();
 
-            m_MenuButton.OnClickAsObservable().Subscribe().AddTo(this);
+            m_MenuButton.OnClickAsObservable().Subscribe(OnClickMenuButton).AddTo(this);
         }
 
         async UniTask Update()
         {
             if (PlayFabClientAPI.IsClientLoggedIn())
             {
-                // ƒXƒ^ƒ~ƒi‚ªÅ‘å‚Å‚Í‚È‚¢ê‡
+                // ã‚¹ã‚¿ãƒŸãƒŠãŒæœ€å¤§ã§ã¯ãªã„å ´åˆ
                 if (isStaminaCapped == false)
                 {
-                    // ƒŠƒ`ƒƒ[ƒWŠÔ‚ğŒ}‚¦‚½ê‡‚ÍƒXƒ^ƒ~ƒi‚ğÄæ“¾
+                    // ãƒªãƒãƒ£ãƒ¼ã‚¸æ™‚é–“ã‚’è¿ãˆãŸå ´åˆã¯ã‚¹ã‚¿ãƒŸãƒŠã‚’å†å–å¾—
                     if (m_NextFreeTicket.Subtract(DateTime.Now).TotalSeconds <= 0)
                     {
                         if (isApiProgress == false)
@@ -72,7 +73,7 @@ namespace fantec.Menu.Common
                     }
                     else
                     {
-                        // c‚èŠÔ‚ğƒJƒEƒ“ƒgƒ_ƒEƒ“
+                        // æ®‹ã‚Šæ™‚é–“ã‚’ã‚«ã‚¦ãƒ³ãƒˆãƒ€ã‚¦ãƒ³
                         UpdateRecoveryTimeText(m_NextFreeTicket.Subtract(DateTime.Now));
                     }
                 }
@@ -80,7 +81,7 @@ namespace fantec.Menu.Common
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‰ñ•œŠÔ‚ÌXV
+        /// ã‚¹ã‚¿ãƒŸãƒŠå›å¾©æ™‚é–“ã®æ›´æ–°
         /// </summary>
         /// <returns></returns>
         async UniTask GetInventory()
@@ -93,7 +94,7 @@ namespace fantec.Menu.Common
             }
             isApiProgress = false;
 
-            //ƒNƒ‰ƒCƒAƒ“ƒgƒLƒƒƒbƒVƒ…‚ÌXV
+            //ã‚¯ãƒ©ã‚¤ã‚¢ãƒ³ãƒˆã‚­ãƒ£ãƒƒã‚·ãƒ¥ã®æ›´æ–°
             VirtualCurrencyManager.SyncPlayFabToClient(response.Result.VirtualCurrency);
 
             if (response.Result.VirtualCurrencyRechargeTimes.TryGetValue(VirtualCurrencyNames.ST.Code, out VirtualCurrencyRechargeTime rechargeDetails))
@@ -103,7 +104,7 @@ namespace fantec.Menu.Common
                     m_NextFreeTicket = DateTime.Now.AddSeconds(rechargeDetails.SecondsToRecharge);
                     TimeSpan rechargeTime = m_NextFreeTicket.Subtract(DateTime.Now);
 
-                //    m_StaminaRecoveryInfoText.text = $"‘S‰ñ•œ‚Ü‚Å";
+                //    m_StaminaRecoveryInfoText.text = $"å…¨å›å¾©ã¾ã§";
                     isStaminaCapped = false;
                 }
                 else
@@ -113,16 +114,16 @@ namespace fantec.Menu.Common
                    //m_StaminaRecoveryTimeText.text = string.Empty;
                 }
 
-                //ƒXƒ^ƒ~ƒiƒQ[ƒW‚Ìİ’è
+                //ã‚¹ã‚¿ãƒŸãƒŠã‚²ãƒ¼ã‚¸ã®è¨­å®š
                 //  m_StaminaText.text = $"{VirtualCurrencyManager.Stamina}/{UserDataManager.MaxStamina}";
                 // m_StaminaImage.fillAmount = (float)VirtualCurrencyManager.Stamina / (float)UserDataManager.MaxStamina;
-                Debug.Log($"{VirtualCurrencyManager.Stamina}/{UserDataManager.MaxStamina}:Œ»İ‚ÌƒXƒ^ƒ~ƒi:MAXƒXƒ^ƒ~ƒi ");
+                Debug.Log($"{VirtualCurrencyManager.Stamina}/{UserDataManager.MaxStamina}:ç¾åœ¨ã®ã‚¹ã‚¿ãƒŸãƒŠ:MAXã‚¹ã‚¿ãƒŸãƒŠ ");
             }
 
         }
 
         /// <summary>
-        /// ƒ‰ƒ“ƒNXV‚Ìˆ—
+        /// ãƒ©ãƒ³ã‚¯æ›´æ–°æ™‚ã®å‡¦ç†
         /// </summary>
         public void UpdateRankText()
         {
@@ -135,11 +136,11 @@ namespace fantec.Menu.Common
             m_ExpMeter.fillAmount = percent;
 
             int remaing = UserDataManager.NextLevelInfo.exp - VirtualCurrencyManager.Exp;
-           //Ÿ‚ÌƒŒƒxƒ‹‚Ü‚Å‚ ‚Æ``ŒoŒ±’l‚ª•K—v‚Ìˆ—‚ğ‘‚¢‚Ä‚¢‚é‚È‚ç‚±‚Ì‰º‚ÉUpdateView‚ğ‘‚­
+           //æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã‚ã¨ï½ï½çµŒé¨“å€¤ãŒå¿…è¦ã®å‡¦ç†ã‚’æ›¸ã„ã¦ã„ã‚‹ãªã‚‰ã“ã®ä¸‹ã«UpdateViewã‚’æ›¸ã
         }
 
         /// <summary>
-        /// ƒ}ƒl[XV‚Ìˆ—
+        /// ãƒãƒãƒ¼æ›´æ–°æ™‚ã®å‡¦ç†
         /// </summary>
         public void UpdateMoneyText()
         {
@@ -147,7 +148,7 @@ namespace fantec.Menu.Common
         }
 
         /// <summary>
-        /// ÎXV‚Ìˆ—
+        /// çŸ³æ›´æ–°æ™‚ã®å‡¦ç†
         /// </summary>
         public void UpdateStoneText()
         {
@@ -155,7 +156,7 @@ namespace fantec.Menu.Common
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‰ñ•œŠÔ‚ÌƒeƒLƒXƒgXV
+        /// ã‚¹ã‚¿ãƒŸãƒŠå›å¾©æ™‚é–“ã®ãƒ†ã‚­ã‚¹ãƒˆæ›´æ–°
         /// </summary>
         /// <param name="timeSpan"></param>
         private void UpdateRecoveryTimeText(TimeSpan timeSpan)
@@ -165,44 +166,45 @@ namespace fantec.Menu.Common
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‰ñ•œƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ã‚¹ã‚¿ãƒŸãƒŠå›å¾©ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickStaminaHealButton(Unit unit)
         {
-            Debug.Log("ƒXƒ^ƒ~ƒi‰ñ•œƒ{ƒ^ƒ“‰Ÿ‰º");
+            Debug.Log("ã‚¹ã‚¿ãƒŸãƒŠå›å¾©ãƒœã‚¿ãƒ³æŠ¼ä¸‹");
         }
 
         /// <summary>
-        /// ƒƒjƒ…[ƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickMenuButton(Unit unit)
         {
-            Debug.Log("ƒƒjƒ…[ƒ{ƒ^ƒ“‰Ÿ‰º");
+            Debug.Log("ãƒ¡ãƒ‹ãƒ¥ãƒ¼ãƒœã‚¿ãƒ³æŠ¼ä¸‹");
+            MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.Notice);
         }
 
         /// <summary>
-        /// Îw“üƒ{ƒ^ƒ“‰Ÿ‰º
+        /// çŸ³è³¼å…¥ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickStonePlusButton(Unit unit)
         {
-            Debug.Log("Îw“üƒ{ƒ^ƒ“‰Ÿ‰º");
+            Debug.Log("çŸ³è³¼å…¥ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚");
 
         }
 
         /// <summary>
-        /// ƒRƒCƒ“’Ç‰Áƒ{ƒ^ƒ“
+        /// ã‚³ã‚¤ãƒ³è¿½åŠ ãƒœã‚¿ãƒ³
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickCoinPlusButton(Unit unit)
         {
-            Debug.Log("ƒRƒCƒ“’Ç‰Áƒ{ƒ^ƒ“‰Ÿ‰º");
+            Debug.Log("ã‚³ã‚¤ãƒ³è¿½åŠ ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚");
         }
 
         /// <summary>
-        /// ƒvƒŒƒCƒ„[–¼‚ğXV‚·‚é
+        /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼åã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         public void UpdateUserNameText()
         {

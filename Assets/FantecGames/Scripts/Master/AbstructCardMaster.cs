@@ -1,44 +1,44 @@
-using System;
+ï»¿using System;
 using fantec.Common;
 using System.Linq;
 using System.Collections.Generic;
 
-// ƒJ[ƒh‚Ìƒf[ƒ^ŠÇ—
+// ã‚«ãƒ¼ãƒ‰ã®ãƒ‡ãƒ¼ã‚¿ç®¡ç†
 namespace fantec.Master
 {
     public abstract class AbstructCardData:IData
     {
-        public bool active;               // —LŒø‚©”Û‚©
-        public int cardId;                // ƒLƒƒƒ‰ID
-        public int originId;              // ƒIƒŠƒWƒ“ID
-        public int sortId;                // ƒ\[ƒgID
-        public string charaName;          // ƒLƒƒƒ‰–¼
-        public string readCharaname;      // “Ç‚İ‰¼–¼
-        public string[] tagNames;         // ƒ^ƒO–¼
+        public bool active;               // æœ‰åŠ¹ã‹å¦ã‹
+        public int cardId;                // ã‚­ãƒ£ãƒ©ID
+        public int originId;              // ã‚ªãƒªã‚¸ãƒ³ID
+        public int sortId;                // ã‚½ãƒ¼ãƒˆID
+        public string charaName;          // ã‚­ãƒ£ãƒ©å
+        public string readCharaname;      // èª­ã¿ä»®å
+        public string[] tagNames;         // ã‚¿ã‚°å
 
-        public CardRarityType rarityType; // ‰ŠúƒŒƒAƒŠƒeƒB
-        public AffectMoveType moveType;   // ˆÚ“®í•Ê
-         public AffectHitType hitType;     // ƒqƒbƒgí•Ê(“–‚½‚Á‚½‚Ì‰¹‚ğ•ÏX‚µ‚½‚¢‚Ì‚Å‚ ‚ê‚Î)
-        public AffectAttributeType attributeType; // ‘®«
+        public CardRarityType rarityType; // åˆæœŸãƒ¬ã‚¢ãƒªãƒ†ã‚£
+        public AffectMoveType moveType;   // ç§»å‹•ç¨®åˆ¥
+         public AffectHitType hitType;     // ãƒ’ãƒƒãƒˆç¨®åˆ¥(å½“ãŸã£ãŸæ™‚ã®éŸ³ã‚’å¤‰æ›´ã—ãŸã„ã®ã§ã‚ã‚Œã°)
+        public AffectAttributeType attributeType; // å±æ€§
 
-        public int OverrideId;            // ƒI[ƒo[ƒ‰ƒCƒh
-        public int ExsaOverrideId;        // ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh
-        public int SectaOverrideId;       // ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh
-        public int QuetaOverrideId;       // ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh
+        public int OverrideId;            // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        public int ExsaOverrideId;        // ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        public int SectaOverrideId;       // ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        public int QuetaOverrideId;       // ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
 
-        public int maxLevel;              // Å‘å“’BƒŒƒxƒ‹
-        public int minHP;                 // Å¬‘Ì—Í’l
-        public int maxHP;                 // Å‘å‘Ì—Í’l
-        public int minATK;                // Å¬UŒ‚—Í
-        public int maxATK;                // Å‘åUŒ‚—Í
-        public int minSPD;                // Å¬‘f‘‚³
-        public int maxSPD;                // Å‘å‘f‘‚³
-        public int Move;                  // ˆÚ“®—Í
+        public int maxLevel;              // æœ€å¤§åˆ°é”ãƒ¬ãƒ™ãƒ«
+        public int minHP;                 // æœ€å°ä½“åŠ›å€¤
+        public int maxHP;                 // æœ€å¤§ä½“åŠ›å€¤
+        public int minATK;                // æœ€å°æ”»æ’ƒåŠ›
+        public int maxATK;                // æœ€å¤§æ”»æ’ƒåŠ›
+        public int minSPD;                // æœ€å°ç´ æ—©ã•
+        public int maxSPD;                // æœ€å¤§ç´ æ—©ã•
+        public int Move;                  // ç§»å‹•åŠ›
 
-        public int damageRange;           // ƒ_ƒ[ƒW‚ÌU‚ê•
+        public int damageRange;           // ãƒ€ãƒ¡ãƒ¼ã‚¸ã®æŒ¯ã‚Œå¹…
 
-        public string growthTableKey;    // ¬’·‹ÈüƒL[
-        public List<int> behaviorAI;     // ˆÚ“®‚·‚éƒ}ƒX–Ú‡‚ğintŒ^‚ÅŠi”[‚·‚éƒŠƒXƒg
+        public string growthTableKey;    // æˆé•·æ›²ç·šã‚­ãƒ¼
+        public List<int> behaviorAI;     // ç§»å‹•ã™ã‚‹ãƒã‚¹ç›®é †ã‚’intå‹ã§æ ¼ç´ã™ã‚‹ãƒªã‚¹ãƒˆ
 
         public int GetHpByLevel(int level)
         {
@@ -72,7 +72,7 @@ namespace fantec.Master
         public T GetData(int cardId)
         {
             try { return dataList.First(x => x.cardId == cardId); }
-            catch { throw new InvalidOperationException($"[cardId : {cardId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidOperationException($"[cardId : {cardId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"); }
         }
 
         public T GetDataOrefault(int cardId)

@@ -1,4 +1,4 @@
-using System.Collections;
+ï»¿using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -44,10 +44,10 @@ namespace fantec.Battle
 
         public static TokenEntity ConvertToAbnormalConditionEntity(this IEnumerable<TokenCell> @this, AffectCategoryType categoryType, AffectAttributeType attributeType = AffectAttributeType.NONE)
         {
-            return @this.Where(x => x.command.categoryType == categoryType) // ƒJƒeƒSƒŠ‚ği‚é
-                    .OrderByDescending(s => s.command.affectValue)          // Œø‰Ê‡‚É•À‚×•Ï‚¦‚é
-                    .First()                                                // æ“ª(Œø‰Ê—Ê‚ªÅ‚à‚‚¢)@‚ğæ“¾
-                    .ToEntity(attributeType);                               // ƒGƒ“ƒeƒBƒeƒB‚É•ÏŠ·‚·‚é
+            return @this.Where(x => x.command.categoryType == categoryType) // ã‚«ãƒ†ã‚´ãƒªã‚’çµã‚‹
+                    .OrderByDescending(s => s.command.affectValue)          // åŠ¹æœé †ã«ä¸¦ã¹å¤‰ãˆã‚‹
+                    .First()                                                // å…ˆé ­(åŠ¹æœé‡ãŒæœ€ã‚‚é«˜ã„)ã€€ã‚’å–å¾—
+                    .ToEntity(attributeType);                               // ã‚¨ãƒ³ãƒ†ã‚£ãƒ†ã‚£ã«å¤‰æ›ã™ã‚‹
         }
     }
 }

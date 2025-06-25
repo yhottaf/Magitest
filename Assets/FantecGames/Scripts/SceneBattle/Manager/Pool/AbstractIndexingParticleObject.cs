@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using UnityEngine;
 
 namespace fantec.Battle.Manager.Pool
@@ -38,31 +38,31 @@ namespace fantec.Battle.Manager.Pool
 
         protected void SetupBase()
         {
-            // ƒTƒCƒY’²®
+            // ã‚µã‚¤ã‚ºèª¿æ•´
             this.transform.GetChild(0).localScale = Vector3.one * base.m_Size;
 
-            // “Áê‰‰o’†‚ÉÄ¶‚³‚ê‚½ê‡
+            // ç‰¹æ®Šæ¼”å‡ºä¸­ã«å†ç”Ÿã•ã‚ŒãŸå ´åˆ
             if(base.m_IsDirectingPause)
             {
-                // ‘f’Ê‚è‚·‚éİ’è‚É
+                // ç´ é€šã‚Šã™ã‚‹è¨­å®šã«
                 base.SetThroughDirectingPause(true);
                 this.m_SortingGroup.sortingLayerName = BD.SortingLayer.NAME_FIELD_BLACKOUT;
             }
             else
             {
-                // İ’è‚ğ–ß‚·
+                // è¨­å®šã‚’æˆ»ã™
                 base.SetThroughDirectingPause(false);
                 this.m_SortingGroup.sortingLayerName = BD.SortingLayer.NAME_FIELD_DEFAULT;
             }
 
 
-            // ‰‰oÄ¶
+            // æ¼”å‡ºå†ç”Ÿ
             base.m_Sequence.Value = DOTween.Sequence()
                 .AppendInterval(m_LifeTime)
                 .SetLink(this.gameObject)
                 .OnComplete(() =>
                 {
-                    // Š®—¹A•Ô‹p
+                    // å®Œäº†ã€è¿”å´
                     Return();
                 });
         }

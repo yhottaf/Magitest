@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using UniRx;
 using UnityEngine;
@@ -22,11 +22,11 @@ namespace fantec.Debugger.BattleSetup
             if(model.GetIsMemberExist()==false)
             {
                 Modal.Create()
-                    .SetTitleText("ƒGƒ‰[")
-                    .SetContextText("ƒƒ“ƒo[‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB\nÅ’á‚Å‚à1ƒLƒƒƒ‰‚Íİ’è‚·‚é•K—v‚ª‚ ‚è‚Ü‚·B")
+                    .SetTitleText("ã‚¨ãƒ©ãƒ¼")
+                    .SetContextText("ãƒ¡ãƒ³ãƒãƒ¼ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚\næœ€ä½ã§ã‚‚1ã‚­ãƒ£ãƒ©ã¯è¨­å®šã™ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚")
                     .SetBackground()
                     .SetRightTopButton()
-                    .AddButtonActionAndClose("•Â‚¶‚é");
+                    .AddButtonActionAndClose("é–‰ã˜ã‚‹");
             }
             else
             {
@@ -39,9 +39,9 @@ namespace fantec.Debugger.BattleSetup
                     if (result.IsSuccess)
                     {
                         var data = BridgingDataProvider.Get;
-                        data.SetTeamData(model.GetTeamData()); // ƒ`[ƒ€ƒf[ƒ^“ü‚ê‚İ
-                        data.SetStageData(model.StageData);    //ƒXƒe[ƒWƒf[ƒ^‚Ì“ü‚ê‚İ
-                        data.SetLotteryData(result);           // ƒT[ƒo[’Š‘IŒ‹‰Ê‚Ì“ü‚ê‚İ
+                        data.SetTeamData(model.GetTeamData()); // ãƒãƒ¼ãƒ ãƒ‡ãƒ¼ã‚¿å…¥ã‚Œè¾¼ã¿
+                        data.SetStageData(model.StageData);    //ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã®å…¥ã‚Œè¾¼ã¿
+                        data.SetLotteryData(result);           // ã‚µãƒ¼ãƒãƒ¼æŠ½é¸çµæœã®å…¥ã‚Œè¾¼ã¿
 
                         Fade.FadeOut(0.5f, async () =>
                         {
@@ -55,11 +55,11 @@ namespace fantec.Debugger.BattleSetup
                     else
                     {
                         Modal.Create()
-                        .SetTitleText("ƒGƒ‰[")
-                        .SetContextText("ƒT[ƒo[‚Æ‚Ì’ÊM‚É¸”s‚µ‚Ü‚µ‚½B")
+                        .SetTitleText("ã‚¨ãƒ©ãƒ¼")
+                        .SetContextText("ã‚µãƒ¼ãƒãƒ¼ã¨ã®é€šä¿¡ã«å¤±æ•—ã—ã¾ã—ãŸã€‚")
                         .SetBackground()
                         .SetRightTopButton()
-                        .AddButtonActionAndClose("•Â‚¶‚é");
+                        .AddButtonActionAndClose("é–‰ã˜ã‚‹");
                     }
                 });
             }

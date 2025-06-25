@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 namespace fantec
@@ -6,22 +6,22 @@ namespace fantec
     [System.Serializable]
     public class SkillCommand
     {
-        public int affectValue;   // Œø‰Ê—Ê
-        public int actionCount;   // s“®‰ñ”
-        public int sustainTurn;   // ‘±ƒ^[ƒ“
-        public int randomCount;   // Œø‰Ê‘ÎÛ‚Ì” (ƒ‰ƒ“ƒ_ƒ€‚Å‚Ì‚İg—p)
-        public bool isFirst;      // UŒ‚‚æ‚è‚àæ‚É”­“®‚·‚é‚©”Û‚©
-        public AffectCategoryType categoryType;    // í—Ş
-        public AffectAttributeType attributeType;  // ‘®«
-        public AffectRangeType rangeType;          // ”ÍˆÍ
-        public AffectEfficacyType efficacyType;    // Œø‰Ê—Ê
+        public int affectValue;   // åŠ¹æœé‡
+        public int actionCount;   // è¡Œå‹•å›æ•°
+        public int sustainTurn;   // æŒç¶šã‚¿ãƒ¼ãƒ³
+        public int randomCount;   // åŠ¹æœå¯¾è±¡ã®æ•° (ãƒ©ãƒ³ãƒ€ãƒ ã§ã®ã¿ä½¿ç”¨)
+        public bool isFirst;      // æ”»æ’ƒã‚ˆã‚Šã‚‚å…ˆã«ç™ºå‹•ã™ã‚‹ã‹å¦ã‹
+        public AffectCategoryType categoryType;    // ç¨®é¡
+        public AffectAttributeType attributeType;  // å±æ€§
+        public AffectRangeType rangeType;          // ç¯„å›²
+        public AffectEfficacyType efficacyType;    // åŠ¹æœé‡
 
-        public int successRate;   // Œø‰Ê‚Ì•t—^—¦
-        public int conditionValue;// ”­“®‚ÌğŒ’l
-        public AffectCategoryType parentCategoryType; // •t—^Œø‰Ê‚È‚Ç‚Åg—p‚³‚ê‚ée‚ÌƒJƒeƒSƒŠ[
+        public int successRate;   // åŠ¹æœã®ä»˜ä¸ç‡
+        public int conditionValue;// ç™ºå‹•ã®æ¡ä»¶å€¤
+        public AffectCategoryType parentCategoryType; // ä»˜ä¸åŠ¹æœãªã©ã§ä½¿ç”¨ã•ã‚Œã‚‹è¦ªã®ã‚«ãƒ†ã‚´ãƒªãƒ¼
 
         /// <summary>
-        /// ƒNƒ‰ƒX‚ğ•¡»‚·‚é
+        /// ã‚¯ãƒ©ã‚¹ã‚’è¤‡è£½ã™ã‚‹
         /// </summary>
         /// <returns></returns>
         public SkillCommand Clone()
@@ -30,9 +30,9 @@ namespace fantec
         }
 
         /// <summary>
-        /// eƒJƒeƒSƒŠ[‚ğæ“¾‚·‚é
+        /// è¦ªã‚«ãƒ†ã‚´ãƒªãƒ¼ã‚’å–å¾—ã™ã‚‹
         /// </summary>
-        /// <returns>@NONE ‚Ìê‡‚Í categoryType ‚Å•âŠ®‚·‚é@</returns>
+        /// <returns>ã€€NONE ã®å ´åˆã¯ categoryType ã§è£œå®Œã™ã‚‹ã€€</returns>
         public AffectCategoryType GetComplementParentCategoryType()
         {
             return parentCategoryType == AffectCategoryType.NONE

@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using UnityEngine;
 
@@ -16,7 +16,7 @@ namespace fantec.Master
     public class UserRankMaster:MasterBase<UserRankData>
     {
         /// <summary>
-        /// Å‘åƒŒƒxƒ‹‚ğæ“¾
+        /// æœ€å¤§ãƒ¬ãƒ™ãƒ«ã‚’å–å¾—
         /// </summary>
         /// <returns></returns>
         public int GetMaxLevel()
@@ -25,7 +25,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌŒoŒ±’l‚É‰‚¶‚½ƒŒƒxƒ‹‚ğæ“¾‚·‚é
+        /// å¼•æ•°ã®çµŒé¨“å€¤ã«å¿œã˜ãŸãƒ¬ãƒ™ãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -53,7 +53,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌŒoŒ±’l‚ğ‚à‚Æ‚Éƒf[ƒ^‚ğæ“¾
+        /// å¼•æ•°ã®çµŒé¨“å€¤ã‚’ã‚‚ã¨ã«ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>
@@ -63,16 +63,16 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌƒŒƒxƒ‹‚ğ‚à‚Æ‚Éƒf[ƒ^‚ğæ“¾
+        /// å¼•æ•°ã®ãƒ¬ãƒ™ãƒ«ã‚’ã‚‚ã¨ã«ãƒ‡ãƒ¼ã‚¿ã‚’å–å¾—
         /// </summary>
         public UserRankData GetDataByLevel(int level)
         {
             try { return dataList[level - 1]; }
-            catch { throw new IndexOutOfRangeException($"[index:{level - 1}(level:{level})] ‚Íƒf[ƒ^‚Ì”ÍˆÍŠO"); }
+            catch { throw new IndexOutOfRangeException($"[index:{level - 1}(level:{level})] ã¯ãƒ‡ãƒ¼ã‚¿ã®ç¯„å›²å¤–"); }
         }
 
         /// <summary>
-        ///  ˆø”‚ÌƒŒƒxƒ‹‚Ü‚Å‚É•K—v‚Æ‚È‚é—İŒvŒoŒ±’l‚ğæ“¾
+        ///  å¼•æ•°ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã«å¿…è¦ã¨ãªã‚‹ç´¯è¨ˆçµŒé¨“å€¤ã‚’å–å¾—
         /// </summary>
         /// <param name="level"></param>
         /// <returns></returns>
@@ -82,7 +82,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌƒŒƒxƒ‹ƒe[ƒuƒ‹‘Ñ‚ÌŒoŒ±’l‚ğæ“¾
+        /// å¼•æ•°ã®ãƒ¬ãƒ™ãƒ«ãƒ†ãƒ¼ãƒ–ãƒ«å¸¯ã®çµŒé¨“å€¤ã‚’å–å¾—
         /// </summary>
         public int GetTableExpByLevel(int level)
         {
@@ -91,7 +91,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌŒoŒ±’l‚ğ‚à‚Æ‚Éƒe[ƒuƒ‹‘Ñ‚Å‚ÌŒoŒ±’l‚ğæ“¾‚·‚é
+        /// å¼•æ•°ã®çµŒé¨“å€¤ã‚’ã‚‚ã¨ã«ãƒ†ãƒ¼ãƒ–ãƒ«å¸¯ã§ã®çµŒé¨“å€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public int GetTableExpByExp(int exp)
         {
@@ -99,7 +99,7 @@ namespace fantec.Master
         }
 
         /// <summary>
-        /// ˆø”‚ÌŒoŒ±’l‚ğ‚à‚Æ‚Éƒe[ƒuƒ‹‘Ñ‚Å‚ÌŒoŒ±’l‚ğ³‹K‰»‚µ‚½’l‚ğæ“¾‚·‚é
+        /// å¼•æ•°ã®çµŒé¨“å€¤ã‚’ã‚‚ã¨ã«ãƒ†ãƒ¼ãƒ–ãƒ«å¸¯ã§ã®çµŒé¨“å€¤ã‚’æ­£è¦åŒ–ã—ãŸå€¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         /// <param name="exp"></param>
         /// <returns></returns>

@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,12 +9,12 @@ namespace fantec.Master
     [System.Serializable]
     public class WaveData : IData
     {
-        public CardRarityType rarityType; // “Gƒ†ƒjƒbƒg‚ÌƒŒƒAƒŠƒeƒB
-        public int cardId;                // “Gƒ†ƒjƒbƒg‚ÌID
-        public int cardLevel;             // “Gƒ†ƒjƒbƒg‚ÌƒŒƒxƒ‹
-        public int positionIndex;         // ”z’uƒCƒ“ƒfƒbƒNƒX
-        public int waveIndex;             // ƒEƒF[ƒu‚ÌƒCƒ“ƒfƒbƒNƒX
-        public bool isBoss;               // ƒ{ƒX‚Å‚ ‚é‚©”Û‚©
+        public CardRarityType rarityType; // æ•µãƒ¦ãƒ‹ãƒƒãƒˆã®ãƒ¬ã‚¢ãƒªãƒ†ã‚£
+        public int cardId;                // æ•µãƒ¦ãƒ‹ãƒƒãƒˆã®ID
+        public int cardLevel;             // æ•µãƒ¦ãƒ‹ãƒƒãƒˆã®ãƒ¬ãƒ™ãƒ«
+        public int positionIndex;         // é…ç½®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+        public int waveIndex;             // ã‚¦ã‚§ãƒ¼ãƒ–ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹
+        public bool isBoss;               // ãƒœã‚¹ã§ã‚ã‚‹ã‹å¦ã‹
 
         public TeamData.Unit ToTeamUnitData()
         {
@@ -28,7 +28,7 @@ namespace fantec.Master
         public static IEnumerable<WaveData> GetDatas(IEnumerable<WaveData> waveDatas, int waveIndex)
         {
             try { return waveDatas.Where(x => x.waveIndex == waveIndex) ?? throw new Exception(); }
-            catch { throw new Exception($"[waveIndex : {waveIndex}] ‚ÌƒLƒƒƒ‰‚Í‘¶İ‚µ‚Ü‚¹‚ñB"); }
+            catch { throw new Exception($"[waveIndex : {waveIndex}] ã®ã‚­ãƒ£ãƒ©ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"); }
         }
 
         public static int GetMaxWaveIndex(this IEnumerable<WaveData> @this) => @this.Max(x => x.waveIndex);
@@ -62,8 +62,8 @@ namespace fantec.Master
         {
             try
             {
-                if (dataList == null) throw new Exception("waveData ‚ª null ‚Å‚·B");
-                if (dataList.Count == 0) throw new Exception("waveData ‚É—v‘f‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+                if (dataList == null) throw new Exception("waveData ãŒ null ã§ã™ã€‚");
+                if (dataList.Count == 0) throw new Exception("waveData ã«è¦ç´ ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
                 return dataList;
             }
             catch (Exception e)

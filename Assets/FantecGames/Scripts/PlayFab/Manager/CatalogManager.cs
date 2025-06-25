@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
@@ -7,17 +7,17 @@ using System.Linq;
 namespace fantec.PlayFabClient
 {
     /// <summary>
-    /// ƒJƒ^ƒƒO‚ğŠÇ—‚·‚é
+    /// ã‚«ã‚¿ãƒ­ã‚°ã‚’ç®¡ç†ã™ã‚‹
     /// </summary>
     public static class CatalogManager
     {
         /// <summary>
-        /// ƒJƒ^ƒƒOƒAƒCƒeƒ€B
+        /// ã‚«ã‚¿ãƒ­ã‚°ã‚¢ã‚¤ãƒ†ãƒ ã€‚
         /// </summary>
         public static Dictionary<string, CatalogItem> CatalogItems { get; private set; }
 
         /// <summary>
-        /// PlayFab‚©‚çClient‚Öƒf[ƒ^‚ğ“¯Šú‚·‚é
+        /// PlayFabã‹ã‚‰Clientã¸ãƒ‡ãƒ¼ã‚¿ã‚’åŒæœŸã™ã‚‹
         /// </summary>
         /// <returns></returns>
         public static async UniTask SyncPlayFabToClientAsync()

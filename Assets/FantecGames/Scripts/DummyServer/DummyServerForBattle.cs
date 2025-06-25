@@ -1,4 +1,6 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
+using fantec.Battle.Manager;
+using fantec.Battle;
 using fantec.Common;
 using fantec.Master;
 using fantec.PlayFabClient;
@@ -6,6 +8,7 @@ using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using static UnityEditor.Progress;
 
 
 namespace fantec
@@ -37,12 +40,12 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒIƒ“ƒ‰ƒCƒ“‚Å‚ ‚é‚©”Û‚©
+        /// ã‚ªãƒ³ãƒ©ã‚¤ãƒ³ã§ã‚ã‚‹ã‹å¦ã‹
         /// </summary>
         public static bool IsOfflineMode => UserDataManager.User == null;
 
         /// <summary>
-        /// ƒoƒgƒ‹ŠJn‚É’Š‘I‚µŒ‹‰Ê‚ğ•Û‚·‚é
+        /// ãƒãƒˆãƒ«é–‹å§‹æ™‚ã«æŠ½é¸ã—çµæœã‚’ä¿æŒã™ã‚‹
         /// </summary>
         public static async UniTask<LotteryForBattleData>GetLotteryAsync(int stageId)
         {
@@ -61,7 +64,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// “–‘IŒ‹‰Ê‚ğw’è‚·‚éê‡
+        /// å½“é¸çµæœã‚’æŒ‡å®šã™ã‚‹å ´åˆ
         /// </summary>
         public static async UniTask<LotteryForBattleData> GetLotteryChoiseAsync(int stageId)
         {
@@ -93,7 +96,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ŠÎ”‚ğæ“¾‚·‚é
+        /// æ‰€æŒçŸ³æ•°ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static(int freeStone,int paidStone)GetStones()
         {
@@ -102,7 +105,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// •Û—LƒXƒ^ƒ~ƒi”‚ğæ“¾‚·‚é
+        /// ä¿æœ‰ã‚¹ã‚¿ãƒŸãƒŠæ•°ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static int GetCurrentStamina()
         {
@@ -111,7 +114,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‚ÌÁ”ï‚ğ‚İ‚é
+        /// ã‚¹ã‚¿ãƒŸãƒŠã®æ¶ˆè²»ã‚’è©¦ã¿ã‚‹
         /// </summary>
         public static async UniTask<bool>TryConsumeStaminaAsync()
         {
@@ -128,7 +131,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// Î‚ÌÁ”ï‚ğ‚İ‚é
+        /// çŸ³ã®æ¶ˆè²»ã‚’è©¦ã¿ã‚‹
         /// </summary>
         public static async UniTask<bool>TryConsumeStoneAsync()
         {
@@ -141,7 +144,7 @@ namespace fantec
             }
             else if(consumeStoneCount<=VirtualCurrencyManager.PaidStone)
             {
-                // TODO : —LÎÁ”ïˆ—
+                // TODO : æœ‰å„ŸçŸ³æ¶ˆè²»å‡¦ç†
                 return false;
             }
             else
@@ -154,7 +157,7 @@ namespace fantec
         {
             if (IsOfflineMode)
             {
-                // ‰½‚à‚µ‚È‚¢
+                // ä½•ã‚‚ã—ãªã„
                 return false;
             }
             else
@@ -168,7 +171,7 @@ namespace fantec
         public static async UniTask<List<ConsumeItemData>> GetDropItemForLocalAsync()
         {
             await DummyDelayAsync();
-
+            var resourceManager = Locator.Resolve<IBattleResourceManager>();
             var result=new List<ConsumeItemData>();
             if (Cashe.stageRewardTableId == -1) return result;
             var table = MasterDataManager.Instance.RewardStageMaster.GetDataLocal(Cashe.stageRewardTableId);
@@ -182,9 +185,15 @@ namespace fantec
             {
                 switch(GetRandomIndex(weightList.ToArray()))
                 {
-                    case 0:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(table.itemId1)));break;
-                    case 1:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(table.itemId2)));break;
-                    case 2:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(table.itemId3)));break;
+                    case 0:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(table.itemId1)));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(table.itemId1)), System.Threading.CancellationToken.None);
+                        break;
+                    case 1:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(table.itemId2)));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(table.itemId2)), System.Threading.CancellationToken.None);
+                        break;
+                    case 2:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(table.itemId3)));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(table.itemId3)), System.Threading.CancellationToken.None);
+                        break;
                 }
             }
 
@@ -192,15 +201,28 @@ namespace fantec
             {
                 var initialTable = MasterDataManager.Instance.InitialRewardStageMaster.GetData(Cashe.initalRewardTableId);
 
-                if (initialTable.itemId1 != "-1") for (int i = 0; i < initialTable.quantity1; i++) { result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(initialTable.itemId1))); }
-                if (initialTable.itemId2 != "-1") for (int i = 0; i < initialTable.quantity2; i++) { result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(initialTable.itemId2))); }
-                if (initialTable.itemId3 != "-1") for (int i = 0; i < initialTable.quantity3; i++) { result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(initialTable.itemId3))); }
+                if (initialTable.itemId1 != "-1") for (int i = 0; i < initialTable.quantity1; i++)
+                    { 
+                        result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(initialTable.itemId1)));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(initialTable.itemId1)), System.Threading.CancellationToken.None);
+                    }
+                if (initialTable.itemId2 != "-1") for (int i = 0; i < initialTable.quantity2; i++)
+                    { 
+                        result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(initialTable.itemId2)));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(initialTable.itemId2)), System.Threading.CancellationToken.None);
+                    }
+                if (initialTable.itemId3 != "-1") for (int i = 0; i < initialTable.quantity3; i++)
+                    { 
+                        result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(initialTable.itemId3)));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(initialTable.itemId3)), System.Threading.CancellationToken.None);
+                    }
 
                 if (initialTable.cardId.Length != 0)
                 {
                     foreach(var cardId in initialTable.cardId)
                     {
                         result.Add(new ConsumeItemData() { itemId = cardId });
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetCharacterSpriteSpherePath(cardId), System.Threading.CancellationToken.None);
                     }
                 }
             }
@@ -212,10 +234,11 @@ namespace fantec
         {
             var result =new List<ConsumeItemData>();
             if (Cashe.stageRewardTableId == -1) return result;
+            var resourceManager = Locator.Resolve<IBattleResourceManager>();
             var table = MasterDataManager.Instance.RewardStageMaster.GetDataLocal(Cashe.stageRewardTableId);
             var lotteryCount=UnityEngine.Random.Range(table.minLottery,table.maxLottery+1);
             
-            Debug.Log($"’Š‘I‰ñ”[{lotteryCount}]");
+            Debug.Log($"æŠ½é¸å›æ•°[{lotteryCount}]");
 
             List<string>itemIdList=new List<string>();
 
@@ -246,9 +269,14 @@ namespace fantec
 
                 switch(itemClass)
                 {
-                    case ItemClass.Item:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(catalogItem.ItemId.Replace("Item", ""))));break;
-                    case ItemClass.Card:result.Add(new ConsumeItemData() { itemId = int.Parse(catalogItem.ItemId) });break;
-                    default:throw new NotImplementedException($"[ItemClass {itemClass}] ‚É‚Í‘Î‰‚µ‚Ä‚¢‚Ü‚¹‚ñB");
+                    case ItemClass.Item:result.Add(MasterDataManager.Instance.ConsumeItemMaster.GetData(int.Parse(catalogItem.ItemId.Replace("Item", ""))));
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetSpriteItemIcon(int.Parse(catalogItem.ItemId.Replace("Item", ""))),System.Threading.CancellationToken.None);
+                        break;
+                    case ItemClass.Card:result.Add(new ConsumeItemData() { itemId = int.Parse(catalogItem.ItemId) });
+                        await resourceManager.CasheSpriteAsync(AssetPath.GetCharacterSpriteSpherePath(int.Parse(catalogItem.ItemId)), System.Threading.CancellationToken.None);
+                        break;
+                    
+                    default:throw new NotImplementedException($"[ItemClass {itemClass}] ã«ã¯å¯¾å¿œã—ã¦ã„ã¾ã›ã‚“ã€‚");
                 }
             }
 
@@ -256,7 +284,7 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒ†[ƒU[ƒ‰ƒ“ƒN‚ğã‚°Œ‹‰Ê‚ğ•Ô‚·
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ©ãƒ³ã‚¯ã‚’ä¸Šã’çµæœã‚’è¿”ã™
         /// </summary>
         public static async UniTask<(int oldExp,int gainExp)>UserRankUpAsync()
         {

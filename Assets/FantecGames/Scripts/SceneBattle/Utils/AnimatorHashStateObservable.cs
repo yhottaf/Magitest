@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UniRx;
 
@@ -22,7 +22,7 @@ namespace fantec.Battle.Utiles
             if(m_Animator==null)m_Animator=GetComponent<Animator>();
             if(m_Animator==null)
             {
-                throw new Exception("ƒAƒjƒ[ƒ^[ƒRƒ“ƒ|[ƒlƒ“ƒg‚ªƒAƒ^ƒbƒ`‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                throw new Exception("ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚¿ãƒ¼ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆãŒã‚¢ã‚¿ãƒƒãƒã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
         }
 

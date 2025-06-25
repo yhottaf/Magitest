@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -8,17 +8,17 @@ namespace fantec.Master
     [Serializable]
     public class ConsumeItemData : IData
     {
-        public int itemId;                       // ƒAƒCƒeƒ€ID
-        public int sortNo;                       // ƒ\[ƒg‡
-        public string name;                      // ƒAƒCƒeƒ€–¼
-        public string categoryName;              // ƒJƒeƒSƒŠ–¼
-        public int categoryId;                   // ƒJƒeƒSƒŠID
-        public string description;               // à–¾
-        public ConsumeItemEffectType effectType; // Œø‰Ê‚Ìí—Ş
-        public int effectValue;                  // Œø‰Ê‚Ì’l
-        public int effectTime;                   // Œø‰ÊŠÔ
-        public int maxItem;                      // Å‘åŠ”
-        public string imageName;                 // ƒCƒ[ƒWƒf[ƒ^–¼
+        public int itemId;                       // ã‚¢ã‚¤ãƒ†ãƒ ID
+        public int sortNo;                       // ã‚½ãƒ¼ãƒˆé †
+        public string name;                      // ã‚¢ã‚¤ãƒ†ãƒ å
+        public string categoryName;              // ã‚«ãƒ†ã‚´ãƒªå
+        public int categoryId;                   // ã‚«ãƒ†ã‚´ãƒªID
+        public string description;               // èª¬æ˜
+        public ConsumeItemEffectType effectType; // åŠ¹æœã®ç¨®é¡
+        public int effectValue;                  // åŠ¹æœã®å€¤
+        public int effectTime;                   // åŠ¹æœæ™‚é–“
+        public int maxItem;                      // æœ€å¤§æ‰€æŒæ•°
+        public string imageName;                 // ã‚¤ãƒ¡ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿å
     }
 
     [ExcelAsset(AssetPath = AssetPath.MasterLocalDataFolderPath), CreateAssetMenu(fileName = "ConsumeItemMaster", menuName = "ScriptableObjects/ConsumeItemMaster")]
@@ -32,7 +32,7 @@ namespace fantec.Master
             }
             catch
             {
-                throw new InvalidOperationException($"[ItemId : {itemId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB");
+                throw new InvalidOperationException($"[ItemId : {itemId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
             }
         }
     }

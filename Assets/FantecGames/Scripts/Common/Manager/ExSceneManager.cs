@@ -1,4 +1,4 @@
-using fantec.Utilities;
+ï»¿using fantec.Utilities;
 using System;
 using System.Collections.Generic;
 using UniRx;
@@ -16,8 +16,8 @@ namespace fantec.Common
         LOGO,
         TITLE,
         MENU,
-        BATTLE,    // ƒCƒ“ƒQ[ƒ€ (í“¬ƒXƒe[ƒW)
-        ADVENTURE, // ‰ï˜bƒp[ƒg
+        BATTLE,    // ã‚¤ãƒ³ã‚²ãƒ¼ãƒ  (æˆ¦é—˜ã‚¹ãƒ†ãƒ¼ã‚¸)
+        ADVENTURE, // ä¼šè©±ãƒ‘ãƒ¼ãƒˆ
 
         DEBUG_TASK_KILL,
         DEBUG_PLAYFAB,
@@ -59,7 +59,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ğƒ[ƒh‚·‚é
+        /// ã‚·ãƒ¼ãƒ³ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
         /// </summary>
         public void LoadScene(SceneIndex scene,LoadSceneMode mode=LoadSceneMode.Single)
         {
@@ -71,7 +71,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// ‹ó‚ÌƒV[ƒ“‚ğ“Ç‚İ‚İAƒV[ƒ“‚ğƒ[ƒh‚·‚é
+        /// ç©ºã®ã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã¿ã€ã‚·ãƒ¼ãƒ³ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
         /// </summary>
         /// <param name="scene"></param>
         /// <returns></returns>
@@ -79,18 +79,18 @@ namespace fantec.Common
         {
             SceneIndex prevScene =GetCurrentScene();
 
-            //‹ó‚ÌƒV[ƒ“‚ğ“Ç‚İ‚Ş
+            //ç©ºã®ã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã‚€
             await LoadSceneAsync(SceneIndex.EMPTY,LoadSceneMode.Additive);
 
-            //‘JˆÚ‘O‚ÌƒV[ƒ“‚ğ”jŠü
+            //é·ç§»å‰ã®ã‚·ãƒ¼ãƒ³ã‚’ç ´æ£„
             await UnloadSceneAsync(prevScene);
 
-            //‘JˆÚæ‚ÌƒV[ƒ“‚ğ“Ç‚İ‚Ş
+            //é·ç§»å…ˆã®ã‚·ãƒ¼ãƒ³ã‚’èª­ã¿è¾¼ã‚€
             await LoadSceneAsync(scene,LoadSceneMode.Single);
         }
 
         /// <summary>
-        /// ƒV[ƒ“‚ğƒAƒ“ƒ[ƒh‚·‚é
+        /// ã‚·ãƒ¼ãƒ³ã‚’ã‚¢ãƒ³ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
         /// </summary>
         public async UniTask UnloadSceneAsync(SceneIndex scene)
         {
@@ -98,7 +98,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// Œ»İ‚ÌƒV[ƒ“‚ğæ“¾‚·‚é
+        /// ç¾åœ¨ã®ã‚·ãƒ¼ãƒ³ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static SceneIndex  GetCurrentScene()
         {
@@ -110,7 +110,7 @@ namespace fantec.Common
                 }
             }
 
-            Debug.LogError(SceneManager.GetActiveScene().name+" : ƒV[ƒ“–¼‚ªˆê’v‚µ‚Ü‚¹‚ñ‚Å‚µ‚½B");
+            Debug.LogError(SceneManager.GetActiveScene().name+" : ã‚·ãƒ¼ãƒ³åãŒä¸€è‡´ã—ã¾ã›ã‚“ã§ã—ãŸã€‚");
             return SceneIndex.TITLE;
         }
 
@@ -129,10 +129,10 @@ namespace fantec.Common
                         return target;
                     }
                 }
-                Debug.LogError($"[scene:{scene.name}] ‚É [component : {typeof(T).FullName}] ‚ğƒAƒ^ƒbƒ`‚µ‚½ƒIƒuƒWƒFƒNƒg‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+                Debug.LogError($"[scene:{scene.name}] ã« [component : {typeof(T).FullName}] ã‚’ã‚¢ã‚¿ãƒƒãƒã—ãŸã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
                 return default;
             }
-            Debug.LogError($"[scene : {scene.name}] ‚ª“Ç‚İ‚Ü‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+            Debug.LogError($"[scene : {scene.name}] ãŒèª­ã¿è¾¼ã¾ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             return default;
         }
     }

@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using fantec.Master;
 using System.Collections.Generic;
 
@@ -15,6 +15,7 @@ namespace fantec.Common.Master
         [SerializeField] private AdventSkillMaster m_AdventSkillMaster; public AdventSkillMaster AdventSkillMaster=> m_AdventSkillMaster;
         [SerializeField] private OtherSkillMaster m_OtherSkillMaster;  public OtherSkillMaster OtherSkillMaster => m_OtherSkillMaster;
         [SerializeField] private InitialRewardStageMaster m_InitialRewardMaster; public InitialRewardStageMaster InitialRewardMaster => m_InitialRewardMaster;
+        [SerializeField] private NoticeMaster m_NoticeMaster;          public NoticeMaster NoticeMaster => m_NoticeMaster;
         [SerializeField] private List<WaveMaster> m_WaveMasterList; public List<WaveMaster> WaveMasterList => m_WaveMasterList;
         [SerializeField] private List<ExpMaster> m_ExpMasterList; public List<ExpMaster> ExpMasterList => m_ExpMasterList;
         [SerializeField] private List<GrowthMaster> m_GrowthMasterList; public List<GrowthMaster> GrowthMasterList => m_GrowthMasterList;

@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using UniRx;
 using UnityEngine;
@@ -13,30 +13,30 @@ namespace fantec.Battle.Model
         public IObservable<IBattleModelStage> OnUpdateStageDataObservable => m_UpdateStageDataReactive.SkipLatestValueOnSubscribe();
         private readonly ReactiveProperty<IBattleModelStage> m_UpdateStageDataReactive = new ReactiveProperty<IBattleModelStage>();
 
-        // ƒEƒF[ƒu”‚ÌŠÄ‹
+        // ã‚¦ã‚§ãƒ¼ãƒ–æ•°ã®ç›£è¦–
         public IObservable<int> OnCurrentWaveIndexReactive => m_CurrentWaveIndexReactive;
         private readonly ReactiveProperty<int> m_CurrentWaveIndexReactive=new ReactiveProperty<int>();
 
-        // ƒ^[ƒ“”‚ÌŠÄ‹
+        // ã‚¿ãƒ¼ãƒ³æ•°ã®ç›£è¦–
         public IObservable<int> OnCurrentTurnIndexReactive => m_CurrentTurnIndexReactive;
         private readonly ReactiveProperty<int>m_CurrentTurnIndexReactive=new ReactiveProperty<int>();
 
-        // ÅŒã‚És“®‚·‚éƒ†ƒjƒbƒg‚ÌŠÄ‹
+        // æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã®ç›£è¦–
         public IObservable<IBattler> OnLastActingUnit => m_LastActingUnitReactive;
         private readonly ReactiveProperty<IBattler> m_LastActingUnitReactive = new ReactiveProperty<IBattler>();
 
-        public StageEntity Entity => m_Entity;                    // ƒXƒe[ƒWƒf[ƒ^
-        public TeamData CurrentWaveTeamData => m_CurrentTeamData; // Œ»İ‚ÌƒEƒF[ƒu‚Ì“Gƒp[ƒeƒB[ƒf[ƒ^
-        public int CurrentWave => m_CurrentWaveIndexReactive.Value + 1; // Œ»İ‚ÌƒEƒF[ƒu”
+        public StageEntity Entity => m_Entity;                    // ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿
+        public TeamData CurrentWaveTeamData => m_CurrentTeamData; // ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–ã®æ•µãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿
+        public int CurrentWave => m_CurrentWaveIndexReactive.Value + 1; // ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–æ•°
         public int CurrentWaveIndex => m_CurrentWaveIndexReactive.Value; 
         public bool IsMaxWave => CurrentWave == m_Entity.maxWave;
         public bool IsFirstWave => CurrentWaveIndex == 0;
         public bool IsBossWave => m_Entity.waveDatas[CurrentWaveIndex].isBoss;
 
-        public int CurrentTurn => m_CurrentTurnIndexReactive.Value + 1; // Œ»İ‚Ìƒ^[ƒ“”
+        public int CurrentTurn => m_CurrentTurnIndexReactive.Value + 1; // ç¾åœ¨ã®ã‚¿ãƒ¼ãƒ³æ•°
         public int CurrentTurnIndex => m_CurrentTurnIndexReactive.Value;
 
-        public bool IsMaxTurn => CurrentTurn == 31; // Å‘åƒ^[ƒ“‚Í30ƒ^[ƒ“‚Ü‚Å( MEMO : 30ƒ^[ƒ“‚Ìƒ^[ƒ“‚ÌI‚í‚è‚ÅŸ”sŒ‹‰Ê‚ğŒˆ‚ß‚é‚Ì‚Å³Šm‚É‚Í31‚Ì•Ï”‚ÅI—¹‚³‚¹‚é)
+        public bool IsMaxTurn => CurrentTurn == 31; // æœ€å¤§ã‚¿ãƒ¼ãƒ³ã¯30ã‚¿ãƒ¼ãƒ³ã¾ã§( MEMO : 30ã‚¿ãƒ¼ãƒ³ã®ã‚¿ãƒ¼ãƒ³ã®çµ‚ã‚ã‚Šã§å‹æ•—çµæœã‚’æ±ºã‚ã‚‹ã®ã§æ­£ç¢ºã«ã¯31ã®å¤‰æ•°ã§çµ‚äº†ã•ã›ã‚‹)
         public bool IsFirstTurn => CurrentTurn == 1;
 
         public IBattler LastActingUnit => m_LastActingUnitReactive.Value;
@@ -68,7 +68,7 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// ƒXƒe[ƒWƒf[ƒ^‚ğİ’è‚·‚é
+        /// ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ‡ãƒ¼ã‚¿ã‚’è¨­å®šã™ã‚‹
         /// </summary>
         public void SetStageEntity(StageEntity entity)
         {
@@ -83,14 +83,14 @@ namespace fantec.Battle.Model
 
         public void NextWave()
         {
-            // Å‘åƒEƒF[ƒu‚Å‚È‚¯‚ê‚Î
+            // æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã§ãªã‘ã‚Œã°
             if(IsMaxWave==false)
             {
                 m_CurrentWaveIndexReactive.Value++;
             }
             else
             {
-                Debug.LogError($"Å‘åƒEƒF[ƒu‚Å‚· wave : {CurrentWave}");
+                Debug.LogError($"æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã§ã™ wave : {CurrentWave}");
             }
         }
 
@@ -101,28 +101,28 @@ namespace fantec.Battle.Model
                 m_CurrentTurnIndexReactive.Value++;
                 if (IsMaxTurn)
                 {
-                    Debug.LogError($"ƒ‰ƒXƒgƒ^[ƒ“‚É“’B‚µ‚Ü‚µ‚½ ƒ^[ƒ“ : {CurrentTurn}");
+                    Debug.LogError($"ãƒ©ã‚¹ãƒˆã‚¿ãƒ¼ãƒ³ã«åˆ°é”ã—ã¾ã—ãŸ ã‚¿ãƒ¼ãƒ³ : {CurrentTurn}");
                 }
                 else
                 {
-                    Debug.Log($"ƒ^[ƒ“ : {CurrentTurn}");
+                    Debug.Log($"ã‚¿ãƒ¼ãƒ³ : {CurrentTurn}");
                 }
             }
             else
             {
-                Debug.LogError($"ƒ‰ƒXƒgƒ^[ƒ“‚É“’B‚µ‚Ü‚µ‚½ ƒ^[ƒ“ : {CurrentTurn}");
+                Debug.LogError($"ãƒ©ã‚¹ãƒˆã‚¿ãƒ¼ãƒ³ã«åˆ°é”ã—ã¾ã—ãŸ ã‚¿ãƒ¼ãƒ³ : {CurrentTurn}");
             }
         }
 
-        // å‚ÉŸƒEƒF[ƒu‚ÉˆÚ‚Á‚½Û‚ÌV‚µ‚¢“G‚ÌXV‚Ég—p‚·‚é
+        // ä¸»ã«æ¬¡ã‚¦ã‚§ãƒ¼ãƒ–ã«ç§»ã£ãŸéš›ã®æ–°ã—ã„æ•µã®æ›´æ–°ã«ä½¿ç”¨ã™ã‚‹
         public void UpdateMember()
         {
-            m_CurrentTurnIndexReactive.Value = 0; // ƒ^[ƒ“‚Ì‰Šú‰»‚ğ‚µ‚Ä‚¨‚­(ƒEƒF[ƒuØ‚è‘Ö‚¦‚Íƒ^[ƒ“‰Šú‰»‚É‚·‚éH)
+            m_CurrentTurnIndexReactive.Value = 0; // ã‚¿ãƒ¼ãƒ³ã®åˆæœŸåŒ–ã‚’ã—ã¦ãŠã(ã‚¦ã‚§ãƒ¼ãƒ–åˆ‡ã‚Šæ›¿ãˆæ™‚ã¯ã‚¿ãƒ¼ãƒ³åˆæœŸåŒ–ã«ã™ã‚‹ï¼Ÿ)
             m_CurrentTeamData = m_Entity.waveDatas[CurrentWaveIndex].teamData;
         }
 
         /// <summary>
-        /// ƒEƒF[ƒu‚ğ’¼Úİ’è
+        /// ã‚¦ã‚§ãƒ¼ãƒ–ã‚’ç›´æ¥è¨­å®š
         /// </summary>
         public void SetWave(int waveIndex)
         {
@@ -130,7 +130,7 @@ namespace fantec.Battle.Model
             {
                 m_CurrentWaveIndexReactive.Value = m_Entity.maxWaveIndex;
 
-                Debug.LogError($"Å‘åƒEƒF[ƒu‚ğ’´‚¦‚Ä‚¢‚Ü‚·B ƒ^[ƒQƒbƒgƒEƒF[ƒu : {waveIndex + 1} Å‘åƒEƒF[ƒu : {m_Entity.maxWave}");
+                Debug.LogError($"æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ–ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚ ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚¦ã‚§ãƒ¼ãƒ– : {waveIndex + 1} æœ€å¤§ã‚¦ã‚§ãƒ¼ãƒ– : {m_Entity.maxWave}");
             }
             else
             {
@@ -144,7 +144,7 @@ namespace fantec.Battle.Model
             {
                 m_CurrentTurnIndexReactive.Value = 31;
 
-                Debug.LogError($"Å‘åƒ^[ƒ“”‚ğ’´‚¦‚Ä‚¢‚Ü‚·Bƒ^[ƒQƒbƒgƒ^[ƒ“ : {turnIndex + 1} Å‘åƒ^[ƒ“ : {30}");
+                Debug.LogError($"æœ€å¤§ã‚¿ãƒ¼ãƒ³æ•°ã‚’è¶…ãˆã¦ã„ã¾ã™ã€‚ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã‚¿ãƒ¼ãƒ³ : {turnIndex + 1} æœ€å¤§ã‚¿ãƒ¼ãƒ³ : {30}");
             }
             else
             {
@@ -152,25 +152,25 @@ namespace fantec.Battle.Model
             }
         }
 
-        // ƒ^[ƒ“”‚ğÅ‰‚Ìƒ^[ƒ“‚É–ß‚·
+        // ã‚¿ãƒ¼ãƒ³æ•°ã‚’æœ€åˆã®ã‚¿ãƒ¼ãƒ³ã«æˆ»ã™
         public void ResetTurn()
         {
             m_CurrentTurnIndexReactive.Value = 0;
         }
 
-        // Œ»İ‚ÌƒEƒF[ƒu‚ÌBGMƒl[ƒ€‚ğæ“¾‚·‚é
+        // ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–ã®BGMãƒãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹
         public string GetBattleBgmName()
         {
             return IsBossWave ? Entity.bossBgm : Entity.normalBgm;
         }
 
-        // Œ»İ‚ÌƒEƒF[ƒu‚Ì”wŒi‰æ‘œƒl[ƒ€‚ğæ“¾‚·‚é
+        // ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–ã®èƒŒæ™¯ç”»åƒãƒãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹
         public string GetBattleBgName()
         {
             return IsBossWave ? Entity.bossBg : Entity.normalBg;
         }
 
-        // Œ»İ‚ÌƒEƒF[ƒu‚ÌƒtƒB[ƒ‹ƒh‚Ì‰æ‘œƒl[ƒ€‚ğæ“¾‚·‚é
+        // ç¾åœ¨ã®ã‚¦ã‚§ãƒ¼ãƒ–ã®ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ç”»åƒãƒãƒ¼ãƒ ã‚’å–å¾—ã™ã‚‹
         public string GetFieldImgName()
         {
             return Entity.FieldImg;

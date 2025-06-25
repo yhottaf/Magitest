@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Menu.Manager;
 using fantec.PlayFabClient;
@@ -15,61 +15,61 @@ namespace fantec.Menu
     public class Live2DModelController : MonoBehaviour
     {
         [SerializeField] 
-        private AnimationClip IdleMotion; // ƒAƒCƒhƒ‹ƒ‚[ƒVƒ‡ƒ“
+        private AnimationClip IdleMotion; // ã‚¢ã‚¤ãƒ‰ãƒ«ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
 
-        // Live2D‚Ìƒ‚[ƒVƒ‡ƒ“‚ğ‚Ü‚Æ‚ß‚½ƒŠƒXƒg
+        // Live2Dã®ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ã¾ã¨ã‚ãŸãƒªã‚¹ãƒˆ
         [SerializeField]
         private List<AnimationClip> anim=new List<AnimationClip>();
 
-        // ƒCƒ“ƒ^[ƒoƒ‹i•bj
+        // ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ï¼ˆç§’ï¼‰
         private float interval = 8.0f;         
-        // Å‘å’l‚ÅƒŠƒZƒbƒg‚·‚é‚©
+        // æœ€å¤§å€¤ã§ãƒªã‚»ãƒƒãƒˆã™ã‚‹ã‹
         private bool loop = true;              
-        // Œ»İ‚Ì’l
+        // ç¾åœ¨ã®å€¤
         private int currentValue = 0;         
-        // ƒCƒ“ƒ^[ƒoƒ‹—p‚Ìƒ^ƒCƒ}[
+        // ã‚¤ãƒ³ã‚¿ãƒ¼ãƒãƒ«ç”¨ã®ã‚¿ã‚¤ãƒãƒ¼
         private float timer = 0.0f;       
-        // ‰Šú‰»Š®—¹ƒtƒ‰ƒO
+        // åˆæœŸåŒ–å®Œäº†ãƒ•ãƒ©ã‚°
         private bool isInitialized = false;
 
-        // ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌI—¹‚ğŠÄ‹
+        // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®çµ‚äº†ã‚’ç›£è¦–
         private readonly Subject<Unit> onMotionFinished = new Subject<Unit>();
 
-        // Live2Dƒ‚ƒfƒ‹‚É‚Â‚¢‚Ä‚éƒ‚[ƒVƒ‡ƒ“ƒRƒ“ƒgƒ[ƒ‰[
+        // Live2Dãƒ¢ãƒ‡ãƒ«ã«ã¤ã„ã¦ã‚‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
         private CubismMotionController m_MotionController;
 
-        // Live2Dƒ‚ƒfƒ‹‚É‚Â‚¢‚Ä‚¢‚éƒŒƒ“ƒ_[ƒRƒ“ƒgƒ[ƒ‰[
+        // Live2Dãƒ¢ãƒ‡ãƒ«ã«ã¤ã„ã¦ã„ã‚‹ãƒ¬ãƒ³ãƒ€ãƒ¼ã‚³ãƒ³ãƒˆãƒ­ãƒ¼ãƒ©ãƒ¼
         private CubismRenderController m_RenderController;
 
-        // Œ»İ‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ÌÄ¶ŠÔ‚Ì’·‚³
+        // ç¾åœ¨ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®å†ç”Ÿæ™‚é–“ã®é•·ã•
         private float CurrentAnimationLength = 0f;
 
 
-        // Live2Dƒ‚ƒfƒ‹‚ÌƒvƒŒƒnƒu
+        // Live2Dãƒ¢ãƒ‡ãƒ«ã®ãƒ—ãƒ¬ãƒãƒ–
         private GameObject model;
 
         void Start()
         {
-            // ƒLƒƒƒbƒVƒ…‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©‚ÌŠm”F•Ï”
+            // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ã®ç¢ºèªå¤‰æ•°
             bool isValidLive2DData = false;
 
-            { // ‚Ü‚¸‚ÍƒLƒƒƒbƒVƒ…‚ª‘¶İ‚·‚é‚©‚Ç‚¤‚©Šm”F‚·‚éˆ—
+            { // ã¾ãšã¯ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒå­˜åœ¨ã™ã‚‹ã‹ã©ã†ã‹ç¢ºèªã™ã‚‹å‡¦ç†
             
-                // Œ»İƒ[ƒh’†‚ÌƒAƒhƒŒƒXˆê——‚ğŠm”F(ƒfƒoƒbƒO)
+                // ç¾åœ¨ãƒ­ãƒ¼ãƒ‰ä¸­ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ä¸€è¦§ã‚’ç¢ºèª(ãƒ‡ãƒãƒƒã‚°)
                 var loading = AssetManager.Instance.GetLoadedLive2DModels();
                 if (loading.Count.Equals(0))
                 {
-                    Debug.Log("ƒ[ƒh‚³‚ê‚Ä‚¢‚éLive2Dƒf[ƒ^‚ª‚È‚¢‚½‚ßV‹Kƒ[ƒh‚ğŠJn‚µ‚Ü‚·B");
+                    Debug.Log("ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ã‚‹Live2Dãƒ‡ãƒ¼ã‚¿ãŒãªã„ãŸã‚æ–°è¦ãƒ­ãƒ¼ãƒ‰ã‚’é–‹å§‹ã—ã¾ã™ã€‚");
                 }
                 foreach (var addr in loading)
                 {
-                    Debug.Log($"Œ»İƒLƒƒƒbƒVƒ…‚Éc‚Á‚Ä‚¢‚éLive2Dƒf[ƒ^: {addr}");
-                    // ƒLƒƒƒbƒVƒ…‚ª‘¶İ‚µ‚½‚çtrue‚É•Ï‚¦‚éB
+                    Debug.Log($"ç¾åœ¨ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã«æ®‹ã£ã¦ã„ã‚‹Live2Dãƒ‡ãƒ¼ã‚¿: {addr}");
+                    // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒå­˜åœ¨ã—ãŸã‚‰trueã«å¤‰ãˆã‚‹ã€‚
                     isValidLive2DData = true;
                 }
             }
 
-            SetInitLive2D().Forget(); // ”ñ“¯Šú‚ÅŒÄ‚Ño‚µ
+            SetInitLive2D().Forget(); // éåŒæœŸã§å‘¼ã³å‡ºã—
 
             onMotionFinished.
                 Subscribe(_ =>
@@ -80,7 +80,7 @@ namespace fantec.Menu
             MenuManager.Instance.onLive2DState.
                 Subscribe(_=>
                 {
-                    // ƒ‚ƒfƒ‹‚ÌQÆ‚ª‚ ‚é‚È‚çÁ‚·B
+                    // ãƒ¢ãƒ‡ãƒ«ã®å‚ç…§ãŒã‚ã‚‹ãªã‚‰æ¶ˆã™ã€‚
                     if (model!=null)
                     {
                         isInitialized = false;
@@ -88,24 +88,24 @@ namespace fantec.Menu
                     }
                     else
                     {
-                        // ƒ‚ƒfƒ‹‚ªnull‚È‚çÄ“xLive2DƒIƒuƒWƒFƒNƒg‚ğì‚è’¼‚·
+                        // ãƒ¢ãƒ‡ãƒ«ãŒnullãªã‚‰å†åº¦Live2Dã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã‚’ä½œã‚Šç›´ã™
                         SetInitLive2D().Forget();
                     }
                 }).AddTo(this);
 
             
-            // ƒLƒƒƒbƒVƒ…‚ª‘¶İ‚µ‚½ê‡‚Íƒ`ƒFƒbƒN‚·‚é•K—v‚ª‚È‚¢
+            // ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãŒå­˜åœ¨ã—ãŸå ´åˆã¯ãƒã‚§ãƒƒã‚¯ã™ã‚‹å¿…è¦ãŒãªã„
             if (!isValidLive2DData)
             {
-                // Home‰æ–Ê“Ç‚İ‚İ‚ÉLive2D‚ÌƒLƒƒƒbƒVƒ…ƒf[ƒ^‚ª‚È‚©‚Á‚½ê‡‚Í
-                // Loadˆ—‚ğ‹²‚ñ‚¾Œã‚Éƒ[ƒh‚³‚ê‚Ä‚¢‚é‚©Šm”FB
+                // Homeç”»é¢èª­ã¿è¾¼ã¿æ™‚ã«Live2Dã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥ãƒ‡ãƒ¼ã‚¿ãŒãªã‹ã£ãŸå ´åˆã¯
+                // Loadå‡¦ç†ã‚’æŒŸã‚“ã å¾Œã«ãƒ­ãƒ¼ãƒ‰ã•ã‚Œã¦ã„ã‚‹ã‹ç¢ºèªã€‚
                 MenuManager.Instance.LoadedCheckLive2DData();
             }
         }
 
         void Update()
         {
-            // ‰Šú‰»Š®—¹Œã‚Ì‚İÀs
+            // åˆæœŸåŒ–å®Œäº†å¾Œã®ã¿å®Ÿè¡Œ
             if (!isInitialized) return;
 
             if (model != null)
@@ -116,11 +116,11 @@ namespace fantec.Menu
                 {
                     timer = 0.0f;
 
-                    // ƒpƒ‰ƒ[ƒ^‚ÌXV
+                    // ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ã®æ›´æ–°
                     currentValue++;
                     PlayMotion(anim[currentValue]);
 
-                    // Å‘å’l‚É’B‚µ‚½‚çƒŠƒZƒbƒg
+                    // æœ€å¤§å€¤ã«é”ã—ãŸã‚‰ãƒªã‚»ãƒƒãƒˆ
                     if (currentValue >= anim.Count-1)
                     {
                         if (loop)
@@ -137,30 +137,30 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// Live2D@ƒ‚ƒfƒ‹‚Ì‰Šú‰»
+        /// Live2Dã€€ãƒ¢ãƒ‡ãƒ«ã®åˆæœŸåŒ–
         /// </summary>
         /// <returns></returns>
         private async UniTask SetInitLive2D()
         {
-            // ƒvƒƒtƒB[ƒ‹ƒJ[ƒh‚ğLive2D‚Å•\¦‚³‚¹‚é
+            // ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã‚«ãƒ¼ãƒ‰ã‚’Live2Dã§è¡¨ç¤ºã•ã›ã‚‹
             CardData carddata = CardManager.GetCardData(UserDataManager.User.ProfileCardId);
             int originId = carddata.CardMasterData().originId;
             List<string> AnimList = new List<string>(carddata.CardMasterData().AnimationClip.ToList());
             if (AnimList.Count.Equals(0))
             {
-                Debug.Log($"{carddata.CardMasterData().readCharaname}@‚Ìƒ}ƒXƒ^[ƒf[ƒ^‚ÉƒAƒjƒ[ƒVƒ‡ƒ“‚ª‚P‚Â‚àİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                Debug.Log($"{carddata.CardMasterData().readCharaname}ã€€ã®ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã«ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãŒï¼‘ã¤ã‚‚è¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
             }
 
-            // ƒ‚ƒfƒ‹‚Ìƒ[ƒh
+            // ãƒ¢ãƒ‡ãƒ«ã®ãƒ­ãƒ¼ãƒ‰
             model = await AssetManager.Instance.LoadAssetAsync<GameObject>(AssetPath.GetLive2DPath(originId));
             model.SetActive(false);
             IdleMotion = await AssetManager.Instance.LoadAssetAsync<AnimationClip>(AssetPath.GetIdleMotion(originId));
 
             model = Instantiate(model);
-            // ƒ‚ƒfƒ‹‚ğqƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä’Ç‰Á
+            // ãƒ¢ãƒ‡ãƒ«ã‚’å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦è¿½åŠ 
             model.transform.SetParent(this.transform);
 
-            // ƒ[ƒJƒ‹À•W‚ğƒ}ƒXƒ^[ƒf[ƒ^‚ÌˆÊ’u‚É’²®‚µ‚È‚¨‚·
+            // ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã‚’ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã®ä½ç½®ã«èª¿æ•´ã—ãªãŠã™
             model.transform.localPosition = carddata.CardMasterData().Live2DlocalPosition;
             model.transform.localRotation = Quaternion.identity;
             model.transform.localScale = carddata.CardMasterData().Live2DlocalScale;
@@ -171,30 +171,30 @@ namespace fantec.Menu
          
             await LoadAnimationsAsync(originId, AnimList);
 
-            Debug.Log($"Live2Dƒ‚ƒfƒ‹{carddata.CardMasterData().readCharaname}‚Ì‰Šú‰»‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log($"Live2Dãƒ¢ãƒ‡ãƒ«{carddata.CardMasterData().readCharaname}ã®åˆæœŸåŒ–ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
 
 
 
-            //  **1•bŒã** ‚ÉƒtƒF[ƒhƒCƒ“‚·‚é
+            //  **1ç§’å¾Œ** ã«ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã™ã‚‹
             Observable
-                .Timer(System.TimeSpan.FromSeconds(1)) // 1•bŒã‚É”­‰Î
+                .Timer(System.TimeSpan.FromSeconds(1)) // 1ç§’å¾Œã«ç™ºç«
                 .Subscribe(_ =>
                 {
                     if (model != null)
                     {
                         model.SetActive(true);
                         PlayIdleMotion();
-                        Debug.Log("ƒtƒF[ƒhƒCƒ“‚ğŠJn‚µ‚Ü‚·B");
+                        Debug.Log("ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã‚’é–‹å§‹ã—ã¾ã™ã€‚");
                         StartCoroutine(FadeIn());
                     }
                 }).AddTo(this);
 #if Test
             model = Instantiate(m_TestModel);
-           //  ƒ‚ƒfƒ‹‚ğqƒIƒuƒWƒFƒNƒg‚Æ‚µ‚Ä’Ç‰Á
+           //  ãƒ¢ãƒ‡ãƒ«ã‚’å­ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆã¨ã—ã¦è¿½åŠ 
             model.transform.SetParent(this.transform);
         //    animator = model.GetComponent<Animator>();
 
-            // ƒ[ƒJƒ‹À•W‚ğƒ}ƒXƒ^[ƒf[ƒ^‚ÌˆÊ’u‚É’²®‚µ‚È‚¨‚·
+            // ãƒ­ãƒ¼ã‚«ãƒ«åº§æ¨™ã‚’ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã®ä½ç½®ã«èª¿æ•´ã—ãªãŠã™
             model.transform.localPosition = carddata.CardMasterData().Live2DlocalPosition;
             model.transform.localRotation = Quaternion.identity;
             model.transform.localScale = carddata.CardMasterData().Live2DlocalScale;
@@ -213,22 +213,22 @@ namespace fantec.Menu
                 return;
             }
 
-            // ƒ‚[ƒVƒ‡ƒ“‚ğÄ¶
+            // ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å†ç”Ÿ
             m_MotionController.PlayAnimation(animation, isLoop: false,priority: CubismMotionPriority.PriorityForce);
 
-            // Ä¶‚·‚éƒ‚[ƒVƒ‡ƒ“‚Ì’·‚³‚ğ•Ï”‚ÉŠi”[
+            // å†ç”Ÿã™ã‚‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã®é•·ã•ã‚’å¤‰æ•°ã«æ ¼ç´
             CurrentAnimationLength = animation.length;
 
             Observable
                 .Timer(System.TimeSpan.FromSeconds(animation.length))
                 .Subscribe(_ =>
                 {
-                    onMotionFinished.OnNext(Unit.Default); // ƒ‚[ƒVƒ‡ƒ“‚ªI—¹‚µ‚½‚±‚Æ‚ğ’Ê’m
+                    onMotionFinished.OnNext(Unit.Default); // ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ãŒçµ‚äº†ã—ãŸã“ã¨ã‚’é€šçŸ¥
                 }).AddTo(this);
         }
 
         /// <summary>
-        /// ‘Ò‹@ƒ‚[ƒVƒ‡ƒ“‚ğÄ¶‚³‚¹‚é
+        /// å¾…æ©Ÿãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å†ç”Ÿã•ã›ã‚‹
         /// </summary>
         private void PlayIdleMotion()
         {
@@ -239,46 +239,46 @@ namespace fantec.Menu
         }
 
         /// <summary>
-        /// ”ñ“¯Šú‚Å•¡”‚ÌƒAƒjƒ[ƒVƒ‡ƒ“ƒtƒ@ƒCƒ‹‚ğƒ[ƒh
+        /// éåŒæœŸã§è¤‡æ•°ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒ•ã‚¡ã‚¤ãƒ«ã‚’ãƒ­ãƒ¼ãƒ‰
         /// </summary>
-        /// <param name="animationPaths">ƒ[ƒh‚·‚éƒAƒjƒ[ƒVƒ‡ƒ“‚ÌƒpƒXƒŠƒXƒg</param>
+        /// <param name="animationPaths">ãƒ­ãƒ¼ãƒ‰ã™ã‚‹ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ‘ã‚¹ãƒªã‚¹ãƒˆ</param>
         private async UniTask LoadAnimationsAsync(int originId,List<string> animationPaths)
         {
             anim.Clear();
             var tasks = new List<UniTask<AnimationClip>>();
 
-            // ‘S‚Ä‚ÌƒpƒX‚É‚Â‚¢‚Äƒ[ƒh‚ğŠJn
+            // å…¨ã¦ã®ãƒ‘ã‚¹ã«ã¤ã„ã¦ãƒ­ãƒ¼ãƒ‰ã‚’é–‹å§‹
             foreach (var path in animationPaths)
             {
-                Debug.Log($"ƒAƒjƒ[ƒVƒ‡ƒ“ƒ[ƒhŠJn: {path}");
+                Debug.Log($"ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒ­ãƒ¼ãƒ‰é–‹å§‹: {path}");
                 var task = AssetManager.Instance.LoadAssetAsync<AnimationClip>(AssetPath.GetLive2DMotion(originId, path));
                 tasks.Add(task);
             }
 
-            // ‘S‚Ä‚Ìƒ[ƒh‚ªŠ®—¹‚·‚é‚Ì‚ğ‘Ò‚Â
+            // å…¨ã¦ã®ãƒ­ãƒ¼ãƒ‰ãŒå®Œäº†ã™ã‚‹ã®ã‚’å¾…ã¤
             AnimationClip[] loadedClips = await UniTask.WhenAll(tasks);
 
-            // ¬Œ÷‚µ‚½ƒAƒjƒ[ƒVƒ‡ƒ“‚ğƒŠƒXƒg‚É’Ç‰Á
+            // æˆåŠŸã—ãŸã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’ãƒªã‚¹ãƒˆã«è¿½åŠ 
             foreach (var clip in loadedClips)
             {
                 if (clip != null)
                 {
                     anim.Add(clip);
-                    Debug.Log($"ƒ[ƒh¬Œ÷: {clip.name}");
+                    Debug.Log($"ãƒ­ãƒ¼ãƒ‰æˆåŠŸ: {clip.name}");
                 }
                 else
                 {
-                    Debug.LogWarning("ƒAƒjƒ[ƒVƒ‡ƒ“‚Ìƒ[ƒh‚É¸”s‚µ‚Ü‚µ‚½B");
+                    Debug.LogWarning("ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®ãƒ­ãƒ¼ãƒ‰ã«å¤±æ•—ã—ã¾ã—ãŸã€‚");
                 }
             }
 
             CurrentAnimationLength = anim[0].length;
-            Debug.Log($"‘S‚Ä‚ÌƒAƒjƒ[ƒVƒ‡ƒ“ƒ[ƒhŠ®—¹: {anim.Count}ŒÂ “Ç‚İ‚İ‚Ü‚µ‚½B");
+            Debug.Log($"å…¨ã¦ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒ­ãƒ¼ãƒ‰å®Œäº†: {anim.Count}å€‹ èª­ã¿è¾¼ã¿ã¾ã—ãŸã€‚");
         }
 
         private IEnumerator FadeIn()
         {
-            float duration = 0.5f; // ƒtƒF[ƒhƒCƒ“‚ÌŠÔi•bj
+            float duration = 0.5f; // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³ã®æ™‚é–“ï¼ˆç§’ï¼‰
             float elapsedTime = 0f;
 
             while (elapsedTime < duration)
@@ -288,10 +288,10 @@ namespace fantec.Menu
                 yield return null;
             }
 
-            m_RenderController.Opacity = 1f; // ÅŒã‚É1‚Éİ’è
+            m_RenderController.Opacity = 1f; // æœ€å¾Œã«1ã«è¨­å®š
                                              
-            isInitialized = true;// ‰Šú‰»Š®—¹ƒtƒ‰ƒO‚ğƒIƒ“
-            Debug.Log("ƒtƒF[ƒhƒCƒ“Š®—¹‚µ‚Ü‚µ‚½B");
+            isInitialized = true;// åˆæœŸåŒ–å®Œäº†ãƒ•ãƒ©ã‚°ã‚’ã‚ªãƒ³
+            Debug.Log("ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³å®Œäº†ã—ã¾ã—ãŸã€‚");
         }
     }
 }

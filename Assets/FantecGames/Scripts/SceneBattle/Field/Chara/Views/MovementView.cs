@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Utiles;
 using Spine.Unity;
 using System;
@@ -9,7 +9,7 @@ namespace fantec.Battle.Field.Chara
 {
     public class MovementView : MonoBehaviour,IInitializable,IReloadable,ISpeedable
     {
-        [Header("Ž²")]
+        [Header("è»¸")]
         [SerializeField] private Transform m_PrimeRig;
         [SerializeField] private Transform m_MotionRig;
         [SerializeField] private SkeletonAnimation skeletonAnimation;
@@ -71,14 +71,14 @@ namespace fantec.Battle.Field.Chara
 
         public void PlayBlowScreen(Vector3 collidePosition,Vector3 offScreenPosition,Action onCollided=null,Action onCompleted=null)
         {
-            // ‚«”ò‚Ñ
+            // å¹ãé£›ã³
             m_MotionSequence.Kill();
             m_MotionSequence.Value = DOTween.Sequence()
                 .Append(m_MotionRig.DOMove(collidePosition, 0.4f).SetEase(Ease.Linear))
                 .Join(m_MotionRig.DOLocalRotate(new Vector3(0, 0, UnityEngine.Random.Range(360, 720)), 0.4f, DG.Tweening.RotateMode.FastBeyond360).SetEase(Ease.Linear))
                 .Join(m_MotionRig.DOScale(Vector3.one * 1.3f, 0.4f).SetEase(Ease.Linear));
 
-            // ŠŠ‚è—Ž‚¿‚é
+            // æ»‘ã‚Šè½ã¡ã‚‹
             m_MotionSequence.Value
                 .Append(m_MotionRig.DOMove(offScreenPosition, 0.5f).SetEase(Ease.InCubic))
                 .OnComplete(() => onCompleted?.Invoke())
@@ -112,7 +112,7 @@ namespace fantec.Battle.Field.Chara
         public void PlayBlurLoop(float duration = 0.5f, float startAlpha = 0.4f, float endScale = 2.0f,bool isPlayer=true)
         {
             if (skeletonAnimation.skeletonDataAsset == null||skeletonAnimation==null) return;
-            // GhostƒIƒuƒWƒFƒNƒg¶¬
+            // Ghostã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆç”Ÿæˆ
             GameObject ghost = new GameObject("SpineGhost");
             ghost.transform.SetParent(skeletonAnimation.gameObject.transform);
             ghost.transform.localPosition = Vector3.zero;
@@ -121,7 +121,7 @@ namespace fantec.Battle.Field.Chara
             if(!isPlayer)
             {
                 var scale = ghost.transform.localScale;
-                scale.x = -1f; // x•ûŒü”½“]
+                scale.x = -1f; // xæ–¹å‘åè»¢
                 ghost.transform.localScale = scale;
             }
 
@@ -132,7 +132,7 @@ namespace fantec.Battle.Field.Chara
 
 
 
-            // ƒXƒLƒ“‚Æƒ|[ƒY‚ð“¯Šú
+            // ã‚¹ã‚­ãƒ³ã¨ãƒãƒ¼ã‚ºã‚’åŒæœŸ
             ghostRenderer.skeleton.SetSkin(skeletonAnimation.skeleton.Skin);
             ghostRenderer.skeleton.SetSlotsToSetupPose();
             ghostRenderer.skeleton.SetBonesToSetupPose();
@@ -143,7 +143,7 @@ namespace fantec.Battle.Field.Chara
                 var anim = currentTrack.Animation;
                 ghostRenderer.AnimationState.SetAnimation(0, anim, currentTrack.Loop);
                 ghostRenderer.AnimationState.Apply(ghostRenderer.skeleton);
-                ghostRenderer.timeScale = 0f; // Ä¶‚³‚¹‚È‚¢iƒ|[ƒYó‘Ôj
+                ghostRenderer.timeScale = 0f; // å†ç”Ÿã•ã›ãªã„ï¼ˆãƒãƒ¼ã‚ºçŠ¶æ…‹ï¼‰
             }
 
 
@@ -158,7 +158,7 @@ namespace fantec.Battle.Field.Chara
 
             float alpha = startAlpha;
 
-            // Sequence‚Å“‡iƒXƒP[ƒ‹ + “§–¾“x + íœj
+            // Sequenceã§çµ±åˆï¼ˆã‚¹ã‚±ãƒ¼ãƒ« + é€æ˜Žåº¦ + å‰Šé™¤ï¼‰
             var seq = DOTween.Sequence()
                 .Join(ghost.transform.DOScale(ghost.transform.localScale * endScale, duration))
                 .Join(DOTween.To(() => alpha,
@@ -176,7 +176,7 @@ namespace fantec.Battle.Field.Chara
                 .AppendCallback(() => Destroy(ghost));
         }
 
-        // ƒuƒ‰[‚ðƒXƒgƒbƒv‚³‚¹‚é
+        // ãƒ–ãƒ©ãƒ¼ã‚’ã‚¹ãƒˆãƒƒãƒ—ã•ã›ã‚‹
         public void StopBlurTrail()
         {
             if (m_MotionSequence.Value != null && m_MotionSequence.Value.IsActive())
@@ -190,7 +190,7 @@ namespace fantec.Battle.Field.Chara
             if (skeletonAnimation.skeletonDataAsset == null || skeletonAnimation == null) return;
 
             float alpha = 1.0f;
-            skeletonAnimation.timeScale = 0f; // Ä¶‚³‚¹‚È‚¢iƒ|[ƒYó‘Ôj
+            skeletonAnimation.timeScale = 0f; // å†ç”Ÿã•ã›ãªã„ï¼ˆãƒãƒ¼ã‚ºçŠ¶æ…‹ï¼‰
             m_MotionSequence.Kill();
             m_MotionSequence.Value = DOTween.Sequence()
                 .Join(DOTween.To(() => alpha,

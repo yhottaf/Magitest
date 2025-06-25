@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using fantec.Menu.Manager;
 using fantec.Menu.PartyEdit;
@@ -43,7 +43,7 @@ namespace fantec.Menu.PartySortie.Presenter
         private CardListView m_CardListView;
 
         /// <summary>
-        /// î•ñ•\¦ƒ^ƒu‚Ìí—Ş
+        /// æƒ…å ±è¡¨ç¤ºã‚¿ãƒ–ã®ç¨®é¡
         /// </summary>
         public enum InfoType
         {
@@ -59,7 +59,7 @@ namespace fantec.Menu.PartySortie.Presenter
         private readonly Vector3 partySortieInitialPos = new Vector3(0, 210.0f, 0);
         private readonly Vector3 stageImageInitialPos = new Vector3(-501.8f, 0, 0);
 
-        // ƒp[ƒeƒB”Ô†‚ª‚Ç‚¿‚ç‚Ì•ûŒü‚É•Ï‰»‚µ‚½‚©¯•Ê‚·‚é‚½‚ß‚Ìenum
+        // ãƒ‘ãƒ¼ãƒ†ã‚£ç•ªå·ãŒã©ã¡ã‚‰ã®æ–¹å‘ã«å¤‰åŒ–ã—ãŸã‹è­˜åˆ¥ã™ã‚‹ãŸã‚ã®enum
         public enum PartyChangeState { Next,Prev };
 
         private bool isClickable = true;
@@ -69,19 +69,19 @@ namespace fantec.Menu.PartySortie.Presenter
 
         private async void Start()
         {
-            MenuManager.Instance.onLive2DState.OnNext(Unit.Default); // ”ñƒAƒNƒeƒBƒuó‘Ô‚É‚·‚é‚½‚ß’Ê’m
+            MenuManager.Instance.onLive2DState.OnNext(Unit.Default); // éã‚¢ã‚¯ãƒ†ã‚£ãƒ–çŠ¶æ…‹ã«ã™ã‚‹ãŸã‚é€šçŸ¥
             MenuManager.Instance.MoveQuestSelect = false;
 
-            // ©ƒXƒƒCƒv‚Å+, ¨ƒXƒƒCƒv‚Å-
+            // â†ã‚¹ãƒ¯ã‚¤ãƒ—ã§+, â†’ã‚¹ãƒ¯ã‚¤ãƒ—ã§-
             m_SwipeObserver.OnSwipeLeft.Where(_=>!isAnimating).Subscribe(async unit => await OnSwipeLeft(unit)).AddTo(this);
             m_SwipeObserver.OnSwipeRight.Where(_=>!isAnimating).Subscribe(async unit => await OnSwipeRight(unit)).AddTo(this);
 
             Master.StageData stageData = MasterDataManager.Instance.StageMaster.GetData(MenuManager.Instance.SelectStageId);
 
-            // ƒvƒƒOƒŒƒXƒrƒ…[‚Ì‰Šúİ’è
+            // ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒ“ãƒ¥ãƒ¼ã®åˆæœŸè¨­å®š
             m_ProgressView.Initialize(Define.PARTY_NUM, PlayerPrefsManager.SelectPartyIndex);
 
-            // ‰½”Ô–Ú‚©‚ğ“n‚·
+            // ä½•ç•ªç›®ã‹ã‚’æ¸¡ã™
             await m_PartySortie.PartySetting(PlayerPrefsManager.SelectPartyIndex, _cts.Token);
 
             m_View.UpdateQuestName(stageData.stageName);
@@ -97,7 +97,7 @@ namespace fantec.Menu.PartySortie.Presenter
             m_View.OnValueChangeRewardToggleObservable.Subscribe(isOn => { if (isOn) OnValueChangedToggle(InfoType.Reward); }).AddTo(this);
             m_View.OnValueChangedItemInfoToggleObservable.Subscribe(isOn => { if (isOn) OnValueChangedToggle(InfoType.Item); }).AddTo(this);
 
-            // oŒ»“Gî•ñ
+            // å‡ºç¾æ•µæƒ…å ±
             Dictionary<int, List<int>> m_EnemyInfoList = new Dictionary<int, List<int>>();
             string waveKey = stageData.waveMasterKey;
             Master.WaveMaster enemyDatas = MasterDataManager.Instance.GetMaster<Master.WaveMaster>(waveKey);
@@ -113,7 +113,7 @@ namespace fantec.Menu.PartySortie.Presenter
                 m_EnemyInfoList.Add(i,waveInfoList);
             }
 
-            // •ñV
+            // å ±é…¬
             List<int>m_DropRewardInfoList=new List<int>();
             if (stageData.rewardTableId > 0)
             {
@@ -133,8 +133,8 @@ namespace fantec.Menu.PartySortie.Presenter
                 }
             }
 
-            // ƒAƒCƒeƒ€
-            var questItemList = InventoryManager.ConsumeItems.Where(x => MasterDataManager.Instance.ConsumeItemMaster.GetData(x.Key).effectType == ConsumeItemEffectType.ƒNƒGƒXƒg);
+            // ã‚¢ã‚¤ãƒ†ãƒ 
+            var questItemList = InventoryManager.ConsumeItems.Where(x => MasterDataManager.Instance.ConsumeItemMaster.GetData(x.Key).effectType == ConsumeItemEffectType.ã‚¯ã‚¨ã‚¹ãƒˆ);
             List<ItemInfoCell.Data> itemDataList = new List<ItemInfoCell.Data>();
             foreach(var questItem in questItemList)
             {
@@ -146,12 +146,12 @@ namespace fantec.Menu.PartySortie.Presenter
 
             await m_ContentView.Setup(m_EnemyInfoList, m_DropRewardInfoList, itemDataList);
 
-            // ‰‚ß‚Í“Gî•ñ‚ğ•\¦‚·‚é‚æ‚¤‚É‚·‚é
+            // åˆã‚ã¯æ•µæƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
             m_ContentView.ShowEnemyInfoContentView();
         }
 
         /// <summary>
-        /// ƒ`[ƒ€‘I‘ğ‚Ì¶ƒXƒƒCƒv‚Ìˆ—
+        /// ãƒãƒ¼ãƒ é¸æŠã®å·¦ã‚¹ãƒ¯ã‚¤ãƒ—æ™‚ã®å‡¦ç†
         /// </summary>
         /// <param name="unit"></param>
         private async UniTask OnSwipeLeft(Unit unit)
@@ -168,19 +168,19 @@ namespace fantec.Menu.PartySortie.Presenter
 
             await UpdateContents();
                 
-            // ƒfƒBƒŒƒNƒgƒŠ–¼‚ÌXV
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã®æ›´æ–°
             m_View.UpdateDirectoryName(PlayerPrefsManager.GetPartyName(PlayerPrefsManager.SelectPartyIndex));
 
-            // ƒAƒjƒ[ƒVƒ‡ƒ“
+            // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
             ContentsAnim(PartyChangeState.Prev);
 
-            // CardListPresenter‚Öƒp[ƒeƒB“à—e‚ª•ÏX‚³‚ê‚½‚±‚Æ‚ğ’Ê’m‚·‚é
+            // CardListPresenterã¸ãƒ‘ãƒ¼ãƒ†ã‚£å†…å®¹ãŒå¤‰æ›´ã•ã‚ŒãŸã“ã¨ã‚’é€šçŸ¥ã™ã‚‹
             m_CardListView.ChangePartyData();
 
         }
 
         /// <summary>
-        /// ƒ`[ƒ€‘I‘ğ‚Ì‰EƒXƒƒCƒv‚Ìˆ—
+        /// ãƒãƒ¼ãƒ é¸æŠã®å³ã‚¹ãƒ¯ã‚¤ãƒ—æ™‚ã®å‡¦ç†
         /// </summary>
         /// <param name="unit"></param>
         private async UniTask OnSwipeRight(Unit unit)
@@ -195,21 +195,21 @@ namespace fantec.Menu.PartySortie.Presenter
                 PlayerPrefsManager.SelectPartyIndex = PartySelectMin;
             }
 
-            // Ÿ‚ÌƒfƒBƒŒƒNƒgƒŠ‚Ì”½‰f
+            // æ¬¡ã®ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®åæ˜ 
             await UpdateContents();
 
-            // ƒfƒBƒŒƒNƒgƒŠ–¼‚ÌXV
+            // ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåã®æ›´æ–°
             m_View.UpdateDirectoryName(PlayerPrefsManager.GetPartyName(PlayerPrefsManager.SelectPartyIndex));
 
-            // ƒAƒjƒ[ƒVƒ‡ƒ“
+            // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³
             ContentsAnim(PartyChangeState.Next);
 
-            // CardListPresenter‚Öƒp[ƒeƒB“à—e‚ª•ÏX‚³‚ê‚½‚±‚Æ‚ğ’Ê’m‚·‚é
+            // CardListPresenterã¸ãƒ‘ãƒ¼ãƒ†ã‚£å†…å®¹ãŒå¤‰æ›´ã•ã‚ŒãŸã“ã¨ã‚’é€šçŸ¥ã™ã‚‹
             m_CardListView.ChangePartyData();
         }
 
         /// <summary>
-        /// oŒ‚ƒ{ƒ^ƒ“‰Ÿ‰º
+        /// å‡ºæ’ƒãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         private async UniTaskVoid OnClickSubmitButton()
         {
@@ -228,7 +228,7 @@ namespace fantec.Menu.PartySortie.Presenter
 
                 var lotteryForBattleData = await DummyServerForBattle.GetLotteryAsync(MenuManager.Instance.SelectStageId);
 
-                // ƒCƒ“ƒQ[ƒ€‘¤‚Öƒf[ƒ^‚ğ•Ô‚·
+                // ã‚¤ãƒ³ã‚²ãƒ¼ãƒ å´ã¸ãƒ‡ãƒ¼ã‚¿ã‚’è¿”ã™
                 BridgingData brindgingData = BridgingDataProvider.Get;
                 brindgingData.SetTeamData(UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex].GetTeamData());
                 brindgingData.SetStageData(MasterDataManager.Instance.StageMaster.GetData(MenuManager.Instance.SelectStageId));
@@ -239,24 +239,24 @@ namespace fantec.Menu.PartySortie.Presenter
             }
             else
             {
-                Debug.Log("Á”ï‚·‚éƒXƒ^ƒ~ƒi‚ª‘«‚è‚Ü‚¹‚ñFŒ»İ‰ñ•œƒAƒCƒeƒ€‚É‚æ‚éƒXƒ^ƒ~ƒi‰ñ•œ‹@”\‚Í–¢À‘•");
+                Debug.Log("æ¶ˆè²»ã™ã‚‹ã‚¹ã‚¿ãƒŸãƒŠãŒè¶³ã‚Šã¾ã›ã‚“ï¼šç¾åœ¨å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã«ã‚ˆã‚‹ã‚¹ã‚¿ãƒŸãƒŠå›å¾©æ©Ÿèƒ½ã¯æœªå®Ÿè£…");
             }
         }
 
         /// <summary>
-        /// ƒoƒbƒNƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ãƒãƒƒã‚¯ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickBackButton(Unit unit)
         {
-            // Œ»İƒ[ƒh’†‚ÌƒAƒhƒŒƒXˆê——‚ğŠm”F
+            // ç¾åœ¨ãƒ­ãƒ¼ãƒ‰ä¸­ã®ã‚¢ãƒ‰ãƒ¬ã‚¹ä¸€è¦§ã‚’ç¢ºèª
             var loading = AssetManager.Instance.GetLoadedAssets();
             foreach (var addr in loading)
             {
                 Debug.Log($"Now loading: {addr}");
             }
             MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.NoContents);
-            // ©g‚Ì‰æ–Ê‚ğ”jŠü‚·‚é
+            // è‡ªèº«ã®ç”»é¢ã‚’ç ´æ£„ã™ã‚‹
             //MenuWindowManager.Instance.Remove(MenuWindowManager.CreateType.PartySelect);
             //MenuWindowManager.Instance.OrganizeSibling(FooterType.Home);
             //MenuManager.Instance.MoveQuestSelect = true;
@@ -265,7 +265,7 @@ namespace fantec.Menu.PartySortie.Presenter
         }
 
         /// <summary>
-        /// •Â‚¶‚éƒ{ƒ^ƒ“‰Ÿ‰º
+        /// é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private async void OnClickCloseButton(Unit unit)
@@ -278,18 +278,18 @@ namespace fantec.Menu.PartySortie.Presenter
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ‚ÌŒ©‚½–Ú‚ğ”½‰f (Œ»İ3‚Â‚ÌƒfƒbƒL‚ğ—pˆÓ‚µ‚Ä‚¢‚ÄƒfƒbƒL‚ÌØ‘Ö‚ğs‚¢Œ©‚½–Ú‚ğ”½‰f‚·‚é)
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªã®è¦‹ãŸç›®ã‚’åæ˜  (ç¾åœ¨3ã¤ã®ãƒ‡ãƒƒã‚­ã‚’ç”¨æ„ã—ã¦ã„ã¦ãƒ‡ãƒƒã‚­ã®åˆ‡æ›¿ã‚’è¡Œã„è¦‹ãŸç›®ã‚’åæ˜ ã™ã‚‹)
         /// </summary>
         private async UniTask UpdateContents()
         {
-            Debug.Log($"ƒp[ƒeƒB”Ô†: {PlayerPrefsManager.SelectPartyIndex}");
+            Debug.Log($"ãƒ‘ãƒ¼ãƒ†ã‚£ç•ªå·: {PlayerPrefsManager.SelectPartyIndex}");
 
-            // ƒp[ƒeƒB‚Ì“à—e‚ğXV
+            // ãƒ‘ãƒ¼ãƒ†ã‚£ã®å†…å®¹ã‚’æ›´æ–°
             await m_PartySortie.PartySetting(PlayerPrefsManager.SelectPartyIndex, _cts.Token);
-            // ƒgƒOƒ‹‚ÌXV
+            // ãƒˆã‚°ãƒ«ã®æ›´æ–°
             m_ProgressView.ChangeProgress(PlayerPrefsManager.SelectPartyIndex);
 
-            //ƒfƒoƒbƒO Œ»İ‚ÌƒŠ[ƒ_[‚ª’N‚È‚Ì‚©‚ğ”»•Ê‚·‚é
+            //ãƒ‡ãƒãƒƒã‚° ç¾åœ¨ã®ãƒªãƒ¼ãƒ€ãƒ¼ãŒèª°ãªã®ã‹ã‚’åˆ¤åˆ¥ã™ã‚‹
             m_PartySortie.GetLeaderCardID();
         }
 
@@ -297,12 +297,12 @@ namespace fantec.Menu.PartySortie.Presenter
         {
             isAnimating = true;
 
-            // Tween‚Ì‹­“x(ƒxƒNƒgƒ‹‚ÉæZ‚·‚é”’l)
+            // Tweenã®å¼·åº¦(ãƒ™ã‚¯ãƒˆãƒ«ã«ä¹—ç®—ã™ã‚‹æ•°å€¤)
             float magnitude = 15f;
-            // Tween‚Ì‘±ŠÔ
+            // Tweenã®æŒç¶šæ™‚é–“
             float duration = 0.5f;
 
-            // Šù‚ÉÄ¶’†‚ÌƒAƒjƒ[ƒVƒ‡ƒ“‚ğŠ®—¹ó‘Ô‚É‚·‚é(ˆÊ’uƒYƒŒ‚ğ–h‚®‚½‚ß)
+            // æ—¢ã«å†ç”Ÿä¸­ã®ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã‚’å®Œäº†çŠ¶æ…‹ã«ã™ã‚‹(ä½ç½®ã‚ºãƒ¬ã‚’é˜²ããŸã‚)
             m_PartySortie.transform.DOKill();
             m_StageImage.transform.DOKill();
             m_PartySortie.transform.localPosition = partySortieInitialPos;
@@ -310,7 +310,7 @@ namespace fantec.Menu.PartySortie.Presenter
             m_PartySortie.transform.DOComplete(true);
             m_StageImage.transform.DOComplete(true);
 
-            // ƒAƒjƒ[ƒVƒ‡ƒ“‚ÌŠJn
+            // ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ã®é–‹å§‹
             Tween sortieTween = null;
             Tween stageTween = null;
 
@@ -326,7 +326,7 @@ namespace fantec.Menu.PartySortie.Presenter
                     break;
             }
 
-            // Tween‚ÌI—¹‚ğ‘Ò‚Â
+            // Tweenã®çµ‚äº†ã‚’å¾…ã¤
             await UniTask.WhenAll(
               sortieTween.AsyncWaitForCompletion().AsUniTask(),
               stageTween.AsyncWaitForCompletion().AsUniTask()
@@ -336,14 +336,14 @@ namespace fantec.Menu.PartySortie.Presenter
         }
 
         /// <summary>
-        /// ƒfƒBƒŒƒNƒgƒŠ–¼•ÏXƒ{ƒ^ƒ“‰Ÿ‰º‚Ìˆ— (ƒfƒbƒL–¼)
+        /// ãƒ‡ã‚£ãƒ¬ã‚¯ãƒˆãƒªåå¤‰æ›´ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚ã®å‡¦ç† (ãƒ‡ãƒƒã‚­å)
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickNameChangeButton(Unit unit)
         {
             if(MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.NameChange))
             {
-                // –¼‘O‚ª•Ô‚Á‚Ä‚­‚é
+                // åå‰ãŒè¿”ã£ã¦ãã‚‹
                 NameChangeController.Instance.m_DirectoryNameChange.Subscribe(item=>
                 {
                     m_View.UpdateDirectoryName(item);
@@ -353,7 +353,7 @@ namespace fantec.Menu.PartySortie.Presenter
         }
 
         /// <summary>
-        /// ƒgƒOƒ‹’l•ÏX
+        /// ãƒˆã‚°ãƒ«å€¤å¤‰æ›´æ™‚
         /// </summary>
         /// <param name="type"></param>
         private void OnValueChangedToggle(InfoType type)
@@ -378,7 +378,7 @@ namespace fantec.Menu.PartySortie.Presenter
         }
 
         /// <summary>
-        /// ƒXƒƒCƒv‚·‚éÛ‚Éƒp[ƒeƒB[“à—e‚ª•Ï‚í‚Á‚Ä‚¢‚½‚çƒ_ƒCƒAƒƒO‚ğ•\¦‚³‚¹‚é
+        /// ã‚¹ãƒ¯ã‚¤ãƒ—ã™ã‚‹éš›ã«ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼å†…å®¹ãŒå¤‰ã‚ã£ã¦ã„ãŸã‚‰ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤ºã•ã›ã‚‹
         /// </summary>
         private bool CheckChangePartyData()
         {
@@ -386,13 +386,13 @@ namespace fantec.Menu.PartySortie.Presenter
             {
                 PartyData partyData = UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex];
                 bool empty = MenuManager.Instance.IsEmptyMember(partyData);
-                if (empty)// ‰½‚à•Ò¬‚³‚ê‚Ä‚¢‚È‚©‚Á‚½‚çtrue
+                if (empty)// ä½•ã‚‚ç·¨æˆã•ã‚Œã¦ã„ãªã‹ã£ãŸã‚‰true
                 {
-                    // 1‘Ì‚àƒ}ƒM‚ª•Ò¬‚³‚ê‚Ä‚¢‚Ü‚¹‚ñ‚Ìƒ_ƒCƒAƒƒO•\¦
+                    // 1ä½“ã‚‚ãƒã‚®ãŒç·¨æˆã•ã‚Œã¦ã„ã¾ã›ã‚“ã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°è¡¨ç¤º
                     m_CardListView.SetNoticeWindow(true);
                     return true;
                 }
-                else // Œ»İ‚Ì•Ò¬‚ğ•Û‘¶‚µ‚Ü‚·‚©‚Ìƒ_ƒCƒAƒƒO‚ğ•\¦
+                else // ç¾åœ¨ã®ç·¨æˆã‚’ä¿å­˜ã—ã¾ã™ã‹ã®ãƒ€ã‚¤ã‚¢ãƒ­ã‚°ã‚’è¡¨ç¤º
                 {
                     m_CardListView.SetCheckWindow(true);
                     return true;

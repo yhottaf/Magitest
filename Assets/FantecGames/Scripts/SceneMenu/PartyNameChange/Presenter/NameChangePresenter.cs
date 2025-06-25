@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Menu.Manager;
 using fantec.Menu.NameChange.Controller;
 using fantec.Menu.NameChange.View;
@@ -32,7 +32,7 @@ namespace fantec.Menu.NameChange.Presenter
         }
 
         /// <summary>
-        /// ƒL[ƒ[ƒhŒŸõ
+        /// ã‚­ãƒ¼ãƒ¯ãƒ¼ãƒ‰æ¤œç´¢
         /// </summary>
         /// <param name="value"></param>
         private void OnClickNameword(string value)
@@ -51,7 +51,7 @@ namespace fantec.Menu.NameChange.Presenter
 
 
         /// <summary>
-        /// •Â‚¶‚éƒ{ƒ^ƒ“‰Ÿ‰º
+        /// é–‰ã˜ã‚‹ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickCloseButton(Unit unit)
@@ -60,7 +60,7 @@ namespace fantec.Menu.NameChange.Presenter
         }
 
         /// <summary>
-        /// Œˆ’èƒ{ƒ^ƒ“‰Ÿ‰º
+        /// æ±ºå®šãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickSubmitButton(Unit unit)
@@ -70,7 +70,7 @@ namespace fantec.Menu.NameChange.Presenter
                 return;
             }
 
-            NameChangeController.Instance.m_DirectoryNameChange.OnNext(m_InputName);// “ü—Í“à—e‚Ì’Ê’m
+            NameChangeController.Instance.m_DirectoryNameChange.OnNext(m_InputName);// å…¥åŠ›å†…å®¹ã®é€šçŸ¥
             MenuWindowManager.Instance.Remove(MenuWindowManager.CreateType.NameChange);
         }
     }

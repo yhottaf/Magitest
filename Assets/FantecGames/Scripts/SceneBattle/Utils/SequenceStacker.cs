@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using JetBrains.Annotations;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,14 +7,14 @@ using UnityEngine;
 namespace fantec.Battle.Utiles
 {
     /// <summary>
-    /// ƒ^ƒCƒ€ƒXƒP[ƒ‹‚ª•Û‚³‚ê‚é
+    /// ã‚¿ã‚¤ãƒ ã‚¹ã‚±ãƒ¼ãƒ«ãŒä¿æŒã•ã‚Œã‚‹
     /// </summary>
     public class SequenceStacker
     {
         private readonly List<Sequence>m_SequenceList=new List<Sequence>();
         private float m_TimeScale = 1;
 
-        // Ä¶’†‚ÌƒV[ƒPƒ“ƒX‚ª‘¶İ‚·‚é‚©”Û‚©
+        // å†ç”Ÿä¸­ã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ãŒå­˜åœ¨ã™ã‚‹ã‹å¦ã‹
         public bool IsSequenceExist => m_SequenceList.Count != 0;
 
         public float TimeScale

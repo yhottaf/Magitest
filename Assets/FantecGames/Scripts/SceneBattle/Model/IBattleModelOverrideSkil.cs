@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -9,31 +9,31 @@ namespace fantec.Battle.Model
 {
     public interface IBattleModelOverrideSkill : ILocatable,IDisposable,IFookable,IResetable
     {
-        /// <summary> ƒJƒbƒgƒCƒ“ŠÄ‹ </summary>
+        /// <summary> ã‚«ãƒƒãƒˆã‚¤ãƒ³ç›£è¦– </summary>
         IObservable<OverrideSkillEntity> OnCutinObservable { get; }
 
-        /// <summary> ”­“®’†ƒtƒ‰ƒO•Ï“®ŠÄ‹ </summary>
+        /// <summary> ç™ºå‹•ä¸­ãƒ•ãƒ©ã‚°å¤‰å‹•ç›£è¦– </summary>
         IReadOnlyReactiveProperty<bool> OnIsActive { get; }
 
-        /// <summary> —\–ñ’†‚ÌƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹‚ª‘¶İ‚·‚é‚©”Û‚© </summary>
+        /// <summary> äºˆç´„ä¸­ã®ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«ãŒå­˜åœ¨ã™ã‚‹ã‹å¦ã‹ </summary>
         bool IsReserveExists { get; }
 
-        /// <summary> —\–ñƒŠƒXƒg‚É’Ç‰Á‚·‚é </summary>
+        /// <summary> äºˆç´„ãƒªã‚¹ãƒˆã«è¿½åŠ ã™ã‚‹ </summary>
         void Reserve(IBattler affecter);
 
-        /// <summary> —\–ñƒŠƒXƒg‚©‚çæ‚èœ‚­ </summary>
+        /// <summary> äºˆç´„ãƒªã‚¹ãƒˆã‹ã‚‰å–ã‚Šé™¤ã </summary>
         void Cancell(IBattler affecter);
 
-        /// <summary> ƒJƒbƒgƒCƒ“ŠJn </summary>
+        /// <summary> ã‚«ãƒƒãƒˆã‚¤ãƒ³é–‹å§‹ </summary>
         void Activation();
 
-        /// <summary> ƒXƒLƒ‹‚ÌI—¹ </summary>
+        /// <summary> ã‚¹ã‚­ãƒ«ã®çµ‚äº† </summary>
         void Deactivate();
 
-        /// <summary> —\–ñ’†‚ÌƒŠƒXƒg“à‚Ìæ“ª‚É‚¢‚éƒoƒgƒ‰[ </summary>
+        /// <summary> äºˆç´„ä¸­ã®ãƒªã‚¹ãƒˆå†…ã®å…ˆé ­ã«ã„ã‚‹ãƒãƒˆãƒ©ãƒ¼ </summary>
         IBattler GetReserveHeadBattler();
 
-        /// <summary> ƒŠƒXƒg‚ª‹ó‚©‚à‚µ‚ê‚È‚¢‚ªAˆÀ‘S‚Éæ“¾‚µ‚½ê‡‚Ég—p </summary>
+        /// <summary> ãƒªã‚¹ãƒˆãŒç©ºã‹ã‚‚ã—ã‚Œãªã„ãŒã€å®‰å…¨ã«å–å¾—ã—ãŸå ´åˆã«ä½¿ç”¨ </summary>
         public bool TryGetReserveHeadBattler(out IBattler battler);
     }
 }

@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Model;
 using fantec.Common;
 using UnityEngine;
@@ -13,7 +13,7 @@ namespace fantec.Battle.Manager
             {
                 var modelUnits = Locator.Resolve<IBattleModelUnits>();
 
-                // ƒoƒtƒf[ƒ^‚Ìƒ}ƒXƒ^[ƒf[ƒ^‚È‚Ç‚ ‚ê‚Î“Ç‚İ‚İ DOTOs
+                // ãƒãƒ•ãƒ‡ãƒ¼ã‚¿ã®ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ãªã©ã‚ã‚Œã°èª­ã¿è¾¼ã¿ DOTOs
 
                 var sequence = DOTween.Sequence();
 

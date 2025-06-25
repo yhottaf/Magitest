@@ -1,20 +1,20 @@
-
+ï»¿
 namespace fantec
 {
     public partial class Define
     {
         /// <summary>
-        /// ƒp[ƒeƒB‚Ì”
+        /// ãƒ‘ãƒ¼ãƒ†ã‚£ã®æ•°
         /// </summary>
         public const int PARTY_NUM = 5;
 
         /// <summary>
-        /// ƒp[ƒeƒBƒƒ“ƒo[‚Ì’èˆõ
+        /// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¡ãƒ³ãƒãƒ¼ã®å®šå“¡
         /// </summary>
         public const int PARTY_CAPACITY = 3;
 
         /// <summary>
-        /// ŒÀŠE“Ë”j‚ÌMAX”’l
+        /// é™ç•Œçªç ´ã®MAXæ•°å€¤
         /// </summary>
         public const int BREAK_LIMIT_MAX = 6;
     }

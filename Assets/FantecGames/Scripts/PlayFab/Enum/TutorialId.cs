@@ -1,4 +1,4 @@
-namespace fantec.PlayfabCilent
+﻿namespace fantec.PlayfabCilent
 {
     public enum TutorialId
     {

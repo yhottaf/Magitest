@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 
 using System.IO;
 using System.Collections.Generic;
@@ -30,7 +30,7 @@ namespace fantec
 
             var result = new PlayFabResult<UpdateCatalogItemsResult>();
 
-            // JSON¨ƒAƒCƒeƒ€ƒŠƒXƒg‚Ö•ÏŠ·
+            // JSONâ†’ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(ItemDataJsonPath);
             string dataStr = streamReader.ReadToEnd();
             var itemDataList = JsonConvert.DeserializeObject<ConsumeItemData[]>(dataStr);
@@ -42,37 +42,37 @@ namespace fantec
                 {
                     Catalog = new List<CatalogItem>() { new CatalogItem()
                     {
-                        // Á”ïŒ^‚Ì’è‹`
+                        // æ¶ˆè²»å‹ã®å®šç¾©
                         Consumable = new CatalogItemConsumableInfo()
                         {
                             UsageCount = 1,
                         },
-                        // à–¾
+                        // èª¬æ˜
                         Description = itemData.description,
-                        // •\¦–¼
+                        // è¡¨ç¤ºå
                         DisplayName = itemData.name,
-                        // ŒÀ’è¤•i‚Æ‚µ‚Ä”Ì”„‚·‚é
+                        // é™å®šå•†å“ã¨ã—ã¦è²©å£²ã™ã‚‹
                         IsLimitedEdition = false,
-                        // Å‘åŠ”
+                        // æœ€å¤§æ‰€æŒæ•°
                         InitialLimitedEditionCount = itemData.maxItem, 
-                        // ƒXƒ^ƒbƒN‰Â”\
+                        // ã‚¹ã‚¿ãƒƒã‚¯å¯èƒ½
                         IsStackable = true,
-                        // ƒgƒŒ[ƒh‰Â”\
+                        // ãƒˆãƒ¬ãƒ¼ãƒ‰å¯èƒ½
                         IsTradable = false,
-                        // ƒAƒCƒeƒ€ƒNƒ‰ƒX
+                        // ã‚¢ã‚¤ãƒ†ãƒ ã‚¯ãƒ©ã‚¹
                         ItemClass = "Item",
-                        // ƒAƒCƒeƒ€ID
+                        // ã‚¢ã‚¤ãƒ†ãƒ ID
                         ItemId = $"Item{itemData.itemId}",
-                        // ƒAƒCƒeƒ€ƒCƒ[ƒWURL
+                        // ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ¡ãƒ¼ã‚¸URL
                         ItemImageUrl = itemData.imageName,
-                        // ƒ^ƒO
+                        // ã‚¿ã‚°
                         Tags = new List<string>() { "Item" },
                     } },
                     CatalogVersion = "Main",
                     SetAsDefaultCatalog = false,
                 };
 
-                Debug.Log($"ƒAƒCƒeƒ€F{request.Catalog[0].DisplayName}");
+                Debug.Log($"ã‚¢ã‚¤ãƒ†ãƒ ï¼š{request.Catalog[0].DisplayName}");
 
                 result = await PlayFabAdminAPI.UpdateCatalogItemsAsync(request);
 
@@ -82,7 +82,7 @@ namespace fantec
                 }
             }
 
-            Debug.Log("PlayFab‚ÖƒAƒCƒeƒ€ƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
 
         [MenuItem("Build/PlayFabData/InitialRewardStageMaster/Upload RewardData", priority = 1)]
@@ -98,7 +98,7 @@ namespace fantec
 
             var result = new PlayFabResult<UpdateCatalogItemsResult>();
 
-            // JSON¨ƒAƒCƒeƒ€ƒŠƒXƒg‚Ö•ÏŠ·
+            // JSONâ†’ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(InitialRewardDataFilePath);
             string dataStr = streamReader.ReadToEnd();
             var itemDataList = JsonConvert.DeserializeObject<InitialRewardStageData[]>(dataStr);
@@ -110,30 +110,30 @@ namespace fantec
                 {
                     Catalog = new List<CatalogItem>() { new CatalogItem()
                     {
-                        // Á”ïŒ^‚Ì’è‹`
+                        // æ¶ˆè²»å‹ã®å®šç¾©
                         Consumable = new CatalogItemConsumableInfo()
                         {
                                UsagePeriod = 5,
                         },
-                        // à–¾
+                        // èª¬æ˜
                         Description = "",
-                        // •\¦–¼
+                        // è¡¨ç¤ºå
                         DisplayName = "",
-                        // ŒÀ’è¤•i‚Æ‚µ‚Ä”Ì”„‚·‚é
+                        // é™å®šå•†å“ã¨ã—ã¦è²©å£²ã™ã‚‹
                         IsLimitedEdition = false,
-                        // Å‘åŠ”
+                        // æœ€å¤§æ‰€æŒæ•°
                         InitialLimitedEditionCount = 0, 
-                        // ƒXƒ^ƒbƒN‰Â”\
+                        // ã‚¹ã‚¿ãƒƒã‚¯å¯èƒ½
                         IsStackable = false,
-                        // ƒgƒŒ[ƒh‰Â”\
+                        // ãƒˆãƒ¬ãƒ¼ãƒ‰å¯èƒ½
                         IsTradable = false,
-                        // ƒAƒCƒeƒ€ƒNƒ‰ƒX
+                        // ã‚¢ã‚¤ãƒ†ãƒ ã‚¯ãƒ©ã‚¹
                         ItemClass = "Reward",
-                        // ƒAƒCƒeƒ€ID
+                        // ã‚¢ã‚¤ãƒ†ãƒ ID
                         ItemId = $"InitialReward{itemData.tableId}",
-                        // ƒAƒCƒeƒ€ƒCƒ[ƒWURL
+                        // ã‚¢ã‚¤ãƒ†ãƒ ã‚¤ãƒ¡ãƒ¼ã‚¸URL
                         ItemImageUrl = "",
-                        // ƒ^ƒO
+                        // ã‚¿ã‚°
                         Tags = new List<string>() { "Reward" },
                     } },
                     CatalogVersion = "Main",
@@ -150,7 +150,7 @@ namespace fantec
                 }
             }
 
-            Debug.Log("PlayFab‚ÖƒAƒCƒeƒ€ƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ã‚¢ã‚¤ãƒ†ãƒ ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
     }
 }

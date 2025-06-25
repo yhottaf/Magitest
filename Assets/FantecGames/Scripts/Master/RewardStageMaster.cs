@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -8,15 +8,15 @@ namespace fantec.Master
     [Serializable]
     public class RewardStageData:IData
     {
-        public string tableId; // ƒe[ƒuƒ‹ID
-        public string itemId1; // ƒAƒCƒeƒ€ID1
-        public int weight1;    // ƒAƒCƒeƒ€ID1‚Ìd‚İ
-        public string itemId2; // ƒAƒCƒeƒ€ID2
-        public int weight2;    // ƒAƒCƒeƒ€ID2‚Ìd‚İ
-        public string itemId3; // ƒAƒCƒeƒ€ID3
-        public int weight3;    // ƒAƒCƒeƒ€ID3‚Ìd‚İ
-        public int minLottery; // Å¬’Š‘I‰ñ”
-        public int maxLottery; // Å‘å’Š‘I‰ñ”
+        public string tableId; // ãƒ†ãƒ¼ãƒ–ãƒ«ID
+        public string itemId1; // ã‚¢ã‚¤ãƒ†ãƒ ID1
+        public int weight1;    // ã‚¢ã‚¤ãƒ†ãƒ ID1ã®é‡ã¿
+        public string itemId2; // ã‚¢ã‚¤ãƒ†ãƒ ID2
+        public int weight2;    // ã‚¢ã‚¤ãƒ†ãƒ ID2ã®é‡ã¿
+        public string itemId3; // ã‚¢ã‚¤ãƒ†ãƒ ID3
+        public int weight3;    // ã‚¢ã‚¤ãƒ†ãƒ ID3ã®é‡ã¿
+        public int minLottery; // æœ€å°æŠ½é¸å›æ•°
+        public int maxLottery; // æœ€å¤§æŠ½é¸å›æ•°
     }
     [ExcelAsset(AssetPath=AssetPath.MasterLocalDataFolderPath), CreateAssetMenu(fileName = "RewardStageMaster", menuName = "ScriptableObjects/RewardStageMaster")]
     public class RewardStageMaster : MasterBase<RewardStageData>

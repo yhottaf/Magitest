@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+ï»¿using fantec.Battle.Model;
 using UniRx;
 
 namespace fantec.Battle.Field.Chara
@@ -19,7 +19,7 @@ namespace fantec.Battle.Field.Chara
             battler.State.Health.OnHealthChangeObservable     .Subscribe(@this.OnUpdateHealth)   .AddTo(disposables);
             battler.State.Health.OndeadObservable             .Subscribe(@this.OnDead)           .AddTo(disposables);
             battler.State.Health.OnRevivalObservable          .Subscribe(@this.OnRevival)        .AddTo(disposables);
-            // TODO : HP‚Ì‘¼‚É‰½‚©ŠÇ—‚·‚éƒ[ƒ^[‚È‚Ç‚ª‚ ‚ê‚Î‚±‚±‚ÅŠÇ—
+            // TODO : HPã®ä»–ã«ä½•ã‹ç®¡ç†ã™ã‚‹ãƒ¡ãƒ¼ã‚¿ãƒ¼ãªã©ãŒã‚ã‚Œã°ã“ã“ã§ç®¡ç†
         }
     }
 }

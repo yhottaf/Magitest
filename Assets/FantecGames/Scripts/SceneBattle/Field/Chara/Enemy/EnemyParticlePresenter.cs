@@ -1,4 +1,4 @@
-using NUnit.Framework;
+Ôªøusing NUnit.Framework;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,7 +6,7 @@ namespace fantec.Battle.Field.Chara
 {
     public class EnemyParticlePresenter : IParticlePresenter
     {
-        // TODO:ParticleViewÇçÏÇÈ
+        // TODO:ParticleView„Çí‰Ωú„Çã
        // ParticleView
 
         public EnemyParticlePresenter() { }

@@ -1,4 +1,4 @@
-using UniRx;
+ï»¿using UniRx;
 
 
 namespace fantec.Battle
@@ -8,8 +8,8 @@ namespace fantec.Battle
         CompositeDisposable ClosedDisposable { get; }
 
         /// <summary>
-        /// ƒEƒBƒ“ƒhƒE‚ªì¬‚³‚ê‚½Û‚ÉŒÄ‚Î‚ê‚é
-        /// ¦¶¬Œã1“x‚µ‚©ŒÄ‚Î‚ê‚È‚¢‚½‚ß‚±‚±‚Å Subscribe ‚ğs‚¤
+        /// ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ãŒä½œæˆã•ã‚ŒãŸéš›ã«å‘¼ã°ã‚Œã‚‹
+        /// â€»ç”Ÿæˆå¾Œ1åº¦ã—ã‹å‘¼ã°ã‚Œãªã„ãŸã‚ã“ã“ã§ Subscribe ã‚’è¡Œã†
         /// </summary>
         /// <returns></returns>
         T OnCreate();

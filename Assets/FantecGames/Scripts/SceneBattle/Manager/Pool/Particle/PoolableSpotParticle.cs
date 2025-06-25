@@ -1,35 +1,35 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 
 namespace fantec.Battle
 {
     public static class PoolableSpotParticle
     {
         /// <summary>
-        /// —v‘f–¼‚ÍƒvƒŒƒnƒu‚Ìƒtƒ@ƒCƒ‹–¼‚Æ“¯‚¶‚à‚Ì‚É‚·‚é
+        /// è¦ç´ åã¯ãƒ—ãƒ¬ãƒãƒ–ã®ãƒ•ã‚¡ã‚¤ãƒ«åã¨åŒã˜ã‚‚ã®ã«ã™ã‚‹
         /// </summary>
         public enum Index
         {
-            // ƒqƒbƒg
-            Spot_Hit_‘Å,
-            Spot_Hit_’Êí,
-            Spot_Hit_‰Š,
-            Spot_Hit_•X,
+            // ãƒ’ãƒƒãƒˆ
+            Spot_Hit_æ‰“,
+            Spot_Hit_é€šå¸¸,
+            Spot_Hit_ç‚,
+            Spot_Hit_æ°·,
 
-            // ƒoƒt 
+            // ãƒãƒ• 
             Spot_Buff_ATK,
             Spot_Buff,
             Spot_Debuff,
 
-            // ƒoƒtˆÈŠO‚ÌŒø‰Ê”½‰f
+            // ãƒãƒ•ä»¥å¤–ã®åŠ¹æœåæ˜ 
             Spot_Affect_Heal,
 
-            // ƒqƒbƒgí•ÊƒeƒLƒXƒg
-            Spot_HitText_Miss,      // ƒ~ƒX
-            Spot_HitText_Guard,     // ƒK[ƒh
+            // ãƒ’ãƒƒãƒˆç¨®åˆ¥ãƒ†ã‚­ã‚¹ãƒˆ
+            Spot_HitText_Miss,      // ãƒŸã‚¹
+            Spot_HitText_Guard,     // ã‚¬ãƒ¼ãƒ‰
 
-            // ‚»‚Ì‘¼
-            Spot_Other_Lightning,   // ——‹
-            Spot_Other_Glitter,     // ƒLƒ‰[ƒ“
+            // ãã®ä»–
+            Spot_Other_Lightning,   // è½é›·
+            Spot_Other_Glitter,     // ã‚­ãƒ©ãƒ¼ãƒ³
         }
 
         #region Dictionary
@@ -38,10 +38,10 @@ namespace fantec.Battle
         {
             {(int)Index.Spot_Buff_ATK,              Index.Spot_Buff_ATK.ToString() },
             {(int)Index.Spot_Affect_Heal,           Index.Spot_Affect_Heal.ToString() },
-            {(int)Index.Spot_Hit_‘Å,                Index.Spot_Hit_‘Å.ToString() },
-            {(int)Index.Spot_Hit_‰Š,                Index.Spot_Hit_‰Š.ToString()},
-            {(int)Index.Spot_Hit_•X,                Index.Spot_Hit_•X.ToString() },
-            {(int)Index.Spot_Hit_’Êí,              Index.Spot_Hit_’Êí.ToString() },
+            {(int)Index.Spot_Hit_æ‰“,                Index.Spot_Hit_æ‰“.ToString() },
+            {(int)Index.Spot_Hit_ç‚,                Index.Spot_Hit_ç‚.ToString()},
+            {(int)Index.Spot_Hit_æ°·,                Index.Spot_Hit_æ°·.ToString() },
+            {(int)Index.Spot_Hit_é€šå¸¸,              Index.Spot_Hit_é€šå¸¸.ToString() },
             {(int)Index.Spot_HitText_Miss,          Index.Spot_HitText_Miss.ToString() },
             {(int)Index.Spot_HitText_Guard,         Index.Spot_HitText_Guard.ToString() },
             {(int)Index.Spot_Other_Lightning,       Index.Spot_Other_Lightning.ToString() },
@@ -50,9 +50,9 @@ namespace fantec.Battle
 
         private static readonly Dictionary<int, Index> m_AttributeTypeDic = new Dictionary<int, Index>()
         {
-            {(int)AffectAttributeType.’Êí,         Index.Spot_Hit_’Êí },
-            {(int)AffectAttributeType.‰Š,           Index.Spot_Hit_‰Š },
-            {(int)AffectAttributeType.•X,           Index.Spot_Hit_•X },
+            {(int)AffectAttributeType.é€šå¸¸,         Index.Spot_Hit_é€šå¸¸ },
+            {(int)AffectAttributeType.ç‚,           Index.Spot_Hit_ç‚ },
+            {(int)AffectAttributeType.æ°·,           Index.Spot_Hit_æ°· },
         };
 
         private static readonly Dictionary<int, Index> m_HitTextTypeDic = new Dictionary<int, Index>()
@@ -61,7 +61,7 @@ namespace fantec.Battle
             {(int)HitResultType.Guard,     Index.Spot_HitText_Guard},
         };
 
-        // TODO : ƒoƒt‚Ìƒp[ƒeƒBƒNƒ‹‚ğŒˆ‚ß‚½‚¢ê‡‚±‚±‚Åİ’è
+        // TODO : ãƒãƒ•ã®ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã‚’æ±ºã‚ãŸã„å ´åˆã“ã“ã§è¨­å®š
         private static readonly Dictionary<int, Index> m_CategoryTypeDic = new Dictionary<int, Index>()
         {
             {(int)AffectCategoryType.ATK_Buff,        Index.Spot_Buff },
@@ -76,9 +76,9 @@ namespace fantec.Battle
             {(int)AffectCategoryType.MOVE_Debuff,     Index.Spot_Debuff },
             {(int)AffectCategoryType.HP_Buff,         Index.Spot_Buff },
             {(int)AffectCategoryType.HP_Debuff,       Index.Spot_Debuff },
-            {(int)AffectCategoryType.Poison,          Index.Spot_Buff }, // TODO : ³‚µ‚¢ƒGƒtƒFƒNƒg(Index)‚ÉŒã‚Ål‚¦‚é
-            {(int)AffectCategoryType.Burn,            Index.Spot_Hit_‰Š },
-            {(int)AffectCategoryType.Frost,           Index.Spot_Hit_•X},
+            {(int)AffectCategoryType.Poison,          Index.Spot_Buff }, // TODO : æ­£ã—ã„ã‚¨ãƒ•ã‚§ã‚¯ãƒˆ(Index)ã«å¾Œã§è€ƒãˆã‚‹
+            {(int)AffectCategoryType.Burn,            Index.Spot_Hit_ç‚ },
+            {(int)AffectCategoryType.Frost,           Index.Spot_Hit_æ°·},
             {(int)AffectCategoryType.HealFixed,       Index.Spot_Affect_Heal },
             {(int)AffectCategoryType.HealRatio,       Index.Spot_Affect_Heal },
             {(int)AffectCategoryType.RegenRatio,      Index.Spot_Affect_Heal },
@@ -90,25 +90,25 @@ namespace fantec.Battle
         public static string ToStringQuickly(this Index @this)
         {
             try { return m_IndexNameDic[(int)@this]; }
-            catch { throw new KeyNotFoundException($"[index : {@this}] ‚ªƒGƒtƒFƒNƒg—p‚Ì key ‚Æ‚µ‚ÄŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new KeyNotFoundException($"[index : {@this}] ãŒã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”¨ã® key ã¨ã—ã¦å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         public static Index GetIndex(AffectAttributeType attributeType)
         {
             try { return m_AttributeTypeDic[(int)attributeType]; }
-            catch { throw new KeyNotFoundException($"[{nameof(attributeType)} : {attributeType}] ‚ªƒGƒtƒFƒNƒg—p‚Ì key ‚Æ‚µ‚ÄŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new KeyNotFoundException($"[{nameof(attributeType)} : {attributeType}] ãŒã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”¨ã® key ã¨ã—ã¦å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         public static Index GetIndex(AffectCategoryType categoryType)
         {
             try { return m_CategoryTypeDic[(int)categoryType]; }
-            catch { throw new KeyNotFoundException($"[{nameof(categoryType)} : {categoryType}] ‚ªƒGƒtƒFƒNƒg—p‚Ì key ‚Æ‚µ‚ÄŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new KeyNotFoundException($"[{nameof(categoryType)} : {categoryType}] ãŒã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”¨ã® key ã¨ã—ã¦å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         public static Index GetIndex(HitResultType hitType)
         {
             try { return m_HitTextTypeDic[(int)hitType]; }
-            catch { throw new KeyNotFoundException($"[{nameof(hitType)} : {hitType}] ‚ªƒGƒtƒFƒNƒg—p‚Ì key ‚Æ‚µ‚ÄŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new KeyNotFoundException($"[{nameof(hitType)} : {hitType}] ãŒã‚¨ãƒ•ã‚§ã‚¯ãƒˆç”¨ã® key ã¨ã—ã¦å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
     }
 }

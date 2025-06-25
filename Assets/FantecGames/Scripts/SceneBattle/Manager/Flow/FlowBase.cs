@@ -1,21 +1,21 @@
-
+ï»¿
 
 namespace fantec.Battle.Manager
 {
     public abstract class FlowBase
     {
         /// <summary>
-        /// ƒtƒ[ŠJn‚ÉŒÄ‚Î‚ê‚é
+        /// ãƒ•ãƒ­ãƒ¼é–‹å§‹æ™‚ã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         public virtual void OnEnter(BattleFlowManager manager,FlowBase prevFlow) { }
 
         /// <summary>
-        /// –ˆƒtƒŒ[ƒ€ŒÄ‚Î‚ê‚é
+        /// æ¯ãƒ•ãƒ¬ãƒ¼ãƒ å‘¼ã°ã‚Œã‚‹
         /// </summary>
         public virtual void OnUpdate(BattleFlowManager manager) { }
 
         /// <summary>
-        /// ƒtƒ[I—¹‚ÉŒÄ‚Î‚ê‚é
+        /// ãƒ•ãƒ­ãƒ¼çµ‚äº†æ™‚ã«å‘¼ã°ã‚Œã‚‹
         /// </summary>
         public virtual void OnExit(BattleFlowManager manager,FlowBase nextFlow) { }
     }

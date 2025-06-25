@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Utilities
 {
@@ -31,23 +31,23 @@ namespace fantec.Utilities
 
         private void Resize()
         {
-            var screenAspect=Screen.width/ (float)Screen.height;     // ‰æ–Ê‚ÌƒAƒXƒyƒNƒg”ä
-            var targetAspect = m_TargetAspect.x / m_TargetAspect.y;  // –Ú“I‚ÌƒAƒXƒyƒNƒg”ä
-            var magRate = targetAspect / screenAspect;               // –Ú“IƒAƒXƒyƒNƒg”ä‚É‚·‚é‚½‚ß‚Ì”{—¦
-            var viewportRect = DEFAULT_VIEWPORT_RECT;                // Viewport‰Šú’l‚ÅRect‚ğì¬
+            var screenAspect=Screen.width/ (float)Screen.height;     // ç”»é¢ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”
+            var targetAspect = m_TargetAspect.x / m_TargetAspect.y;  // ç›®çš„ã®ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”
+            var magRate = targetAspect / screenAspect;               // ç›®çš„ã‚¢ã‚¹ãƒšã‚¯ãƒˆæ¯”ã«ã™ã‚‹ãŸã‚ã®å€ç‡
+            var viewportRect = DEFAULT_VIEWPORT_RECT;                // ViewportåˆæœŸå€¤ã§Rectã‚’ä½œæˆ
 
             if(magRate<1)
             {
-                viewportRect.width = magRate;                        // g—p‚·‚é‰¡•‚ğ•ÏX
-                viewportRect.x = 0.5f - viewportRect.width * 0.5f;   // ’†‰›‚ÉŠñ‚¹‚é
+                viewportRect.width = magRate;                        // ä½¿ç”¨ã™ã‚‹æ¨ªå¹…ã‚’å¤‰æ›´
+                viewportRect.x = 0.5f - viewportRect.width * 0.5f;   // ä¸­å¤®ã«å¯„ã›ã‚‹
             }
             else
             {
-                viewportRect.height = 1 / magRate;                    // g—p‚·‚éc•‚ğ•ÏX
-                viewportRect.y = 0.5f - viewportRect.height * 0.5f;   // ’†‰›‚ÉŠñ‚¹‚é
+                viewportRect.height = 1 / magRate;                    // ä½¿ç”¨ã™ã‚‹ç¸¦å¹…ã‚’å¤‰æ›´
+                viewportRect.y = 0.5f - viewportRect.height * 0.5f;   // ä¸­å¤®ã«å¯„ã›ã‚‹
             }
 
-            m_Camera.rect = viewportRect;                             // ƒJƒƒ‰‚ÌViewport‚É“K—p
+            m_Camera.rect = viewportRect;                             // ã‚«ãƒ¡ãƒ©ã®Viewportã«é©ç”¨
         }
     }
 }

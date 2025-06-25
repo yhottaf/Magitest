@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using fantec.Master;
 using System.Collections.Generic;
 using fantec.Battle.Manager;

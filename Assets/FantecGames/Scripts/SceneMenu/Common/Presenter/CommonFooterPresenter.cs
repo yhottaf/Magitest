@@ -1,4 +1,4 @@
-using fantec.Menu.Common.View;
+ï»¿using fantec.Menu.Common.View;
 using UnityEngine;
 using UniRx;
 using fantec.Menu.Manager;
@@ -24,7 +24,7 @@ namespace fantec.Menu.Common.Presenter
         }
 
         /// <summary>
-        /// ƒz[ƒ€ƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ãƒ›ãƒ¼ãƒ ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="unit"></param>
         private void OnClickHomeButton(Unit unit)
@@ -38,14 +38,14 @@ namespace fantec.Menu.Common.Presenter
             }
         }
 
-        // ƒtƒbƒ^[‚ÌƒNƒGƒXƒgƒ{ƒ^ƒ“‚ğ‰Ÿ‚·‚Æ‹­§í“¬‹@”\(ƒTƒ“ƒvƒ‹)‚É‘JˆÚ‚Å‚«‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­
+        // ãƒ•ãƒƒã‚¿ãƒ¼ã®ã‚¯ã‚¨ã‚¹ãƒˆãƒœã‚¿ãƒ³ã‚’æŠ¼ã™ã¨å¼·åˆ¶æˆ¦é—˜æ©Ÿèƒ½(ã‚µãƒ³ãƒ—ãƒ«)ã«é·ç§»ã§ãã‚‹ã‚ˆã†ã«ã—ã¦ãŠã
         private async void OnClickTestQuestButton(Unit unit)
         {
             if (footerType != FooterType.Quest)
             {
                 // SEManager.Instance.Play();
 
-                // ƒXƒ^ƒ~ƒi‚ª‘«‚è‚Ä‚¢‚é‚©
+                // ã‚¹ã‚¿ãƒŸãƒŠãŒè¶³ã‚Šã¦ã„ã‚‹ã‹
                 int stamina = MasterDataManager.Instance.StageMaster.GetData(MenuManager.Instance.SelectStageId).stamina;
 
                 // if (stamina <= VirtualCurrencyManager.Stamina)
@@ -61,7 +61,7 @@ namespace fantec.Menu.Common.Presenter
 
                 //    var lotteryForBattleData = await DummyServerForBattle.GetLotteryAsync(MenuManager.Instance.SelectStageId);
 
-                //    // ƒCƒ“ƒQ[ƒ€‘¤‚Öƒf[ƒ^‚ğ•Ô‚·
+                //    // ã‚¤ãƒ³ã‚²ãƒ¼ãƒ å´ã¸ãƒ‡ãƒ¼ã‚¿ã‚’è¿”ã™
                 //    BridgingData brindgingData = BridgingDataProvider.Get;
                 //    brindgingData.SetTeamData(UserDataManager.PartyList[PlayerPrefsManager.SelectPartyIndex].GetTeamData());
                 //    brindgingData.SetStageData(MasterDataManager.Instance.StageMaster.GetData(MenuManager.Instance.SelectStageId));
@@ -72,7 +72,7 @@ namespace fantec.Menu.Common.Presenter
                 //}
                 //else
                 //{
-                //    Debug.Log("Á”ï‚·‚éƒXƒ^ƒ~ƒi‚ª‘«‚è‚Ü‚¹‚ñFŒ»İ‰ñ•œƒAƒCƒeƒ€‚É‚æ‚éƒXƒ^ƒ~ƒi‰ñ•œ‹@”\‚Í–¢À‘•");
+                //    Debug.Log("æ¶ˆè²»ã™ã‚‹ã‚¹ã‚¿ãƒŸãƒŠãŒè¶³ã‚Šã¾ã›ã‚“ï¼šç¾åœ¨å›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã«ã‚ˆã‚‹ã‚¹ã‚¿ãƒŸãƒŠå›å¾©æ©Ÿèƒ½ã¯æœªå®Ÿè£…");
                 //}
 
                 MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.PartySelect);

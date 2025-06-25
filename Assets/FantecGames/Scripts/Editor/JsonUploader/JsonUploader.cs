@@ -1,4 +1,4 @@
-#if UNITY_EDITOR && ENABLE_PLAYFABADMIN_API && !DISABLE_PLAYFAB_STATIC_API && ENABLE_PLAYFABSERVER_API
+ï»¿#if UNITY_EDITOR && ENABLE_PLAYFABADMIN_API && !DISABLE_PLAYFAB_STATIC_API && ENABLE_PLAYFABSERVER_API
 
 using System.IO;
 using System.Threading;
@@ -43,7 +43,7 @@ namespace fantec
                 Debug.Log($"Uploaded / FileName : {data.Item1} json : {data.Item2}");
             }
 
-            // ŒãŽn––
+            // å¾Œå§‹æœ«
             CancellationTokenSource.Dispose();
             CancellationTokenSource = null;
 

@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -6,14 +6,14 @@ namespace fantec.Battle.Model
 {
     public interface IBattlerParamAdventSkill : IDisposable,IResetable,IActionNotify
     {
-        // ƒXƒLƒ‹‚Ì”­“®‚ğŠÄ‹
+        // ã‚¹ã‚­ãƒ«ã®ç™ºå‹•ã‚’ç›£è¦–
         IObservable<AffectInfo> OnActivationObservable { get; }
 
-        // Œ»İæ“ª‚É‚ ‚é”­“®‘Ò‚¿‚ÌƒXƒLƒ‹‚ª‚È‚¯‚ê‚Î’ÊíUŒ‚
+        // ç¾åœ¨å…ˆé ­ã«ã‚ã‚‹ç™ºå‹•å¾…ã¡ã®ã‚¹ã‚­ãƒ«ãŒãªã‘ã‚Œã°é€šå¸¸æ”»æ’ƒ
         AbstructSkillEntity HeadEntity { get; }
         NormalAttackEntity NormalEntity { get; }
 
-        // Ÿ‚É”­“®‰Â”\‚ÈƒXƒLƒ‹‚ª‘¶İ‚·‚é‚©”Û‚©
+        // æ¬¡ã«ç™ºå‹•å¯èƒ½ãªã‚¹ã‚­ãƒ«ãŒå­˜åœ¨ã™ã‚‹ã‹å¦ã‹
         bool IsConsumable { get; }
 
         ActionCapsule GetActionCapsule(int index);
@@ -27,11 +27,11 @@ namespace fantec.Battle.Model
 
     public interface IBattlerParamAdventSkillPrivate:IBattlerParamAdventSkill
     {
-        // •Û—L‚µ‚Ä‚¢‚éƒXƒLƒ‹ƒŠƒXƒg
+        // ä¿æœ‰ã—ã¦ã„ã‚‹ã‚¹ã‚­ãƒ«ãƒªã‚¹ãƒˆ
   //      List<AdventSkillEntity> OwnedEntityList { get; }
-        // –‘O—\–ñ’†‚ÌƒXƒLƒ‹IDƒŠƒXƒg”z—ñ
+        // äº‹å‰äºˆç´„ä¸­ã®ã‚¹ã‚­ãƒ«IDãƒªã‚¹ãƒˆé…åˆ—
         ActionCapsule[] AdvanceActionCapsules { get; }
-        // ”­“®‘Ò‚¿‚ÌƒXƒLƒ‹ƒŠƒXƒg
+        // ç™ºå‹•å¾…ã¡ã®ã‚¹ã‚­ãƒ«ãƒªã‚¹ãƒˆ
         ActionCapsule ReserveActionCapsule { get; }
 
     }
@@ -40,13 +40,13 @@ namespace fantec.Battle.Model
     {
         public static AbstructSkillEntity GetHeadEntity(this IBattlerParamAdventSkillPrivate @this)
         {
-            // Œ»ó’ÊíUŒ‚‚Ì‚İ‚ğæ“¾
+            // ç¾çŠ¶é€šå¸¸æ”»æ’ƒã®ã¿ã‚’å–å¾—
 
                 return @this.NormalEntity;
         }
 
         /// <summary>
-        /// ‘O‹l‚ß‚µAÅŒã”ö‚É’ÊíUŒ‚‚ğ’Ç‰Á‚·‚é
+        /// å‰è©°ã‚ã—ã€æœ€å¾Œå°¾ã«é€šå¸¸æ”»æ’ƒã‚’è¿½åŠ ã™ã‚‹
         /// </summary>
         public static void AddLottelyAdvanceReserve(this IBattlerParamAdventSkillPrivate @this)
         {
@@ -54,7 +54,7 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// ‘O‹l‚ß‚µAÅŒã”ö‚Éƒfƒ“ƒWƒƒ[•Û—¯‚ğ’Ç‰Á‚·‚é
+        /// å‰è©°ã‚ã—ã€æœ€å¾Œå°¾ã«ãƒ‡ãƒ³ã‚¸ãƒ£ãƒ¼ä¿ç•™ã‚’è¿½åŠ ã™ã‚‹
         /// </summary>
         public static void AddDangerAdvanceReserve(this IBattlerParamAdventSkillPrivate @this)
         {
@@ -62,39 +62,39 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// —v‘f‚ğ‘O‚É‚¸‚ç‚µˆø”‚Ì’l‚ğŒã‚ë‚É‰Á‚¦‚é
+        /// è¦ç´ ã‚’å‰ã«ãšã‚‰ã—å¼•æ•°ã®å€¤ã‚’å¾Œã‚ã«åŠ ãˆã‚‹
         /// </summary>
         private static void ShiftForwardAdvanceReserve(this IBattlerParamAdventSkillPrivate @this, ActionCapsule actionCapsule)
         {
             if (@this.AdvanceActionCapsules == null) return;
             for (int i = 0; i < @this.AdvanceActionCapsules.Length; i++)
             {
-                // ÅŒã”ö‚Ì—v‘f‚Å‚ ‚ê‚Î
+                // æœ€å¾Œå°¾ã®è¦ç´ ã§ã‚ã‚Œã°
                 if (i == @this.AdvanceActionCapsules.Length - 1)
                 {
-                    // ˆø”‚Ì’l‚ğ“ü‚ê‚Ş
+                    // å¼•æ•°ã®å€¤ã‚’å…¥ã‚Œè¾¼ã‚€
                     @this.AdvanceActionCapsules[i] = actionCapsule;
                 }
-                // ‚»‚êˆÈŠO‚Í
+                // ãã‚Œä»¥å¤–ã¯
                 else
                 {
-                    // ‚Ğ‚Æ‚Â‘O‚ÉƒYƒ‰‚·
+                    // ã²ã¨ã¤å‰ã«ã‚ºãƒ©ã™
                     @this.AdvanceActionCapsules[i] = @this.AdvanceActionCapsules[i + 1];
                 }
             }
         }
 
         /// <summary>
-        /// —\–ñƒŠƒXƒg“à‚Ì—v‘f‚·‚×‚Ä‚ğ’Š‘I‚·‚é
+        /// äºˆç´„ãƒªã‚¹ãƒˆå†…ã®è¦ç´ ã™ã¹ã¦ã‚’æŠ½é¸ã™ã‚‹
         /// </summary>
         public static ActionCapsule[] CreateAdvanceReserve(this IBattlerParamAdventSkillPrivate @this, int count)
         {
-            // ì¬‚µ‚½‚¢ŒÂ”•ª‚Ì”z—ñ‚ğ—pˆÓ
+            // ä½œæˆã—ãŸã„å€‹æ•°åˆ†ã®é…åˆ—ã‚’ç”¨æ„
             var resultLists = new ActionCapsule[count];
 
             for (int i = 0; i < count; i++)
             {
-                // ’Š‘IŒ‹‰Ê‚ğƒŠƒXƒg‚É“ü‚ê‚Ş(¡‰ñ‚ÍƒXƒLƒ‹‚Å‚Í‚È‚­’ÊíUŒ‚‚ğ“ü‚ê‚é‚Ì‚İ TODO :ƒXƒLƒ‹ŠÖŒW)
+                // æŠ½é¸çµæœã‚’ãƒªã‚¹ãƒˆã«å…¥ã‚Œè¾¼ã‚€(ä»Šå›ã¯ã‚¹ã‚­ãƒ«ã§ã¯ãªãé€šå¸¸æ”»æ’ƒã‚’å…¥ã‚Œã‚‹ã®ã¿ TODO :ã‚¹ã‚­ãƒ«é–¢ä¿‚)
                 resultLists[i] = new ActionCapsule(@this.NormalEntity);
             }
 
@@ -102,11 +102,11 @@ namespace fantec.Battle.Model
         }
 
         /// <summary>
-        /// —\–ñƒXƒLƒ‹‚ğXV‚·‚é
+        /// äºˆç´„ã‚¹ã‚­ãƒ«ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         public static void UpdateReserve(this IBattlerParamAdventSkillPrivate @this)
         {
-            // æ“ª‚ğ“ü‚ê‚Ş
+            // å…ˆé ­ã‚’å…¥ã‚Œè¾¼ã‚€
             @this.ReserveActionCapsule.Copy(@this.AdvanceActionCapsules[0]);
         }
     }

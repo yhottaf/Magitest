@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Common;
 
 namespace fantec.Master
@@ -6,14 +6,14 @@ namespace fantec.Master
     [System.Serializable]
     public class PlayerCardData:AbstructCardData
     {
-        [Header("ƒvƒŒƒCƒ„[ŒÅ—Lî•ñ")]
-        public string[] homeVoice; // ƒz[ƒ€—pƒ{ƒCƒX
-        public string expTableKey; // ƒJ[ƒh‚ÌŒoŒ±’lƒe[ƒuƒ‹
-        public string getStartSchedule; // “üèŠJnƒXƒPƒWƒ…[ƒ‹
-        public string getEndSchedule;   // “üèI—¹ƒXƒPƒWƒ…[ƒ‹
-        public Vector3 Live2DlocalPosition; // Live2D‚ÌƒfƒtƒHƒ‹ƒgƒ|ƒWƒVƒ‡ƒ“
-        public Vector3 Live2DlocalScale; // Live2D‚ÌƒfƒtƒHƒ‹ƒgƒXƒP[ƒ‹
-        public string[] AnimationClip; //Live2D‚Åg—p‚·‚éƒ‚[ƒVƒ‡ƒ“
+        [Header("ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å›ºæœ‰æƒ…å ±")]
+        public string[] homeVoice; // ãƒ›ãƒ¼ãƒ ç”¨ãƒœã‚¤ã‚¹
+        public string expTableKey; // ã‚«ãƒ¼ãƒ‰ã®çµŒé¨“å€¤ãƒ†ãƒ¼ãƒ–ãƒ«
+        public string getStartSchedule; // å…¥æ‰‹é–‹å§‹ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+        public string getEndSchedule;   // å…¥æ‰‹çµ‚äº†ã‚¹ã‚±ã‚¸ãƒ¥ãƒ¼ãƒ«
+        public Vector3 Live2DlocalPosition; // Live2Dã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆãƒã‚¸ã‚·ãƒ§ãƒ³
+        public Vector3 Live2DlocalScale; // Live2Dã®ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã‚¹ã‚±ãƒ¼ãƒ«
+        public string[] AnimationClip; //Live2Dã§ä½¿ç”¨ã™ã‚‹ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³
 
         public int GetLevelByExp(int totalExp)
         {
@@ -42,12 +42,12 @@ namespace fantec.Master
             return level;
         }
 
-        // i‰»ƒf[ƒ^
-        //ŒÀ“Êƒf[ƒ^‚ğ‘‚­‚È‚ç‚±‚±‚É‹LÚ
+        // é€²åŒ–ãƒ‡ãƒ¼ã‚¿
+        //é™å‡¸ãƒ‡ãƒ¼ã‚¿ã‚’æ›¸ããªã‚‰ã“ã“ã«è¨˜è¼‰
 
 
         //------------------------------------------------------------
-        // ŒoŒ±’l‚É‰‚¶‚½ƒpƒ‰ƒ[ƒ^æ“¾
+        // çµŒé¨“å€¤ã«å¿œã˜ãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å–å¾—
         //------------------------------------------------------------
 
         public int GetHpByExp(int totalExp,CardRarityType rarityType=CardRarityType.R1,int overLimitCount=0)
@@ -71,7 +71,7 @@ namespace fantec.Master
         }
 
         //------------------------------------------------------------
-        // ƒŒƒxƒ‹‚É‰‚¶‚½ƒpƒ‰ƒ[ƒ^æ“¾
+        // ãƒ¬ãƒ™ãƒ«ã«å¿œã˜ãŸãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿å–å¾—
         //------------------------------------------------------------
         public int GetHpByLevel(int level,CardRarityType rarityType=CardRarityType.R1,int overLimitCount=0)
         {
@@ -100,7 +100,7 @@ namespace fantec.Master
                 + GetSpdByLevel(level, rarityType, overLimitCount);
         }
 
-        // ƒLƒƒƒ‰‚É‘®«‚Ì‘Ï«‚È‚Ç‚ª‚ ‚èA“Ê”‚É‚æ‚Á‚Äã‚°‚½‚¢ê‡‚Í‚±‚±‚É‹LÚ‚·‚é
+        // ã‚­ãƒ£ãƒ©ã«å±æ€§ã®è€æ€§ãªã©ãŒã‚ã‚Šã€å‡¸æ•°ã«ã‚ˆã£ã¦ä¸Šã’ãŸã„å ´åˆã¯ã“ã“ã«è¨˜è¼‰ã™ã‚‹
     }
     [ExcelAsset(AssetPath=AssetPath.MasterLocalDataFolderPath), CreateAssetMenu(fileName = "PlayerCardMaster", menuName = "ScriptableObjects/PlayerCardMaster")]
     public class PlayerCardMaster:AbsturctCardMaster<PlayerCardData>

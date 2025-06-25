@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Manager;
 using fantec.Common;
 using System.Collections.Generic;
@@ -30,17 +30,17 @@ namespace fantec.Battle.Model
             var resourceManager = Locator.Resolve<IBattleResourceManager>();
             var overrideEntity = OverrideSkillEntityExtensions.ConvertToEntity(cardData.attributeType, new List<(int id, int level)>
             {
-                (cardData.OverrideId,unit.OverrideLevel),            // ƒŠƒXƒg‚Ì0”Ô–Ú‚ÉƒI[ƒo[ƒ‰ƒCƒh
-                (cardData.ExsaOverrideId,unit.ExsaOverrideLevel),    // ƒŠƒXƒg‚Ì1”Ô–Ú‚ÉƒGƒNƒT
-                (cardData.SectaOverrideId,unit.SectaOverrideLevel),  // ƒŠƒXƒg‚Ì2”Ô–Ú‚Éƒ[ƒ^
-                (cardData.QuetaOverrideId, unit.QuetaOverrideLevel), // ƒŠƒXƒg‚Ì3”Ô–Ú‚ÉƒNƒGƒ^‚ğ“ü‚ê‚é
+                (cardData.OverrideId,unit.OverrideLevel),            // ãƒªã‚¹ãƒˆã®0ç•ªç›®ã«ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+                (cardData.ExsaOverrideId,unit.ExsaOverrideLevel),    // ãƒªã‚¹ãƒˆã®1ç•ªç›®ã«ã‚¨ã‚¯ã‚µ
+                (cardData.SectaOverrideId,unit.SectaOverrideLevel),  // ãƒªã‚¹ãƒˆã®2ç•ªç›®ã«ã‚¼ã‚¿
+                (cardData.QuetaOverrideId, unit.QuetaOverrideLevel), // ãƒªã‚¹ãƒˆã®3ç•ªç›®ã«ã‚¯ã‚¨ã‚¿ã‚’å…¥ã‚Œã‚‹
             });
             string spinePath = AssetPath.GetCharacterSpinePath(cardData.originId);
             string CutinPath = AssetPath.GetCharacterSpriteCutinPath(cardData.originId);
       //      await resourceManager.CasheSkeletonAsync(spinePath, CancellationToken.None);
         //    await resourceManager.CasheSpriteAsync(CutinPath,CancellationToken.None);
             var infoEntity = cardData.ToInfoEntity(unit.rarityType, unit.positionIndex);
-            var stateEntity = cardData.ToStateEntity(unit.cardLevel, unit.rarityType, 0,leader);// TODO:ŒÀ“Ê0‚Í‰¼ƒf[ƒ^Œq‚¬‚İ‚Í¡Œã‚â‚é‰Â”\«‚ª‚ ‚é‚Ì‚Å
+            var stateEntity = cardData.ToStateEntity(unit.cardLevel, unit.rarityType, 0,leader);// TODO:é™å‡¸0ã¯ä»®ãƒ‡ãƒ¼ã‚¿ç¹‹ãè¾¼ã¿ã¯ä»Šå¾Œã‚„ã‚‹å¯èƒ½æ€§ãŒã‚ã‚‹ã®ã§
 
             m_Unit.Setup(infoEntity);
             m_State.Setup(stateEntity);
@@ -48,7 +48,7 @@ namespace fantec.Battle.Model
 
             m_AdventSkill.Setup(normalEntity);
 
-            // Unit‚Ìî•ñ‚ª•K—v‚È‚Ì‚ÅÅŒã‚ÉƒZƒbƒgƒAƒbƒv
+            // Unitã®æƒ…å ±ãŒå¿…è¦ãªã®ã§æœ€å¾Œã«ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
             m_Transform.Setup(this.GetBattlerPosition());
 
             base.SetupCompleted();

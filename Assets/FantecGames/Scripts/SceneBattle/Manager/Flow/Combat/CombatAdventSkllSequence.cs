@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Model;
 using fantec.Battle.Utiles;
 using System;
@@ -24,11 +24,11 @@ namespace fantec.Battle.Manager.Flow
         }
 
         /// <summary>
-        /// ƒ^[ƒ“‚ği‚ß‚é
+        /// ã‚¿ãƒ¼ãƒ³ã‚’é€²ã‚ã‚‹
         /// </summary>
         public void Execute()
         {
-            // ƒV[ƒPƒ“ƒX‚ÌŠJn
+            // ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®é–‹å§‹
             SectionSetup();
         }
 
@@ -41,7 +41,7 @@ namespace fantec.Battle.Manager.Flow
 
         private void SectionSetup()
         {
-            // Œø‰Êî•ñ‚ğì¬
+            // åŠ¹æœæƒ…å ±ã‚’ä½œæˆ
             var affector = Locator.Resolve<IBattleModelAdventSkill>().ReserveHead;
             var entity = affector.AdventSkill.HeadEntity;
             var infoBox = new AffectInfoBox(entity, affector);
@@ -65,38 +65,38 @@ namespace fantec.Battle.Manager.Flow
 
             sequence.Append(this.GetAffectSequence(infoBox, info =>
             {
-                 Affect.Execute(info);                     // Œø‰Ê‚Ì”½‰f
+                 Affect.Execute(info);                     // åŠ¹æœã®åæ˜ 
 
-                if (Locator.Resolve<IBattleModelUnits>().IsSettled) // Œˆ’…‚ª‚Â‚¢‚Ä‚¢‚ê‚Î
+                if (Locator.Resolve<IBattleModelUnits>().IsSettled) // æ±ºç€ãŒã¤ã„ã¦ã„ã‚Œã°
                 {
-                    SectionTurnEnd(infoBox);             // ƒ^[ƒ“I—¹‚Ö
+                    SectionTurnEnd(infoBox);             // ã‚¿ãƒ¼ãƒ³çµ‚äº†ã¸
                 }
             }));
             sequence.OnComplete(() =>
             {
-                        infoBox.Owner.State.Progress(AffectTurnConsumeType.SectionByOwner);  // ”­“®Ò‚ÌŒø‰Ê‘±ƒ^[ƒ“‚ÌXV
+                        infoBox.Owner.State.Progress(AffectTurnConsumeType.SectionByOwner);  // ç™ºå‹•è€…ã®åŠ¹æœæŒç¶šã‚¿ãƒ¼ãƒ³ã®æ›´æ–°
 
-                        foreach (var battler in infoBox.GetAttackedTargets())                 // ƒ^[ƒQƒbƒg‚ÌŒø‰Ê‘±ƒ^[ƒ“‚ÌXV
+                        foreach (var battler in infoBox.GetAttackedTargets())                 // ã‚¿ãƒ¼ã‚²ãƒƒãƒˆã®åŠ¹æœæŒç¶šã‚¿ãƒ¼ãƒ³ã®æ›´æ–°
                         {
                             battler.State.Progress(AffectTurnConsumeType.SectionByTarget);
                         }
 
-                        if (Locator.Resolve<IBattleModelUnits>().IsSettled)              // Œˆ’…‚ª‚Â‚¢‚Ä‚¢‚ê‚Î
+                        if (Locator.Resolve<IBattleModelUnits>().IsSettled)              // æ±ºç€ãŒã¤ã„ã¦ã„ã‚Œã°
                         {
-                            Locator.Resolve<IBattleModelAdventSkill>().ConsumeAll();  // ‘S‚ÄÁ”ï
+                            Locator.Resolve<IBattleModelAdventSkill>().ConsumeAll();  // å…¨ã¦æ¶ˆè²»
                         }
-                        else                                                            // í“¬’†‚Å‚ ‚ê‚Î
+                        else                                                            // æˆ¦é—˜ä¸­ã§ã‚ã‚Œã°
                         {
-                            Locator.Resolve<IBattleModelAdventSkill>().Consume();     // ”­“®•ª‚ğÁ”ï
+                            Locator.Resolve<IBattleModelAdventSkill>().Consume();     // ç™ºå‹•åˆ†ã‚’æ¶ˆè²»
                         }
 
-                        if (Locator.Resolve<IBattleModelAdventSkill>().IsConsumable)  // ”­“®‘Ò‚¿ƒXƒLƒ‹‚ª‚ ‚ê‚Î
+                        if (Locator.Resolve<IBattleModelAdventSkill>().IsConsumable)  // ç™ºå‹•å¾…ã¡ã‚¹ã‚­ãƒ«ãŒã‚ã‚Œã°
                         {
-                            SectionReTurn();         // Ÿ‚ÌƒXƒLƒ‹
+                            SectionReTurn();         // æ¬¡ã®ã‚¹ã‚­ãƒ«
                         }
-                        else                         // ‚·‚×‚ÄÁ”ïÏ‚İ‚Å‚ ‚ê‚Î
+                        else                         // ã™ã¹ã¦æ¶ˆè²»æ¸ˆã¿ã§ã‚ã‚Œã°
                         {
-                            SectionTurnEnd(infoBox); // ƒ^[ƒ“‚ÌI—¹
+                            SectionTurnEnd(infoBox); // ã‚¿ãƒ¼ãƒ³ã®çµ‚äº†
                         }
        
             });
@@ -105,7 +105,7 @@ namespace fantec.Battle.Manager.Flow
         private void SectionMove(AffectInfoBox infoBox)
         {
             var owner = infoBox.Owner;
-            int movePower = owner.State.CurrentMOVE; // ˆÚ“®—Í
+            int movePower = owner.State.CurrentMOVE; // ç§»å‹•åŠ›
             MoveStepRecursive(owner, infoBox, movePower);
         }
 
@@ -126,13 +126,13 @@ namespace fantec.Battle.Manager.Flow
                     }
                     owner.OverrideSkill.ActivateBlur();
 
-                    // DOTween ‚Åƒuƒ‰ƒbƒNƒAƒEƒgƒAƒjƒ[ƒVƒ‡ƒ“Œã‚Éƒ^[ƒ“I—¹
+                    // DOTween ã§ãƒ–ãƒ©ãƒƒã‚¯ã‚¢ã‚¦ãƒˆã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³å¾Œã«ã‚¿ãƒ¼ãƒ³çµ‚äº†
                     var sequenceBlackOut = DOTween.Sequence();
                     sequenceBlackOut.AppendCallback(() =>
                     {
                         Locator.Resolve<IBattleAnimationManager>().Play<IBlackoutAnimation>();
                     });
-                    sequenceBlackOut.AppendInterval(0.1f); // ­‚µ‘Ò‚Á‚Ä‚©‚çI—¹
+                    sequenceBlackOut.AppendInterval(0.1f); // å°‘ã—å¾…ã£ã¦ã‹ã‚‰çµ‚äº†
                     sequenceBlackOut.AppendCallback(() =>
                     {
                         SectionTurnEnd(infoBox);
@@ -140,7 +140,7 @@ namespace fantec.Battle.Manager.Flow
                 }
                 else
                 {
-                    // DOTween ‚ÅƒfƒBƒŒƒCŒã‚É SectionActivate ŒÄ‚Ño‚µ
+                    // DOTween ã§ãƒ‡ã‚£ãƒ¬ã‚¤å¾Œã« SectionActivate å‘¼ã³å‡ºã—
                     var Normalsequence = DOTween.Sequence();
                     Normalsequence.AppendInterval(m_AttackInterval);
                     Normalsequence.AppendCallback(() =>
@@ -151,7 +151,7 @@ namespace fantec.Battle.Manager.Flow
                 return;
             }
 
-            // Ÿ‚Ìƒ}ƒX‚ğŒvZ‚µ‚Äİ’è
+            // æ¬¡ã®ãƒã‚¹ã‚’è¨ˆç®—ã—ã¦è¨­å®š
             owner.Unit.Entity.positionIndex = Locator.Resolve<IBattlePlacementManager>().GetNextPositionIndex(owner);
 
             if (remainingMoves == 1)
@@ -161,24 +161,24 @@ namespace fantec.Battle.Manager.Flow
 
             var sequence = this.CreateSequence();
 
-            sequence.AppendInterval(0.2f); // ‘O‚Ìˆ—‚Æ‚ÌŠÔŠu
+            sequence.AppendInterval(0.2f); // å‰ã®å‡¦ç†ã¨ã®é–“éš”
 
-            // ­‚µŠÔ‚ğ‚¨‚¢‚Ä‚©‚çˆÚ“®ŠJn
+            // å°‘ã—é–“ã‚’ãŠã„ã¦ã‹ã‚‰ç§»å‹•é–‹å§‹
             sequence.AppendCallback(() =>
             {
                 owner.Transform.OnMoveCompletedObservable
                     .First()
                     .Subscribe(__ =>
                     {
-                        MoveStepRecursive(owner, infoBox, remainingMoves - 1); // Ä‹A“I‚ÉŸ‚ÌƒXƒeƒbƒv‚Ö
+                        MoveStepRecursive(owner, infoBox, remainingMoves - 1); // å†å¸°çš„ã«æ¬¡ã®ã‚¹ãƒ†ãƒƒãƒ—ã¸
                     });
 
-                owner.Transform.Move(Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(owner)); // 1ƒ}ƒXˆÚ“®
+                owner.Transform.Move(Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(owner)); // 1ãƒã‚¹ç§»å‹•
             });
         }
 
         /// <summary>
-        /// Ÿ‚ÌƒXƒLƒ‹
+        /// æ¬¡ã®ã‚¹ã‚­ãƒ«
         /// </summary>
         private void SectionReTurn()
         {
@@ -204,17 +204,17 @@ namespace fantec.Battle.Manager.Flow
             {
                 sequence.AppendCallback(() =>
             {
-                Locator.Resolve<IBattleModelAdventSkill>().ConsumeAll();   // ‘S‚ÄÁ”ï
+                Locator.Resolve<IBattleModelAdventSkill>().ConsumeAll();   // å…¨ã¦æ¶ˆè²»
                 Locator.Resolve<IBattleModelAdventSkill>().Lottery();
-                Locator.Resolve<IBattleModelAdventSkill>().SortByHeadInsert(); // UŒ‚‡‚ÌXV
-                owner.Transform.Move(Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(owner)); // UŒ‚Ò‚ªŒ³‚ÌˆÊ’u‚É–ß‚é
-               //  Debug.Log($"UŒ‚Œã‚ÌêŠ:{Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(owner)}");
+                Locator.Resolve<IBattleModelAdventSkill>().SortByHeadInsert(); // æ”»æ’ƒé †ã®æ›´æ–°
+                owner.Transform.Move(Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(owner)); // æ”»æ’ƒè€…ãŒå…ƒã®ä½ç½®ã«æˆ»ã‚‹
+               //  Debug.Log($"æ”»æ’ƒå¾Œã®å ´æ‰€:{Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(owner)}");
             });
             }
 
             sequence.OnComplete(() =>
             {
-                // DOTween ‚ÅŒã‘±ˆ—‚ğ’Ç‰Á
+                // DOTween ã§å¾Œç¶šå‡¦ç†ã‚’è¿½åŠ 
                 var postSequence =this.CreateSequence();
 
                 postSequence.AppendCallback(() =>
@@ -265,14 +265,14 @@ namespace fantec.Battle.Manager.Flow
 
             if (samePositionOthers.Any())
             {
-                // ©•ª{“¯ˆÊ’u‚Ì‘¼Ò‚Ì originId ‚ğ”z—ñ‚É‚Ü‚Æ‚ß‚é
+                // è‡ªåˆ†ï¼‹åŒä½ç½®ã®ä»–è€…ã® originId ã‚’é…åˆ—ã«ã¾ã¨ã‚ã‚‹
                 int[] originIds = new[] { owner.State.Entity.originId }
                     .Concat(samePositionOthers.Select(b => b.State.Entity.originId))
                     .ToArray();
 
                 owner.OverrideSkill.SetEntity(originIds);
 
-                // ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹‚Ì—\–ñ
+                // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«ã®äºˆç´„
                 Locator.Resolve<IBattleModelOverrideSkill>().Reserve(owner);
             }
         }

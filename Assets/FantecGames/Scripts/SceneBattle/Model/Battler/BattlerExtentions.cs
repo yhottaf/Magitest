@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Model;
 using fantec.Common;
 using System;
@@ -14,106 +14,106 @@ namespace fantec.Battle
         public static bool GetIsEnemy(this IBattler battler) => battler is IEnemy;
         public static bool GetIsBoss(this IBattler battler) => battler is IBoss;
 
-        /// <summary> ˆê”Ôã‚Ì‰¡ˆê—ñ‚Å‚ ‚é‚©”Û‚©
+        /// <summary> ä¸€ç•ªä¸Šã®æ¨ªä¸€åˆ—ã§ã‚ã‚‹ã‹å¦ã‹
         public static bool GetIsHorizontalUp(this IBattler battler) =>
             battler.Unit.Entity.positionIndex == 0 ||
             battler.Unit.Entity.positionIndex == 4 ||
             battler.Unit.Entity.positionIndex == 1;
 
-        /// <summary> ^‚ñ’†‚Ì‰¡ˆê—ñ‚Å‚ ‚é‚©”Û‚©
+        /// <summary> çœŸã‚“ä¸­ã®æ¨ªä¸€åˆ—ã§ã‚ã‚‹ã‹å¦ã‹
         public static bool GetIsHorizontalCenter(this IBattler battler) =>
             battler.Unit.Entity.positionIndex == 7 ||
             battler.Unit.Entity.positionIndex == 8 ||
             battler.Unit.Entity.positionIndex == 5;
 
-        /// <summary> ˆê”Ô‰º‚Ì‰¡ˆê—ñ‚Å‚ ‚é‚©”Û‚©
+        /// <summary> ä¸€ç•ªä¸‹ã®æ¨ªä¸€åˆ—ã§ã‚ã‚‹ã‹å¦ã‹
         public static bool GetIsHorizontalDown(this IBattler battler)=>
             battler.Unit.Entity.positionIndex == 3 ||
             battler.Unit.Entity.positionIndex == 6 ||
             battler.Unit.Entity.positionIndex == 2;
 
-        /// <summary> ˆê”ÔŒã‚ë‚Ìcˆê—ñ‚Å‚ ‚é‚©”Û‚©
+        /// <summary> ä¸€ç•ªå¾Œã‚ã®ç¸¦ä¸€åˆ—ã§ã‚ã‚‹ã‹å¦ã‹
         public static bool GetIsVirticalBack(this IBattler battler)=>
             battler.Unit.Entity.positionIndex == 0 ||
             battler.Unit.Entity.positionIndex == 7 ||
             battler.Unit.Entity.positionIndex == 3;
 
-        /// <summary> ^‚ñ’†‚Ìcˆê—ñ‚Å‚ ‚é‚©”Û‚©
+        /// <summary> çœŸã‚“ä¸­ã®ç¸¦ä¸€åˆ—ã§ã‚ã‚‹ã‹å¦ã‹
         public static bool GetIsVirticalCenter(this IBattler battler)=>
             battler.Unit.Entity.positionIndex == 4 ||
             battler.Unit.Entity.positionIndex == 8 ||
             battler.Unit.Entity.positionIndex == 6;
 
-        /// <summary> ˆê”Ô‘O‚Ìcˆê—ñ‚Å‚ ‚é‚©”Û‚©
+        /// <summary> ä¸€ç•ªå‰ã®ç¸¦ä¸€åˆ—ã§ã‚ã‚‹ã‹å¦ã‹
         public static bool GetIsVirticalFront(this IBattler battler)=>
             battler.Unit.Entity.positionIndex == 1 ||
             battler.Unit.Entity.positionIndex == 5 ||
             battler.Unit.Entity.positionIndex == 2;
 
-        /// <summary> –¡•û‚Å‚ ‚é‚©”Û‚©‚ğ•Ô‚·
+        /// <summary> å‘³æ–¹ã§ã‚ã‚‹ã‹å¦ã‹ã‚’è¿”ã™
         public static bool GetIsPlayer(this IEnumerable<IBattler> battlers) => battlers.Any(battler => battler.GetIsPlayer());
 
-        /// <summary> “G‚Å‚ ‚é‚©”Û‚©‚ğ•Ô‚·
+        /// <summary> æ•µã§ã‚ã‚‹ã‹å¦ã‹ã‚’è¿”ã™
         public static bool GetIsEnemy(this IEnumerable<IBattler> battlers) => battlers.Any(battler => battler.GetIsEnemy());
 
-        /// <summary> ƒ{ƒX‚Å‚ ‚é‚©”Û‚©‚ğ•Ô‚·
+        /// <summary> ãƒœã‚¹ã§ã‚ã‚‹ã‹å¦ã‹ã‚’è¿”ã™
         public static bool GetIsBoss(this IEnumerable<IBattler> battlers) => battlers.Any(battler => battler.GetIsBoss());
 
 
-        /// <summary> ƒŠƒXƒg‚Ì“àA’N‚©‚ª€–S‚µ‚Ä‚¢‚ê‚Î true
+        /// <summary> ãƒªã‚¹ãƒˆã®å†…ã€èª°ã‹ãŒæ­»äº¡ã—ã¦ã„ã‚Œã° true
         public static bool GetIsAnyDead(this IEnumerable<IBattler> battlers) => battlers.Any(battler => battler.State.Health.IsDead);
-        /// <summary> ƒŠƒXƒg‚Ì“àA‘Sˆõ‚ª€–S‚µ‚Ä‚¢‚ê‚Î true
+        /// <summary> ãƒªã‚¹ãƒˆã®å†…ã€å…¨å“¡ãŒæ­»äº¡ã—ã¦ã„ã‚Œã° true
         public static bool GetIsAllDead(this IEnumerable<IBattler> battlers) => battlers.All(battler => battler.State.Health.IsDead);
-        /// <summary> ƒXƒyƒbƒN‡Œv’læ“¾ 
+        /// <summary> ã‚¹ãƒšãƒƒã‚¯åˆè¨ˆå€¤å–å¾— 
         public static int GetSpec(this IEnumerable<IBattler> battlers) => battlers.Sum(battler => battler.State.Spec);
 
-        /// <summary> ƒp[ƒeƒB[‚ÌHP‚ÌŠ„‡‚Ìæ“¾@MEMO: ‚±‚ê‚Ìƒp[ƒeƒB[”‚ÅŠ„‚Á‚½‚à‚Ì‚ğ‘Šè‚Ì‚à‚Ì‚Æ”äŠr‚µ‚Ä‚‚¢•û‚ªŸ—˜‚Æ‚È‚é
+        /// <summary> ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ã®HPã®å‰²åˆã®å–å¾—ã€€MEMO: ã“ã‚Œã®ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼æ•°ã§å‰²ã£ãŸã‚‚ã®ã‚’ç›¸æ‰‹ã®ã‚‚ã®ã¨æ¯”è¼ƒã—ã¦é«˜ã„æ–¹ãŒå‹åˆ©ã¨ãªã‚‹
         public static float GetHPRatio(this IEnumerable<IBattler> battlers)
         {
             var existBattlers = battlers.Where(battler => battler.Unit.IsExist);
             return existBattlers.Any()
                 ? existBattlers.Sum(battler => battler.State.RatioHP) / existBattlers.Count()
-                : 0f; // 0‘Ì‚È‚ç0%‚Æ‚·‚é
+                : 0f; // 0ä½“ãªã‚‰0%ã¨ã™ã‚‹
         }
 
         /// <summary>
-        /// ƒvƒŒƒCƒ„[‚É•ÏŠ·
+        /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ã«å¤‰æ›
         /// </summary>
         public static IPlayer ToPlayer(this IBattler battler)
         {
             try { return (IPlayer)battler; }
-            catch { throw new InvalidCastException($"{nameof(IPlayer)} ‚ğŒp³‚µ‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidCastException($"{nameof(IPlayer)} ã‚’ç¶™æ‰¿ã—ã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         /// <summary>
-        /// “G‚É•ÏŠ·
+        /// æ•µã«å¤‰æ›
         /// </summary>
         public static IEnemy ToEnemy(this IBattler battler)
         {
             try { return (IEnemy)battler; }
-            catch { throw new InvalidCastException($"{nameof(IEnemy)} ‚ğŒp³‚µ‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidCastException($"{nameof(IEnemy)} ã‚’ç¶™æ‰¿ã—ã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         /// <summary>
-        /// ƒ{ƒX‚É•ÏŠ·
+        /// ãƒœã‚¹ã«å¤‰æ›
         /// </summary>
         public static IBoss ToBoss(this IBattler battler)
         {
             try { return (IBoss)battler; }
-            catch { throw new InvalidCastException($"{nameof(IBoss)} ‚ğŒp³‚µ‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidCastException($"{nameof(IBoss)} ã‚’ç¶™æ‰¿ã—ã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         /// <summary>
-        /// —v‘f‚ª1‚Â‚µ‚©‚È‚¢—ñ‹“Œ^‚ğ’P‘Ì‚É•ÏŠ·‚·‚é
+        /// è¦ç´ ãŒ1ã¤ã—ã‹ãªã„åˆ—æŒ™å‹ã‚’å˜ä½“ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static IBattler ToSingle(this IEnumerable<IBattler>battlers)
         {
             try { return battlers.Single(); }
-            catch { throw new InvalidCastException($"[ŠÖ” : {nameof(ToSingle)}] ‚Í—v‘f‚Ì”‚ª‚P‚Â‚Å‚ ‚é•K—v‚ª‚ ‚è‚Ü‚·B[Count : {battlers.Count()}]"); }
+            catch { throw new InvalidCastException($"[é–¢æ•° : {nameof(ToSingle)}] ã¯è¦ç´ ã®æ•°ãŒï¼‘ã¤ã§ã‚ã‚‹å¿…è¦ãŒã‚ã‚Šã¾ã™ã€‚[Count : {battlers.Count()}]"); }
         }
 
         /// <summary>
-        /// IBattler ‚ğ IEnumerable<IBattler> ‚É•ÏŠ·‚·‚é
+        /// IBattler ã‚’ IEnumerable<IBattler> ã«å¤‰æ›ã™ã‚‹
         /// </summary>
         public static IEnumerable<IBattler>ToEnumerable(this IBattler battler)
         {
@@ -121,17 +121,17 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒp[ƒeƒB[ƒf[ƒ^‚ğó‚¯æ‚è‘ÎÛ‚Ì Battler ƒf[ƒ^‚É“ü‚ê‚İA•Ô‚·
+        /// ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’å—ã‘å–ã‚Šå¯¾è±¡ã® Battler ãƒ‡ãƒ¼ã‚¿ã«å…¥ã‚Œè¾¼ã¿ã€è¿”ã™
         /// </summary>
-        /// <param name="battlers">ƒf[ƒ^‚ğ“ü‚ê‚Ş‘ÎÛ Butler ‚Ì”z—ñ</param>
-        /// <param name="teamData">“ü‚ê‚İ‚½‚¢ƒf[ƒ^‚Ìƒp[ƒeƒB[ƒf[ƒ^</param>
+        /// <param name="battlers">ãƒ‡ãƒ¼ã‚¿ã‚’å…¥ã‚Œè¾¼ã‚€å¯¾è±¡ Butler ã®é…åˆ—</param>
+        /// <param name="teamData">å…¥ã‚Œè¾¼ã¿ãŸã„ãƒ‡ãƒ¼ã‚¿ã®ãƒ‘ãƒ¼ãƒ†ã‚£ãƒ¼ãƒ‡ãƒ¼ã‚¿</param>
         public static IBattler[] SetUnitData(this IBattler[] battlers,TeamData teamData,bool isTakeover=false)
         {
             int i = 0;
             foreach(var unitData in teamData.UnitList)
             {
                 var battler = battlers[i];
-                if (i == 0)// æ“ª‚ğƒŠ[ƒ_[w’è‚É‚·‚é
+                if (i == 0)// å…ˆé ­ã‚’ãƒªãƒ¼ãƒ€ãƒ¼æŒ‡å®šã«ã™ã‚‹
                 {
                     battler.SetUp(unitData, isTakeover, true);
                 }
@@ -145,7 +145,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Battler ‚ğ‚Ü‚Æ‚ß‚ÄƒŠƒ[ƒh
+        /// Battler ã‚’ã¾ã¨ã‚ã¦ãƒªãƒ­ãƒ¼ãƒ‰
         /// </summary>
         public static void Reload(this IEnumerable<IBattler>battlers)
         {
@@ -153,7 +153,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Battler ‚ğ‚Ü‚Æ‚ß‚ÄƒŠƒZƒbƒg
+        /// Battler ã‚’ã¾ã¨ã‚ã¦ãƒªã‚»ãƒƒãƒˆ
         /// </summary>
         /// <param name="battlers"></param>
         public static void Reset(this IEnumerable<IBattler>battlers)
@@ -162,7 +162,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Battler ‚ğ‚Ü‚Æ‚ß‚Ä”jŠü
+        /// Battler ã‚’ã¾ã¨ã‚ã¦ç ´æ£„
         /// </summary>
         public static void Dispose(this IEnumerable<IBattler>battlers)
         {
@@ -175,12 +175,12 @@ namespace fantec.Battle
 
 
         /// <summary>
-        /// Battler ‚ÉŠÖ‚·‚éî•ñ‚ğ JSON‚Åæ“¾‚·‚é
+        /// Battler ã«é–¢ã™ã‚‹æƒ…å ±ã‚’ JSONã§å–å¾—ã™ã‚‹
         /// </summary>
         private static string GetBattlerLog(IEnumerable<IBattler>battlers)
         {
             if (battlers.Count() == 0)
-                return "—v‘f‚ª‘¶İ‚µ‚Ü‚¹‚ñ";
+                return "è¦ç´ ãŒå­˜åœ¨ã—ã¾ã›ã‚“";
             else 
                 return JsonHelper.ToJson(battlers);
         }

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Menu.Manager;
 using fantec.Menu.PartySortie.Presenter;
 using System.Collections.Generic;
@@ -31,7 +31,7 @@ namespace fantec.Menu.PartySelect.View
 
 
         /// <summary>
-        /// •\¦“à—e‚ğˆêŠ‡‚Å•ÏX‚·‚é
+        /// è¡¨ç¤ºå†…å®¹ã‚’ä¸€æ‹¬ã§å¤‰æ›´ã™ã‚‹
         /// </summary>
         private void ChangeContentView(PartySelectPresenter.InfoType type)
         {
@@ -40,21 +40,21 @@ namespace fantec.Menu.PartySelect.View
             m_ItemScrollView.gameObject.SetActive(type == PartySelectPresenter.InfoType.Item);
         }
 
-        // ‰Šú‰»‚ÌƒZƒbƒgƒAƒbƒv
+        // åˆæœŸåŒ–æ™‚ã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
         public async UniTask Setup(Dictionary<int,List<int>>enemyList,List<int>dropRewardList,List<ItemInfoCell.Data>itemList)
         {
-            // “Gî•ñ
+            // æ•µæƒ…å ±
             foreach (int key in enemyList.Keys)
             {
                 var prefab = Instantiate(m_EnemyInfoCell, m_EnemyScrollView.content);
 
                 EnemyInfoCell.Data data = new EnemyInfoCell.Data($"WAVE {key + 1}", enemyList[key]);
 
-                // ‰Šú‰»‚É‚µ‚©ŒÄ‚Î‚ê‚È‚¢‚½‚ßAƒLƒƒƒ“ƒZƒ‹§Œä‚Í•s—v‚È‚Ì‚ÅNone‚ğˆø”‚É“n‚·
+                // åˆæœŸåŒ–æ™‚ã«ã—ã‹å‘¼ã°ã‚Œãªã„ãŸã‚ã€ã‚­ãƒ£ãƒ³ã‚»ãƒ«åˆ¶å¾¡ã¯ä¸è¦ãªã®ã§Noneã‚’å¼•æ•°ã«æ¸¡ã™
                 await prefab.Setup(data, CancellationToken.None);
             }
 
-            // •ñV 
+            // å ±é…¬ 
             foreach(var itemId in dropRewardList)
             {
                 RewardInfoCell prefab=Instantiate(m_RewardInfoCell, m_RewardScrollView.content);
@@ -62,7 +62,7 @@ namespace fantec.Menu.PartySelect.View
                 prefab.OnClickDetailButtonObservable.Subscribe(_=>OnClickItemDetailButton(itemId)).AddTo(this);
             }
 
-            // ƒAƒCƒeƒ€
+            // ã‚¢ã‚¤ãƒ†ãƒ 
             foreach(var itemData in itemList)
             {
                 ItemInfoCell prefab = Instantiate(m_ItemInfoCell, m_ItemScrollView.content);
@@ -73,7 +73,7 @@ namespace fantec.Menu.PartySelect.View
         }
 
         /// <summary>
-        /// “Gî•ñ‚ğ•\¦‚·‚é
+        /// æ•µæƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public void ShowEnemyInfoContentView()
         {
@@ -81,7 +81,7 @@ namespace fantec.Menu.PartySelect.View
         }
 
         /// <summary>
-        /// •ñVî•ñ‚ğ•\¦‚·‚é
+        /// å ±é…¬æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public void ShowRewardInfoContentView()
         {
@@ -89,7 +89,7 @@ namespace fantec.Menu.PartySelect.View
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€î•ñ‚ğ•\¦‚·‚é
+        /// ã‚¢ã‚¤ãƒ†ãƒ æƒ…å ±ã‚’è¡¨ç¤ºã™ã‚‹
         /// </summary>
         public void ShowItemInfoContentView()
         {
@@ -97,7 +97,7 @@ namespace fantec.Menu.PartySelect.View
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€Ú×î•ñƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ã‚¢ã‚¤ãƒ†ãƒ è©³ç´°æƒ…å ±ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="itemId"></param>
         private void OnClickItemDetailButton(int itemId)
@@ -108,7 +108,7 @@ namespace fantec.Menu.PartySelect.View
         }
 
         /// <summary>
-        /// ƒXƒ^ƒ~ƒi‰ñ•œƒAƒCƒeƒ€‚ÌÚ×î•ñƒ{ƒ^ƒ“‰Ÿ‰º
+        /// ã‚¹ã‚¿ãƒŸãƒŠå›å¾©ã‚¢ã‚¤ãƒ†ãƒ ã®è©³ç´°æƒ…å ±ãƒœã‚¿ãƒ³æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="itemId"></param>
         private void OnClickStaminaItemDetailButton(int itemId)

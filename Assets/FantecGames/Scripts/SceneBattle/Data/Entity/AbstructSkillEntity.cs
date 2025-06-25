@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 using fantec.Master;
 
 namespace fantec.Battle

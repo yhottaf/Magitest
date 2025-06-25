@@ -1,4 +1,4 @@
-using NUnit.Framework;
+ï»¿using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -11,15 +11,15 @@ namespace fantec.Common
         [System.Serializable]
         public class  Unit
         {
-            // ƒ†ƒjƒbƒg‚É•K—v‚Èî•ñ‚Í“s“x’Ç‰Á‚µ‚Ä‚¢‚­
+            // ãƒ¦ãƒ‹ãƒƒãƒˆã«å¿…è¦ãªæƒ…å ±ã¯éƒ½åº¦è¿½åŠ ã—ã¦ã„ã
             public CardRarityType rarityType;
             public int cardId;
             public int cardLevel;
             public int positionIndex;
-            public int OverrideLevel;            // ƒI[ƒo[ƒ‰ƒCƒh
-            public int ExsaOverrideLevel;        // ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh
-            public int SectaOverrideLevel;       // ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh
-            public int QuetaOverrideLevel;       // ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh
+            public int OverrideLevel;            // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+            public int ExsaOverrideLevel;        // ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+            public int SectaOverrideLevel;       // ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+            public int QuetaOverrideLevel;       // ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
 
             public Unit(CardRarityType rarityType,int cardId,int cardLevel,int positionIndex,int OverrideLevel,int ExsaOverrideLevel,int SectaOverrideLevel,int QuetaOverrideLevel)
             {

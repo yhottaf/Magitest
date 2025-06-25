@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UnityEngine.UI;
 using UniRx;
 using System;
@@ -15,7 +15,7 @@ namespace fantec.Utilities
 
         private void Awake()
         {
-            //ƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚ç‘JˆÚ
+            //ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰é·ç§»
             if (m_Button)
                 m_Button.OnClickAsObservable()
                     .Subscribe(_ =>
@@ -23,7 +23,7 @@ namespace fantec.Utilities
                         ChangeSceane();
                     }).AddTo(this);
 
-            //w’èŠÔ‚ª‰ß‚¬‚½‚ç‘JˆÚ
+            //æŒ‡å®šæ™‚é–“ãŒéããŸã‚‰é·ç§»
             if (m_Timer != 0)
                 m_Disposable = Observable.Timer(TimeSpan.FromSeconds(m_Timer))
                     .Subscribe(_ =>
@@ -33,7 +33,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ƒtƒF[ƒhŒã‚ÉƒV[ƒ“‘JˆÚ‚·‚é
+        /// ãƒ•ã‚§ãƒ¼ãƒ‰å¾Œã«ã‚·ãƒ¼ãƒ³é·ç§»ã™ã‚‹
         /// </summary>
        private void ChangeSceane()
         {

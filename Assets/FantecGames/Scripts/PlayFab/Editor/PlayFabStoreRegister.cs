@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 
 using System.IO;
 using System.Collections.Generic;
@@ -32,7 +32,7 @@ namespace LeftRpg
 
             var result = new PlayFabResult<UpdateStoreItemsResult>();
 
-            // JSON¨ƒAƒCƒeƒ€ƒŠƒXƒg‚Ö•ÏŠ·
+            // JSONâ†’ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(RewardStageDataFilePath);
             string dataStr = streamReader.ReadToEnd();
             var gachaDataList = JsonConvert.DeserializeObject<RewardStageData[]>(dataStr);
@@ -74,7 +74,7 @@ namespace LeftRpg
                 throw new PlayFabErrorException(result.Error);
             }
 
-            Debug.Log("PlayFab‚Öƒoƒ“ƒhƒ‹ƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ãƒãƒ³ãƒ‰ãƒ«ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
 
      
@@ -91,7 +91,7 @@ namespace LeftRpg
 
             var result = new PlayFabResult<UpdateStoreItemsResult>();
 
-            // JSON¨ƒAƒCƒeƒ€ƒŠƒXƒg‚Ö•ÏŠ·
+            // JSONâ†’ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(InitialRewardDataFilePath);
             string dataStr = streamReader.ReadToEnd();
             var dataList = JsonConvert.DeserializeObject<InitialRewardStageData[]>(dataStr);
@@ -135,7 +135,7 @@ namespace LeftRpg
                 throw new PlayFabErrorException(result.Error);
             }
 
-            Debug.Log("PlayFab‚Öƒoƒ“ƒhƒ‹ƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ãƒãƒ³ãƒ‰ãƒ«ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
     }
 }

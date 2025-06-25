@@ -1,4 +1,4 @@
-using fantec.Battle.Animations;
+﻿using fantec.Battle.Animations;
 using fantec.Battle.Utiles;
 using System;
 using UniRx;

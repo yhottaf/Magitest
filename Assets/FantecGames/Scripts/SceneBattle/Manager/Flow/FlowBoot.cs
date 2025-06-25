@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Model;
 using UnityEngine;
 using UniRx;
@@ -16,73 +16,73 @@ namespace fantec.Battle.Manager
                 var modelAffect = Locator.Resolve<IBattleModelStage>();
                 var modelStage=Locator.Resolve<IBattleModelStage>();
                 var modelTime = Locator.Resolve<IBattleModelTime>();
-            @@var modelUnits=Locator.Resolve<IBattleModelUnits>();
+            ã€€ã€€var modelUnits=Locator.Resolve<IBattleModelUnits>();
 
 
                 //-----------------------------------------------------------------------------------------//
                 //
-                // ƒ‚ƒfƒ‹ŠÔ‚Ì•R‚Ã‚¯
+                // ãƒ¢ãƒ‡ãƒ«é–“ã®ç´ã¥ã‘
                 //
                 //-----------------------------------------------------------------------------------------//
 
                 //---------------------------------------------------------
-                // ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹
+                // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«
                 //---------------------------------------------------------
 
-                // ƒLƒƒƒ‰‚ª€‚ñ‚¾‚çƒAƒhƒxƒ“ƒgƒXƒLƒ‹‚ÌŠÄ‹‘ÎÛ‚©‚çŠO‚·
+                // ã‚­ãƒ£ãƒ©ãŒæ­»ã‚“ã ã‚‰ã‚¢ãƒ‰ãƒ™ãƒ³ãƒˆã‚¹ã‚­ãƒ«ã®ç›£è¦–å¯¾è±¡ã‹ã‚‰å¤–ã™
                 modelUnits.OnDeadBattlerObservable
                     .Subscribe(battler => modelAdvent.RemoveBattler(battler))
                     .AddTo(manager.m_OnDestroyDisposables);
 
-                // ƒLƒƒƒ‰‚ª‘h‚Á‚½‚çƒAƒhƒxƒ“ƒgƒXƒLƒ‹‚ÌŠÄ‹‘ÎÛ‚É’Ç‰Á
+                // ã‚­ãƒ£ãƒ©ãŒè˜‡ã£ãŸã‚‰ã‚¢ãƒ‰ãƒ™ãƒ³ãƒˆã‚¹ã‚­ãƒ«ã®ç›£è¦–å¯¾è±¡ã«è¿½åŠ 
                 modelUnits.OnReviveBattlerObservable
                     .Where(battler => !modelAdvent.GetIsContains(battler))
                     .Subscribe(battler => modelAdvent.RegistBattler(battler))
                     .AddTo(manager.m_OnDestroyDisposables);
 
-                // –¡•ûƒƒ“ƒo[‚ªXV‚³‚ê‚½‚çƒAƒhƒxƒ“ƒgƒXƒLƒ‹‚ÌŠÄ‹‘ÎÛ‚ğ’u‚«Š·‚¦‚é
+                // å‘³æ–¹ãƒ¡ãƒ³ãƒãƒ¼ãŒæ›´æ–°ã•ã‚ŒãŸã‚‰ã‚¢ãƒ‰ãƒ™ãƒ³ãƒˆã‚¹ã‚­ãƒ«ã®ç›£è¦–å¯¾è±¡ã‚’ç½®ãæ›ãˆã‚‹
                 modelUnits.OnUpdatePlayerMemberObservable
                     .Subscribe(battlerList => modelAdvent.ReplacePlayerBattlers(battlerList))
                     .AddTo(manager.m_OnDestroyDisposables);
 
-                // “Gƒƒ“ƒo[‚ªXV‚³‚ê‚½‚çƒAƒhƒxƒ“ƒgƒXƒLƒ‹‚ÌŠÄ‹‘ÎÛ‚ğ’u‚«Š·‚¦‚é
+                // æ•µãƒ¡ãƒ³ãƒãƒ¼ãŒæ›´æ–°ã•ã‚ŒãŸã‚‰ã‚¢ãƒ‰ãƒ™ãƒ³ãƒˆã‚¹ã‚­ãƒ«ã®ç›£è¦–å¯¾è±¡ã‚’ç½®ãæ›ãˆã‚‹
                 modelUnits.OnUpdateEnemyMemberObservable
                     .Subscribe(battlerList => modelAdvent.ReplaceEnemyBattlers(battlerList))
                     .AddTo(manager.m_OnDestroyDisposables);
 
                 // --------------------------------------------------
-                // ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹
+                // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«
                 // --------------------------------------------------
 
 
 
                 // ---------------------------------------------------------------------------------------------------- //
                 //
-                // Hud ‚ÌƒCƒxƒ“ƒg“o˜^ TODO:HUD‚É“o˜^‚ª‚¢‚é‚à‚Ì‚Í‚±‚±‚Å‹LÚ
+                // Hud ã®ã‚¤ãƒ™ãƒ³ãƒˆç™»éŒ² TODO:HUDã«ç™»éŒ²ãŒã„ã‚‹ã‚‚ã®ã¯ã“ã“ã§è¨˜è¼‰
                 //
                 // ---------------------------------------------------------------------------------------------------- //
 
                 new Ui.HudHeaderPresenter(manager.m_OnDestroyDisposables);
 
 
-                // —”‰Šú‰»
+                // ä¹±æ•°åˆæœŸåŒ–
                 var timeNumeral = string.Join("", System.DateTime.Now.ToString().Split(' ', '/', ':', 'P', 'A', 'M'));
                 var random = int.Parse(timeNumeral.Substring(5));
                 Random.InitState(random);
 
                 UniTask.Void(async () =>
                 {
-                    // ƒ}ƒXƒ^[ƒf[ƒ^“Ç‚İ‚İ
+                    // ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿èª­ã¿è¾¼ã¿
                     await Locator.Resolve<IBattleMasterManager>().LoadAsync(manager.m_OnDestroyCancellationToken);
 
-                    // TODO:ƒoƒgƒ‹‘O‚É’Š‘I‚³‚êŸ‘æíœ
+                    // TODO:ãƒãƒˆãƒ«å‰ã«æŠ½é¸ã•ã‚Œæ¬¡ç¬¬å‰Šé™¤
                     var bridgingData = Locator.Resolve<IBattleModelBridginData>().Data;
                     if(bridgingData.GetIsActive()==false)
                     {
                         await DummyServerForBattle.GetLotteryAsync(bridgingData.GetStageData().stageId);
                     }
 
-                   // Ÿ‚Ìƒtƒ[‚Ö
+                   // æ¬¡ã®ãƒ•ãƒ­ãƒ¼ã¸
                    manager.ChangeFlow<FlowInit>();
                 });
             }

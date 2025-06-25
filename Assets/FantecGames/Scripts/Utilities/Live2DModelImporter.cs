@@ -1,4 +1,4 @@
-using Live2D.Cubism.Core;
+ï»¿using Live2D.Cubism.Core;
 using Live2D.Cubism.Framework;
 using UnityEngine;
 using Live2D.Cubism.Rendering;
@@ -15,9 +15,9 @@ namespace fantec.Utilities
     public class Live2DModelImporter : MonoBehaviour
     {
         [Header("Live2D Model Files")]
-        public TextAsset Moc3File;                // .moc3 ƒtƒ@ƒCƒ‹
-        public List<Texture2D> Textures;          // ƒeƒNƒXƒ`ƒƒƒŠƒXƒg
-        public GameObject ModelRoot;              // ƒ‚ƒfƒ‹‚ÌeƒIƒuƒWƒFƒNƒg
+        public TextAsset Moc3File;                // .moc3 ãƒ•ã‚¡ã‚¤ãƒ«
+        public List<Texture2D> Textures;          // ãƒ†ã‚¯ã‚¹ãƒãƒ£ãƒªã‚¹ãƒˆ
+        public GameObject ModelRoot;              // ãƒ¢ãƒ‡ãƒ«ã®è¦ªã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
 
         private CubismModel cubismModel;
         private CubismMoc cubismMoc;

@@ -1,18 +1,18 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Utilities
 {
     /// <summary>
-    /// “¯‚¶ì‚è‚Ì‚à‚Ì‚ğ•¡»‚·‚éÛ‚Éƒx[ƒX‚Æ‚µ‚Äg—p‚·‚éƒNƒ‰ƒX
+    /// åŒã˜ä½œã‚Šã®ã‚‚ã®ã‚’è¤‡è£½ã™ã‚‹éš›ã«ãƒ™ãƒ¼ã‚¹ã¨ã—ã¦ä½¿ç”¨ã™ã‚‹ã‚¯ãƒ©ã‚¹
     /// </summary>
     public abstract class ItemDuplicator<T> : MonoBehaviour where T : ItemDuplicator<T>
     {
 
         /// <summary>
-        /// •¡»‚ğì¬‚·‚é
+        /// è¤‡è£½ã‚’ä½œæˆã™ã‚‹
         /// </summary>
-        /// <param name="data"> •¡»‚ÌÛ‚Ég—p‚·‚éƒf[ƒ^ </param>
-        /// <returns>•¡»‚³‚ê‚½ƒAƒCƒeƒ€</returns>
+        /// <param name="data"> è¤‡è£½ã®éš›ã«ä½¿ç”¨ã™ã‚‹ãƒ‡ãƒ¼ã‚¿ </param>
+        /// <returns>è¤‡è£½ã•ã‚ŒãŸã‚¢ã‚¤ãƒ†ãƒ </returns>
         public ItemDuplicator<T>Create(ItemDuplicatorData data)
         {
             ItemDuplicator<T> item=Instantiate(this.gameObject).GetComponent<ItemDuplicator<T>>();
@@ -27,12 +27,12 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ‰Šúİ’è
+        /// åˆæœŸè¨­å®š
         /// </summary>
         protected abstract void Setup(ItemDuplicatorData data);
 
         /// <summary>
-        /// •¡»‚µ‚½‚à‚Ì‚Ì•s—v‚ÈƒŠƒ\[ƒX‚ğæ‚èœ‚­
+        /// è¤‡è£½ã—ãŸã‚‚ã®ã®ä¸è¦ãªãƒªã‚½ãƒ¼ã‚¹ã‚’å–ã‚Šé™¤ã
         /// </summary>
         protected abstract void Release();
     }

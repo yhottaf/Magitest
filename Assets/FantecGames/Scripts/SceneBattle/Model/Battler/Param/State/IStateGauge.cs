@@ -1,11 +1,11 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace fantec.Battle.Model
 {
     public interface IStageGauge
     {
-        int MaxHealth { get; }     // �ő�̗͒l
-        int CurrentHealth { get; } // ���݂̗̑͒l
+        int MaxHealth { get; }     // 最大体力値
+        int CurrentHealth { get; } // 現在の体力値
     }
 
     public static class StateGaugeExtentions

@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using UnityEngine;
 
 namespace fantec.Battle.Ui.Animation
@@ -22,7 +22,7 @@ namespace fantec.Battle.Ui.Animation
                     }
                 }
             }
-            catch { Debug.LogWarning($"[index : {index}] ‚ÉƒNƒŠƒbƒv‚ªŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch { Debug.LogWarning($"[index : {index}] ã«ã‚¯ãƒªãƒƒãƒ—ãŒå‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
     }
 }

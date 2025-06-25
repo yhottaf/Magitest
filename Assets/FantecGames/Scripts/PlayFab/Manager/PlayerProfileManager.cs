@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
@@ -7,50 +7,50 @@ using System.Linq;
 namespace fantec.PlayFabClient
 {
     /// <summary>
-    /// PlayerProfile‚ğŠÇ—‚·‚é
+    /// PlayerProfileã‚’ç®¡ç†ã™ã‚‹
     /// </summary>
     public static class PlayerProfileManager
     {
         /// <summary>
         /// PlayFabId.
         /// </summary>
-        /// <remarks>ƒtƒŒƒ“ƒhƒR[ƒh‚Æ‚µ‚Ä‚àg—p‚·‚é</remarks>
+        /// <remarks>ãƒ•ãƒ¬ãƒ³ãƒ‰ã‚³ãƒ¼ãƒ‰ã¨ã—ã¦ã‚‚ä½¿ç”¨ã™ã‚‹</remarks>
         public static string PlayFabId=>Profile.PlayerId;
 
         /// <summary>
-        /// ƒ†[ƒU[–¼
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼å
         /// </summary>
         public static string UserDisplayName => Profile.DisplayName != null ? Profile.DisplayName : string.Empty;
 
         /// <summary>
-        /// “Œvî•ñ
+        /// çµ±è¨ˆæƒ…å ±
         /// </summary>
         public static List<StatisticValue> Statistics { get; private set; }
 
         /// <summary>
-        /// ƒ^ƒO
+        /// ã‚¿ã‚°
         /// </summary>
         public static List<TagModel> Tags => Profile.Tags;
 
         /// <summary>
-        /// ƒvƒŒƒCƒ„[ƒvƒƒtƒB[ƒ‹
+        /// ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«
         /// </summary>
         private static PlayerProfileModel Profile { get; set; }
 
         /// <summary>
-        /// PlayFab‚©‚çClient‚Öƒf[ƒ^‚ğ“¯Šú‚·‚éB
+        /// PlayFabã‹ã‚‰Clientã¸ãƒ‡ãƒ¼ã‚¿ã‚’åŒæœŸã™ã‚‹ã€‚
         /// </summary>
         /// <param name="profile"></param>
         /// <param name="statistics"></param>
         public static void SyncPlayFabToClient(PlayerProfileModel profile,List<StatisticValue>statistics)
         {
-            //‰‰ñƒƒOƒCƒ“‚Í null ‚È‚Ì‚Å new ‚µ‚Ä‚¨‚­
+            //åˆå›ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã¯ null ãªã®ã§ new ã—ã¦ãŠã
             Profile = profile ?? new PlayerProfileModel();
             Statistics=statistics; 
         }
 
         /// <summary>
-        /// ƒ†[ƒU[–¼‚ğXV‚·‚é
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼åã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <param name="name"></param>
         /// <returns></returns>
@@ -64,30 +64,30 @@ namespace fantec.PlayFabClient
             var response = await PlayFabClientAPI.UpdateUserTitleDisplayNameAsync(request);
             if (response.Error!=null)
             {
-                // ƒhƒLƒ…ƒƒ“ƒg‚ğQl‚ÉƒGƒ‰[ƒnƒ“ƒhƒŠƒ“ƒO‚·‚éB
+                // ãƒ‰ã‚­ãƒ¥ãƒ¡ãƒ³ãƒˆã‚’å‚è€ƒã«ã‚¨ãƒ©ãƒ¼ãƒãƒ³ãƒ‰ãƒªãƒ³ã‚°ã™ã‚‹ã€‚
                 // https://docs.microsoft.com/en-us/rest/api/playfab/client/account-management/updateusertitledisplayname?view=playfab-rest
                 switch (response.Error.Error)
                 {
                     case PlayFabErrorCode.InvalidParams:
-                        return (false, "–¼‘O‚Í3`12•¶šˆÈ“à‚Å“ü—Í‚µ‚Ä‚­‚¾‚³‚¢B");
+                        return (false, "åå‰ã¯3ï½12æ–‡å­—ä»¥å†…ã§å…¥åŠ›ã—ã¦ãã ã•ã„ã€‚");
                     case PlayFabErrorCode.ProfaneDisplayName:
                     case PlayFabErrorCode.NameNotAvailable:
-                        return (false, "‚±‚Ì–¼‘O‚Íg—p‚Å‚«‚Ü‚¹‚ñB");
+                        return (false, "ã“ã®åå‰ã¯ä½¿ç”¨ã§ãã¾ã›ã‚“ã€‚");
 
-                    //‘z’èŠO‚ÌƒGƒ‰[‚È‚Ì‚Å—áŠO‚Æ‚µ‚Äˆ—‚·‚éB
+                    //æƒ³å®šå¤–ã®ã‚¨ãƒ©ãƒ¼ãªã®ã§ä¾‹å¤–ã¨ã—ã¦å‡¦ç†ã™ã‚‹ã€‚
                     default:
                         throw new PlayFabErrorException(response.Error);
                 }
             }
 
-            //ƒ[ƒJƒ‹‚Ìƒf[ƒ^‚ğXV‚·‚éB
+            //ãƒ­ãƒ¼ã‚«ãƒ«ã®ãƒ‡ãƒ¼ã‚¿ã‚’æ›´æ–°ã™ã‚‹ã€‚
             Profile.DisplayName = name;
 
             return (true,string.Empty);
         }
 
         /// <summary>
-        /// ƒ†[ƒU[ƒŒƒxƒ‹‚ğXV‚·‚é
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ¬ãƒ™ãƒ«ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <param name="afterLevel"></param>
         /// <returns></returns>
@@ -97,7 +97,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// “Œvî•ñ‚ğXV‚·‚é
+        /// çµ±è¨ˆæƒ…å ±ã‚’æ›´æ–°ã™ã‚‹
         /// </summary>
         /// <returns></returns>
         private static async UniTask SyncClientToPlayFabAsync(params(string name,int value)[] statistics)

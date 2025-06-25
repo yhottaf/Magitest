@@ -1,11 +1,11 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using NUnit.Framework;
 using UnityEngine;
 
 namespace fantec.Battle.Utiles
 {
     /// <summary>
-    /// ƒpƒ‰ƒ[ƒ^[•Û‚Å‚«‚éƒV[ƒPƒ“ƒX
+    /// ãƒ‘ãƒ©ãƒ¡ãƒ¼ã‚¿ãƒ¼ä¿æŒã§ãã‚‹ã‚·ãƒ¼ã‚±ãƒ³ã‚¹
     /// </summary>
     public class SaveableSequence
     {

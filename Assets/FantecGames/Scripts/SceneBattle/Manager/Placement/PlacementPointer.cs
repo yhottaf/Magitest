@@ -1,15 +1,15 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle.Manager.Placement
 {
     public class PlacementPointer : MonoBehaviour
     {
-        [SerializeField] private Transform m_DefaultPoint;      // Šî€ˆÊ’u
-        [SerializeField] private Transform m_BeAttackedPoint;   // UŒ‚‚ðŽó‚¯‚éÛ‚ÌˆÊ’u
-        [SerializeField] private Transform m_OffScreenPoint;    // ‰æ–ÊŠO‚É‚¢‚éÛ‚ÌˆÊ’u
-        [SerializeField] private Transform m_CenterPoint;       // ƒLƒƒƒ‰ƒNƒ^[‚Ì^c
-        [SerializeField] private Transform m_KnockBackPoint;    // ƒmƒbƒNƒoƒbƒN‚ÌˆÊ’u
-        [SerializeField] private Transform m_BlowBackPoint;     // Œã‚ë‚«”ò‚Ñ‚ÌˆÊ’u
+        [SerializeField] private Transform m_DefaultPoint;      // åŸºæº–ä½ç½®
+        [SerializeField] private Transform m_BeAttackedPoint;   // æ”»æ’ƒã‚’å—ã‘ã‚‹éš›ã®ä½ç½®
+        [SerializeField] private Transform m_OffScreenPoint;    // ç”»é¢å¤–ã«ã„ã‚‹éš›ã®ä½ç½®
+        [SerializeField] private Transform m_CenterPoint;       // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®çœŸèŠ¯
+        [SerializeField] private Transform m_KnockBackPoint;    // ãƒŽãƒƒã‚¯ãƒãƒƒã‚¯ã®ä½ç½®
+        [SerializeField] private Transform m_BlowBackPoint;     // å¾Œã‚å¹ãé£›ã³ã®ä½ç½®
 
         public Vector2 DefaultPosition => m_DefaultPoint ? m_DefaultPoint.position : this.transform.position;
         public Vector2 BeAttackedPosition => m_BeAttackedPoint ? m_BeAttackedPoint.position : this.transform.position;

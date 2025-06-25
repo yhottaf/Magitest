@@ -1,10 +1,12 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
+using fantec.Master;
+using fantec.Menu.Manager;
+using fantec.Notice.View;
 using fantec.PlayFabClient;
-using PlayFab;
-using PlayFab.ClientModels;
 using System;
 using System.Linq;
+using System.Threading;
 using UniRx;
 using UnityEngine;
 using UnityEngine.UI;
@@ -14,38 +16,54 @@ namespace fantec.Menu.Notice
     public class NoticeEntryCell : MonoBehaviour
     {
         [SerializeField]
-        private Text m_TitleText; // ƒZƒ‹‚É•\¦‚³‚¹‚éƒ^ƒCƒgƒ‹Œ©o‚µ
+        private Text m_TitleText;                     // ã‚»ãƒ«ã«è¡¨ç¤ºã•ã›ã‚‹ã‚¿ã‚¤ãƒˆãƒ«è¦‹å‡ºã—
         [SerializeField]
-        private Text m_TitleType; // ƒCƒxƒ“ƒgF@‹Ù‹}F@‰^‰cF@‚È‚ÇŒˆ‚ß‚ê‚é
+        private Text m_TitleType;                     // ã‚¤ãƒ™ãƒ³ãƒˆï¼šã€€ç·Šæ€¥ï¼šã€€é‹å–¶ï¼šã€€ãªã©æ±ºã‚ã‚Œã‚‹
         [SerializeField]
-        private Text m_TitleMainText; // ‚¨’m‚ç‚¹‚ğ•\¦‚µ‚½ƒwƒbƒ_[ƒ^ƒCƒgƒ‹
+        private Text m_TitleMainText;                 // ãŠçŸ¥ã‚‰ã›ã‚’è¡¨ç¤ºã—ãŸãƒ˜ãƒƒãƒ€ãƒ¼ã‚¿ã‚¤ãƒˆãƒ«
         [SerializeField]
-        private Text m_BodyText; // ‚¨’m‚ç‚¹–{•¶
+        private Text m_BodyText;                      // ãŠçŸ¥ã‚‰ã›æœ¬æ–‡
         [SerializeField]
-        private Sprite m_ItemSprite; // ‚¨’m‚ç‚¹‚ÉƒvƒŒƒ[ƒ“ƒg•t‚«‚Å‚ ‚Á‚½ê‡A‚»‚ÌƒvƒŒƒ[ƒ“ƒg“à—e‚Ì•\¦
+        private Text m_TitleHeaderText;               // ãŠçŸ¥ã‚‰ã›ã®è¦‹å‡ºã—
+        [SerializeField]
+        private Text m_ScheduleStartText;             // ãŠçŸ¥ã‚‰ã›ã®æ²è¼‰æ—¥
 
         [SerializeField]
-        private Button m_ReceiveButton; // ƒvƒŒƒ[ƒ“ƒg‚ª‚ ‚Á‚½ê‡‚Ìó‚¯æ‚èƒ{ƒ^ƒ“
+        private Button m_ReceiveButton;               // ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆãŒã‚ã£ãŸå ´åˆã®å—ã‘å–ã‚Šãƒœã‚¿ãƒ³
 
         [SerializeField]
-        private Button m_CellButton; // ƒZƒ‹‚ğ‰Ÿ‚µ‚½‚Æ‚«‚É“®ì‚·‚éƒ{ƒ^ƒ“
+        private Text m_BtnText;                       // å—ã‘å–ã‚Šï¼šå—ã‘å–ã‚Šæ¸ˆã¿ã€€ã¨è¨˜è¼‰ã™ã‚‹ãƒ†ã‚­ã‚¹ãƒˆ
+
+        [SerializeField]
+        private Button m_CellButton;                  // ã‚»ãƒ«ã‚’æŠ¼ã—ãŸã¨ãã«å‹•ä½œã™ã‚‹ãƒœã‚¿ãƒ³
+        [SerializeField]
+        private RewardNoticeCell m_RewardNoticeCell;  // å—ã‘å–ã‚Œã‚‹ã‚¢ã‚¤ãƒ†ãƒ ã‚’è¡¨ç¤ºã™ã‚‹ãƒ—ãƒ¬ãƒãƒ–
+        [SerializeField]
+        private ScrollRect m_RewardScrollView;        // ãƒ—ãƒ¬ãƒãƒ–ã®è¦ªã«ã™ã‚‹ScrollRect
 
         public IObservable<Unit> OnClickCellButtonObservable => m_CellButton.OnClickAsObservable();
         public IObservable<Unit>OnClickReceiveButtonObservable=>m_ReceiveButton.OnClickAsObservable();
-        public async UniTask Setup(NoticeData data,Text m_Body,Button receive)
+        public async UniTask Setup(NoticeData data, Text m_Body, Button receive,
+            Text Header,Text Schedule,RewardNoticeCell Prefab,ScrollRect view,Text btnText)
         {
             m_TitleText.text = data.title;
-            // ‚¨’m‚ç‚¹–{•¶GameObject‚ÉQÆ‚ğ•R‚Ã‚¯‚é
-            m_BodyText = m_Body;
-            m_ReceiveButton = receive;
+            // ãŠçŸ¥ã‚‰ã›æœ¬æ–‡GameObjectã«å‚ç…§ã‚’ç´ã¥ã‘ã‚‹
+            m_BodyText = m_Body;            // ãŠçŸ¥ã‚‰ã›æœ¬æ–‡
+            m_ReceiveButton = receive;      // å—ã‘å–ã‚Šãƒœã‚¿ãƒ³
+            m_TitleHeaderText = Header;     // ã‚¿ã‚¤ãƒˆãƒ«ã®è¦‹å‡ºã—
+            m_ScheduleStartText = Schedule; // ãŠçŸ¥ã‚‰ã›ã®æ²è¼‰æ—¥
+            m_RewardNoticeCell = Prefab;    // ã‚¢ã‚¤ãƒ†ãƒ è¡¨ç¤ºã®ãƒ—ãƒ¬ãƒãƒ–
+            m_RewardScrollView = view;      // ãƒ—ãƒ¬ãƒãƒ–ã®è¦ªã«ã™ã‚‹ScrollRect
+            m_BtnText = btnText;            // å—ã‘å–ã‚Šãƒœã‚¿ãƒ³ã®ãƒ†ã‚­ã‚¹ãƒˆ
 
-            // ƒZƒ‹©‘Ì‚ª‰Ÿ‚³‚ê‚½‚ç‚»‚Ì‚¨’m‚ç‚¹“à—e‚ğ•\¦‚³‚¹‚é
-            OnClickCellButtonObservable.Subscribe(async _=>
+
+            // ã‚»ãƒ«è‡ªä½“ãŒæŠ¼ã•ã‚ŒãŸã‚‰ãã®ãŠçŸ¥ã‚‰ã›å†…å®¹ã‚’è¡¨ç¤ºã•ã›ã‚‹
+            OnClickCellButtonObservable.Subscribe(async _ =>
             {
                 await ShowNotice(data);
             }).AddTo(this);
 
-            // ó‚¯æ‚èƒ{ƒ^ƒ“‚ª‰Ÿ‚³‚ê‚½‚çA‚»‚ÌƒAƒCƒeƒ€‚Ìæ“¾ˆ—‚ğ‘–‚ç‚¹‚é
+            // å—ã‘å–ã‚Šãƒœã‚¿ãƒ³ãŒæŠ¼ã•ã‚ŒãŸã‚‰ã€ãã®ã‚¢ã‚¤ãƒ†ãƒ ã®å–å¾—å‡¦ç†ã‚’èµ°ã‚‰ã›ã‚‹
             OnClickReceiveButtonObservable.Subscribe(async _ =>
             {
                 await StoreManager.ClaimNoticeRewardAsync(data.key);
@@ -54,51 +72,91 @@ namespace fantec.Menu.Notice
 
         public async UniTask ShowNotice(NoticeData notice)
         {
-            // –{•¶‚ğ•\¦
+            // æœ¬æ–‡ã‚’è¡¨ç¤º
             m_BodyText.text = notice.body;
+            // æœ¬æ–‡ã®è¦‹å‡ºã—
+            m_TitleHeaderText.text=notice.title;
+            // æ²è¼‰æ—¥
+            m_ScheduleStartText.text = MenuManager.Instance.GetJSTScheduleTime(notice.ScheduledStartDate);
 
-            // ƒAƒCƒeƒ€‰æ‘œ‚ğ•\¦i—á: 1ŒÂ–Ú‚¾‚¯j
-            if (notice.rewardItemIds != null && notice.rewardItemIds.Length > 0)
+            // ã‚¢ã‚¤ãƒ†ãƒ ç”»åƒã‚’è¡¨ç¤ºï¼ˆè¤‡æ•°è¡¨ç¤ºã•ã›ã‚‹å ´åˆã¯ãƒãƒ³ãƒ‰ãƒ«ç™»éŒ²ã•ã›ã¦ãŠãã€rewardItemIdsã«ã¯ãƒãƒ³ãƒ‰ãƒ«IDã‚’å…¥ã‚Œã‚‹ï¼‰
+            if (notice.rewardItemIds != null && notice.rewardItemIds.Count > 0)
             {
                 string itemId = notice.rewardItemIds[0];
-                var catalog = await PlayFabClientAPI.GetCatalogItemsAsync(new GetCatalogItemsRequest { CatalogVersion = "Main" });
-                var item = catalog.Result.Catalog.FirstOrDefault(i => i.ItemId == itemId);
-                int GetitemId = int.Parse(notice.rewardItemIds[0]);
 
+                var catalog = MasterDataManager.Instance.Catalogs;
+
+                var item = catalog.Result.Catalog.FirstOrDefault(i => i.ItemId == itemId);
 
                 if (item != null)
                 {
-                    // ItemClass ‚ª "Card" ‚Ìê‡‚Íê—p‚Ì‰æ‘œæ“¾ˆ—
-                    if (item.ItemClass == "Card")
+                    // æ•°å€¤IDã«å¤‰æ›å¯èƒ½ã‹ã‚’ãƒã‚§ãƒƒã‚¯
+                    if (int.TryParse(itemId, out int parsedItemId))
                     {
-                        Debug.Log("‚±‚ê‚ÍƒJ[ƒh‚Å‚·: " + item.ItemId);
-
-                        if (!string.IsNullOrEmpty(item.ItemImageUrl))
-                        {
-                            m_ItemSprite = await AssetManager.Instance.LoadAssetAsync<Sprite>(AssetPath.GetCharacterSpriteSpherePath(GetitemId), System.Threading.CancellationToken.None);
-                        }
+                        // Instantiateã®ä½œæˆå‡¦ç†
+                        RewardNoticeCell prefab = Instantiate(m_RewardNoticeCell, m_RewardScrollView.content);
+                        await prefab.Setup(item, parsedItemId,CancellationToken.None);
+                        prefab.OnClickDetailButtonObservable.Subscribe(_=>OnClickItemDetailButton(parsedItemId)).AddTo(this);
                     }
                     else
                     {
-                        // ‚»‚êˆÈŠO‚ÌItemClass‚Ìê‡‚Í•’Ê‚ÌƒAƒCƒeƒ€‰æ‘œæ“¾ˆ—
-                        Debug.Log("ƒJ[ƒhˆÈŠO‚ÌƒAƒCƒeƒ€: " + item.ItemId + " / ItemClass: " + item.ItemClass);
-                        m_ItemSprite = await AssetManager.Instance.LoadAssetAsync<Sprite>(AssetPath.GetSpriteItemIcon(GetitemId), System.Threading.CancellationToken.None);
+                        if (item.ItemClass == "Bundle")
+                        {      
+                            var catalogItems = MasterDataManager.Instance.Catalogs.Result.Catalog;
+ 
+                            foreach (var itemData in item.Bundle.BundledItems) // ãƒãƒ³ãƒ‰ãƒ«ã®ä¸­ã®ã‚¢ã‚¤ãƒ†ãƒ ãŒã‚«ã‚¿ãƒ­ã‚°ã«å­˜åœ¨ã—ã¦ã„ã‚‹ã‹è¦‹ã‚‹
+                            {
+                                var catalogItem = catalogItems.FirstOrDefault(ci => ci.ItemId == itemData);
+
+                                if (catalogItem != null)
+                                {
+                                    if (int.TryParse(catalogItem.ItemId, out int parsedItemDataId))
+                                    {
+                                        // ã‚«ã‚¿ãƒ­ã‚°ã®ä¸­ã«è©²å½“ã‚¢ã‚¤ãƒ†ãƒ ãŒå­˜åœ¨ã—ã€intå‹ã«ãƒ‘ãƒ¼ã‚¹ã§ããŸã‚‰prefabã®ä½œæˆ
+                                        RewardNoticeCell prefab = Instantiate(m_RewardNoticeCell, m_RewardScrollView.content);
+                                        await prefab.Setup(catalogItem, parsedItemDataId, CancellationToken.None);
+                                        prefab.OnClickDetailButtonObservable.Subscribe(_=>OnClickItemDetailButton(parsedItemDataId)).AddTo(this);
+                                    }
+                                }
+                            }
+                        }
+                        else
+                        {
+                            Debug.LogWarning($"ItemId '{itemId}' ã¯æ•°å€¤IDã§ã¯ãªã„ãŸã‚ã€ç”»åƒèª­ã¿è¾¼ã¿ã‚’ã‚¹ã‚­ãƒƒãƒ—ã—ã¾ã™ã€‚");
+                        }
                     }
                 }
             }
             else
             {
-                // ‰æ‘œ‚ğÁ‚·ˆ—
+                // ç”»åƒã‚’æ¶ˆã™å‡¦ç†
+                m_ReceiveButton.gameObject.SetActive(false);
             }
 
-            // ƒ{ƒ^ƒ“İ’è
-            m_ReceiveButton.gameObject.SetActive(notice.canReceive);
+            // ãƒœã‚¿ãƒ³è¨­å®š
+            m_ReceiveButton.interactable=!UserDataManager.User.ClaimedNoticeDictionary.ContainsKey(notice.key);
+            if (!m_ReceiveButton.interactable)
+            {
+                m_BtnText.text = "å—ã‘å–ã‚Šæ¸ˆã¿";
+            }
+            else
+            {
+                m_BtnText.text = "å—ã‘å–ã‚Š";
+            }
             m_ReceiveButton.onClick.RemoveAllListeners();
             m_ReceiveButton.onClick.AddListener(async () =>
             {
-                var res = await StoreManager.ClaimNoticeRewardAsync(notice.key);
-                Debug.Log($"•ñV‚Ìó‘Ô{res?.status}");// ó‚¯æ‚Á‚½‚©Aó‚¯æ‚Á‚Ä‚¢‚È‚¢‚©
+                 await StoreManager.ClaimNoticeRewardAsync(notice.key);
+                m_ReceiveButton.interactable = false;
+                m_BtnText.text = "å—ã‘å–ã‚Šæ¸ˆã¿";
             });
+        }
+
+        // ã‚¢ã‚¤ãƒ†ãƒ ã‚»ãƒ«ã‚’æŠ¼ã—ãŸæ™‚ã®æŒ™å‹•
+        private void OnClickItemDetailButton(int itemId)
+        {
+            MenuManager.Instance.ItemDetailId = itemId;
+            MenuWindowManager.Instance.Create(MenuWindowManager.CreateType.NoContents);
         }
     }
 }

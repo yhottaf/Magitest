@@ -1,4 +1,4 @@
-using fantec.Battle;
+﻿using fantec.Battle;
 using System;
 using UnityEngine;
 

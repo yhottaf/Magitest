@@ -1,4 +1,4 @@
-using UnityEditor;
+ï»¿using UnityEditor;
 using System;
 using System.Linq;
 using System.Collections.Generic;
@@ -13,14 +13,14 @@ public class ApplicationBuilderForAndroid
     {
         const string outputDirKey = "-output-dir";
 
-        //Android‚ÉSwitch Platform
+        //Androidã«Switch Platform
         EditorUserBuildSettings.SwitchActiveBuildTarget(BuildTargetGroup.Android, BuildTarget.Android);
 
         var args = Environment.GetCommandLineArgs();
         var locationPathName = GetArgumentValue(args, outputDirKey);
         if(string.IsNullOrEmpty(locationPathName))
         {
-            Debug.Log("ƒRƒ}ƒ“ƒhƒ‰ƒCƒ“‚©‚ç‚Ìˆø”‚ªŒ©‚Â‚©‚ç‚È‚¢‚½‚ßƒpƒX‚ğ’¼Úw’è‚µ‚Ü‚·B");
+            Debug.Log("ã‚³ãƒãƒ³ãƒ‰ãƒ©ã‚¤ãƒ³ã‹ã‚‰ã®å¼•æ•°ãŒè¦‹ã¤ã‹ã‚‰ãªã„ãŸã‚ãƒ‘ã‚¹ã‚’ç›´æ¥æŒ‡å®šã—ã¾ã™ã€‚");
             locationPathName = Application.dataPath.Replace("Assets", "Builds/Android/magi.apk");
         }
         else

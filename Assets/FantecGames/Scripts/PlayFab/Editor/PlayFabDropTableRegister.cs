@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 
 using System.IO;
 using System.Collections.Generic;
@@ -28,7 +28,7 @@ namespace fantec
             PlayFabSettings.staticSettings.TitleId = "E23B7";
             PlayFabSettings.staticSettings.DeveloperSecretKey = "KXYWIP4D4FG5SOTJ8WCJW1FX8UBK3H69FYWP5UICQG8F3SQ8RC";
 
-            // JSON¨ƒAƒCƒeƒ€ƒŠƒXƒg‚Ö•ÏŠ·
+            // JSONâ†’ã‚¢ã‚¤ãƒ†ãƒ ãƒªã‚¹ãƒˆã¸å¤‰æ›
             StreamReader streamReader = new StreamReader(RewardStageDataFilePath);
             string dataStr = streamReader.ReadToEnd();
             var tableDataList = JsonConvert.DeserializeObject<RewardStageData[]>(dataStr);
@@ -95,7 +95,7 @@ namespace fantec
             }
 
 
-            Debug.Log("PlayFab‚Öƒf[ƒ^‚Ì“o˜^‚ªŠ®—¹‚µ‚Ü‚µ‚½B");
+            Debug.Log("PlayFabã¸ãƒ‡ãƒ¼ã‚¿ã®ç™»éŒ²ãŒå®Œäº†ã—ã¾ã—ãŸã€‚");
         }
 
    

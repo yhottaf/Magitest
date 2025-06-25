@@ -1,25 +1,25 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using System.Linq;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// •¡”‚Ì <see cref="FantecCell{TItemData, TContext}"/> ‚ğ‚ÂƒZƒ‹ƒOƒ‹[ƒvÀ‘•‚·‚é‚½‚ß‚Ì’ŠÛŠî’êƒNƒ‰ƒX.
+    /// è¤‡æ•°ã® <see cref="FantecCell{TItemData, TContext}"/> ã‚’æŒã¤ã‚»ãƒ«ã‚°ãƒ«ãƒ¼ãƒ—å®Ÿè£…ã™ã‚‹ãŸã‚ã®æŠ½è±¡åŸºåº•ã‚¯ãƒ©ã‚¹.
     /// </summary>
-    /// <typeparam name="TItemData">ƒAƒCƒeƒ€‚Ìƒf[ƒ^Œ^.</typeparam>
-    /// <typeparam name="TContext"><see cref="FantecCell{TItemData, TContext}.Context"/> ‚ÌŒ^.</typeparam>
+    /// <typeparam name="TItemData">ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‡ãƒ¼ã‚¿å‹.</typeparam>
+    /// <typeparam name="TContext"><see cref="FantecCell{TItemData, TContext}.Context"/> ã®å‹.</typeparam>
     public abstract class FantecCellGroup<TItemData, TContext> : FantecCell<TItemData[], TContext>
         where TContext : class, IFantecCellGroupContext, new()
     {
         /// <summary>
-        /// ‚±‚ÌƒOƒ‹[ƒv‚Å•\¦‚·‚éƒZƒ‹‚Ì”z—ñ.
+        /// ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã§è¡¨ç¤ºã™ã‚‹ã‚»ãƒ«ã®é…åˆ—.
         /// </summary>
         protected virtual FantecCell<TItemData, TContext>[] Cells { get; private set; }
 
         /// <summary>
-        /// ‚±‚ÌƒOƒ‹[ƒv‚Å•\¦‚·‚éƒZƒ‹‚Ì”z—ñ‚ğƒCƒ“ƒXƒ^ƒ“ƒX‰»‚µ‚Ü‚·.
+        /// ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã§è¡¨ç¤ºã™ã‚‹ã‚»ãƒ«ã®é…åˆ—ã‚’ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹åŒ–ã—ã¾ã™.
         /// </summary>
-        /// <returns>‚±‚ÌƒOƒ‹[ƒv‚Å•\¦‚·‚éƒZƒ‹‚Ì”z—ñ.</returns>
+        /// <returns>ã“ã®ã‚°ãƒ«ãƒ¼ãƒ—ã§è¡¨ç¤ºã™ã‚‹ã‚»ãƒ«ã®é…åˆ—.</returns>
         protected virtual FantecCell<TItemData, TContext>[] InstantiateCells()
         {
             return Enumerable.Range(0, Context.GetGroupCount())

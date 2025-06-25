@@ -1,4 +1,4 @@
-using fantec.Battle.Field.Chara;
+﻿using fantec.Battle.Field.Chara;
 using fantec.Battle.Utiles;
 using UnityEngine;
 

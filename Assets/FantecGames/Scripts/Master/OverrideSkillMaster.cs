@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using UnityEngine;
 
 namespace fantec.Master
@@ -6,8 +6,8 @@ namespace fantec.Master
     [System.Serializable]
     public class OverrideSkillData : AbstructSkillData
     {
-        public int iconId;     // ƒXƒLƒ‹ƒAƒCƒRƒ“ID
-        public int[] triggerCardOriginId; // ”­“®‚É•K—v‚ÈƒLƒƒƒ‰‚ÌŒÂ•ÊID
+        public int iconId;     // ã‚¹ã‚­ãƒ«ã‚¢ã‚¤ã‚³ãƒ³ID
+        public int[] triggerCardOriginId; // ç™ºå‹•ã«å¿…è¦ãªã‚­ãƒ£ãƒ©ã®å€‹åˆ¥ID
         public AffectOverrideType overrideType;
     }
 

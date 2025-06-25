@@ -1,4 +1,4 @@
-using System;
+﻿using System;
 using System.Collections.Generic;
 using UnityEngine;
 
@@ -20,7 +20,7 @@ namespace fantec.Battle
             public static int GetOtherSkillDataId<T>() where T : AbstructOtherEntity
             {
                 try { return m_OtherEntityToDataIdDic[typeof(T)]; }
-                catch { throw new InvalidOperationException($"[{typeof(T).Name}] �̓L�[�Ƃ��Đݒ肳��Ă��܂���B"); }
+                catch { throw new InvalidOperationException($"[{typeof(T).Name}] はキーとして設定されていません。"); }
             }
         }
     }

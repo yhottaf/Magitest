@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System;
 using System.Linq;
 using UnityEngine;
@@ -10,13 +10,13 @@ namespace fantec.Master
     {
         public string tableId;
         public string itemId1;
-        public int quantity1;  // itemId1‚Ì“üè‚Å‚«‚é”
+        public int quantity1;  // itemId1ã®å…¥æ‰‹ã§ãã‚‹æ•°
         public string itemId2;
-        public int quantity2;  // itemId2‚Ì“üè‚Å‚«‚é”
+        public int quantity2;  // itemId2ã®å…¥æ‰‹ã§ãã‚‹æ•°
         public string itemId3;
-        public int quantity3;  // itemId3‚Ì“üè‚Å‚«‚é”
-        public int VC;         // “üè‚Å‚«‚é–³Î‚Ì”
-        public int[] cardId;   //“üè‚Å‚«‚éƒJ[ƒh‚ÌID
+        public int quantity3;  // itemId3ã®å…¥æ‰‹ã§ãã‚‹æ•°
+        public int VC;         // å…¥æ‰‹ã§ãã‚‹ç„¡å„ŸçŸ³ã®æ•°
+        public int[] cardId;   //å…¥æ‰‹ã§ãã‚‹ã‚«ãƒ¼ãƒ‰ã®ID
     }
     [ExcelAsset(AssetPath =AssetPath.MasterLocalDataFolderPath),CreateAssetMenu(fileName ="InitialRewardStageMaster",menuName ="ScriptableObjects/InitialRewardStageMaster")]
     public class InitialRewardStageMaster : MasterBase<InitialRewardStageData>
@@ -29,7 +29,7 @@ namespace fantec.Master
             }
             catch
             {
-                throw new InvalidOperationException($"[TableId:{tableId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB");
+                throw new InvalidOperationException($"[TableId:{tableId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
             }
         }
     }

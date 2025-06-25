@@ -1,6 +1,6 @@
-using Cysharp.Threading.Tasks;
-using fantec.Menu.Notice;
+﻿using Cysharp.Threading.Tasks;
 using fantec.PlayfabCilent;
+using Newtonsoft.Json;
 using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
@@ -20,7 +20,7 @@ namespace fantec.PlayFabClient
         };
 
         /// <summary>
-        /// PlayFab����ŐV�̃f�[�^���擾���ă��[�J���ɃL���b�V������B
+        /// PlayFabから最新のデータを取得してローカルにキャッシュする。
         /// </summary>
         /// <returns></returns>
         public static async UniTask SyncPlayFabToClientAsync()
@@ -52,7 +52,7 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// �X�g�A�ŏ��i���w������
+        /// ストアで商品を購入する
         /// </summary>
         /// <param name="storeId"></param>
         /// <param name="itemId"></param>
@@ -80,28 +80,57 @@ namespace fantec.PlayFabClient
         }
 
 
-
-        public static async UniTask<NoticeResult> ClaimNoticeRewardAsync(string noticeKey)
+        /// <summary>
+        /// 引数から該当するお知らせを読み、それに対応した報酬をプレイヤーに渡す
+        /// </summary>
+        /// <param name="noticeKey"></param>
+        /// <returns></returns>
+        public static async UniTask ClaimNoticeRewardAsync(string noticeKey)
         {
             var request = new ExecuteCloudScriptRequest
             {
                 FunctionName = "ClaimNoticeReward",
-                FunctionParameter = new { key = noticeKey },
+                FunctionParameter = new Dictionary<string, object>
+                {
+                   { "key", noticeKey }
+                },
                 GeneratePlayStreamEvent = true
             };
 
             var response = await PlayFabClientAPI.ExecuteCloudScriptAsync(request);
             if (response.Error != null)
             {
-                Debug.LogError("��V�󂯎�莸�s: " + response.Error.GenerateErrorReport());
-                return null;
+                Debug.LogError("報酬受け取り失敗: " + response.Error.GenerateErrorReport());
+                return;
             }
 
-            string json = response.Result.FunctionResult.ToString();
-            Debug.Log("CloudScript�̕ԋp����: " + json);
+            string rawJson = response.Result.FunctionResult?.ToString();
+            Debug.Log("CloudScript Result Raw JSON: " + rawJson);
+            var functionResult = JsonConvert.DeserializeObject<Dictionary<string, object>>(rawJson);
+            if (functionResult==null)
+            {
+                Debug.LogWarning("CloudScriptの結果が不正");
+                return;
+            }
 
-            // JSON��Unity�̃N���X�ɕϊ�
-            return JsonUtility.FromJson<NoticeResult>(json);
+            string status = functionResult["status"]as string;
+            if(status=="granted"&&functionResult.TryGetValue("claimedKey", out var claimedKeyObj))
+            {
+                string claimedkey = claimedKeyObj as string;
+
+                // ローカルUserに反映 (Dictionaryに記録して保存)
+                if(!UserDataManager.User.ClaimedNoticeDictionary.ContainsKey(claimedkey))
+                {
+                    UserDataManager.User.ClaimedNoticeDictionary[claimedkey] = true;
+                    await UserDataManager.UpdatePlayFab(); // JSONで保存
+                }
+            }
+            else if (status=="already_claimed")
+            {
+                Debug.Log("すでに報酬は受け取り済みです");
+                UserDataManager.User.ClaimedNoticeDictionary[noticeKey] = true;
+                await UserDataManager.UpdatePlayFab(); // JSONで保存
+            }
         }
     }
 }

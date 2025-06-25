@@ -1,28 +1,28 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UniRx;
 using UnityEngine;
 
 namespace fantec.Utilities
 {
     /// <summary>
-    /// •¡”d‚ËŠ|‚¯‚ÅÄ¶‰Â”\‚È AudioSource ‚à‚Ç‚«
+    /// è¤‡æ•°é‡ã­æ›ã‘ã§å†ç”Ÿå¯èƒ½ãª AudioSource ã‚‚ã©ã
     /// </summary>
     public class MultipleSource : MonoBehaviour
     {
-        // •¡»Œ³‚ÌƒNƒŠƒbƒv
+        // è¤‡è£½å…ƒã®ã‚¯ãƒªãƒƒãƒ—
         private AudioClip m_AudioClip;
-        // Ä¶—p‚Ìƒ\[ƒXƒŠƒXƒg
+        // å†ç”Ÿç”¨ã®ã‚½ãƒ¼ã‚¹ãƒªã‚¹ãƒˆ
         private List<AudioSource> m_SourceList = new List<AudioSource>();
 
-        // Ä¶‰‰ñƒtƒŒ[ƒ€‚Å‚ ‚é‚©”Û‚©¯•Ê—p
+        // å†ç”Ÿåˆå›ãƒ•ãƒ¬ãƒ¼ãƒ ã§ã‚ã‚‹ã‹å¦ã‹è­˜åˆ¥ç”¨
         private bool m_IsOneFrame;
 
         /// <summary>
-        /// ƒŠƒXƒg‚©‚çg—p‚³‚ê‚Ä‚¢‚È‚¢SE‚ğ–Â‚ç‚·
+        /// ãƒªã‚¹ãƒˆã‹ã‚‰ä½¿ç”¨ã•ã‚Œã¦ã„ãªã„SEã‚’é³´ã‚‰ã™
         /// </summary>
         public void PlayLayerd()
         {
-            // “¯Ä¶–h~
+            // åŒæ™‚å†ç”Ÿé˜²æ­¢
             if (m_IsOneFrame) return;
             else
             {
@@ -30,7 +30,7 @@ namespace fantec.Utilities
                 Observable.NextFrame().Subscribe(_ => m_IsOneFrame = false);
             }
 
-            // g—p‚³‚ê‚Ä‚¢‚È‚¢ AudioSource ‚ğ’T‚·
+            // ä½¿ç”¨ã•ã‚Œã¦ã„ãªã„ AudioSource ã‚’æ¢ã™
             foreach (AudioSource audioSource in m_SourceList)
             {
                 if (audioSource.isPlaying == false)
@@ -40,12 +40,12 @@ namespace fantec.Utilities
                 }
             }
 
-            // Ä¶‰Â”\‚È AudioSource ‚ª‚È‚©‚Á‚½ê‡•¡»‚µAÄ¶
+            // å†ç”Ÿå¯èƒ½ãª AudioSource ãŒãªã‹ã£ãŸå ´åˆè¤‡è£½ã—ã€å†ç”Ÿ
             CloneSource().Play();
         }
 
         /// <summary>
-        /// ƒŠƒXƒg‚Ì’†‚ÌSE‚ğƒ~ƒ…[ƒg‚ÌŠÇ—
+        /// ãƒªã‚¹ãƒˆã®ä¸­ã®SEã‚’ãƒŸãƒ¥ãƒ¼ãƒˆã®ç®¡ç†
         /// </summary>
         public void AllMute(bool value)
         {
@@ -56,7 +56,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// ‰¹—Ê‚ğ’²®‚·‚é
+        /// éŸ³é‡ã‚’èª¿æ•´ã™ã‚‹
         /// </summary>
         public void ChangeVolume(float value)
         {
@@ -67,7 +67,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// Ä¶’†‚Ì‚à‚Ì‚ğã‘‚«‚µ‚Ä–Â‚ç‚·
+        /// å†ç”Ÿä¸­ã®ã‚‚ã®ã‚’ä¸Šæ›¸ãã—ã¦é³´ã‚‰ã™
         /// </summary>
         public void PlayOverride()
         {
@@ -75,29 +75,29 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// Ä¶’†‚È‚ç–Â‚ç‚³‚È‚¢
+        /// å†ç”Ÿä¸­ãªã‚‰é³´ã‚‰ã•ãªã„
         /// </summary>
         public void PlayCanceld()
         {
-            // g—p‚³‚ê‚Ä‚¢‚È‚é AudioSource ‚ğ’T‚·
+            // ä½¿ç”¨ã•ã‚Œã¦ã„ãªã‚‹ AudioSource ã‚’æ¢ã™
             foreach (AudioSource audioSource in m_SourceList)
             {
                 if (audioSource.isPlaying == true)
                 {
-                    // ‚ ‚ê‚Î‰½‚à‚µ‚È‚¢
+                    // ã‚ã‚Œã°ä½•ã‚‚ã—ãªã„
                     return;
                 }
             }
 
-            // ‚È‚¢‚½‚ß–Â‚ç‚·
+            // ãªã„ãŸã‚é³´ã‚‰ã™
             m_SourceList[0].Play();
         }
 
         /// <summary>
-        /// ‰Šúİ’è MEMO:g—p‚·‚éÛ‚ÍÅ‰‚É•K‚¸ŒÄ‚Ô
+        /// åˆæœŸè¨­å®š MEMO:ä½¿ç”¨ã™ã‚‹éš›ã¯æœ€åˆã«å¿…ãšå‘¼ã¶
         /// </summary>
-        /// <param name="audioClip">Ä¶‚·‚é AudioClip</param>
-        /// <param name="sourceCount">AudioSource ‚Ì¶¬ŒÂ”</param>
+        /// <param name="audioClip">å†ç”Ÿã™ã‚‹ AudioClip</param>
+        /// <param name="sourceCount">AudioSource ã®ç”Ÿæˆå€‹æ•°</param>
         public void Setup(AudioClip audioClip, int sourceCount = 1)
         {
             m_AudioClip = audioClip;
@@ -109,7 +109,7 @@ namespace fantec.Utilities
         }
 
         /// <summary>
-        /// AudioSource ‚ğ•¡»‚·‚é
+        /// AudioSource ã‚’è¤‡è£½ã™ã‚‹
         /// </summary>
         private AudioSource CloneSource()
         {

@@ -1,4 +1,4 @@
-using fantec.Common;
+ï»¿using fantec.Common;
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
@@ -36,7 +36,7 @@ namespace fantec.Debugger.BattleSetup
                     var data = m_StagedataDic[index];
                     model.StageData = data;
                     m_InfoText.text =
-                    $"à–¾:{data.description}\n Á”ïƒXƒ^ƒ~ƒi:{data.stamina}\n “ïˆÕ“x: {data.difficultyType} / „§ƒŒƒxƒ‹:{data.recommendedLevel} / „§ƒŒƒAƒŠƒeƒB: {data.recommendedRarityType}";
+                    $"èª¬æ˜:{data.description}\n æ¶ˆè²»ã‚¹ã‚¿ãƒŸãƒŠ:{data.stamina}\n é›£æ˜“åº¦: {data.difficultyType} / æ¨å¥¨ãƒ¬ãƒ™ãƒ«:{data.recommendedLevel} / æ¨å¥¨ãƒ¬ã‚¢ãƒªãƒ†ã‚£: {data.recommendedRarityType}";
 
                 }).AddTo(this);
         }

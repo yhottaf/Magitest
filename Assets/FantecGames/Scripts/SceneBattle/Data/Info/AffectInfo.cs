@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using fantec.Battle.Model;
 using System.Collections.Generic;
 
@@ -6,31 +6,31 @@ namespace fantec.Battle
 {
     public enum SkillType
     {
-        Override,        // ƒI[ƒo[ƒ‰ƒCƒh
-        ExsaOverride,    // ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh
-        SectaOverride,   // ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh
-        QuetaOverride,   // ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh
-        Normal,          // ’ÊíUŒ‚
-        Style,           // ƒXƒLƒ‹‚É‚æ‚éƒoƒt
-        Gimmic,          // ƒoƒgƒ‹ŠJn‚Ìƒoƒt
-        Token,           // ƒXƒLƒ‹“à‚Ì•t—^Œø‰Ê
-        System,          // ƒVƒXƒeƒ€
-        Dummy,           // ƒ_ƒ~[
-        Danger           // ƒfƒ“ƒWƒƒ[•Û—¯
+        Override,        // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        ExsaOverride,    // ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        SectaOverride,   // ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        QuetaOverride,   // ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
+        Normal,          // é€šå¸¸æ”»æ’ƒ
+        Style,           // ã‚¹ã‚­ãƒ«ã«ã‚ˆã‚‹ãƒãƒ•
+        Gimmic,          // ãƒãƒˆãƒ«é–‹å§‹æ™‚ã®ãƒãƒ•
+        Token,           // ã‚¹ã‚­ãƒ«å†…ã®ä»˜ä¸åŠ¹æœ
+        System,          // ã‚·ã‚¹ãƒ†ãƒ 
+        Dummy,           // ãƒ€ãƒŸãƒ¼
+        Danger           // ãƒ‡ãƒ³ã‚¸ãƒ£ãƒ¼ä¿ç•™
     }
 
-     // “Áê‚Èƒ_ƒ[ƒWŒvZ‚Ìí—Ş
+     // ç‰¹æ®Šãªãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®—ã®ç¨®é¡
     public enum ValueCalcType
     {
-        Normal,          // ’ÊíŒvZ
-        Direct,          // AffectValue ‚ğ‚»‚Ì‚Ü‚Üg‚¤
+        Normal,          // é€šå¸¸è¨ˆç®—
+        Direct,          // AffectValue ã‚’ãã®ã¾ã¾ä½¿ã†
     }
 
     public enum HitResultType
     {
-        Success,         // UŒ‚¬Œ÷
-        Miss,            // UŒ‚¸”sA‰ñ”ğ‚³‚ê‚½
-        Guard,           // ƒV[ƒ‹ƒh“™AƒK[ƒhó‘Ô‚É“–‚½‚Á‚½
+        Success,         // æ”»æ’ƒæˆåŠŸ
+        Miss,            // æ”»æ’ƒå¤±æ•—ã€å›é¿ã•ã‚ŒãŸ
+        Guard,           // ã‚·ãƒ¼ãƒ«ãƒ‰ç­‰ã€ã‚¬ãƒ¼ãƒ‰çŠ¶æ…‹æ™‚ã«å½“ãŸã£ãŸæ™‚
     }
 
     public class AffectInfo
@@ -38,8 +38,8 @@ namespace fantec.Battle
         private static Dictionary<System.Type, SkillType> m_SkillEntityDict = new Dictionary<System.Type, SkillType>()
         {
             {typeof(OverrideSkillEntity),SkillType.Override },
-            {typeof(NormalAttackEntity),SkillType.Normal },// ’ÊíUŒ‚
-            {typeof(TokenEntity),SkillType.Token }, // ƒXƒLƒ‹“à‚Ì•t—^Œø‰Ê
+            {typeof(NormalAttackEntity),SkillType.Normal },// é€šå¸¸æ”»æ’ƒ
+            {typeof(TokenEntity),SkillType.Token }, // ã‚¹ã‚­ãƒ«å†…ã®ä»˜ä¸åŠ¹æœ
             {typeof(DummyEntity),SkillType.Dummy },
             {typeof(DangerEntity),SkillType.Danger },
             {typeof(ReviveEntity),SkillType.System },
@@ -48,35 +48,35 @@ namespace fantec.Battle
         };
 
 
-        public IBattler Owner { get; private set; } // ƒXƒLƒ‹‚Ì”­“®Ò
+        public IBattler Owner { get; private set; } // ã‚¹ã‚­ãƒ«ã®ç™ºå‹•è€…
 
-        public IEnumerable<IBattler>Targets { get; private set; } // ƒXƒLƒ‹‚Ì‰e‹¿‚ğó‚¯‚é‘ÎÛ
+        public IEnumerable<IBattler>Targets { get; private set; } // ã‚¹ã‚­ãƒ«ã®å½±éŸ¿ã‚’å—ã‘ã‚‹å¯¾è±¡
         
-        public SkillCommand Command { get; private set; }         // ƒXƒLƒ‹ƒRƒ}ƒ“ƒh
+        public SkillCommand Command { get; private set; }         // ã‚¹ã‚­ãƒ«ã‚³ãƒãƒ³ãƒ‰
 
-        public AbstructSkillEntity Entity { get; private set; }   // ƒXƒLƒ‹‚Ì–{‘Ìƒf[ƒ^
+        public AbstructSkillEntity Entity { get; private set; }   // ã‚¹ã‚­ãƒ«ã®æœ¬ä½“ãƒ‡ãƒ¼ã‚¿
 
-        public SkillType SkillType { get; private set; }          // ƒXƒLƒ‹‚Ìí•Ê
+        public SkillType SkillType { get; private set; }          // ã‚¹ã‚­ãƒ«ã®ç¨®åˆ¥
 
-        public HitResultType HitType {  get; private set; }       // UŒ‚¸”s‚©”Û‚©
+        public HitResultType HitType {  get; private set; }       // æ”»æ’ƒå¤±æ•—ã‹å¦ã‹
 
-        public ValueCalcType CalcType { get; private set; }       // ŒvZ•û–@í•Ê
+        public ValueCalcType CalcType { get; private set; }       // è¨ˆç®—æ–¹æ³•ç¨®åˆ¥
 
-        public int CalcedAffectValue {  get; private set; }       // ŒvZŒã‚ÌŒø‰Ê—Ê
+        public int CalcedAffectValue {  get; private set; }       // è¨ˆç®—å¾Œã®åŠ¹æœé‡
         
-        public bool IsHideView {  get; private set; }             // Œø‰Ê—Ê‚Ì•\¦‚ğ‰B‚·‚©”Û‚©
+        public bool IsHideView {  get; private set; }             // åŠ¹æœé‡ã®è¡¨ç¤ºã‚’éš ã™ã‹å¦ã‹
 
-        public bool IsMain {  get; private set; }                 // ƒƒCƒ“‚Æ‚µ‚Äˆµ‚í‚ê‚éƒXƒLƒ‹‚©”Û‚©
+        public bool IsMain {  get; private set; }                 // ãƒ¡ã‚¤ãƒ³ã¨ã—ã¦æ‰±ã‚ã‚Œã‚‹ã‚¹ã‚­ãƒ«ã‹å¦ã‹
 
         public bool IsRangedAttacker =>
-            Owner.Unit.Entity.moveType == AffectMoveType.‰“;      // ‰“ŠuUŒ‚ƒLƒƒƒ‰‚Å‚ ‚é‚©”Û‚©
+            Owner.Unit.Entity.moveType == AffectMoveType.é ;      // é éš”æ”»æ’ƒã‚­ãƒ£ãƒ©ã§ã‚ã‚‹ã‹å¦ã‹
 
-        public bool IsRangedAttackable =>                         // ‰“ŠuUŒ‚‚ÅÀs‰Â”\‚©”Û‚©
-            Command.categoryType.GetIsAttack() == true &&  // UŒ‚ƒXƒLƒ‹‚Å
-            Command.rangeType.GetIsMySide() == false;      // ‘ÎÛ‚ª©•ªƒTƒCƒh‚Å‚Í‚È‚­
+        public bool IsRangedAttackable =>                         // é éš”æ”»æ’ƒã§å®Ÿè¡Œå¯èƒ½ã‹å¦ã‹
+            Command.categoryType.GetIsAttack() == true &&  // æ”»æ’ƒã‚¹ã‚­ãƒ«ã§
+            Command.rangeType.GetIsMySide() == false;      // å¯¾è±¡ãŒè‡ªåˆ†ã‚µã‚¤ãƒ‰ã§ã¯ãªã
 
 
-        public bool IsRangedAttackSkill =>                        // ‰“ŠuUŒ‚‚ÅÀs‚·‚éƒXƒLƒ‹‚Å‚ ‚é‚©”Û‚©
+        public bool IsRangedAttackSkill =>                        // é éš”æ”»æ’ƒã§å®Ÿè¡Œã™ã‚‹ã‚¹ã‚­ãƒ«ã§ã‚ã‚‹ã‹å¦ã‹
             SkillType == SkillType.Override;
 
         public AffectInfo Clone()
@@ -175,17 +175,17 @@ namespace fantec.Battle
         {
             if(this.Entity==null)
             {
-                this.Copy(chargeTarget);                // –³‚¯‚ê‚Î‚»‚Ì‚Ü‚ÜƒRƒs[
-                this.SetCalcType(ValueCalcType.Direct); // ”’l’¼’Êİ’è
+                this.Copy(chargeTarget);                // ç„¡ã‘ã‚Œã°ãã®ã¾ã¾ã‚³ãƒ”ãƒ¼
+                this.SetCalcType(ValueCalcType.Direct); // æ•°å€¤ç›´é€šè¨­å®š
             }
             else
             {
-                this.SetAffectValue(chargeTarget.CalcedAffectValue + this.CalcedAffectValue); // ‚ ‚ê‚Î”’l‚ğ‰ÁZ
+                this.SetAffectValue(chargeTarget.CalcedAffectValue + this.CalcedAffectValue); // ã‚ã‚Œã°æ•°å€¤ã‚’åŠ ç®—
             }
 
-            chargeTarget.SetCalcType(ValueCalcType.Direct); // ”’l’¼’Êİ’è
-            chargeTarget.SetAffectValue(0);                 // ƒ`ƒƒ[ƒWŒ³‚ÌŒø‰Ê—Ê‚ğ‹ó‚É‚·‚é
-            chargeTarget.SetIsHideNumeral(true);            // Œø‰Ê—Ê‚Ì•\¦‚ğs‚í‚È‚¢
+            chargeTarget.SetCalcType(ValueCalcType.Direct); // æ•°å€¤ç›´é€šè¨­å®š
+            chargeTarget.SetAffectValue(0);                 // ãƒãƒ£ãƒ¼ã‚¸å…ƒã®åŠ¹æœé‡ã‚’ç©ºã«ã™ã‚‹
+            chargeTarget.SetIsHideNumeral(true);            // åŠ¹æœé‡ã®è¡¨ç¤ºã‚’è¡Œã‚ãªã„
             return this;
         }
 
@@ -200,7 +200,7 @@ namespace fantec.Battle
                 case SkillType.ExsaOverride:return Owner.OverrideSkill;
                 case SkillType.SectaOverride:return Owner.OverrideSkill;
                 case SkillType.QuetaOverride:return Owner.OverrideSkill;
-                default: throw new System.Exception($"[SkillType {this.SkillType}] ‚Í‘ÎÛŠO‚Å‚·B");
+                default: throw new System.Exception($"[SkillType {this.SkillType}] ã¯å¯¾è±¡å¤–ã§ã™ã€‚");
             }
         }
 
@@ -211,7 +211,7 @@ namespace fantec.Battle
                 case HitResultType.Success: return true;
                 case HitResultType.Guard: return false;
                 case HitResultType.Miss: return false;
-                default: throw new System.Exception($"[HitType{this.HitType}] ‚Í‘ÎÛŠO‚Å‚·B");
+                default: throw new System.Exception($"[HitType{this.HitType}] ã¯å¯¾è±¡å¤–ã§ã™ã€‚");
             }
         }
     }

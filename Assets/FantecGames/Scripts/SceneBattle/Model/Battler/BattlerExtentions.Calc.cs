@@ -1,40 +1,40 @@
-using fantec.Battle.Model;
+ï»¿using fantec.Battle.Model;
 using UnityEngine;
 
 namespace fantec.Battle
 {
-    // TODO: ƒ_ƒ[ƒWŒvZü‚è
+    // TODO: ãƒ€ãƒ¡ãƒ¼ã‚¸è¨ˆç®—å‘¨ã‚Š
     public static partial class BattlerExtentions
     {
         /// <summary>
-        /// Œø‰Ê—Ê‚ÌZo
+        /// åŠ¹æœé‡ã®ç®—å‡º
         /// </summary>
-        /// <param name="this">”­“®Ò</param>
-        /// <param name="command">Œø‰ÊƒRƒ}ƒ“ƒh</param>
-        /// <param name="target">‘ÎÛ</param>
+        /// <param name="this">ç™ºå‹•è€…</param>
+        /// <param name="command">åŠ¹æœã‚³ãƒãƒ³ãƒ‰</param>
+        /// <param name="target">å¯¾è±¡</param>
         /// <returns></returns>
         public static int GetCalcAffectValue(this IBattler @this,AffectInfo info,IBattler target)
         {
-            // ’¼’l‘ã“ü
+            // ç›´å€¤ä»£å…¥
             var command = info.Command;
             var affectValue = info.Command.affectValue;
 
-            // ‚×[ƒX‚ğ‚à‚Æ‚ÉŒvZ‚·‚é‚È‚ç
+            // ã¹ãƒ¼ã‚¹ã‚’ã‚‚ã¨ã«è¨ˆç®—ã™ã‚‹ãªã‚‰
             if(command.categoryType.GetIsCalcUseBaseValue())
             {
                 affectValue = (int)(@this.State.CurrentATK * affectValue * Random.Range(95, 105) * 0.0001f);
             }
 
-            // Š„‡‚ÅŒvZ‚·‚é‚È‚ç
+            // å‰²åˆã§è¨ˆç®—ã™ã‚‹ãªã‚‰
             if (command.categoryType.GetIsCalcRasio())
             {
                 affectValue = (int)(target.State.Health.MaxHealth * (affectValue / 100.0f));
             }
 
-            // TODOF‘Ï«‚È‚Ç‚ğ‚ ‚Æ‚ ‚Æì¬‚µ‚Äl—¶‚·‚é‚È‚ç‚±‚±‚É‹LÚ
+            // TODOï¼šè€æ€§ãªã©ã‚’ã‚ã¨ã‚ã¨ä½œæˆã—ã¦è€ƒæ…®ã™ã‚‹ãªã‚‰ã“ã“ã«è¨˜è¼‰
 
 
-            // ãŒÀ‰ºŒÀİ’è
+            // ä¸Šé™ä¸‹é™è¨­å®š
             affectValue = Mathf.Clamp(affectValue, 0, @this.State.CurrentDMG);
 
             return affectValue;
@@ -42,14 +42,14 @@ namespace fantec.Battle
 
         public static HitResultType GetCalcHitType(this IBattler @this,AffectInfo info,IBattler target)
         {
-            // TODO: UŒ‚‚Ì–½’†—¦‚È‚Ç
-            // ¡‚Ì‚Æ‚±‚ë¬Œ÷‚Ì‚İ”­¶‚³‚¹‚Ä‚¢‚é‚ªA‚ ‚Æ‚ ‚Æ‰ñ”ğ—ÍAs“®‚Ì¬Œ÷’l‚È‚Ç‚ğİ’è‚µ‚½‚¢ê‡‚Í
-            // ‚±‚±‚ğŠg’£‚·‚é
+            // TODO: æ”»æ’ƒã®å‘½ä¸­ç‡ãªã©
+            // ä»Šã®ã¨ã“ã‚æˆåŠŸã®ã¿ç™ºç”Ÿã•ã›ã¦ã„ã‚‹ãŒã€ã‚ã¨ã‚ã¨å›é¿åŠ›ã€è¡Œå‹•ã®æˆåŠŸå€¤ãªã©ã‚’è¨­å®šã—ãŸã„å ´åˆã¯
+            // ã“ã“ã‚’æ‹¡å¼µã™ã‚‹
             return HitResultType.Success;
         }
 
 
-        // TODO : g—p‚µ‚È‚¢‚©‚à‚µ‚ê‚È‚¢‚ª¬Œ÷’l‚È‚Ç‚ğİ’è‚·‚éê‡‚Íg—p‚·‚é@—á: 20“‚ÌŠm—¦‚Å‰ñ”ğ‚È‚Ç
+        // TODO : ä½¿ç”¨ã—ãªã„ã‹ã‚‚ã—ã‚Œãªã„ãŒæˆåŠŸå€¤ãªã©ã‚’è¨­å®šã™ã‚‹å ´åˆã¯ä½¿ç”¨ã™ã‚‹ã€€ä¾‹: 20ï¼…ã®ç¢ºç‡ã§å›é¿ãªã©
         private static bool GetIsRandom(int rate)
         {
             return Random.Range(0, 100) < rate;

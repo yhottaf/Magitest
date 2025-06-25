@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -22,7 +22,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// •ñVƒŠƒXƒg‚ğ‚à‚Æ‚É Info ‚ğì‚è‚¾‚µ•Ô‚·B
+        /// å ±é…¬ãƒªã‚¹ãƒˆã‚’ã‚‚ã¨ã« Info ã‚’ä½œã‚Šã ã—è¿”ã™ã€‚
         /// </summary>
         public static IEnumerable<RewerdInfo>CreateInfos (IEnumerable<Master.ConsumeItemData>rewards)
         {

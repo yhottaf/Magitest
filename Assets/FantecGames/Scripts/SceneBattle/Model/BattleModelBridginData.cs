@@ -1,4 +1,4 @@
-using fantec.Common;
+﻿using fantec.Common;
 using UnityEngine;
 
 namespace fantec.Battle.Model

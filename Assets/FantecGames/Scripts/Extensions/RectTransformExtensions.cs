@@ -1,14 +1,14 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Extensions
 {
     public static class RectTransformExtensions
     {
         /// <summary>
-        /// e‚ğİ’è‚·‚é‚Â‚¢‚Å‚Éƒ|ƒWƒVƒ‡ƒ“‚âƒXƒP[ƒ‹‚ğŠî–{’l‚Éİ’è‚·‚é
+        /// è¦ªã‚’è¨­å®šã™ã‚‹ã¤ã„ã§ã«ãƒã‚¸ã‚·ãƒ§ãƒ³ã‚„ã‚¹ã‚±ãƒ¼ãƒ«ã‚’åŸºæœ¬å€¤ã«è¨­å®šã™ã‚‹
         /// </summary>
         /// <param name="rect"></param>
-        /// <param name="parentTransform">e‚É‚µ‚½‚¢ƒgƒ‰ƒ“ƒXƒtƒH[ƒ€</param>
+        /// <param name="parentTransform">è¦ªã«ã—ãŸã„ãƒˆãƒ©ãƒ³ã‚¹ãƒ•ã‚©ãƒ¼ãƒ </param>
         public static void FullStretch(this RectTransform rect)
         {
             rect.anchorMax = Vector2.one;

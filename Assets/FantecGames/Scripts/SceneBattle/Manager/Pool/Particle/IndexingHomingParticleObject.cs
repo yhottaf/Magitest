@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 using UniRx;
 using System;
 using fantec.Battle.Utiles;
@@ -28,38 +28,38 @@ namespace fantec.Battle.Manager.Pool
         {
             base.SetupBase();
 
-            // ƒz[ƒ~ƒ“ƒOÄ¶
+            // ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å†ç”Ÿ
             this.m_Homing.PlayThrow(start, end);
 
-            // •`‰æ‡‚ğ HUD ‚æ‚èè‘O‚É
+            // æç”»é †ã‚’ HUD ã‚ˆã‚Šæ‰‹å‰ã«
             this.m_SortingGroup.sortingLayerName = BD.SortingLayer.NAME_HUD;
 
             return this;
         }
 
-        // ’†ŠÔ’n“_‚ğİ’è‚µ‚½ƒz[ƒ~ƒ“ƒOËoˆ—
+        // ä¸­é–“åœ°ç‚¹ã‚’è¨­å®šã—ãŸãƒ›ãƒ¼ãƒŸãƒ³ã‚°å°„å‡ºå‡¦ç†
         public IndexingHomingParticleObject Setup(Vector3 start,Vector3 half,Vector3 end)
         {
             base.SetupBase();
 
-            // ƒz[ƒ~ƒ“ƒOÄ¶
+            // ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å†ç”Ÿ
             this.m_Homing.PlayThrow(start, half, end);
 
-            // •`‰æ‡‚ğ HUD ‚æ‚èè‘O‚É
+            // æç”»é †ã‚’ HUD ã‚ˆã‚Šæ‰‹å‰ã«
             this.m_SortingGroup.sortingLayerName= BD.SortingLayer.NAME_HUD;
 
             return this;
         }
 
-        // ‘ÎÛ‚Ü‚Å^‚Á‚·‚®‚Éƒp[ƒeƒBƒNƒ‹‚ğ”ò‚Î‚·ˆ—
+        // å¯¾è±¡ã¾ã§çœŸã£ã™ãã«ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã‚’é£›ã°ã™å‡¦ç†
         public IndexingHomingParticleObject SetupStraight(Vector3 start,Vector3 end)
         {
             base.SetupBase();
 
-            // ƒz[ƒ~ƒ“ƒOÄ¶
+            // ãƒ›ãƒ¼ãƒŸãƒ³ã‚°å†ç”Ÿ
             this.m_Homing.PlayStraight(start,end);
 
-            // •`‰æ‡‚ğ HUD ‚æ‚èè‘O‚É
+            // æç”»é †ã‚’ HUD ã‚ˆã‚Šæ‰‹å‰ã«
             this.m_SortingGroup.sortingLayerName = BD.SortingLayer.NAME_HUD;
 
             return this;

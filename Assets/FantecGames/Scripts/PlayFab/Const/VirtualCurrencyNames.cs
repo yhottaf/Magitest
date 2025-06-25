@@ -1,12 +1,12 @@
-namespace fantec.PlayFabClient
+ï»¿namespace fantec.PlayFabClient
 {
     public class VirtualCurrencyNames
     {
-        public static readonly (string Code, string Name) ST = ("ST", "ƒXƒ^ƒ~ƒi");
-        public static readonly (string Code, string Name) EP = ("EP", "ŒoŒ±’l");
-        public static readonly (string Code, string Name) PS = ("PS", "—LÎ");
-        public static readonly (string Code, string Name) FS = ("FS", "–³Î");
-        public static readonly (string Code, string Name) MN = ("MN", "ƒ}ƒl[");
-        public static readonly (string Code, string Name) FP = ("FP", "ƒtƒŒƒ“ƒhƒ|ƒCƒ“ƒg");
+        public static readonly (string Code, string Name) ST = ("ST", "ã‚¹ã‚¿ãƒŸãƒŠ");
+        public static readonly (string Code, string Name) EP = ("EP", "çµŒé¨“å€¤");
+        public static readonly (string Code, string Name) PS = ("PS", "æœ‰å„ŸçŸ³");
+        public static readonly (string Code, string Name) FS = ("FS", "ç„¡å„ŸçŸ³");
+        public static readonly (string Code, string Name) MN = ("MN", "ãƒãƒãƒ¼");
+        public static readonly (string Code, string Name) FP = ("FP", "ãƒ•ãƒ¬ãƒ³ãƒ‰ãƒã‚¤ãƒ³ãƒˆ");
     }
 }

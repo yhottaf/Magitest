@@ -1,4 +1,4 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 using System;
 using System.Collections.Generic;
@@ -8,61 +8,61 @@ using fantec;
 namespace FantecScrollView
 {
     /// <summary>
-    /// ScrollRect �X�^�C���̃X�N���[���r���[���������邽�߂̒��ۊ��N���X.
-    /// �����X�N���[������уX�i�b�v�ɂ͑Ή����Ă��܂���.
-    /// <see cref="FantecScrollView{TItemData, TContext}.Context"/> ���s�v�ȏꍇ��
-    /// ����� <see cref="FantecScrollRect{TItemData}"/> ���g�p���܂�.
+    /// ScrollRect スタイルのスクロールビューを実装するための抽象基底クラス.
+    /// 無限スクロールおよびスナップには対応していません.
+    /// <see cref="FantecScrollView{TItemData, TContext}.Context"/> が不要な場合は
+    /// 代わりに <see cref="FantecScrollRect{TItemData}"/> を使用します.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
-    /// <typeparam name="TContext"><see cref="FantecScrollView{TItemData, TContext}.Context"/> �̌^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
+    /// <typeparam name="TContext"><see cref="FantecScrollView{TItemData, TContext}.Context"/> の型.</typeparam>
     [RequireComponent(typeof(Scroller))]
     public abstract class FantecScrollRect<TItemData, TContext> : FantecScrollView<TItemData, TContext>
         where TContext : class, IFantecScrollRectContext, new()
     {
         /// <summary>
-        /// �X�N���[�����ɃZ�����ė��p�����܂ł̗]���̃Z����.
+        /// スクロール中にセルが再利用されるまでの余白のセル数.
         /// </summary>
         /// <remarks>
-        /// <c>0</c> ���w�肷��ƃZ�������S�ɉB�ꂽ����ɍė��p����܂�.
-        /// <c>1</c> �ȏ���w�肷���, ���̃Z���������]���ɃX�N���[�����Ă���ė��p����܂�.
+        /// <c>0</c> を指定するとセルが完全に隠れた直後に再利用されます.
+        /// <c>1</c> 以上を指定すると, そのセル数だけ余分にスクロールしてから再利用されます.
         /// </remarks>
         [SerializeField] protected float reuseCellMarginCount = 0f;
 
         /// <summary>
-        /// �R���e���c�擪�̗]��.
+        /// コンテンツ先頭の余白.
         /// </summary>
         [SerializeField] protected float paddingHead = 0f;
 
         /// <summary>
-        /// �R���e���c�����̗]��.
+        /// コンテンツ末尾の余白.
         /// </summary>
         [SerializeField] protected float paddingTail = 0f;
 
         /// <summary>
-        /// �X�N���[���������̃Z�����m�̗]��.
+        /// スクロール軸方向のセル同士の余白.
         /// </summary>
         [SerializeField] protected float spacing = 0f;
 
         /// <summary>
-        /// �Z���̃T�C�Y.
+        /// セルのサイズ.
         /// </summary>
         protected abstract float CellSize { get; }
 
         /// <summary>
-        /// �X�N���[���\���ǂ���.
+        /// スクロール可能かどうか.
         /// </summary>
         /// <remarks>
-        /// �A�C�e�������\�����Ȃ��r���[�|�[�g���ɑS�ẴZ�������܂��Ă���ꍇ�� <c>false</c>, ����ȊO�� <c>true</c> �ɂȂ�܂�.
+        /// アイテム数が十分少なくビューポート内に全てのセルが収まっている場合は <c>false</c>, それ以外は <c>true</c> になります.
         /// </remarks>
         protected virtual bool Scrollable => MaxScrollPosition > 0f;
 
         Scroller cachedScroller;
 
         /// <summary>
-        /// �X�N���[���ʒu�𐧌䂷�� <see cref="FantecScrollView.Scroller"/> �̃C���X�^���X.
+        /// スクロール位置を制御する <see cref="FantecScrollView.Scroller"/> のインスタンス.
         /// </summary>
         /// <remarks>
-        /// <see cref="Scroller"/> �̃X�N���[���ʒu��ύX����ۂ͕K�� <see cref="ToScrollerPosition(float)"/> ���g�p���ĕϊ������ʒu���g�p���Ă�������.
+        /// <see cref="Scroller"/> のスクロール位置を変更する際は必ず <see cref="ToScrollerPosition(float)"/> を使用して変換した位置を使用してください.
         /// </remarks>
         protected Scroller Scroller => cachedScroller ?? (cachedScroller = GetComponent<Scroller>());
 
@@ -96,9 +96,9 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// <see cref="Scroller"/> �̃X�N���[���ʒu���ύX���ꂽ�ۂ̏���.
+        /// <see cref="Scroller"/> のスクロール位置が変更された際の処理.
         /// </summary>
-        /// <param name="p"><see cref="Scroller"/> �̃X�N���[���ʒu.</param>
+        /// <param name="p"><see cref="Scroller"/> のスクロール位置.</param>
         void OnScrollerValueChanged(float p)
         {
             base.UpdatePosition(ToFantecScrollViewPosition(Scrollable ? p : 0f));
@@ -117,9 +117,9 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// �X�N���[���͈͂𒴂��ăX�N���[�����ꂽ�ʂɊ�Â���, �X�N���[���o�[�̃T�C�Y���k�����܂�.
+        /// スクロール範囲を超えてスクロールされた量に基づいて, スクロールバーのサイズを縮小します.
         /// </summary>
-        /// <param name="offset">�X�N���[���͈͂𒴂��ăX�N���[�����ꂽ��.</param>
+        /// <param name="offset">スクロール範囲を超えてスクロールされた量.</param>
         void ShrinkScrollbar(float offset)
         {
             var scale = 1f - ToFantecScrollViewPosition(offset) / (ViewportLength - PaddingHeadLength);
@@ -143,7 +143,7 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// <see cref="Scroller"/> �̊e���Ԃ��X�V���܂�.
+        /// <see cref="Scroller"/> の各種状態を更新します.
         /// </summary>
         protected void RefreshScroller()
         {
@@ -169,53 +169,53 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// �X�N���[���ʒu���X�V���܂�.
+        /// スクロール位置を更新します.
         /// </summary>
-        /// <param name="position">�X�N���[���ʒu.</param>
+        /// <param name="position">スクロール位置.</param>
         protected new void UpdatePosition(float position)
         {
             Scroller.Position = ToScrollerPosition(position, 0.5f);
         }
 
         /// <summary>
-        /// �w�肵���A�C�e���̈ʒu�܂ŃW�����v���܂�.
+        /// 指定したアイテムの位置までジャンプします.
         /// </summary>
-        /// <param name="itemIndex">�A�C�e���̃C���f�b�N�X.</param>
-        /// <param name="alignment">�r���[�|�[�g���ɂ�����Z���ʒu�̊. 0f(�擪) ~ 1f(����).</param>
+        /// <param name="itemIndex">アイテムのインデックス.</param>
+        /// <param name="alignment">ビューポート内におけるセル位置の基準. 0f(先頭) ~ 1f(末尾).</param>
         protected virtual void JumpTo(int itemIndex, float alignment = 0.5f)
         {
             Scroller.Position = ToScrollerPosition(itemIndex, alignment);
         }
 
         /// <summary>
-        /// �w�肵���A�C�e���̈ʒu�܂ňړ����܂�.
+        /// 指定したアイテムの位置まで移動します.
         /// </summary>
-        /// <param name="index">�A�C�e���̃C���f�b�N�X.</param>
-        /// <param name="duration">�ړ��ɂ�����b��.</param>
-        /// <param name="alignment">�r���[�|�[�g���ɂ�����Z���ʒu�̊. 0f(�擪) ~ 1f(����).</param>
-        /// <param name="onComplete">�ړ������������ۂɌĂяo�����R�[���o�b�N.</param>
+        /// <param name="index">アイテムのインデックス.</param>
+        /// <param name="duration">移動にかける秒数.</param>
+        /// <param name="alignment">ビューポート内におけるセル位置の基準. 0f(先頭) ~ 1f(末尾).</param>
+        /// <param name="onComplete">移動が完了した際に呼び出されるコールバック.</param>
         protected virtual void ScrollTo(int index, float duration, float alignment = 0.5f, Action onComplete = null)
         {
             Scroller.ScrollTo(ToScrollerPosition(index, alignment), duration, onComplete);
         }
 
         /// <summary>
-        /// �w�肵���A�C�e���̈ʒu�܂ňړ����܂�.
+        /// 指定したアイテムの位置まで移動します.
         /// </summary>
-        /// <param name="index">�A�C�e���̃C���f�b�N�X.</param>
-        /// <param name="duration">�ړ��ɂ�����b��.</param>
-        /// <param name="easing">�ړ��Ɏg�p����C�[�W���O.</param>
-        /// <param name="alignment">�r���[�|�[�g���ɂ�����Z���ʒu�̊. 0f(�擪) ~ 1f(����).</param>
-        /// <param name="onComplete">�ړ������������ۂɌĂяo�����R�[���o�b�N.</param>
+        /// <param name="index">アイテムのインデックス.</param>
+        /// <param name="duration">移動にかける秒数.</param>
+        /// <param name="easing">移動に使用するイージング.</param>
+        /// <param name="alignment">ビューポート内におけるセル位置の基準. 0f(先頭) ~ 1f(末尾).</param>
+        /// <param name="onComplete">移動が完了した際に呼び出されるコールバック.</param>
         protected virtual void ScrollTo(int index, float duration, Ease easing, float alignment = 0.5f, Action onComplete = null)
         {
             Scroller.ScrollTo(ToScrollerPosition(index, alignment), duration, easing, onComplete);
         }
 
         /// <summary>
-        /// �r���[�|�[�g�ƃR���e���c�̒����Ɋ�Â��ăX�N���[���o�[�̃T�C�Y���X�V���܂�.
+        /// ビューポートとコンテンツの長さに基づいてスクロールバーのサイズを更新します.
         /// </summary>
-        /// <param name="viewportLength">�r���[�|�[�g�̃T�C�Y.</param>
+        /// <param name="viewportLength">ビューポートのサイズ.</param>
         protected void UpdateScrollbarSize(float viewportLength)
         {
             var contentLength = Mathf.Max(ItemsSource.Count + (paddingHead + paddingTail - spacing) / (CellSize + spacing), 1);
@@ -223,31 +223,31 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// <see cref="Scroller"/> �������X�N���[���ʒu�� <see cref="FantecScrollRect{TItemData, TContext}"/> �������X�N���[���ʒu�ɕϊ����܂�.
+        /// <see cref="Scroller"/> が扱うスクロール位置を <see cref="FantecScrollRect{TItemData, TContext}"/> が扱うスクロール位置に変換します.
         /// </summary>
-        /// <param name="position"><see cref="Scroller"/> �������X�N���[���ʒu.</param>
-        /// <returns><see cref="FantecScrollRect{TItemData, TContext}"/> �������X�N���[���ʒu.</returns>
+        /// <param name="position"><see cref="Scroller"/> が扱うスクロール位置.</param>
+        /// <returns><see cref="FantecScrollRect{TItemData, TContext}"/> が扱うスクロール位置.</returns>
         protected float ToFantecScrollViewPosition(float position)
         {
             return position / Mathf.Max(ItemsSource.Count - 1, 1) * MaxScrollPosition - PaddingHeadLength;
         }
 
         /// <summary>
-        /// <see cref="FantecScrollRect{TItemData, TContext}"/> �������X�N���[���ʒu�� <see cref="Scroller"/> �������X�N���[���ʒu�ɕϊ����܂�.
+        /// <see cref="FantecScrollRect{TItemData, TContext}"/> が扱うスクロール位置を <see cref="Scroller"/> が扱うスクロール位置に変換します.
         /// </summary>
-        /// <param name="position"><see cref="FantecScrollRect{TItemData, TContext}"/> �������X�N���[���ʒu.</param>
-        /// <returns><see cref="Scroller"/> �������X�N���[���ʒu.</returns>
+        /// <param name="position"><see cref="FantecScrollRect{TItemData, TContext}"/> が扱うスクロール位置.</param>
+        /// <returns><see cref="Scroller"/> が扱うスクロール位置.</returns>
         protected float ToScrollerPosition(float position)
         {
             return (position + PaddingHeadLength) / MaxScrollPosition * Mathf.Max(ItemsSource.Count - 1, 1);
         }
 
         /// <summary>
-        /// <see cref="FantecScrollRect{TItemData, TContext}"/> �������X�N���[���ʒu�� <see cref="Scroller"/> �������X�N���[���ʒu�ɕϊ����܂�.
+        /// <see cref="FantecScrollRect{TItemData, TContext}"/> が扱うスクロール位置を <see cref="Scroller"/> が扱うスクロール位置に変換します.
         /// </summary>
-        /// <param name="position"><see cref="FantecScrollRect{TItemData, TContext}"/> �������X�N���[���ʒu.</param>
-        /// <param name="alignment">�r���[�|�[�g���ɂ�����Z���ʒu�̊. 0f(�擪) ~ 1f(����).</param>
-        /// <returns><see cref="Scroller"/> �������X�N���[���ʒu.</returns>
+        /// <param name="position"><see cref="FantecScrollRect{TItemData, TContext}"/> が扱うスクロール位置.</param>
+        /// <param name="alignment">ビューポート内におけるセル位置の基準. 0f(先頭) ~ 1f(末尾).</param>
+        /// <returns><see cref="Scroller"/> が扱うスクロール位置.</returns>
         protected float ToScrollerPosition(float position, float alignment = 0.5f)
         {
             var offset = alignment * (ScrollLength - (1f + reuseCellMarginCount * 2f))
@@ -256,9 +256,9 @@ namespace FantecScrollView
         }
 
         /// <summary>
-        /// �w�肳�ꂽ�ݒ���������邽�߂�
-        /// <see cref="FantecScrollView{TItemData,TContext}.cellInterval"/> ��
-        /// <see cref="FantecScrollView{TItemData,TContext}.scrollOffset"/> ���v�Z���ēK�p���܂�.
+        /// 指定された設定を実現するための
+        /// <see cref="FantecScrollView{TItemData,TContext}.cellInterval"/> と
+        /// <see cref="FantecScrollView{TItemData,TContext}.scrollOffset"/> を計算して適用します.
         /// </summary>
         protected void AdjustCellIntervalAndScrollOffset()
         {
@@ -292,10 +292,10 @@ namespace FantecScrollView
     }
 
     /// <summary>
-    /// ScrollRect �X�^�C���̃X�N���[���r���[���������邽�߂̒��ۊ��N���X.
-    /// �����X�N���[������уX�i�b�v�ɂ͑Ή����Ă��܂���.
+    /// ScrollRect スタイルのスクロールビューを実装するための抽象基底クラス.
+    /// 無限スクロールおよびスナップには対応していません.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
     /// <seealso cref="FantecScrollRect{TItemData, TContext}"/>
     public abstract class FantecScrollRect<TItemData> : FantecScrollRect<TItemData, FantecScrollRectContext> { }
 }

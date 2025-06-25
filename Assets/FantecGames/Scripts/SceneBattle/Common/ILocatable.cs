@@ -1,12 +1,12 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Battle
 {
     /// <summary>
-    /// <see cref="Locator"/> ‚É
+    /// <see cref="Locator"/> ã«
     /// <see cref="Locator.Register{T}(T)"/>
     /// <see cref="Locator.Resolve{T}"/>
-    /// ‚ğ‰Â”\‚É‚·‚é
+    /// ã‚’å¯èƒ½ã«ã™ã‚‹
     /// </summary>
     public interface ILocatable
     {

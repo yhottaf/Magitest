@@ -1,11 +1,11 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using UnityEngine;
 
 namespace fantec.Menu.PartyEdit
 {
     public class CommonProgressView : MonoBehaviour
     {
-        [Header("ƒvƒƒOƒŒƒXƒrƒ…[‚É„—p‚·‚éƒhƒbƒgƒNƒ‰ƒX")]
+        [Header("ãƒ—ãƒ­ã‚°ãƒ¬ã‚¹ãƒ“ãƒ¥ãƒ¼ã«ç§ç”¨ã™ã‚‹ãƒ‰ãƒƒãƒˆã‚¯ãƒ©ã‚¹")]
         [SerializeField]
         private ProgressDot m_ProgressParts;
 

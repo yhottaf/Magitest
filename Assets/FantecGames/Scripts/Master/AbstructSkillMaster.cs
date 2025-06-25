@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
@@ -9,20 +9,20 @@ namespace fantec.Master
     [System.Serializable ]
     public abstract class AbstructSkillData: IData
     {
-        public int skillId;        // ƒXƒLƒ‹ID
-        public int originId;       // ƒIƒŠƒWƒ“ID
-        public string skillName;   // ƒXƒLƒ‹–¼
-        public string detail;      // Ú×
-        public int maxLevel;       // Å‘åƒŒƒxƒ‹
+        public int skillId;        // ã‚¹ã‚­ãƒ«ID
+        public int originId;       // ã‚ªãƒªã‚¸ãƒ³ID
+        public string skillName;   // ã‚¹ã‚­ãƒ«å
+        public string detail;      // è©³ç´°
+        public int maxLevel;       // æœ€å¤§ãƒ¬ãƒ™ãƒ«
 
-        public string[] commandsSingleP = new string[0];   // –¡•û’P‘Ì
-        public string[] commandsAllP=new string[0];        // –¡•û‘S‘Ì
-        public string[] commandsSingleE=new string[0];     // “G’P‘Ì
-        public string[] commandsAllE=new string[0];        // “G‘S‘Ì
-        public string[] commandsMyself=new string[0];      // ©•ª©g
-        public string[] commandsBesidesMe =new string[0];  // ©•ªˆÈŠO
-        public string[] commandsGimmic=new string[0];      // ƒMƒ~ƒbƒN‘ÎÛ
-        public string[] commandsCustom=new string[0];      // ƒJƒXƒ^ƒ€
+        public string[] commandsSingleP = new string[0];   // å‘³æ–¹å˜ä½“
+        public string[] commandsAllP=new string[0];        // å‘³æ–¹å…¨ä½“
+        public string[] commandsSingleE=new string[0];     // æ•µå˜ä½“
+        public string[] commandsAllE=new string[0];        // æ•µå…¨ä½“
+        public string[] commandsMyself=new string[0];      // è‡ªåˆ†è‡ªèº«
+        public string[] commandsBesidesMe =new string[0];  // è‡ªåˆ†ä»¥å¤–
+        public string[] commandsGimmic=new string[0];      // ã‚®ãƒŸãƒƒã‚¯å¯¾è±¡
+        public string[] commandsCustom=new string[0];      // ã‚«ã‚¹ã‚¿ãƒ 
 
         public virtual List<SkillCommand>ConvertToSkillCommandList()
         {
@@ -34,9 +34,9 @@ namespace fantec.Master
             commandList.AddRange(SkillCommandParser.ConvertToSkillCommand(commandsMyself).SetRangeType(AffectRangeType.Myself));
             commandList.AddRange(SkillCommandParser.ConvertToSkillCommand(commandsBesidesMe).SetRangeType(AffectRangeType.BesidesMe));
             commandList.AddRange(SkillCommandParser.ConvertToSkillCommand(commandsGimmic).SetRangeType(AffectRangeType.Gimmick));
-            commandList.AddRange(SkillCommandParser.ConvertToSkillCommand(commandsCustom));  // ƒJƒXƒ^ƒ€‚ÍƒRƒ}ƒ“ƒh‚ÉŒø‰Ê”ÍˆÍ‚ª‘‚«‚Ü‚ê‚é‚½‚ß SetRangeType ‚ğs‚í‚È‚¢
+            commandList.AddRange(SkillCommandParser.ConvertToSkillCommand(commandsCustom));  // ã‚«ã‚¹ã‚¿ãƒ ã¯ã‚³ãƒãƒ³ãƒ‰ã«åŠ¹æœç¯„å›²ãŒæ›¸ãè¾¼ã¾ã‚Œã‚‹ãŸã‚ SetRangeType ã‚’è¡Œã‚ãªã„
            
-            // •t—^Œø‰Ê‚ğ’Ç‰Á
+            // ä»˜ä¸åŠ¹æœã‚’è¿½åŠ 
             commandList.AddRange(SkillCommandParser.ConvertAddtionalCommand(commandList));
 
             return commandList;
@@ -49,7 +49,7 @@ namespace fantec.Master
         {
             if (skillId == -1) return null; 
             try { return dataList.First(x => x.skillId == skillId); }
-            catch { throw new InvalidOperationException($"[skillId : {skillId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB"); }
+            catch { throw new InvalidOperationException($"[skillId : {skillId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"); }
         }
 
         public T GetData(int skillId,int level)
@@ -59,22 +59,22 @@ namespace fantec.Master
             var data = dataList.FirstOrDefault(x => x.skillId == targetId);
             if(data==null)
             {
-             //   Debug.LogWarning($"[originId : {skillId} / level : {level} / targetId : {targetId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB \n‘ã‚í‚è‚É skillId‚ÅŒŸõ‚µ‚Ü‚·B");
+             //   Debug.LogWarning($"[originId : {skillId} / level : {level} / targetId : {targetId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚ \nä»£ã‚ã‚Šã« skillIdã§æ¤œç´¢ã—ã¾ã™ã€‚");
                 data=dataList.FirstOrDefault(x=>x.skillId== skillId);
             }
             if(data==null)
             {
-                Debug.Log($"[skillId : {skillId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB \n‘ã‚í‚è‚ÉƒŠƒXƒg‚Ìˆê”ÔÅ‰‚ÌƒXƒLƒ‹‚ğæ“¾‚µ‚Ü‚·B");
+                Debug.Log($"[skillId : {skillId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚ \nä»£ã‚ã‚Šã«ãƒªã‚¹ãƒˆã®ä¸€ç•ªæœ€åˆã®ã‚¹ã‚­ãƒ«ã‚’å–å¾—ã—ã¾ã™ã€‚");
                 return data = dataList.FirstOrDefault();
             }
             if(data==null)
             {
-                Debug.LogWarning($"dataList ‚ÉƒXƒLƒ‹‚ª‘¶İ‚µ‚Ü‚¹‚ñB");
+                Debug.LogWarning($"dataList ã«ã‚¹ã‚­ãƒ«ãŒå­˜åœ¨ã—ã¾ã›ã‚“ã€‚");
                 return data=dataList.FirstOrDefault();
             }
             if(data==null)
             {
-                Debug.LogWarning($"ƒXƒLƒ‹‚ª‘¶İ‚µ‚È‚¢‚½‚ß null ‚ğ•Ô‚µ‚Ü‚·B");
+                Debug.LogWarning($"ã‚¹ã‚­ãƒ«ãŒå­˜åœ¨ã—ãªã„ãŸã‚ null ã‚’è¿”ã—ã¾ã™ã€‚");
                 return null;
             }
             else

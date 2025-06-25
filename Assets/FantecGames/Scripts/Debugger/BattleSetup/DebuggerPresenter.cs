@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using System.Collections.Generic;
 using UnityEngine;
@@ -34,7 +34,7 @@ namespace fantec.Debugger
             }
             m_CreateList = new Dictionary<string, DebuggerItemPresenter>();
 
-            // ƒV[ƒ“‚É‰ž‚¶‚½ƒƒjƒ…[‚Ì¶¬
+            // ã‚·ãƒ¼ãƒ³ã«å¿œã˜ãŸãƒ¡ãƒ‹ãƒ¥ãƒ¼ã®ç”Ÿæˆ
             switch(ExSceneManager.GetCurrentScene())
             {
                 case SceneIndex.FIREST_LOAD:
@@ -53,14 +53,14 @@ namespace fantec.Debugger
 
         private void Create(string title,DebuggerItemData data)
         {
-            // íœÏ‚Ý‚Å‚ ‚ê‚Î”jŠü
+            // å‰Šé™¤æ¸ˆã¿ã§ã‚ã‚Œã°ç ´æ£„
             if(m_CreateList.ContainsKey(title))
             {
                 Destroy(m_CreateList[title].gameObject);
                 m_CreateList.Remove(title);
             }
 
-            // V‚µ‚­ì¬
+            // æ–°ã—ãä½œæˆ
             data.titleText = title;
             var item=m_ItemPresenter.Create(data) as DebuggerItemPresenter;
             m_CreateList.Add(title, item);
@@ -70,23 +70,23 @@ namespace fantec.Debugger
         {
             m_ItemPresenter.Create(new DebuggerItemData()
             {
-                titleText="ƒV[ƒ“•ÏX",
+                titleText="ã‚·ãƒ¼ãƒ³å¤‰æ›´",
                 inItemDatas=new DebuggerInItemData[]
                 {
-                    new DebuggerInItemData(){titleText="ƒ^ƒCƒgƒ‹ƒV[ƒ“",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.TITLE)},
-                    new DebuggerInItemData(){titleText="ƒƒjƒ…[ƒV[ƒ“",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.MENU)},
-                    new DebuggerInItemData(){titleText="ƒoƒgƒ‹ƒZƒbƒgƒAƒbƒv",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.DEBUG_BATTLE_SETUP)},
+                    new DebuggerInItemData(){titleText="ã‚¿ã‚¤ãƒˆãƒ«ã‚·ãƒ¼ãƒ³",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.TITLE)},
+                    new DebuggerInItemData(){titleText="ãƒ¡ãƒ‹ãƒ¥ãƒ¼ã‚·ãƒ¼ãƒ³",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.MENU)},
+                    new DebuggerInItemData(){titleText="ãƒãƒˆãƒ«ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.DEBUG_BATTLE_SETUP)},
                  //   new DebuggerInItemData(){titleText="DebugPlayFab",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.TITLE)},
-                  //  new DebuggerInItemData(){titleText="ƒVƒiƒŠƒIƒTƒ“ƒvƒ‹",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.TITLE)},
+                  //  new DebuggerInItemData(){titleText="ã‚·ãƒŠãƒªã‚ªã‚µãƒ³ãƒ—ãƒ«",onClick=()=>ExSceneManager.Instance.LoadScene(SceneIndex.TITLE)},
                 }
             });
 
             m_ItemPresenter.Create(new DebuggerItemData()
             {
-                titleText="ƒVƒXƒeƒ€",
+                titleText="ã‚·ã‚¹ãƒ†ãƒ ",
                 inItemDatas=new DebuggerInItemData[]
                 {
-                    new DebuggerInItemData(){titleText="ƒf[ƒ^‰Šú‰»",onClick=()=>
+                    new DebuggerInItemData(){titleText="ãƒ‡ãƒ¼ã‚¿åˆæœŸåŒ–",onClick=()=>
                     {
                         PlayerPrefs.DeleteAll();
                         ExSceneManager.Instance.LoadScene(SceneIndex.DEBUG_TASK_KILL);
@@ -96,7 +96,7 @@ namespace fantec.Debugger
 
             m_ItemPresenter.Create(new DebuggerItemData()
             {
-                titleText="SEƒeƒXƒg",
+                titleText="SEãƒ†ã‚¹ãƒˆ",
                 inItemDatas=new DebuggerInItemData[]
                 {
                     new DebuggerInItemData(){titleText="Layerd",onClick=()=>

@@ -171,6 +171,7 @@ MonoBehaviour:
   m_AdventSkillMaster: {fileID: 0}
   m_OtherSkillMaster: {fileID: 11400000, guid: b1241588c203a62489c8c1c3850aed68, type: 2}
   m_InitialRewardMaster: {fileID: 11400000, guid: fe9083e7c55db2848840120926205083, type: 2}
+  m_NoticeMaster: {fileID: 11400000, guid: 6a41ecfae6eaa81418193b916104d8ef, type: 2}
   m_WaveMasterList:
   - {fileID: 11400000, guid: 81fec44645491844c8aefc7d2e0f62c4, type: 2}
   - {fileID: 11400000, guid: c9dd1ae5b1311a642a18213a3ede334b, type: 2}

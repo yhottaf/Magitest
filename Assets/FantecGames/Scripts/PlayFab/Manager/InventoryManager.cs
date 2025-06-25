@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using PlayFab;
 using PlayFab.ClientModels;
 using System.Collections.Generic;
@@ -12,7 +12,7 @@ namespace fantec.PlayFabClient
         public static Dictionary<int, ItemInstance> ConsumeItems { get; private set; }
 
         /// <summary>
-        /// PlayFab‚©‚ç Client ‚Öƒf[ƒ^‚ğ“¯Šú‚·‚éB
+        /// PlayFabã‹ã‚‰ Client ã¸ãƒ‡ãƒ¼ã‚¿ã‚’åŒæœŸã™ã‚‹ã€‚
         /// </summary>
         /// <param name="inventory"></param>
         public static void SyncPlayFabToClient(IEnumerable<ItemInstance> inventory)
@@ -23,24 +23,24 @@ namespace fantec.PlayFabClient
         }
 
         /// <summary>
-        /// ƒAƒCƒeƒ€‚ğÁ”ï‚·‚é
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ¶ˆè²»ã™ã‚‹
         /// </summary>
         /// <param name="itemId"></param>
         /// <param name="consumeCount"></param>
         /// <returns></returns>
         public static async UniTask<bool>ConsumeItemAsync(int itemId,int consumeCount)
         {
-            // ƒAƒCƒeƒ€Š‚ÌŠm”F
+            // ã‚¢ã‚¤ãƒ†ãƒ æ‰€æŒã®ç¢ºèª
             if(ConsumeItems.ContainsKey(itemId)==false)
             {
-                Debug.Log("ƒAƒCƒeƒ€‚ğŠ‚µ‚Ä‚¢‚Ü‚¹‚ñB");
+                Debug.Log("ã‚¢ã‚¤ãƒ†ãƒ ã‚’æ‰€æŒã—ã¦ã„ã¾ã›ã‚“ã€‚");
                 return false;
             }
 
-            // ƒAƒCƒeƒ€”‚ÌŠm”F
+            // ã‚¢ã‚¤ãƒ†ãƒ æ•°ã®ç¢ºèª
             if (ConsumeItems[itemId].RemainingUses<consumeCount)
             {
-                Debug.Log("ƒAƒCƒeƒ€”‚ª•s‘«‚µ‚Ä‚¢‚Ü‚·B");
+                Debug.Log("ã‚¢ã‚¤ãƒ†ãƒ æ•°ãŒä¸è¶³ã—ã¦ã„ã¾ã™ã€‚");
                 return false;
             }
 

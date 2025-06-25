@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using System;
 using UniRx;
 using UnityEngine;
@@ -53,7 +53,7 @@ namespace fantec.Battle.Utiles
             PlayThrow(start, half, end, m_Duration);
         }
 
-        // ’†ŠÔ’n“_‚ğİ‚¯‚Ä•âŠÔ‚µ‚È‚ª‚çƒp[ƒeƒBƒNƒ‹‚ğ”ò‚Î‚·
+        // ä¸­é–“åœ°ç‚¹ã‚’è¨­ã‘ã¦è£œé–“ã—ãªãŒã‚‰ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã‚’é£›ã°ã™
         public void PlayThrow(Vector3 start,Vector3 half,Vector3 end,float duration)
         {
             if(m_TrailRenderer)
@@ -92,7 +92,7 @@ namespace fantec.Battle.Utiles
             return Vector3.Lerp(a, b, t);
         }
 
-        // ’†ŠÔ•âŠÔ‚ğw’è‚¹‚¸‚É^‚Á‚·‚®‚É”ò‚Î‚·ƒo[ƒWƒ‡ƒ“
+        // ä¸­é–“è£œé–“ã‚’æŒ‡å®šã›ãšã«çœŸã£ã™ãã«é£›ã°ã™ãƒãƒ¼ã‚¸ãƒ§ãƒ³
         public void PlayStraight(Vector3 start,Vector3 end)
         {
             PlayStraight(start,end, m_Duration);

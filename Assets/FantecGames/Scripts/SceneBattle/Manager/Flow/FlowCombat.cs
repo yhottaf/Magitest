@@ -1,4 +1,4 @@
-using fantec.Battle.Manager.Flow;
+ï»¿using fantec.Battle.Manager.Flow;
 using fantec.Battle.Model;
 using System;
 using UniRx;
@@ -10,28 +10,28 @@ namespace fantec.Battle.Manager
     {
         public partial class FlowCombat : FlowBase
         {
-            private IBattler m_TurnStartLastBattler;// ÅŒã‚És“®‚·‚éƒ†ƒjƒbƒg‚Ì‹L‰¯ (ƒ^[ƒ“Œo‰ßŠÏ‘ª—p)
+            private IBattler m_TurnStartLastBattler;// æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã®è¨˜æ†¶ (ã‚¿ãƒ¼ãƒ³çµŒéè¦³æ¸¬ç”¨)
             private ICombatSequence m_CombatSection;
-            private bool m_IsInaction;  // ’N‚©‚ªs“®’†‚©”Û‚©
+            private bool m_IsInaction;  // èª°ã‹ãŒè¡Œå‹•ä¸­ã‹å¦ã‹
 
             public override void OnEnter(BattleFlowManager manager, FlowBase prevFlow)
             {
-                // Šî–{“I‚ÉÅ‰‚Ìƒ^[ƒ“‚É‚µ‚©“ü‚Á‚Ä‚±‚È‚¢‚ªAƒJƒbƒgƒCƒ“Œã‚ÍOnEnter‚É“ü‚Á‚Ä‚­‚éİŒv‚Ì‚½‚ßA
-                // ƒJƒbƒgƒCƒ“Œã‚É•Ï”‚ª‰Šú‰»‚³‚ê‚é‚½‚ßAÄ“x‚»‚Ìƒ^[ƒ“‚ÌÅŒã‚És“®‚·‚éƒ†ƒjƒbƒg‚ğæ“¾‚µ‚Ä‚¢‚éB
+                // åŸºæœ¬çš„ã«æœ€åˆã®ã‚¿ãƒ¼ãƒ³ã«ã—ã‹å…¥ã£ã¦ã“ãªã„ãŒã€ã‚«ãƒƒãƒˆã‚¤ãƒ³å¾Œã¯OnEnterã«å…¥ã£ã¦ãã‚‹è¨­è¨ˆã®ãŸã‚ã€
+                // ã‚«ãƒƒãƒˆã‚¤ãƒ³å¾Œã«å¤‰æ•°ãŒåˆæœŸåŒ–ã•ã‚Œã‚‹ãŸã‚ã€å†åº¦ãã®ã‚¿ãƒ¼ãƒ³ã®æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã‚’å–å¾—ã—ã¦ã„ã‚‹ã€‚
                 if (prevFlow.ToString() == "FlowOverrideCutin")
                 {
-                    m_TurnStartLastBattler = Locator.Resolve<IBattleModelStage>().LastActingUnit;// ÅŒã‚És“®‚·‚éƒ†ƒjƒbƒgî•ñ‚ÌŠÏ‘ª
+                    m_TurnStartLastBattler = Locator.Resolve<IBattleModelStage>().LastActingUnit;// æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆæƒ…å ±ã®è¦³æ¸¬
                 }
                 else
                 {
-                    m_TurnStartLastBattler = Locator.Resolve<IBattleModelAdventSkill>().ReserveLast; // ÅŒã‚És“®‚·‚éƒ†ƒjƒbƒg
+                    m_TurnStartLastBattler = Locator.Resolve<IBattleModelAdventSkill>().ReserveLast; // æœ€å¾Œã«è¡Œå‹•ã™ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆ
                     Locator.Resolve<IBattleModelStage>().SetLastActingUnit(m_TurnStartLastBattler);
-                    Debug.Log($"ƒ^[ƒ“ : {Locator.Resolve<IBattleModelStage>().CurrentTurn}");
+                    Debug.Log($"ã‚¿ãƒ¼ãƒ³ : {Locator.Resolve<IBattleModelStage>().CurrentTurn}");
                 }
-                   // UI‚È‚Ç‚Ì§Œä‚ª•K—v‚È‚ç‚±‚±‚É‹LÚ
+                   // UIãªã©ã®åˆ¶å¾¡ãŒå¿…è¦ãªã‚‰ã“ã“ã«è¨˜è¼‰
             }
 
-            // ƒ^[ƒ“I—¹‚É false ‚É•Ï‚¦‚é
+            // ã‚¿ãƒ¼ãƒ³çµ‚äº†æ™‚ã« false ã«å¤‰ãˆã‚‹
             private void OnTurnCompleted()
             {
                 m_IsInaction = false;
@@ -40,59 +40,59 @@ namespace fantec.Battle.Manager
                 {
 
                 }
-                else // ƒI[ƒo[ƒhƒ‰ƒCƒu‚Ìƒtƒ‰ƒO‚ª—§‚Á‚Ä‚¢‚È‚¢‚Æ‚«A‚»‚Ì‚Ü‚Üƒ^[ƒ“ƒGƒ“ƒhˆ—
+                else // ã‚ªãƒ¼ãƒãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ–ã®ãƒ•ãƒ©ã‚°ãŒç«‹ã£ã¦ã„ãªã„ã¨ãã€ãã®ã¾ã¾ã‚¿ãƒ¼ãƒ³ã‚¨ãƒ³ãƒ‰å‡¦ç†
                 {
 
 
-                    // Œˆ’…‚ª‚Â‚¢‚Ä‚¢‚½ê‡‚Íƒ^[ƒ“Œo‰ßˆ—‚ğs‚í‚È‚¢
+                    // æ±ºç€ãŒã¤ã„ã¦ã„ãŸå ´åˆã¯ã‚¿ãƒ¼ãƒ³çµŒéå‡¦ç†ã‚’è¡Œã‚ãªã„
                     if (Locator.Resolve<IBattleModelUnits>().IsSettled == false
                        && Locator.Resolve<IBattleModelStage>().IsMaxTurn == false)
                     {
-                        //  s“®‡‚ÌXV‚É‚æ‚ès“®‡‚ÌÅŒã”ö‚É‰ñ‚Á‚Ä‚«‚½‚Ì‚ªA
-                        // u1ƒ^[ƒ“‚Ìn‚Ü‚è‚ÉÅŒã”ö‚É‚¢‚éƒ†ƒjƒbƒg‚Å‚ ‚Á‚½ê‡v
+                        //  è¡Œå‹•é †ã®æ›´æ–°ã«ã‚ˆã‚Šè¡Œå‹•é †ã®æœ€å¾Œå°¾ã«å›ã£ã¦ããŸã®ãŒã€
+                        // ã€Œ1ã‚¿ãƒ¼ãƒ³ã®å§‹ã¾ã‚Šæ™‚ã«æœ€å¾Œå°¾ã«ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã§ã‚ã£ãŸå ´åˆã€
                         if (m_TurnStartLastBattler == Locator.Resolve<IBattleModelAdventSkill>().ReserveLast)
                         {
-                            Locator.Resolve<IBattleModelStage>().NextTurn(); // ƒ^[ƒ“‚ÌŒo‰ß
+                            Locator.Resolve<IBattleModelStage>().NextTurn(); // ã‚¿ãƒ¼ãƒ³ã®çµŒé
                         }
                     }
 
                 }
             }
 
-            // å‚És“®ƒƒWƒbƒN
+            // ä¸»ã«è¡Œå‹•ãƒ­ã‚¸ãƒƒã‚¯
             public override void OnUpdate(BattleFlowManager manager)
             {
-                if (m_IsInaction) // s“®’†‚Å‚ ‚ê‚Î
+                if (m_IsInaction) // è¡Œå‹•ä¸­ã§ã‚ã‚Œã°
                 {
-                    // ‰½‚à‚µ‚È‚¢
-                    //  Debug.Log("Œ»İs“®’†‚Å‚·B");
+                    // ä½•ã‚‚ã—ãªã„
+                    //  Debug.Log("ç¾åœ¨è¡Œå‹•ä¸­ã§ã™ã€‚");
                 }
-                else if (Locator.Resolve<IBattleModelTime>().OnIsSystemPause.Value) // ’â~’†‚Å‚ ‚ê‚Î
+                else if (Locator.Resolve<IBattleModelTime>().OnIsSystemPause.Value) // åœæ­¢ä¸­ã§ã‚ã‚Œã°
                 {
-                    // ‰½‚à‚µ‚È‚¢
-                    Debug.Log("Œ»İ’â~’†‚Å‚·B");
+                    // ä½•ã‚‚ã—ãªã„
+                    Debug.Log("ç¾åœ¨åœæ­¢ä¸­ã§ã™ã€‚");
                 }
                 else if (manager.m_ReserveFlow != null)
                 {
                     manager.ChangeFlow(manager.m_ReserveFlow);
                 }
-                else if (Locator.Resolve<IBattleModelUnits>().IsSettled == true// Œˆ’…‚ª‚Â‚¢‚Ä‚¢‚ê‚Î
-                    || Locator.Resolve<IBattleModelStage>().IsMaxTurn == true) // Å‘åƒ^[ƒ“‚É“’B‚µ‚½‚ç
+                else if (Locator.Resolve<IBattleModelUnits>().IsSettled == true// æ±ºç€ãŒã¤ã„ã¦ã„ã‚Œã°
+                    || Locator.Resolve<IBattleModelStage>().IsMaxTurn == true) // æœ€å¤§ã‚¿ãƒ¼ãƒ³ã«åˆ°é”ã—ãŸã‚‰
                 {
                     manager.ChangeFlow<FlowDefeat>();
                 }
-                else if(Locator.Resolve<IBattleModelOverrideSkill>().OnIsActive.Value)                      // ƒI[ƒo[ƒ‰ƒCƒhƒtƒ‰ƒO‚ª—LŒø‚Å‚ ‚ê‚Î
+                else if(Locator.Resolve<IBattleModelOverrideSkill>().OnIsActive.Value)                      // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ãƒ•ãƒ©ã‚°ãŒæœ‰åŠ¹ã§ã‚ã‚Œã°
                 {
-                    m_IsInaction = true;                                                                    // s“®’†ƒtƒ‰ƒO‚Ì—LŒø‰»
-                    m_CombatSection = new CombatOverrideSkillSequence(manager.m_Sequence, OnTurnCompleted); // ƒI[ƒo[ƒ‰ƒCƒh‚Ì”­“®
+                    m_IsInaction = true;                                                                    // è¡Œå‹•ä¸­ãƒ•ãƒ©ã‚°ã®æœ‰åŠ¹åŒ–
+                    m_CombatSection = new CombatOverrideSkillSequence(manager.m_Sequence, OnTurnCompleted); // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã®ç™ºå‹•
                     m_CombatSection.Execute();
                 }
-                else if  (Locator.Resolve<IBattleModelOverrideSkill>().OnIsFook.Value==true) // ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹‚ª”­“®‘Ò‚¿‚Å‚ ‚ê‚Î
+                else if  (Locator.Resolve<IBattleModelOverrideSkill>().OnIsFook.Value==true) // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«ãŒç™ºå‹•å¾…ã¡ã§ã‚ã‚Œã°
                 {
-                    Locator.Resolve<IBattleModelStage>().SetLastActingUnit(m_TurnStartLastBattler); // –‘O‚É¡‚Ìƒ^[ƒ“‚ÌÅŒã‚Ìs“®Ò‚ğ•Û‘¶‚µ‚Ä‚¨‚­
-                    manager.ChangeFlow<FlowOverrideCutin>();                                 // ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹ƒJƒbƒgƒCƒ“‚Ö
+                    Locator.Resolve<IBattleModelStage>().SetLastActingUnit(m_TurnStartLastBattler); // äº‹å‰ã«ä»Šã®ã‚¿ãƒ¼ãƒ³ã®æœ€å¾Œã®è¡Œå‹•è€…ã‚’ä¿å­˜ã—ã¦ãŠã
+                    manager.ChangeFlow<FlowOverrideCutin>();                                 // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«ã‚«ãƒƒãƒˆã‚¤ãƒ³ã¸
                 }
-                else  // ‰½‚à‚È‚¯‚ê‚Î
+                else  // ä½•ã‚‚ãªã‘ã‚Œã°
                 {
                     m_IsInaction = true;
                     m_CombatSection = new CombatAdventSkillSequence(manager.m_Sequence, OnTurnCompleted);

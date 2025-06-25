@@ -1,4 +1,4 @@
-using System.Linq;
+ï»¿using System.Linq;
 using System.Collections.Generic;
 using UnityEngine;
 using UniRx;
@@ -15,16 +15,16 @@ namespace fantec.Battle.Manager
         {
             public override void OnEnter(BattleFlowManager manager, FlowBase prevFlow)
             {
-                Locator.Resolve<Ui.IHudInputGuardView>().Show();         // “ü—Í§ŒÀ
-                Locator.Resolve<IBattleSoundManager>().StopBgm();        // BGM‚ğ~‚ß‚é
-                // Ÿ—˜‰‰o‚ÌÄ¶
+                Locator.Resolve<Ui.IHudInputGuardView>().Show();         // å…¥åŠ›åˆ¶é™
+                Locator.Resolve<IBattleSoundManager>().StopBgm();        // BGMã‚’æ­¢ã‚ã‚‹
+                // å‹åˆ©æ¼”å‡ºã®å†ç”Ÿ
                 var anim = Locator.Resolve<IBattleAnimationManager>().Play<IWinAnimation>();
                 
                 var cts = manager.m_OnDestroyCancellationToken;
 
                 UniTask.Void(async () =>
                 {
-                    // ’ÊMˆ—
+                    // é€šä¿¡å‡¦ç†
                     Connecting.Open();
                     var (_, _, dropItem, expInfo) = await UniTask.WhenAll(
                         anim.OnEnd.ToUniTask(useFirstValue: true, cancellationToken: cts),
@@ -33,10 +33,10 @@ namespace fantec.Battle.Manager
                         DummyServerForBattle.UserRankUpAsync());
                     Connecting.Close();
 
-                    Locator.Resolve<IBattleSoundManager>().PlayBgmResultWin();   // BGMÄ¶
-                    Locator.Resolve<Ui.IHudInputGuardView>().Hide();             // “ü—Í‰ğ•ú
-                    var rewardInfoList = RewerdInfo.CreateInfos(dropItem);       // æ“¾‰Â”\‚Èƒf[ƒ^‚É•ÏŠ·
-                    this.OpenResult(rewardInfoList,expInfo.oldExp,expInfo.gainExp); // ƒŠƒUƒ‹ƒg‚ğŠJ‚­
+                    Locator.Resolve<IBattleSoundManager>().PlayBgmResultWin();   // BGMå†ç”Ÿ
+                    Locator.Resolve<Ui.IHudInputGuardView>().Hide();             // å…¥åŠ›è§£æ”¾
+                    var rewardInfoList = RewerdInfo.CreateInfos(dropItem);       // å–å¾—å¯èƒ½ãªãƒ‡ãƒ¼ã‚¿ã«å¤‰æ›
+                    this.OpenResult(rewardInfoList,expInfo.oldExp,expInfo.gainExp); // ãƒªã‚¶ãƒ«ãƒˆã‚’é–‹ã
                 });
             }
 
@@ -44,21 +44,21 @@ namespace fantec.Battle.Manager
             {
                 var resultWindow = Locator.Resolve<IBattleWindowManager>().Open<IWinResultWindow>();
                 var modelStage = Locator.Resolve<IBattleModelStage>();
-                var master = Locator.Resolve<IBattleMasterManager>().UserRankMaster; // ƒ†[ƒU[ƒ‰ƒ“ƒNƒ}ƒXƒ^[‚Ìæ“¾
+                var master = Locator.Resolve<IBattleMasterManager>().UserRankMaster; // ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ©ãƒ³ã‚¯ãƒã‚¹ã‚¿ãƒ¼ã®å–å¾—
 
-                var newExp = oldExp + gainExp;                               // ŒoŒ±’l‚Ì‡Œv
-                var oldRank = master.GetLevelByExp(oldExp);                  // Œ³‚ÌƒŒƒxƒ‹
-                var newRank=master.GetLevelByExp(newExp);                    // ƒŒƒxƒ‹ƒAƒbƒvŒã‚ÌƒŒƒxƒ‹
-                var diffLevel = newRank - oldRank;                           // ƒŒƒxƒ‹ƒAƒbƒv‘O‚ÆŒã‚Ì·(ã‚ª‚Á‚½ƒŒƒxƒ‹”)
-                var start = master.GetTableExpNormalized(oldExp);            // ŒoŒ±’lƒQ[ƒW‚ÌŠJnˆÊ’u
-                var end=diffLevel+master.GetTableExpNormalized(newExp);      // ŒoŒ±’lƒQ[ƒW‚ÌI—¹ˆÊ’u(ü‰ñ”‚à‰ÁZ‚µ‚ÄŠÜ‚ß‚é)
+                var newExp = oldExp + gainExp;                               // çµŒé¨“å€¤ã®åˆè¨ˆ
+                var oldRank = master.GetLevelByExp(oldExp);                  // å…ƒã®ãƒ¬ãƒ™ãƒ«
+                var newRank=master.GetLevelByExp(newExp);                    // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—å¾Œã®ãƒ¬ãƒ™ãƒ«
+                var diffLevel = newRank - oldRank;                           // ãƒ¬ãƒ™ãƒ«ã‚¢ãƒƒãƒ—å‰ã¨å¾Œã®å·®(ä¸ŠãŒã£ãŸãƒ¬ãƒ™ãƒ«æ•°)
+                var start = master.GetTableExpNormalized(oldExp);            // çµŒé¨“å€¤ã‚²ãƒ¼ã‚¸ã®é–‹å§‹ä½ç½®
+                var end=diffLevel+master.GetTableExpNormalized(newExp);      // çµŒé¨“å€¤ã‚²ãƒ¼ã‚¸ã®çµ‚äº†ä½ç½®(å‘¨å›æ•°ã‚‚åŠ ç®—ã—ã¦å«ã‚ã‚‹)
 
-                var tableExpList = new List<int>();  // ã‚ª‚Á‚½ƒŒƒxƒ‹‚²‚Æ‚Ìƒe[ƒuƒ‹ŒoŒ±’lŠi”[
-                if(diffLevel==0)                     // ƒŒƒxƒ‹‚ªã‚ª‚Á‚Ä‚¢‚È‚¯‚ê‚Î
+                var tableExpList = new List<int>();  // ä¸ŠãŒã£ãŸãƒ¬ãƒ™ãƒ«ã”ã¨ã®ãƒ†ãƒ¼ãƒ–ãƒ«çµŒé¨“å€¤æ ¼ç´
+                if(diffLevel==0)                     // ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ã¦ã„ãªã‘ã‚Œã°
                 {
                     tableExpList.Add(master.GetTableExpByLevel(oldRank + 1));
                 }
-                else                                         // ƒŒƒxƒ‹‚ªã‚ª‚Á‚Ä‚¢‚ê‚Î
+                else                                         // ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ã¦ã„ã‚Œã°
                 {
                     for(int i=oldRank+1;i<=newRank;i++)
                     {
@@ -68,23 +68,23 @@ namespace fantec.Battle.Manager
 
                 var consumeStamina = DummyServerForBattle.GetCurrentStamina();
 
-                resultWindow.SetStaminaText(modelStage.Entity.stamina, consumeStamina); // ƒXƒ^ƒ~ƒi•\¦
-                resultWindow.SetStageName(modelStage.Entity.stageName);                 // ƒXƒe[ƒW–¼
-                resultWindow.SetInteractableNextButton(false);                          // Ÿ‚Öƒ{ƒ^ƒ“‚ğ–³Œø‰»
-                resultWindow.SetInteractableRetryButton(false);                         // Ä’§íƒ{ƒ^ƒ“‚ğ–³Œø‰»
-                resultWindow.SetCurrentRank(oldRank);                                   // Œ»İ‚Ìƒ‰ƒ“ƒN
-                resultWindow.SetNextRank(oldRank + 1);                                  // Ÿ‚Ìƒ‰ƒ“ƒN
-                resultWindow.SetGainExp(gainExp);                                       // Œ»İ‚ÌŒoŒ±’l
-                resultWindow.SetTableExp(master.GetTableExpByLevel(oldRank + 1));       // Ÿ‚ÌŒoŒ±’l
+                resultWindow.SetStaminaText(modelStage.Entity.stamina, consumeStamina); // ã‚¹ã‚¿ãƒŸãƒŠè¡¨ç¤º
+                resultWindow.SetStageName(modelStage.Entity.stageName);                 // ã‚¹ãƒ†ãƒ¼ã‚¸å
+                resultWindow.SetInteractableNextButton(false);                          // æ¬¡ã¸ãƒœã‚¿ãƒ³ã‚’ç„¡åŠ¹åŒ–
+                resultWindow.SetInteractableRetryButton(false);                         // å†æŒ‘æˆ¦ãƒœã‚¿ãƒ³ã‚’ç„¡åŠ¹åŒ–
+                resultWindow.SetCurrentRank(oldRank);                                   // ç¾åœ¨ã®ãƒ©ãƒ³ã‚¯
+                resultWindow.SetNextRank(oldRank + 1);                                  // æ¬¡ã®ãƒ©ãƒ³ã‚¯
+                resultWindow.SetGainExp(gainExp);                                       // ç¾åœ¨ã®çµŒé¨“å€¤
+                resultWindow.SetTableExp(master.GetTableExpByLevel(oldRank + 1));       // æ¬¡ã®çµŒé¨“å€¤
 
                 resultWindow.OnRematch
-                    .Subscribe(_ => OnClickRematch())   // Ä’§í
+                    .Subscribe(_ => OnClickRematch())   // å†æŒ‘æˆ¦
                     .AddTo(resultWindow.ClosedDisposable);
                 resultWindow.OnNext
-                    .Subscribe(_=>Locator.Resolve<IBattleFlowManager>().ChangeFlow<FlowExit>()) // Ÿ‚Ö
+                    .Subscribe(_=>Locator.Resolve<IBattleFlowManager>().ChangeFlow<FlowExit>()) // æ¬¡ã¸
                     .AddTo(resultWindow.ClosedDisposable);
 
-                resultWindow.PlayExpAnimation(tableExpList.ToArray(), start, end, rank =>  // ƒŒƒxƒ‹‚ªã‚ª‚Á‚½‚ç
+                resultWindow.PlayExpAnimation(tableExpList.ToArray(), start, end, rank =>  // ãƒ¬ãƒ™ãƒ«ãŒä¸ŠãŒã£ãŸã‚‰
                 {
                     var newRank = oldRank + rank;
                     var nextRank = newRank + 1;
@@ -92,38 +92,38 @@ namespace fantec.Battle.Manager
                     var oldStamina = master.GetDataByLevel(prevRank).stamina;
                     var newStamina = master.GetDataByLevel(newRank).stamina;
 
-                    resultWindow.PauseExpAnimation();                                     // ƒQ[ƒW‘‰Á‚ğˆê“I‚É~‚ß‚é
-                    resultWindow.SetCurrentRank(newRank);                                 // ƒŒƒxƒ‹•\¦‚ğXV
+                    resultWindow.PauseExpAnimation();                                     // ã‚²ãƒ¼ã‚¸å¢—åŠ ã‚’ä¸€æ™‚çš„ã«æ­¢ã‚ã‚‹
+                    resultWindow.SetCurrentRank(newRank);                                 // ãƒ¬ãƒ™ãƒ«è¡¨ç¤ºã‚’æ›´æ–°
                     resultWindow.SetNextRank(nextRank);                          
-                    resultWindow.SetTableExp(master.GetTableExpByLevel(newRank));         // Ÿ‚ÌŒoŒ±’lƒe[ƒuƒ‹
+                    resultWindow.SetTableExp(master.GetTableExpByLevel(newRank));         // æ¬¡ã®çµŒé¨“å€¤ãƒ†ãƒ¼ãƒ–ãƒ«
 
-                    Locator.Resolve<IBattleWindowManager>().Open<IRankUpPopupWindow>()    // ƒ‰ƒ“ƒNƒAƒbƒvƒEƒBƒ“ƒhƒE‚ğ•\¦
-                    .SetRankValue(prevRank, newRank)                                      // •\¦ƒ‰ƒ“ƒNİ’è
-                    .SetStaminaValue(oldStamina, newStamina)                              // •\¦ƒXƒ^ƒ~ƒiİ’è
-                    .OnEnd.Subscribe(_ => resultWindow.ResumeExpAnimation());             // •Â‚¶‚ç‚ê‚½‚çƒQ[ƒW‘‰Á‚ğÄŠJ
+                    Locator.Resolve<IBattleWindowManager>().Open<IRankUpPopupWindow>()    // ãƒ©ãƒ³ã‚¯ã‚¢ãƒƒãƒ—ã‚¦ã‚£ãƒ³ãƒ‰ã‚¦ã‚’è¡¨ç¤º
+                    .SetRankValue(prevRank, newRank)                                      // è¡¨ç¤ºãƒ©ãƒ³ã‚¯è¨­å®š
+                    .SetStaminaValue(oldStamina, newStamina)                              // è¡¨ç¤ºã‚¹ã‚¿ãƒŸãƒŠè¨­å®š
+                    .OnEnd.Subscribe(_ => resultWindow.ResumeExpAnimation());             // é–‰ã˜ã‚‰ã‚ŒãŸã‚‰ã‚²ãƒ¼ã‚¸å¢—åŠ ã‚’å†é–‹
                 },
                 () =>
                 {
-                    if (rewardInfoList.Count() > 0)                                       // ƒhƒƒbƒvƒAƒCƒeƒ€‚ª‚ ‚ê‚Î
+                    if (rewardInfoList.Count() > 0)                                       // ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ ãŒã‚ã‚Œã°
                     {
-                        resultWindow.PlayDropItem(rewardInfoList, () =>                   // ƒhƒƒbƒvƒAƒCƒeƒ€•\¦‚ªŠ®—¹‚µ‚½‚ç
+                        resultWindow.PlayDropItem(rewardInfoList, () =>                   // ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ è¡¨ç¤ºãŒå®Œäº†ã—ãŸã‚‰
                         {
-                            resultWindow.SetInteractableNextButton(true);                 // Ÿ‚Öƒ{ƒ^ƒ“‚ğ—LŒø‰»
-                            resultWindow.SetInteractableRetryButton(true);                // Ä’§íƒ{ƒ^ƒ“‚ğ—LŒø‰»
+                            resultWindow.SetInteractableNextButton(true);                 // æ¬¡ã¸ãƒœã‚¿ãƒ³ã‚’æœ‰åŠ¹åŒ–
+                            resultWindow.SetInteractableRetryButton(true);                // å†æŒ‘æˆ¦ãƒœã‚¿ãƒ³ã‚’æœ‰åŠ¹åŒ–
                         });
                     }
-                    else                                                                  // ƒhƒƒbƒvƒAƒCƒeƒ€‚ª‚È‚¯‚ê‚Î
+                    else                                                                  // ãƒ‰ãƒ­ãƒƒãƒ—ã‚¢ã‚¤ãƒ†ãƒ ãŒãªã‘ã‚Œã°
                     {
-                        resultWindow.SetInteractableNextButton(true);                     // Ÿ‚Öƒ{ƒ^ƒ“‚ğ—LŒø‰»
-                        resultWindow.SetInteractableRetryButton(true);                    // Ä’§íƒ{ƒ^ƒ“‚ğ—LŒø‰»
+                        resultWindow.SetInteractableNextButton(true);                     // æ¬¡ã¸ãƒœã‚¿ãƒ³ã‚’æœ‰åŠ¹åŒ–
+                        resultWindow.SetInteractableRetryButton(true);                    // å†æŒ‘æˆ¦ãƒœã‚¿ãƒ³ã‚’æœ‰åŠ¹åŒ–
                     }
                 });
 
-                resultWindow.OnRematch.Merge(resultWindow.OnNext)                         // ‚Ç‚¿‚ç‚©‚Ìƒ{ƒ^ƒ“‚ğ‰Ÿ‚µ‚½‚ç
+                resultWindow.OnRematch.Merge(resultWindow.OnNext)                         // ã©ã¡ã‚‰ã‹ã®ãƒœã‚¿ãƒ³ã‚’æŠ¼ã—ãŸã‚‰
                     .Subscribe(_ =>
                     {
-                        resultWindow.SetInteractableNextButton(false);                    // Ÿ‚Öƒ{ƒ^ƒ“‚ğ–³Œø‰»
-                        resultWindow.SetInteractableRetryButton(false);                   // Ä’§íƒ{ƒ^ƒ“‚ğ–³Œø‰»
+                        resultWindow.SetInteractableNextButton(false);                    // æ¬¡ã¸ãƒœã‚¿ãƒ³ã‚’ç„¡åŠ¹åŒ–
+                        resultWindow.SetInteractableRetryButton(false);                   // å†æŒ‘æˆ¦ãƒœã‚¿ãƒ³ã‚’ç„¡åŠ¹åŒ–
                     })
                     .AddTo(resultWindow.ClosedDisposable);
             }
@@ -139,7 +139,7 @@ namespace fantec.Battle.Manager
                     }
                     else
                     {
-                        // TODO ƒXƒ^ƒ~ƒi‚ª‘«‚è‚Ü‚¹‚ñ@ƒ‚[ƒ_ƒ‹‚Ì•\¦‚ğs‚¤
+                        // TODO ã‚¹ã‚¿ãƒŸãƒŠãŒè¶³ã‚Šã¾ã›ã‚“ã€€ãƒ¢ãƒ¼ãƒ€ãƒ«ã®è¡¨ç¤ºã‚’è¡Œã†
                         Locator.Resolve<IBattleFlowManager>().ChangeFlow<FlowRematch>();
                     }
                 });

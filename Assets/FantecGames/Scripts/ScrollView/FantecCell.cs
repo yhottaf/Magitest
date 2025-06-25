@@ -1,66 +1,66 @@
-using UnityEngine;
+﻿using UnityEngine;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// <see cref="FantecScrollView{TItemData, TContext}"/> �̃Z�����������邽�߂̒��ۊ��N���X.
-    /// <see cref="FantecCell{TItemData, TContext}.Context"/> ���s�v�ȏꍇ��
-    /// ����� <see cref="FantecCell{TItemData}"/> ���g�p���܂�.
+    /// <see cref="FantecScrollView{TItemData, TContext}"/> のセルを実装するための抽象基底クラス.
+    /// <see cref="FantecCell{TItemData, TContext}.Context"/> が不要な場合は
+    /// 代わりに <see cref="FantecCell{TItemData}"/> を使用します.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
-    /// <typeparam name="TContext"><see cref="Context"/> �̌^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
+    /// <typeparam name="TContext"><see cref="Context"/> の型.</typeparam>
     public abstract class FantecCell<TItemData, TContext> : MonoBehaviour where TContext : class, new()
     {
         /// <summary>
-        /// ���̃Z���ŕ\�����Ă���f�[�^�̃C���f�b�N�X.
+        /// このセルで表示しているデータのインデックス.
         /// </summary>
         public int Index { get; set; } = -1;
 
         /// <summary>
-        /// ���̃Z���̉����.
+        /// このセルの可視状態.
         /// </summary>
         public virtual bool IsVisible => gameObject.activeSelf;
 
         /// <summary>
-        /// <see cref="FantecScrollView{TItemData, TContext}.Context"/> �̎Q��.
-        /// �Z���ƃX�N���[���r���[�Ԃœ����C���X�^���X�����L����܂�. ���̎󂯓n�����Ԃ̕ێ��Ɏg�p���܂�.
+        /// <see cref="FantecScrollView{TItemData, TContext}.Context"/> の参照.
+        /// セルとスクロールビュー間で同じインスタンスが共有されます. 情報の受け渡しや状態の保持に使用します.
         /// </summary>
         protected TContext Context { get; private set; }
 
         /// <summary>
-        /// <see cref="Context"/> ���Z�b�g���܂�.
+        /// <see cref="Context"/> をセットします.
         /// </summary>
-        /// <param name="context">�R���e�L�X�g.</param>
+        /// <param name="context">コンテキスト.</param>
         public virtual void SetContext(TContext context) => Context = context;
 
         /// <summary>
-        /// ���������s���܂�.
+        /// 初期化を行います.
         /// </summary>
         public virtual void Initialize() { }
 
         /// <summary>
-        /// ���̃Z���̉���Ԃ�ݒ肵�܂�.
+        /// このセルの可視状態を設定します.
         /// </summary>
-        /// <param name="visible">����ԂȂ� <c>true</c>, �����ԂȂ� <c>false</c>.</param>
+        /// <param name="visible">可視状態なら <c>true</c>, 非可視状態なら <c>false</c>.</param>
         public virtual void SetVisible(bool visible) => gameObject.SetActive(visible);
 
         /// <summary>
-        /// �A�C�e���f�[�^�Ɋ�Â��Ă��̃Z���̕\�����e���X�V���܂�.
+        /// アイテムデータに基づいてこのセルの表示内容を更新します.
         /// </summary>
-        /// <param name="itemData">�A�C�e���f�[�^.</param>
+        /// <param name="itemData">アイテムデータ.</param>
         public abstract void UpdateContent(TItemData itemData);
 
         /// <summary>
-        /// <c>0.0f</c> ~ <c>1.0f</c> �̒l�Ɋ�Â��Ă��̃Z���̃X�N���[���ʒu���X�V���܂�.
+        /// <c>0.0f</c> ~ <c>1.0f</c> の値に基づいてこのセルのスクロール位置を更新します.
         /// </summary>
-        /// <param name="position">�r���[�|�[�g�͈͂̐��K�����ꂽ�X�N���[���ʒu.</param>
+        /// <param name="position">ビューポート範囲の正規化されたスクロール位置.</param>
         public abstract void UpdatePosition(float position);
     }
 
     /// <summary>
-    /// <see cref="FantecScrollView{TItemData}"/> �̃Z�����������邽�߂̒��ۊ��N���X.
+    /// <see cref="FantecScrollView{TItemData}"/> のセルを実装するための抽象基底クラス.
     /// </summary>
-    /// <typeparam name="TItemData">�A�C�e���̃f�[�^�^.</typeparam>
+    /// <typeparam name="TItemData">アイテムのデータ型.</typeparam>
     /// <seealso cref="FantecCell{TItemData, TContext}"/>
     public abstract class FantecCell<TItemData> : FantecCell<TItemData, NullContext>
     {

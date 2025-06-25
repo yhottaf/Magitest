@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.PlayFabClient;
 using PlayFab;
 using PlayFab.ClientModels;
@@ -7,12 +7,12 @@ using System;
 namespace fantec.PlayfabCilent
 {
     /// <summary>
-    /// PlayFab‚Ö‚ÌƒƒOƒCƒ“‚ğŠÇ—‚·‚é
+    /// PlayFabã¸ã®ãƒ­ã‚°ã‚¤ãƒ³ã‚’ç®¡ç†ã™ã‚‹
     /// </summary>
     public class LoginManager
     {
         /// <summary>
-        /// ‚±‚±‚ÅƒƒOƒCƒ“‚Æ“¯‚Éæ“¾‚·‚éî•ñ‚Ìİ’è‚ğ‚·‚é
+        /// ã“ã“ã§ãƒ­ã‚°ã‚¤ãƒ³ã¨åŒæ™‚ã«å–å¾—ã™ã‚‹æƒ…å ±ã®è¨­å®šã‚’ã™ã‚‹
         /// </summary>
         public static GetPlayerCombinedInfoRequestParams CombinedInfoRequestparams { get; }
         = new GetPlayerCombinedInfoRequestParams
@@ -27,24 +27,24 @@ namespace fantec.PlayfabCilent
         };
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         static LoginManager()
         {
-            //TODO:ŠÂ‹«æØ‘Ö‚ÌÀ‘•
-            //PlayFabSettings.staticSettings.TitleId = "";  // ˆÚs‘OŠJ”­
-            PlayFabSettings.staticSettings.TitleId = "E23B7";  // ŠJ”­
-            //PlayFabSettings.staticSettings.TitleId = "";  // ƒXƒe[ƒWƒ“ƒO
-            //PlayFabSettings.staticSettings.TitleId = "";  // –{”Ô
+            //TODO:ç’°å¢ƒå…ˆåˆ‡æ›¿ã®å®Ÿè£…
+            //PlayFabSettings.staticSettings.TitleId = "";  // ç§»è¡Œå‰é–‹ç™º
+            PlayFabSettings.staticSettings.TitleId = "E23B7";  // é–‹ç™º
+            //PlayFabSettings.staticSettings.TitleId = "";  // ã‚¹ãƒ†ãƒ¼ã‚¸ãƒ³ã‚°
+            //PlayFabSettings.staticSettings.TitleId = "";  // æœ¬ç•ª
         }
 
         /// <summary>
-        /// ƒ†[ƒU[ƒf[ƒ^‚Æƒ^ƒCƒgƒ‹ƒf[ƒ^‚ğ‰Šú‰»‚·‚éB
+        /// ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã¨ã‚¿ã‚¤ãƒˆãƒ«ãƒ‡ãƒ¼ã‚¿ã‚’åˆæœŸåŒ–ã™ã‚‹ã€‚
         /// </summary>
         /// <returns></returns>
         public static async UniTask LoginAndUpdateLocalCacheAsync()
         {
-            //UserId‚ª‚È‚¯‚ê‚Îƒ†[ƒU[‚ğV‹Kì¬‚µAUserId‚ª‚ ‚ê‚ÎŠù‘¶ƒ†[ƒU[‚ÅƒƒOƒCƒ“‚·‚é
+            //UserIdãŒãªã‘ã‚Œã°ãƒ¦ãƒ¼ã‚¶ãƒ¼ã‚’æ–°è¦ä½œæˆã—ã€UserIdãŒã‚ã‚Œã°æ—¢å­˜ãƒ¦ãƒ¼ã‚¶ãƒ¼ã§ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹
             var userId = PlayerPrefsManager.UserId;
             var loginResult = string.IsNullOrEmpty(userId)
                 ? await CreateNewUserAsync()
@@ -55,32 +55,34 @@ namespace fantec.PlayfabCilent
 
 
         /// <summary>
-        /// ƒƒOƒCƒ“‚Éæ“¾‚µ‚½ƒf[ƒ^‚ğƒLƒƒƒbƒVƒ…‚·‚é
+        /// ãƒ­ã‚°ã‚¤ãƒ³æ™‚ã«å–å¾—ã—ãŸãƒ‡ãƒ¼ã‚¿ã‚’ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã™ã‚‹
         /// </summary>
         /// <param name="loginResult"></param>
         /// <returns></returns>
         public static async UniTask UpdateLocalCacheAsync(LoginResult loginResult)
         {
-            //ƒJƒ^ƒƒO‚Í‘¼‚ÌƒCƒ“ƒXƒ^ƒ“ƒX‚Ì‰Šú‰»‚É‚à•K—v‚È‚Ì‚ÅÅ‰‚És‚¤‚±‚Æ
+            //ã‚«ã‚¿ãƒ­ã‚°ã¯ä»–ã®ã‚¤ãƒ³ã‚¹ã‚¿ãƒ³ã‚¹ã®åˆæœŸåŒ–ã«ã‚‚å¿…è¦ãªã®ã§æœ€åˆã«è¡Œã†ã“ã¨
             await UniTask.WhenAll(
                 CatalogManager.SyncPlayFabToClientAsync(),
                 StoreManager.SyncPlayFabToClientAsync()
                 );
 
-            //ƒvƒŒƒCƒ„[ƒvƒƒtƒB[ƒ‹Aè‚¿ƒJ[ƒhAƒCƒ“ƒxƒ“ƒgƒŠ[‚È‚Ç‚ÌXV‚à‚±‚±‚É’Ç‹L
+            //ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãƒ—ãƒ­ãƒ•ã‚£ãƒ¼ãƒ«ã€æ‰‹æŒã¡ã‚«ãƒ¼ãƒ‰ã€ã‚¤ãƒ³ãƒ™ãƒ³ãƒˆãƒªãƒ¼ãªã©ã®æ›´æ–°ã‚‚ã“ã“ã«è¿½è¨˜
             PlayerProfileManager.SyncPlayFabToClient(loginResult.InfoResultPayload.PlayerProfile, loginResult.InfoResultPayload.PlayerStatistics);
             CardManager.SyncPlayFabToClient(loginResult.InfoResultPayload.UserInventory);
             InventoryManager.SyncPlayFabToClient(loginResult.InfoResultPayload.UserInventory);
             VirtualCurrencyManager.SyncPlayFabToClient(loginResult.InfoResultPayload.UserVirtualCurrency);
             UserDataManager.SyncPlayFabToClient(loginResult.InfoResultPayload.UserData);
             
-            //ƒ†[ƒU[î•ñ‚ÌXV
+            //ãƒ¦ãƒ¼ã‚¶ãƒ¼æƒ…å ±ã®æ›´æ–°
             await UserDataManager.UpdatePlayFab();
-            //ƒƒOƒCƒ“ƒ{[ƒiƒXŠl“¾ˆ—
+
+            //ãƒ­ã‚°ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹ç²å¾—å‡¦ç†
+            CheckAndAddLoginBonusAsync(loginResult).Forget();
         }
 
         /// <summary>
-        /// ÅIƒƒOƒCƒ““ú‚©‚ç“ú•t‚ª•Ï‚í‚Á‚Ä‚¢‚ê‚ÎƒƒOƒCƒ“ƒ{[ƒiƒX‚ğŠl“¾‚·‚é
+        /// æœ€çµ‚ãƒ­ã‚°ã‚¤ãƒ³æ—¥æ™‚ã‹ã‚‰æ—¥ä»˜ãŒå¤‰ã‚ã£ã¦ã„ã‚Œã°ãƒ­ã‚°ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹ã‚’ç²å¾—ã™ã‚‹
         /// </summary>
         /// <param name="loginResult"></param>
         /// <returns></returns>
@@ -102,22 +104,25 @@ namespace fantec.PlayfabCilent
                 return;
             }
 
-            // TODO: ƒƒOƒCƒ“ƒ{[ƒiƒX‚ğƒvƒŒƒ[ƒ“ƒgƒ{ƒbƒNƒX‚É•t—^‚·‚éˆ—‚È‚Ç‚ğ‘‚­
+            // æ—¥ä»˜ãŒå¤‰ã‚ã£ãŸã‚‰ãŠçŸ¥ã‚‰ã›ã‚’è¡¨ç¤ºã™ã‚‹ã‚ˆã†ã«ã™ã‚‹
+            PlayerPrefsManager.IsNoticeFlag = false;
 
-            // PlayerPrefs‚ÉƒƒOƒCƒ“ƒ{[ƒiƒX‚ğŠl“¾‚µ‚½‚±‚Æ‚ğ‹L˜^‚µ‚Ä‚¨‚­
-            PlayerPrefsManager.HasLoginBonus = true;
+            // TODO: ãƒ­ã‚°ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹ã‚’ãƒ—ãƒ¬ã‚¼ãƒ³ãƒˆãƒœãƒƒã‚¯ã‚¹ã«ä»˜ä¸ã™ã‚‹å‡¦ç†ãªã©ã‚’æ›¸ã
+
+            // PlayerPrefsã«ãƒ­ã‚°ã‚¤ãƒ³ãƒœãƒ¼ãƒŠã‚¹ã‚’ç²å¾—ã—ãŸã“ã¨ã‚’è¨˜éŒ²ã—ã¦ãŠã
+       //     PlayerPrefsManager.HasLoginBonus = true;
         }
 
         private static async UniTask<LoginResult>CreateNewUserAsync()
         {
             while(true)
             {
-                // UserId‚ğÌ”Ô‚·‚é
-                // PlayFab‚ÌCunstomId‚Æ‚µ‚Äg‚¤‚È‚çGuid.NewGuid().ToString()‚Å\•ª
-                // ‚½‚¾‚µ¡‰ñ‚Í‚±‚ê‚ğƒ[ƒ‹ƒAƒhƒŒƒX˜AŒg‚·‚é‚Æ‚«‚ÌUserId‚É‚àg‚¢‚Ü‚í‚µ‚½‚¢‚½‚ßA‹L†‚Íg—p‚¹‚¸A•¶š”‚ğ20•¶šˆÈ“à‚É‚µ‚Ä‚¨‚­
+                // UserIdã‚’æ¡ç•ªã™ã‚‹
+                // PlayFabã®CunstomIdã¨ã—ã¦ä½¿ã†ãªã‚‰Guid.NewGuid().ToString()ã§ååˆ†
+                // ãŸã ã—ä»Šå›ã¯ã“ã‚Œã‚’ãƒ¡ãƒ¼ãƒ«ã‚¢ãƒ‰ãƒ¬ã‚¹é€£æºã™ã‚‹ã¨ãã®UserIdã«ã‚‚ä½¿ã„ã¾ã‚ã—ãŸã„ãŸã‚ã€è¨˜å·ã¯ä½¿ç”¨ã›ãšã€æ–‡å­—æ•°ã‚’20æ–‡å­—ä»¥å†…ã«ã—ã¦ãŠã
                 string newUserId = Guid.NewGuid().ToString().Replace("-", "").Substring(0, 20);
 
-                //ƒƒOƒCƒ“ƒŠƒNƒGƒXƒg‚ğì¬‚·‚é
+                //ãƒ­ã‚°ã‚¤ãƒ³ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä½œæˆã™ã‚‹
                 LoginWithCustomIDRequest request = new LoginWithCustomIDRequest
                 {
                     CustomId = newUserId,
@@ -125,20 +130,20 @@ namespace fantec.PlayfabCilent
                     InfoRequestParameters = CombinedInfoRequestparams
                 };
 
-                //ƒƒOƒCƒ“‚·‚é
+                //ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹
                 var response = await PlayFabClientAPI.LoginWithCustomIDAsync(request);
                 if (response.Error!=null)
                 {
                     throw new PlayFabErrorException(response.Error);
                 }
 
-                //‚à‚µ LastLoginTime ‚É’l‚ª“ü‚Á‚Ä‚¢‚éê‡‚ÍÌ”Ô‚µ‚½ ID ‚ªŠù‘¶ƒ†[ƒU[‚Æd•¡‚µ‚Ä‚¢‚é‚Ì‚ÅƒŠƒgƒ‰ƒC‚·‚é
+                //ã‚‚ã— LastLoginTime ã«å€¤ãŒå…¥ã£ã¦ã„ã‚‹å ´åˆã¯æ¡ç•ªã—ãŸ ID ãŒæ—¢å­˜ãƒ¦ãƒ¼ã‚¶ãƒ¼ã¨é‡è¤‡ã—ã¦ã„ã‚‹ã®ã§ãƒªãƒˆãƒ©ã‚¤ã™ã‚‹
                 if(response.Result.LastLoginTime.HasValue)
                 {
                     continue;
                 }
 
-                // PlayerPrefs‚ÉUserId‚ğ‹L˜^‚·‚é
+                // PlayerPrefsã«UserIdã‚’è¨˜éŒ²ã™ã‚‹
                 PlayerPrefsManager.UserId = newUserId;
 
                 return response.Result;
@@ -146,13 +151,13 @@ namespace fantec.PlayfabCilent
         }
 
         /// <summary>
-        /// ƒƒOƒCƒ“‚µ‚Äƒ†[ƒU[ƒf[ƒ^‚ğƒ[ƒh‚·‚é
+        /// ãƒ­ã‚°ã‚¤ãƒ³ã—ã¦ãƒ¦ãƒ¼ã‚¶ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’ãƒ­ãƒ¼ãƒ‰ã™ã‚‹
         /// </summary>
         /// <param name="userId"></param>
         /// <returns></returns>
         private static async UniTask<LoginResult>LoadUserAsync(string userId)
         {
-            //ƒƒOƒCƒ“ƒŠƒNƒGƒXƒg‚ğì¬‚·‚é
+            //ãƒ­ã‚°ã‚¤ãƒ³ãƒªã‚¯ã‚¨ã‚¹ãƒˆã‚’ä½œæˆã™ã‚‹
             LoginWithCustomIDRequest request = new LoginWithCustomIDRequest
             {
                 CustomId = userId,
@@ -160,7 +165,7 @@ namespace fantec.PlayfabCilent
                 InfoRequestParameters = CombinedInfoRequestparams
             };
 
-            //ƒƒOƒCƒ“‚·‚é
+            //ãƒ­ã‚°ã‚¤ãƒ³ã™ã‚‹
             var response = await PlayFabClientAPI.LoginWithCustomIDAsync(request);
             if(response.Error!=null)
             {

@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Model;
 using fantec.Battle.Utiles;
 using System;
@@ -23,27 +23,27 @@ namespace fantec.Battle.Manager.Flow
         }
 
         /// <summary>
-        /// ƒ^[ƒ“‚ği‚ß‚é
+        /// ã‚¿ãƒ¼ãƒ³ã‚’é€²ã‚ã‚‹
         /// </summary>
         public void Execute()
         {
             var affector = Locator.Resolve<IBattleModelOverrideSkill>().GetReserveHeadBattler();
             AffectOverrideType type = affector.OverrideSkill.Entity.overrideType;
 
-            // ƒV[ƒPƒ“ƒX‚ÌŠJn
+            // ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®é–‹å§‹
             switch(type)
             {
                 case AffectOverrideType.Override:
                     SectionSetupOverride();
                     break;
-                case AffectOverrideType.ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh:
+                case AffectOverrideType.ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰:
                     SectionSetupExsaOverride();
                     break;
-                case AffectOverrideType.ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh:
-                    SectionSetupExsaOverride(); // ‰¼’u‚«
+                case AffectOverrideType.ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰:
+                    SectionSetupExsaOverride(); // ä»®ç½®ã
                     break;
-                case AffectOverrideType.ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh:
-                    SectionSetupExsaOverride(); // ‰¼’u‚«
+                case AffectOverrideType.ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰:
+                    SectionSetupExsaOverride(); // ä»®ç½®ã
                     break;
             }
         }
@@ -58,16 +58,16 @@ namespace fantec.Battle.Manager.Flow
         #region SectionOverride
         private void SectionSetupOverride()
         {
-            // s“®å‚ÌŒø‰Êî•ñ‚ğì¬
+            // è¡Œå‹•ä¸»ã®åŠ¹æœæƒ…å ±ã‚’ä½œæˆ
             var affector = Locator.Resolve<IBattleModelOverrideSkill>().GetReserveHeadBattler();
 
             var affectInfoList = new List<AffectInfoBox>();
 
-            // ˆê‚ÉUŒ‚‚·‚é’‡ŠÔ‚Ì‘I’è
+            // ä¸€ç·’ã«æ”»æ’ƒã™ã‚‹ä»²é–“ã®é¸å®š
             IEnumerable<IBattler> samePositionOthers;
             if (affector.GetIsPlayer())
             {
-                // s“®å‚ªƒvƒŒƒCƒ„[‚È‚çƒvƒŒƒCƒ„[‘¤‚Åd‚È‚Á‚Ä‚¢ƒp[ƒgƒi[’B‚Ìæ“¾
+                // è¡Œå‹•ä¸»ãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãªã‚‰ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å´ã§é‡ãªã£ã¦ã„ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®å–å¾—
                 samePositionOthers = Locator.Resolve<IBattleModelUnits>()
                                     .PlayerDatas
                                     .GetExistBattlers()
@@ -75,7 +75,7 @@ namespace fantec.Battle.Manager.Flow
             }
             else
             {
-                // s“®å‚ªƒGƒlƒ~[‚È‚çƒGƒlƒ~[‘¤‚Åd‚È‚Á‚½‚¢‚½ƒp[ƒgƒi[’B‚Ìæ“¾
+                // è¡Œå‹•ä¸»ãŒã‚¨ãƒãƒŸãƒ¼ãªã‚‰ã‚¨ãƒãƒŸãƒ¼å´ã§é‡ãªã£ãŸã„ãŸãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®å–å¾—
                 samePositionOthers = Locator.Resolve<IBattleModelUnits>()
                                     .EnemyDatas
                                     .GetExistBattlers()
@@ -83,25 +83,25 @@ namespace fantec.Battle.Manager.Flow
             }
 
 
-            // ’ÊíUŒ‚
+            // é€šå¸¸æ”»æ’ƒ
             var normalEntity = affector.AdventSkill.NormalEntity;
             affectInfoList.Add(new AffectInfoBox(normalEntity, affector));
 
-            // ƒI[ƒo[ƒ‰ƒCƒh‚Ìê‡‚Í•K‚¸2l‚Ås‚¤‚Ì‚Å
-            // GetRandomBattler()‚Å‚»‚Ì1l‚ğæ“¾‚Å‚«‚é
-            var PartnerChara = samePositionOthers.GetRandomBattler(); // s“®å‚Ì‘Š•û
-            var normalEntity2 = PartnerChara.AdventSkill.NormalEntity;// ‘Š•û‚Ì’ÊíUŒ‚
-      //      var normalEntity2 = DummyEntity.GetEntity(); //‚½‚¾Œ©‚Ä‚¢‚é‚¾‚¯
+            // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã®å ´åˆã¯å¿…ãš2äººã§è¡Œã†ã®ã§
+            // GetRandomBattler()ã§ãã®1äººã‚’å–å¾—ã§ãã‚‹
+            var PartnerChara = samePositionOthers.GetRandomBattler(); // è¡Œå‹•ä¸»ã®ç›¸æ–¹
+            var normalEntity2 = PartnerChara.AdventSkill.NormalEntity;// ç›¸æ–¹ã®é€šå¸¸æ”»æ’ƒ
+      //      var normalEntity2 = DummyEntity.GetEntity(); //ãŸã è¦‹ã¦ã„ã‚‹ã ã‘
             
             affectInfoList.Add(new AffectInfoBox(normalEntity2, PartnerChara));
 
-            // •À—ñÀs
+            // ä¸¦åˆ—å®Ÿè¡Œ
             SectionAffection(affectInfoList);
         }
 
 
         ///// <summary>
-        ///// Œø‰Ê‚Ì”½‰f
+        ///// åŠ¹æœã®åæ˜ 
         ///// </summary>
         private void SectionAffection(List<AffectInfoBox> infoboxes)
         {
@@ -112,7 +112,7 @@ namespace fantec.Battle.Manager.Flow
         }
 
         /// <summary>
-        /// ƒXƒLƒ‹s“®‚Æ”½‰f
+        /// ã‚¹ã‚­ãƒ«è¡Œå‹•ã¨åæ˜ 
         /// </summary>
         /// <param name="infoBox"></param>
         private void SectionActivateStaggered(List<AffectInfoBox> infoBoxes)
@@ -166,16 +166,16 @@ namespace fantec.Battle.Manager.Flow
         #region SectionExsaOverride
         public void SectionSetupExsaOverride()
         {
-            // s“®å‚ÌŒø‰Êî•ñ‚ğì¬
+            // è¡Œå‹•ä¸»ã®åŠ¹æœæƒ…å ±ã‚’ä½œæˆ
             var affector = Locator.Resolve<IBattleModelOverrideSkill>().GetReserveHeadBattler();
 
             var affectInfoList = new List<AffectInfoBox>();
 
-            // ˆê‚ÉUŒ‚‚·‚é’‡ŠÔ‚Ì‘I’è
+            // ä¸€ç·’ã«æ”»æ’ƒã™ã‚‹ä»²é–“ã®é¸å®š
             IEnumerable<IBattler> samePositionOthers;
             if (affector.GetIsPlayer())
             {
-                // s“®å‚ªƒvƒŒƒCƒ„[‚È‚çƒvƒŒƒCƒ„[‘¤‚Åd‚È‚Á‚Ä‚¢ƒp[ƒgƒi[’B‚Ìæ“¾
+                // è¡Œå‹•ä¸»ãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãªã‚‰ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å´ã§é‡ãªã£ã¦ã„ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®å–å¾—
                 samePositionOthers = Locator.Resolve<IBattleModelUnits>()
                                     .PlayerDatas
                                     .GetExistBattlers()
@@ -183,45 +183,45 @@ namespace fantec.Battle.Manager.Flow
             }
             else
             {
-                // s“®å‚ªƒGƒlƒ~[‚È‚çƒGƒlƒ~[‘¤‚Åd‚È‚Á‚½‚¢‚½ƒp[ƒgƒi[’B‚Ìæ“¾
+                // è¡Œå‹•ä¸»ãŒã‚¨ãƒãƒŸãƒ¼ãªã‚‰ã‚¨ãƒãƒŸãƒ¼å´ã§é‡ãªã£ãŸã„ãŸãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®å–å¾—
                 samePositionOthers = Locator.Resolve<IBattleModelUnits>()
                                     .EnemyDatas
                                     .GetExistBattlers()
                                     .GetSamePositionIndexOthers(affector);
             }
 
-            // ’ÊíUŒ‚
+            // é€šå¸¸æ”»æ’ƒ
             var normalEntity = affector.AdventSkill.NormalEntity;
             affectInfoList.Add(new AffectInfoBox(normalEntity, affector));
 
-            // ƒI[ƒo[ƒ‰ƒCƒh‚Ìê‡‚Í•K‚¸2l‚Ås‚¤‚Ì‚Å
-            // GetRandomBattler()‚Å‚»‚Ì1l‚ğæ“¾‚Å‚«‚é
-            var PartnerChara = samePositionOthers.GetRandomBattler(); // s“®å‚Ì‘Š•û
-            var normalEntity2 = PartnerChara.AdventSkill.NormalEntity;// ‘Š•û‚Ì’ÊíUŒ‚
+            // ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã®å ´åˆã¯å¿…ãš2äººã§è¡Œã†ã®ã§
+            // GetRandomBattler()ã§ãã®1äººã‚’å–å¾—ã§ãã‚‹
+            var PartnerChara = samePositionOthers.GetRandomBattler(); // è¡Œå‹•ä¸»ã®ç›¸æ–¹
+            var normalEntity2 = PartnerChara.AdventSkill.NormalEntity;// ç›¸æ–¹ã®é€šå¸¸æ”»æ’ƒ
             affectInfoList.Add(new AffectInfoBox(normalEntity2, PartnerChara));
 
-            // •À—ñÀs
+            // ä¸¦åˆ—å®Ÿè¡Œ
             SectionAffection(affectInfoList);
         }
         #endregion
 
 
         /// <summary>
-        /// ƒ^[ƒ“‚ÌI—¹
+        /// ã‚¿ãƒ¼ãƒ³ã®çµ‚äº†
         /// </summary>
         private void SectionTurnEnd(AffectInfoBox infoBox)
         {
-            // ƒV[ƒPƒ“ƒX‚Ìì¬
+            // ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ä½œæˆ
             var sequence = this.CreateSequence();
            
-            // ©g‚Ìæ“¾(‚±‚Ìƒ^[ƒ“‚Ìs“®å)
+            // è‡ªèº«ã®å–å¾—(ã“ã®ã‚¿ãƒ¼ãƒ³ã®è¡Œå‹•ä¸»)
             var owner = infoBox.Owner;
 
-            // ƒp[ƒgƒi[’B‚Ìî•ñæ“¾(ˆê‚ÉƒI[ƒo[ƒhƒ‰ƒCƒu‚µ‚½l’B)
+            // ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®æƒ…å ±å–å¾—(ä¸€ç·’ã«ã‚ªãƒ¼ãƒãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ–ã—ãŸäººé”)
             IEnumerable<IBattler> samePositionOthers;
             if (owner.GetIsPlayer())
             {
-                // s“®å‚ªƒvƒŒƒCƒ„[‚È‚çƒvƒŒƒCƒ„[‘¤‚Åd‚È‚Á‚Ä‚¢ƒp[ƒgƒi[’B‚Ìæ“¾
+                // è¡Œå‹•ä¸»ãŒãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼ãªã‚‰ãƒ—ãƒ¬ã‚¤ãƒ¤ãƒ¼å´ã§é‡ãªã£ã¦ã„ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®å–å¾—
                 samePositionOthers = Locator.Resolve<IBattleModelUnits>()
                                     .PlayerDatas
                                     .GetExistBattlers()
@@ -229,15 +229,15 @@ namespace fantec.Battle.Manager.Flow
             }
             else
             {
-                // s“®å‚ªƒGƒlƒ~[‚È‚çƒGƒlƒ~[‘¤‚Åd‚È‚Á‚½‚¢‚½ƒp[ƒgƒi[’B‚Ìæ“¾
+                // è¡Œå‹•ä¸»ãŒã‚¨ãƒãƒŸãƒ¼ãªã‚‰ã‚¨ãƒãƒŸãƒ¼å´ã§é‡ãªã£ãŸã„ãŸãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼é”ã®å–å¾—
                 samePositionOthers = Locator.Resolve<IBattleModelUnits>()
                           .EnemyDatas
                           .GetExistBattlers()
                           .GetSamePositionIndexOthers(owner);
             }
 
-            // UŒ‚ˆÚ“®‚©‚çŒ³‚ÌˆÊ’u‚É‹A‚Á‚Ä‚­‚éÛ‚Ì’Ê’m‚ÍÁ‚·
-            // (true‚Å–ß‚è‚ÌˆÚ“®Š®—¹’Ê’m‚ğÁ‚·)
+            // æ”»æ’ƒç§»å‹•ã‹ã‚‰å…ƒã®ä½ç½®ã«å¸°ã£ã¦ãã‚‹éš›ã®é€šçŸ¥ã¯æ¶ˆã™
+            // (trueã§æˆ»ã‚Šã®ç§»å‹•å®Œäº†é€šçŸ¥ã‚’æ¶ˆã™)
             foreach (var chara in samePositionOthers)
             {
                 chara.Transform.SuppressMoveCompleteNotify = true;
@@ -249,17 +249,17 @@ namespace fantec.Battle.Manager.Flow
 
             sequence.AppendCallback(() =>
             {
-                // ˆÃ“_I—¹
+                // æš—ç‚¹çµ‚äº†
                 Locator.Resolve<IBattleAnimationManager>().Get<IBlackoutAnimation>().Hide();
 
 
-                // ƒXƒLƒ‹I—¹’Ê’m
+                // ã‚¹ã‚­ãƒ«çµ‚äº†é€šçŸ¥
                 Locator.Resolve<IBattleModelOverrideSkill>().Deactivate();
-                Locator.Resolve<IBattleModelAdventSkill>().ConsumeAll();   // ‘S‚ÄÁ”ï
+                Locator.Resolve<IBattleModelAdventSkill>().ConsumeAll();   // å…¨ã¦æ¶ˆè²»
                 Locator.Resolve<IBattleModelAdventSkill>().Lottery();
-                Locator.Resolve<IBattleModelAdventSkill>().SortByHeadInsert(); // UŒ‚‡‚ÌXV
+                Locator.Resolve<IBattleModelAdventSkill>().SortByHeadInsert(); // æ”»æ’ƒé †ã®æ›´æ–°
 
-                // UŒ‚Ò‚ªŒ³‚ÌˆÊ’u‚É–ß‚é
+                // æ”»æ’ƒè€…ãŒå…ƒã®ä½ç½®ã«æˆ»ã‚‹
                 infoBox.Owner.Transform.Move(Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(infoBox.Owner));
 
 
@@ -268,7 +268,7 @@ namespace fantec.Battle.Manager.Flow
 
             sequence.AppendCallback(() =>
             {
-                // UŒ‚å‚©‚ç0.2•b’x‚ê‚Äƒp[ƒgƒi[‚½‚¿‚àŒ³‚ÌˆÊ’u‚É–ß‚·
+                // æ”»æ’ƒä¸»ã‹ã‚‰0.2ç§’é…ã‚Œã¦ãƒ‘ãƒ¼ãƒˆãƒŠãƒ¼ãŸã¡ã‚‚å…ƒã®ä½ç½®ã«æˆ»ã™
                 foreach (var chara in samePositionOthers)
                 {
                     chara.Transform.Move(Locator.Resolve<IBattlePlacementManager>().GetBattlerPosition(infoBox.Owner));
@@ -278,16 +278,16 @@ namespace fantec.Battle.Manager.Flow
             sequence.AppendInterval(3.5f);
             sequence.AppendCallback(() =>
             {
-                // ‘S‚Ä‚Ì–¡•ûƒLƒƒƒ‰ƒNƒ^[‚ÌˆÚ“®‚ÌŠ®—¹’Ê’m‚ª”ò‚Ô‚æ‚¤‚ÉAÄ‚Ñ—LŒø‚É‚à‚Ç‚µ‚Ä‚¨‚­(false‚Å—LŒø)
+                // å…¨ã¦ã®å‘³æ–¹ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼ã®ç§»å‹•ã®å®Œäº†é€šçŸ¥ãŒé£›ã¶ã‚ˆã†ã«ã€å†ã³æœ‰åŠ¹ã«ã‚‚ã©ã—ã¦ãŠã(falseã§æœ‰åŠ¹)
                 owner.Transform.SuppressMoveCompleteNotify = false;
                 foreach (var chara in samePositionOthers)
                 {
                     chara.Transform.SuppressMoveCompleteNotify = false;
                 }
 
-                // ¡‰ñs“®‚µ‚½ƒLƒƒƒ‰‚Ìƒ^[ƒ“‚ğI—¹‚·‚é
+                // ä»Šå›è¡Œå‹•ã—ãŸã‚­ãƒ£ãƒ©ã®ã‚¿ãƒ¼ãƒ³ã‚’çµ‚äº†ã™ã‚‹
                 owner.State.Progress(AffectTurnConsumeType.TurnEnd);
-                // I—¹’Ê’m
+                // çµ‚äº†é€šçŸ¥
                 m_OnCompleted();
             });
         }

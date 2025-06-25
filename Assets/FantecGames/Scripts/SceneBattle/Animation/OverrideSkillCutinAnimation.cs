@@ -1,4 +1,4 @@
-using fantec.Battle.Animations;
+ï»¿using fantec.Battle.Animations;
 using fantec.Battle.Utiles;
 using System;
 using UniRx;
@@ -47,13 +47,13 @@ namespace fantec.Battle.Animations
                 case AffectOverrideType.Override:
                     m_BackSpriteRenderer.sprite = m_Sprites[0];
                     break;
-                case AffectOverrideType.ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh:
+                case AffectOverrideType.ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰:
                     m_BackSpriteRenderer.sprite = m_Sprites[1];
                     break;
-                case AffectOverrideType.ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh:
+                case AffectOverrideType.ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰:
                     m_BackSpriteRenderer.sprite = m_Sprites[2];
                     break;
-                case AffectOverrideType.ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh:
+                case AffectOverrideType.ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰:
                     m_BackSpriteRenderer.sprite = m_Sprites[3];
                     break;
             }

@@ -1,4 +1,4 @@
-using UnityEngine;
+ï»¿using UnityEngine;
 
 namespace fantec.Common
 {
@@ -36,7 +36,7 @@ namespace fantec.Common
         public static string GetSpriteQuestMapBackGround(int chapterNumber) => SpriteFolderPath + "QuestMap/" + chapterNumber.ToString();
         public static string GetSpriteSkillIcon(int iconId) => SpriteFolderPath + "SkillIcon/" + iconId;
 
-        //ƒvƒŒƒnƒu
+        //ãƒ—ãƒ¬ãƒãƒ–
         public static readonly string PrefabFolderPath = "Prefabs/";
 
         //UI
@@ -48,7 +48,7 @@ namespace fantec.Common
         public static readonly string UiMessageCanvas = UiPrefabFolderPath + "MessageCanvas";
         public static readonly string UiLoading = UiPrefabFolderPath + "LoadingView";
 
-        //ƒTƒEƒ“ƒh
+        //ã‚µã‚¦ãƒ³ãƒ‰
         public static readonly string SoundFolderPath = ResourcesPath+"Sound/";
         //BGM
         public static readonly string BGMFolderPath = SoundFolderPath + "BGM/";
@@ -57,10 +57,10 @@ namespace fantec.Common
         //Voice
         public static readonly string VoiceFolderPath = SoundFolderPath + "Voice/";
 
-        //ƒXƒNƒŠƒvƒ^ƒuƒ‹ƒIƒuƒWƒFƒNƒg
+        //ã‚¹ã‚¯ãƒªãƒ—ã‚¿ãƒ–ãƒ«ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ
         public static readonly string DataFolderPath = "Data/";
 
-        //ƒLƒƒƒ‰ƒNƒ^[
+        //ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼
         public static readonly string CharacterFolderPath = ResourcesPath + "Character/";
 
         public static string GetCharacterSpriteSpherePath(int originId) => CharacterFolderPath + originId + "/SpriteSphere.png";

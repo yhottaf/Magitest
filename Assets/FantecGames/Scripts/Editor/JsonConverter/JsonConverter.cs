@@ -1,4 +1,4 @@
-#if UNITY_EDITOR
+ï»¿#if UNITY_EDITOR
 using UnityEngine;
 using fantec.Master;
 using UnityEditor;
@@ -17,18 +17,19 @@ namespace fantec
         [MenuItem("Build/Master/CreateJson")]
         static void CreateJson()
         {
-            // TODO: ƒAƒ‹ƒtƒ@ƒxƒbƒg‡‚Å•À‚×‚é
-            // TODO: ƒ}ƒXƒ^[ƒf[ƒ^‚ğì‚é‚½‚Ñ‚ÉJson‰»‚ğ–Y‚ê‚È‚¢III
+            // TODO: ã‚¢ãƒ«ãƒ•ã‚¡ãƒ™ãƒƒãƒˆé †ã§ä¸¦ã¹ã‚‹
+            // TODO: ãƒã‚¹ã‚¿ãƒ¼ãƒ‡ãƒ¼ã‚¿ã‚’ä½œã‚‹ãŸã³ã«JsonåŒ–ã‚’å¿˜ã‚Œãªã„ï¼ï¼ï¼
             MasterToJson<ConsumeItemMaster, ConsumeItemData>();
             MasterToJson<OverrideSkillMaster,OverrideSkillData>();
             MasterToJson<EnemyCardMaster, EnemyCardData>();
             MasterToJson<InitialRewardStageMaster, InitialRewardStageData>();
+            MasterToJson<NoticeMaster,NoticeData>();
             MasterToJson<OtherSkillMaster, OtherSkillData>();
             MasterToJson<PlayerCardMaster, PlayerCardData>();
             MasterToJson<RewardStageMaster,RewardStageData>();
             MasterToJson<StageMaster, StageData>();
 
-            // o—Íæ‚ÌƒtƒHƒ‹ƒ_‚ğ‚¿‚á‚ñ‚Æì‚Á‚Ä‚¢‚é‚©Šm”F‚µ‚Ä‚¨‚­
+            // å‡ºåŠ›å…ˆã®ãƒ•ã‚©ãƒ«ãƒ€ã‚’ã¡ã‚ƒã‚“ã¨ä½œã£ã¦ã„ã‚‹ã‹ç¢ºèªã—ã¦ãŠã
             MasterToJson<ExpMaster, ExpData>("Exp");
             MasterToJson<GrowthMaster, GrowthData>("Growth");
             MasterToJson<WaveMaster, WaveData>("Wave");
@@ -47,7 +48,7 @@ namespace fantec
             }
             else
             {
-                Debug.LogError($"{assetPath} ‚Æ‚¢‚¤–¼‚Ì ScriptableObject ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                Debug.LogError($"{assetPath} ã¨ã„ã†åã® ScriptableObject ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚");
             }
         }
 
@@ -66,7 +67,7 @@ namespace fantec
             }
             else
             {
-                Debug.LogError($"{assetFolderPath} “à‚É‘ÎÛ‚Ì ScriptableObject ‚ªŒ©‚Â‚©‚è‚Ü‚¹‚ñB");
+                Debug.LogError($"{assetFolderPath} å†…ã«å¯¾è±¡ã® ScriptableObject ãŒè¦‹ã¤ã‹ã‚Šã¾ã›ã‚“ã€‚");
             }
         }
 

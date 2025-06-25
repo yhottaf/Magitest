@@ -1,4 +1,4 @@
-using fantec.Battle.Manager.Pool;
+﻿using fantec.Battle.Manager.Pool;
 using UnityEngine;
 
 namespace fantec.Battle.Manager

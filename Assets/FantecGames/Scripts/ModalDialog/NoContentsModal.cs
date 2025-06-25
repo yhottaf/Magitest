@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Menu.Manager;
 using UniRx.Triggers;
 using UnityEngine;
@@ -12,16 +12,16 @@ namespace fantec.ModalDialog.NoContents
         private ObservablePointerDownTrigger EventTrigger;
         void Start()
         {
-            // ƒCƒxƒ“ƒgƒgƒŠƒK[—p‚ÌƒIƒuƒT[ƒo[ƒNƒ‰ƒX‚ğæ“¾(EventTrigger‚ÌUniRX”Å)
+            // ã‚¤ãƒ™ãƒ³ãƒˆãƒˆãƒªã‚¬ãƒ¼ç”¨ã®ã‚ªãƒ–ã‚µãƒ¼ãƒãƒ¼ã‚¯ãƒ©ã‚¹ã‚’å–å¾—(EventTriggerã®UniRXç‰ˆ)
             EventTrigger= GetComponent<ObservablePointerDownTrigger>();
 
-            // ƒNƒŠƒbƒN‚ÌƒCƒxƒ“ƒg’Ç‰Á
+            // ã‚¯ãƒªãƒƒã‚¯æ™‚ã®ã‚¤ãƒ™ãƒ³ãƒˆè¿½åŠ 
             EventTrigger.OnPointerDownAsObservable().
                 Subscribe(OnPointerDown).AddTo(this);
         }
 
         /// <summary>
-        /// ‰æ–Ê‰Ÿ‰º
+        /// ç”»é¢æŠ¼ä¸‹æ™‚
         /// </summary>
         /// <param name="obj"></param>
         private void OnPointerDown(PointerEventData obj)

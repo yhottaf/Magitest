@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using System;
 using System.Collections;
@@ -10,43 +10,43 @@ namespace fantec.Battle.Model
 {
     public interface IBattleModelUnits :ILocatable,IDisposable,IReloadable
     {
-        /// <summary> Œˆ’…‚ª‚Â‚¢‚½‚©”Û‚©ŠÄ‹ </summary>
+        /// <summary> æ±ºç€ãŒã¤ã„ãŸã‹å¦ã‹ç›£è¦– </summary>
         IObservable<Unit> OnSettledObservable { get; }
-        /// <summary> “G‚ª‘S–Å‚µ‚½‚©ŠÄ‹ </summary>
+        /// <summary> æ•µãŒå…¨æ»…ã—ãŸã‹ç›£è¦– </summary>
         IObservable<Unit> OnDefeatEnemyObservable { get; }
-        /// <summary> –¡•û‚ª‘S–Å‚µ‚½‚©ŠÄ‹ </summary>
+        /// <summary> å‘³æ–¹ãŒå…¨æ»…ã—ãŸã‹ç›£è¦– </summary>
         IObservable<Unit> OnDefeatPlayerObservable { get; }
-        /// <summary> Battler ‚Ì€–SŠÄ‹ </summary>
+        /// <summary> Battler ã®æ­»äº¡ç›£è¦– </summary>
         IObservable<IBattler> OnDeadBattlerObservable { get; }
-        /// <summary> Battler ‚Ì•œŠˆŠÄ‹ </summary>
+        /// <summary> Battler ã®å¾©æ´»ç›£è¦– </summary>
         IObservable<IBattler> OnReviveBattlerObservable { get; }
-        /// <summary> ƒAƒhƒxƒ“ƒgƒXƒLƒ‹‚ÌƒAƒNƒVƒ‡ƒ“ŠJn </summary>
+        /// <summary> ã‚¢ãƒ‰ãƒ™ãƒ³ãƒˆã‚¹ã‚­ãƒ«ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³é–‹å§‹æ™‚ </summary>
         IObservable<AffectInfo> OnActionAdventObserveble { get; }
-        /// <summary> ƒI[ƒo[ƒhƒ‰ƒCƒuƒXƒLƒ‹‚ÌƒAƒNƒVƒ‡ƒ“ŠJn </summary>
+        /// <summary> ã‚ªãƒ¼ãƒãƒ¼ãƒ‰ãƒ©ã‚¤ãƒ–ã‚¹ã‚­ãƒ«ã®ã‚¢ã‚¯ã‚·ãƒ§ãƒ³é–‹å§‹æ™‚ </summary>
         IObservable<AffectInfo> OnActionOverrideSkillObservable { get; }
-        /// <summary> Battler ‚ÌƒoƒtÀsŠÄ‹ </summary>
+        /// <summary> Battler ã®ãƒãƒ•å®Ÿè¡Œç›£è¦– </summary>
         IObservable<AffectInfo> OnBuffedObservable { get; }
-        /// <summary> –¡•ûƒƒ“ƒo[‚ÌXVŠÄ‹ </summary>
+        /// <summary> å‘³æ–¹ãƒ¡ãƒ³ãƒãƒ¼ã®æ›´æ–°ç›£è¦– </summary>
         IObservable<IEnumerable<IBattler>> OnUpdatePlayerMemberObservable { get; }
-        /// <summary> “Gƒƒ“ƒo[‚ÌXVŠÄ‹ </summary>
+        /// <summary> æ•µãƒ¡ãƒ³ãƒãƒ¼ã®æ›´æ–°ç›£è¦– </summary>
         IObservable<IEnumerable<IBattler>> OnUpdateEnemyMemberObservable { get; }
 
         IBattler[] PlayerDatas { get; }
         IBattler[] EnemyDatas { get; }
         IBattler BossData { get; }
 
-        /// <summary> –¡•û‘S–Å‚µ‚Ä‚¢‚é‚©”Û‚© </summary>
+        /// <summary> å‘³æ–¹å…¨æ»…ã—ã¦ã„ã‚‹ã‹å¦ã‹ </summary>
         bool IsPlayerDefeat { get; }
-        /// <summary> “G‚ª‘S–Å‚µ‚Ä‚¢‚é‚©”Û‚© </summary>
+        /// <summary> æ•µãŒå…¨æ»…ã—ã¦ã„ã‚‹ã‹å¦ã‹ </summary>
         bool IsEnemyDefeat { get; }
 
-        /// <summary> –¡•û‚ÌHP‚ÌŠ„‡ </summary>
+        /// <summary> å‘³æ–¹ã®HPã®å‰²åˆ </summary>
         float PlayerHPRatio { get; }
 
-        /// <summary> “G‚ÌHP‚ÌŠ„‡ </summary>
+        /// <summary> æ•µã®HPã®å‰²åˆ </summary>
         float EnemyHPRatio { get; }
 
-        /// <summary> Œˆ’…‚µ‚Ä‚¢‚é‚©”Û‚© </summary>
+        /// <summary> æ±ºç€ã—ã¦ã„ã‚‹ã‹å¦ã‹ </summary>
         bool IsSettled { get; }
 
         void ResetPlayerTeam();
@@ -57,7 +57,7 @@ namespace fantec.Battle.Model
     public static class BattleModelUnitsExtentions
     {
         /// <summary>
-        /// ƒXƒLƒ‹î•ñ‚ğŒ³‚ÉŒø‰Ê‘ÎÛ‚Ìƒoƒgƒ‰[‚ğæ“¾‚·‚é
+        /// ã‚¹ã‚­ãƒ«æƒ…å ±ã‚’å…ƒã«åŠ¹æœå¯¾è±¡ã®ãƒãƒˆãƒ©ãƒ¼ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public static IEnumerable<IBattler>GetBattler(this IBattleModelUnits @this,AffectInfo info)
         {
@@ -66,19 +66,19 @@ namespace fantec.Battle.Model
             var randomCount = info.Command.randomCount;
             var isEnemy = owner.GetIsEnemy();
 
-            // ”­“®Ò‚ÌƒTƒCƒh‚ğ‚à‚Æ‚É‘å‚Ü‚©‚È‘ÎÛ‚ğæ“¾
+            // ç™ºå‹•è€…ã®ã‚µã‚¤ãƒ‰ã‚’ã‚‚ã¨ã«å¤§ã¾ã‹ãªå¯¾è±¡ã‚’å–å¾—
             IEnumerable<IBattler>result=rangeType.GetIsMySide()
                 ? isEnemy ? @this.EnemyDatas : @this.PlayerDatas
                 :isEnemy ? @this.PlayerDatas : @this.EnemyDatas;
 
-            // result=result.Getsur TODO: ’N‚ğ‘ÎÛ‚É‚·‚é‚©Œˆ‚ß‚é
+            // result=result.Getsur TODO: èª°ã‚’å¯¾è±¡ã«ã™ã‚‹ã‹æ±ºã‚ã‚‹
 
-            // ’Êí‚Ì‘I’è
+            // é€šå¸¸ã®é¸å®š
             {
                 switch (rangeType)
                 {
                     // ----------------------------------------- //
-                    // u”­“®Ò‚©‚ç‚İ‚½–¡•ûv
+                    // ã€Œç™ºå‹•è€…ã‹ã‚‰ã¿ãŸå‘³æ–¹ã€
                     // ----------------------------------------- //
 
                     case AffectRangeType.MySideAll: return result;
@@ -95,7 +95,7 @@ namespace fantec.Battle.Model
 
 
                     // ----------------------------------------- //
-                    // u”­“®Ò‚©‚ç‚İ‚½“Gv
+                    // ã€Œç™ºå‹•è€…ã‹ã‚‰ã¿ãŸæ•µã€
                     // ----------------------------------------- //
 
                     case AffectRangeType.EnemyAll: return result;
@@ -108,14 +108,14 @@ namespace fantec.Battle.Model
 
 
                     default:
-                        throw new Exception($"[{rangeType}] ‚ªİ’è‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");
+                        throw new Exception($"[{rangeType}] ãŒè¨­å®šã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");
                 }
             }
         }
 
-        // TODO : ¶‘¶‚µ‚Ä‚¢‚éƒoƒgƒ‰[‚Ìî•ñ‚ğæ“¾‚Å‚«‚é‚æ‚¤‚É‚µ‚Ä‚¨‚­
+        // TODO : ç”Ÿå­˜ã—ã¦ã„ã‚‹ãƒãƒˆãƒ©ãƒ¼ã®æƒ…å ±ã‚’å–å¾—ã§ãã‚‹ã‚ˆã†ã«ã—ã¦ãŠã
         /// <summary>
-        /// ƒXƒLƒ‹î•ñ‚ğŒ³‚ÉŒø‰Ê‘ÎÛ‚Ìƒoƒgƒ‰[‚ğæ“¾‚µA‘ÎÛ‚ª‘¶İ‚µ‚È‚©‚Á‚½ê‡•âŠ®‚·‚é
+        /// ã‚¹ã‚­ãƒ«æƒ…å ±ã‚’å…ƒã«åŠ¹æœå¯¾è±¡ã®ãƒãƒˆãƒ©ãƒ¼ã‚’å–å¾—ã—ã€å¯¾è±¡ãŒå­˜åœ¨ã—ãªã‹ã£ãŸå ´åˆè£œå®Œã™ã‚‹
         /// </summary>
         public static IEnumerable<IBattler>GetBattlerComplement(this IBattleModelUnits @this,AffectInfo info)
         {

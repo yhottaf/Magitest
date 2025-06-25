@@ -1,4 +1,4 @@
-using fantec.Battle.Manager;
+ï»¿using fantec.Battle.Manager;
 using fantec.Battle.Model;
 using fantec.Battle.Utiles;
 using UniRx;
@@ -27,7 +27,7 @@ namespace fantec.Battle.Field.Chara
 
             var overrideSkillStream = Locator.Resolve<IBattleModelOverrideSkill>().OnIsFook.DistinctUntilChanged();
 
-            // false ‚Ì‚Æ‚«
+            // false ã®ã¨ã
             overrideSkillStream
                 .Where(x => !x)
                 .Subscribe(_ =>
@@ -38,7 +38,7 @@ namespace fantec.Battle.Field.Chara
                     var entity = overrideModel.GetReserveHeadBattler()?.OverrideSkill?.Entity;
                     if (overrideModel.GetReserveHeadBattler() == m_Battler && entity != null)
                     {
-                        m_View.MovementView.StopBlurTrail(); // ’â~ˆ—
+                        m_View.MovementView.StopBlurTrail(); // åœæ­¢å‡¦ç†
                     }
                 });
         }
@@ -69,7 +69,7 @@ namespace fantec.Battle.Field.Chara
         {
             m_View.MovementView.PlayMoveTo(targetPosition, 0.4f, () =>
             {
-                m_Battler.Transform.MoveCompleted();// ˆÚ“®‚ÌŠ®—¹’Ê’m‚ğ”ò‚Î‚·
+                m_Battler.Transform.MoveCompleted();// ç§»å‹•ã®å®Œäº†é€šçŸ¥ã‚’é£›ã°ã™
             });
         }
 
@@ -121,14 +121,14 @@ namespace fantec.Battle.Field.Chara
 
         public void OnTakeBuff(AffectInfo info)
         {
-            // TODO :ƒp[ƒeƒBƒNƒ‹‚ğo‚·
+            // TODO :ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã‚’å‡ºã™
             Battler.PlayTakeBuffParticle(info);
         }
 
         public void OnTakeDamage(TakeDamageInfo info)
         {
             var damage = info.valueInfo.affectValue;
-            Debug.Log($"“G‚Ì {Battler.State.Entity.CharaName} ‚É {damage} ‚Ìƒ_ƒ[ƒW!!");
+            Debug.Log($"æ•µã® {Battler.State.Entity.CharaName} ã« {damage} ã®ãƒ€ãƒ¡ãƒ¼ã‚¸!!");
             Debug.Log($"{Battler.State.Entity.CharaName} : {Battler.State.CurrentHP}/{Battler.State.OriginalMaxHP}");
             m_View.SpineView.PlayDamage();
             m_View.MovementView.PlayKnockBack(m_Battler.GetKnockBackPosition());
@@ -165,7 +165,7 @@ namespace fantec.Battle.Field.Chara
 
         public void OnMoveCompleted(Unit unit)
         {
-            //Debug.Log($"“G‘¤ :{Battler.State.Entity.CharaName} ‚ÌˆÚ“®Š®—¹‚ğ’Ê’m");
+            //Debug.Log($"æ•µå´ :{Battler.State.Entity.CharaName} ã®ç§»å‹•å®Œäº†ã‚’é€šçŸ¥");
         }
 
         public void OnActivateBlur(Unit unit)

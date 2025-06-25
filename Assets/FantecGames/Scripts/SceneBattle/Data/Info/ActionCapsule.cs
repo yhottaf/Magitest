@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
@@ -41,9 +41,9 @@ namespace fantec.Battle
         public void Update(List<AbstructSkillEntity>entityList)
         {
             this.EntityList = entityList;
-            if (entityList.Count == 0) return; // ‹ó‚È‚ç‰½‚à‚µ‚È‚¢
+            if (entityList.Count == 0) return; // ç©ºãªã‚‰ä½•ã‚‚ã—ãªã„
 
-            this.IsDanger = entityList.First().GetIs<DangerEntity>(); // ƒfƒ“ƒWƒƒ[•Û—¯¯•Ê
+            this.IsDanger = entityList.First().GetIs<DangerEntity>(); // ãƒ‡ãƒ³ã‚¸ãƒ£ãƒ¼ä¿ç•™è­˜åˆ¥
             //this.IsMimic = 30 >= Random.Range(0, 100) && entityList.Count >= 2;
         }
 
@@ -53,7 +53,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒ~ƒ~ƒbƒNó‘Ôƒtƒ‰ƒO‰ğœ
+        /// ãƒŸãƒŸãƒƒã‚¯çŠ¶æ…‹ãƒ•ãƒ©ã‚°è§£é™¤
         /// </summary>
         public void LiftMimic()
         {
@@ -64,19 +64,19 @@ namespace fantec.Battle
         {
             if(IsDanger)
             {
-                // ƒfƒ“ƒWƒƒ[•Û—¯‚Í-1 ‚Æ‚µ‚Ä•Ô‚·
+                // ãƒ‡ãƒ³ã‚¸ãƒ£ãƒ¼ä¿ç•™ã¯-1 ã¨ã—ã¦è¿”ã™
                 return -1;
             }
-            // ‚»‚êˆÈŠO‚Ì’Êí‚Ìê‡
+            // ãã‚Œä»¥å¤–ã®é€šå¸¸ã®å ´åˆ
             else
             {
-                // ”­“®—\’è‚ÌƒXƒLƒ‹”‚ğ•Ô‚·
+                // ç™ºå‹•äºˆå®šã®ã‚¹ã‚­ãƒ«æ•°ã‚’è¿”ã™
                 return EntityList.Count - 1;
             }
         }
 
         /// <summary>
-        /// ”­“®‚·‚éƒXƒLƒ‹‚ğæ‚èo‚·
+        /// ç™ºå‹•ã™ã‚‹ã‚¹ã‚­ãƒ«ã‚’å–ã‚Šå‡ºã™
         /// </summary>
         public AbstructSkillEntity Dequeue()
         {
@@ -86,11 +86,11 @@ namespace fantec.Battle
                 EntityList.Remove(result);
                 return result;
             }
-            catch { throw new System.InvalidOperationException("ƒXƒLƒ‹‚ğÁ”ï‚µØ‚Á‚½ó‘Ô‚ÅŒÄ‚Î‚ê‚Ü‚µ‚½B"); }
+            catch { throw new System.InvalidOperationException("ã‚¹ã‚­ãƒ«ã‚’æ¶ˆè²»ã—åˆ‡ã£ãŸçŠ¶æ…‹ã§å‘¼ã°ã‚Œã¾ã—ãŸã€‚"); }
         }
 
         /// <summary>
-        /// •Û—LƒXƒLƒ‹‚Æd‚È‚Á‚Ä‚¢‚éƒ†ƒjƒbƒg‚ÌOriginID‚ğŒ³‚ÉŒ‹‰Ê‚ğæ“¾
+        /// ä¿æœ‰ã‚¹ã‚­ãƒ«ã¨é‡ãªã£ã¦ã„ã‚‹ãƒ¦ãƒ‹ãƒƒãƒˆã®OriginIDã‚’å…ƒã«çµæœã‚’å–å¾—
         /// </summary>
         private static List<AbstructSkillEntity>Lottely(List<AdventSkillEntity> entityList,bool isBoot=false)
         {
@@ -100,23 +100,23 @@ namespace fantec.Battle
                 resultList.Add(entity);
                 //if (GetIsActivateSkill(entity,originId))
                 //{
-                //    // ”­“®‹–‰Â‚³‚ê‚½ƒXƒLƒ‹‚Ì‚İA”­“®—\’èƒŠƒXƒg‚É“ü‚ê‚é
+                //    // ç™ºå‹•è¨±å¯ã•ã‚ŒãŸã‚¹ã‚­ãƒ«ã®ã¿ã€ç™ºå‹•äºˆå®šãƒªã‚¹ãƒˆã«å…¥ã‚Œã‚‹
                 //    resultList.Add(entity);
                 //}
             }
-            return resultList; // ”­“®—\’è‚ÌƒXƒLƒ‹‚ÌƒŠƒXƒg‚ğ•Ô‚·
+            return resultList; // ç™ºå‹•äºˆå®šã®ã‚¹ã‚­ãƒ«ã®ãƒªã‚¹ãƒˆã‚’è¿”ã™
         }
 
-        // ‘ÎÛ‚É‚È‚Á‚Ä‚¢‚éƒJ[ƒh‚ÌoriginID
+        // å¯¾è±¡ã«ãªã£ã¦ã„ã‚‹ã‚«ãƒ¼ãƒ‰ã®originID
         private static bool GetIsActivateSkill(OverrideSkillEntity entity, int[] originId)
         {
-            // ‚»‚ÌƒXƒLƒ‹‚Ì”­“®‚É•K—v‚ÈŒÅ—LƒJ[ƒhID‚Ì”‚ÆŒ»İd‚È‚Á‚Ä‚¢‚éƒJ[ƒh‚ÌŒÅ—LID‚Ì”‚ª‚ ‚Á‚Ä‚¢‚È‚¢ê‡A
-            // ‚»‚ÌƒXƒLƒ‹‚Í”­“®‚ÌŒó•â‚©‚çŠO‚· (¨ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh‚ªg—p‰Â”\‚Èl”‚Å‚ ‚é‚Ì‚ÉAƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh‚ğg—p
-            // ‚·‚é‚È‚Ç‚ÌğŒ‚ğŠO‚·)
+            // ãã®ã‚¹ã‚­ãƒ«ã®ç™ºå‹•ã«å¿…è¦ãªå›ºæœ‰ã‚«ãƒ¼ãƒ‰IDã®æ•°ã¨ç¾åœ¨é‡ãªã£ã¦ã„ã‚‹ã‚«ãƒ¼ãƒ‰ã®å›ºæœ‰IDã®æ•°ãŒã‚ã£ã¦ã„ãªã„å ´åˆã€
+            // ãã®ã‚¹ã‚­ãƒ«ã¯ç™ºå‹•ã®å€™è£œã‹ã‚‰å¤–ã™ (â†’ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ãŒä½¿ç”¨å¯èƒ½ãªäººæ•°ã§ã‚ã‚‹ã®ã«ã€ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ä½¿ç”¨
+            // ã™ã‚‹ãªã©ã®æ¡ä»¶ã‚’å¤–ã™)
             if (originId.Length != entity.triggerCardOriginId.Length) return false;
 
 
-            int OverrideValue = 0; // ”­“®‚É•K—v‚ÈoriginId‚Æd‚È‚Á‚Ä‚¢‚é‘ÎÛ‚ÌoriginId‚ªˆê’v‚µ‚Ä‚¢‚é”B
+            int OverrideValue = 0; // ç™ºå‹•ã«å¿…è¦ãªoriginIdã¨é‡ãªã£ã¦ã„ã‚‹å¯¾è±¡ã®originIdãŒä¸€è‡´ã—ã¦ã„ã‚‹æ•°ã€‚
             for (int i = 0; i < originId.Length; i++)
             {
                 for (int k = 0; i < entity.triggerCardOriginId.Length; k++)
@@ -130,19 +130,19 @@ namespace fantec.Battle
             if(entity.overrideType==AffectOverrideType.Override
                 &&OverrideValue.Equals(TwoUnitValue))
             {
-                // ”­“®—\’è‚ÌƒXƒLƒ‹‚ªƒI[ƒo[ƒ‰ƒCƒh‚Ìí•Ê‚ÅA“Á’è‚ÌŒÅ—LID‚ğ‚ÂƒLƒƒƒ‰‚ª2‘Ì”í‚Á‚Ä‚¢‚éê‡
-                // ”­“®Œó•â‚©‚çŠO‚·(¨ƒGƒNƒTƒI[ƒo[ƒ‰ƒCƒh‚ğg—p‚·‚é‚æ‚¤‚É‚·‚é)
+                // ç™ºå‹•äºˆå®šã®ã‚¹ã‚­ãƒ«ãŒã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã®ç¨®åˆ¥ã§ã€ç‰¹å®šã®å›ºæœ‰IDã‚’æŒã¤ã‚­ãƒ£ãƒ©ãŒ2ä½“è¢«ã£ã¦ã„ã‚‹å ´åˆ
+                // ç™ºå‹•å€™è£œã‹ã‚‰å¤–ã™(â†’ã‚¨ã‚¯ã‚µã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹)
                 return false;
             }
-            else if(entity.overrideType==AffectOverrideType.ƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh
+            else if(entity.overrideType==AffectOverrideType.ã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰
                 &&OverrideValue.Equals(ThreeUnitValue))
             {
-                // ”­“®—\’è‚ÌƒXƒLƒ‹‚ªƒ[ƒ^ƒI[ƒo[ƒ‰ƒCƒh‚Ìí•Ê‚Å‚ ‚èA“Á’è‚ÌŒÅ—LID‚ğ‚ÂƒLƒƒƒ‰‚ª3‘Ì”í‚Á‚Ä‚¢‚éê‡
-                // ”­“®Œó•â‚©‚çŠO‚·(¨ƒNƒGƒ^ƒI[ƒo[ƒ‰ƒCƒh‚ğg—p‚·‚é‚æ‚¤‚É‚·‚é)
+                // ç™ºå‹•äºˆå®šã®ã‚¹ã‚­ãƒ«ãŒã‚¼ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã®ç¨®åˆ¥ã§ã‚ã‚Šã€ç‰¹å®šã®å›ºæœ‰IDã‚’æŒã¤ã‚­ãƒ£ãƒ©ãŒ3ä½“è¢«ã£ã¦ã„ã‚‹å ´åˆ
+                // ç™ºå‹•å€™è£œã‹ã‚‰å¤–ã™(â†’ã‚¯ã‚¨ã‚¿ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚’ä½¿ç”¨ã™ã‚‹ã‚ˆã†ã«ã™ã‚‹)
                 return false;
             }
 
-            return true; // entity (”­“®—\’èƒXƒLƒ‹‚ğ”­“®—\’èƒŠƒXƒg‚É‰Á‚¦‚é‚Ì‚ğ‹–‰Â‚·‚é)
+            return true; // entity (ç™ºå‹•äºˆå®šã‚¹ã‚­ãƒ«ã‚’ç™ºå‹•äºˆå®šãƒªã‚¹ãƒˆã«åŠ ãˆã‚‹ã®ã‚’è¨±å¯ã™ã‚‹)
         }
     }
 }

@@ -1,4 +1,4 @@
-using DG.Tweening;
+ï»¿using DG.Tweening;
 using fantec.Battle.Utiles;
 using System;
 using UnityEngine;
@@ -15,7 +15,7 @@ namespace fantec.Battle.Manager.Flow
     public static class CombatSequenceExtentions
     {
         /// <summary>
-        /// ‘¬“x‰Â•Ï‚É‘Î‰‚µ‚½ƒV[ƒPƒ“ƒX‚ğì¬‚µ•Ô‚·
+        /// é€Ÿåº¦å¯å¤‰ã«å¯¾å¿œã—ãŸã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã‚’ä½œæˆã—è¿”ã™
         /// </summary>
         public static Sequence CreateSequence(this ICombatSequence @this)
         {
@@ -26,13 +26,13 @@ namespace fantec.Battle.Manager.Flow
         }
 
         /// <summary>
-        /// ƒXƒLƒ‹Œø‰Ê”½‰f‚ÌƒV[ƒPƒ“ƒX
+        /// ã‚¹ã‚­ãƒ«åŠ¹æœåæ˜ æ™‚ã®ã‚·ãƒ¼ã‚±ãƒ³ã‚¹
         /// </summary>
         public static Sequence GetAffectSequence(this ICombatSequence @this,AffectInfoBox infoBox,Action<AffectInfo>onAffect)
         {
-            var delay = 0.1f;    // ˜AŒ‚‚ÌŠÔŠu
+            var delay = 0.1f;    // é€£æ’ƒã®é–“éš”
 
-            // ƒV[ƒPƒ“ƒX‚Ìƒeƒ“ƒvƒŒ[ƒg‚ğ€”õ
+            // ã‚·ãƒ¼ã‚±ãƒ³ã‚¹ã®ãƒ†ãƒ³ãƒ—ãƒ¬ãƒ¼ãƒˆã‚’æº–å‚™
             Sequence Template(AffectInfo info)
             {
                 return DOTween.Sequence()
@@ -44,25 +44,25 @@ namespace fantec.Battle.Manager.Flow
                     .SetLoops(info.Command.actionCount);
             }
 
-            // –ß‚è’l‚Ì€”õ
+            // æˆ»ã‚Šå€¤ã®æº–å‚™
             var result = DOTween.Sequence();
 
-            // UŒ‚‘O‚É”­“®‚·‚éƒXƒLƒ‹
+            // æ”»æ’ƒå‰ã«ç™ºå‹•ã™ã‚‹ã‚¹ã‚­ãƒ«
             foreach(var info in infoBox.GetFirstInfos())
             {
                 result.Join(Template(info));
             }
 
-            // UŒ‚ƒXƒLƒ‹
+            // æ”»æ’ƒã‚¹ã‚­ãƒ«
             foreach(var info in infoBox.GetAttackInfos())
             {
                 result.Join(Template(info));
             }
 
-            // I‚í‚é‚Ü‚Å‘Ò‚Â
+            // çµ‚ã‚ã‚‹ã¾ã§å¾…ã¤
             result.AppendInterval(delay);
 
-            // UŒ‚Œã‚É”­“®‚·‚éƒXƒLƒ‹
+            // æ”»æ’ƒå¾Œã«ç™ºå‹•ã™ã‚‹ã‚¹ã‚­ãƒ«
             foreach (var info in infoBox.GetLateInfos())
             {
                 result.Join(Template(info));

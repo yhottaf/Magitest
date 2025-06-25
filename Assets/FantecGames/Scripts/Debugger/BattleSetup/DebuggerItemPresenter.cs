@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Utilities;
 using UnityEngine;
 using UniRx;
@@ -16,7 +16,7 @@ namespace fantec.Debugger
 
         private void Awake()
         {
-            // •¡»—p‚Ìˆ×‰B‚·
+            // è¤‡è£½ç”¨ã®ç‚ºéš ã™
             m_InItemPresenter.gameObject.SetActive(false);
         }
 
@@ -26,19 +26,19 @@ namespace fantec.Debugger
 
         protected override void Setup(ItemDuplicatorData data)
         {
-            // ƒf[ƒ^æ“¾
+            // ãƒ‡ãƒ¼ã‚¿å–å¾—
             var itemData = data as DebuggerItemData;
 
-            // ƒ^ƒCƒgƒ‹İ’è
+            // ã‚¿ã‚¤ãƒˆãƒ«è¨­å®š
             m_View.SetTitleText(itemData.titleText);
 
-            // qŠK‘wì¬
+            // å­éšå±¤ä½œæˆ
             foreach(var inItem in itemData.inItemDatas)
             {
                 m_InItemPresenter.Create(inItem);
             }
 
-            // ŠJ•Âƒ‚[ƒVƒ‡ƒ“ì¬
+            // é–‹é–‰ãƒ¢ãƒ¼ã‚·ãƒ§ãƒ³ä½œæˆ
             var itemRect=GetComponent<RectTransform>();
             var initemRect=m_InItemPresenter.GetComponent<RectTransform>();
             m_OriginalSize = itemRect.sizeDelta;

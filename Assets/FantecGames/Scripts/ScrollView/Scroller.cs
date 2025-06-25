@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using UnityEngine;
 using UnityEngine.EventSystems;
 using UnityEngine.UI;
@@ -7,14 +7,14 @@ using EasingCore;
 namespace fantec
 {
     /// <summary>
-    /// ƒXƒNƒ[ƒ‹ˆÊ’u‚Ì§Œä‚ğs‚¤ƒRƒ“ƒ|[ƒlƒ“ƒg.
+    /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã®åˆ¶å¾¡ã‚’è¡Œã†ã‚³ãƒ³ãƒãƒ¼ãƒãƒ³ãƒˆ.
     /// </summary>
     public class Scroller : UIBehaviour, IPointerUpHandler, IPointerDownHandler, IBeginDragHandler, IEndDragHandler, IDragHandler, IScrollHandler
     {
         [SerializeField] RectTransform viewport = default;
 
         /// <summary>
-        /// ƒrƒ…[ƒ|[ƒg‚ÌƒTƒCƒY.
+        /// ãƒ“ãƒ¥ãƒ¼ãƒãƒ¼ãƒˆã®ã‚µã‚¤ã‚º.
         /// </summary>
         public float ViewportSize => scrollDirection == ScrollDirection.Horizontal
             ? viewport.rect.size.x
@@ -23,14 +23,14 @@ namespace fantec
         [SerializeField] ScrollDirection scrollDirection = ScrollDirection.Vertical;
 
         /// <summary>
-        /// ƒXƒNƒ[ƒ‹•ûŒü.
+        /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«æ–¹å‘.
         /// </summary>
         public ScrollDirection ScrollDirection => scrollDirection;
 
         [SerializeField] MovementType movementType = MovementType.Elastic;
 
         /// <summary>
-        /// ƒRƒ“ƒeƒ“ƒc‚ªƒXƒNƒ[ƒ‹”ÍˆÍ‚ğ‰z‚¦‚ÄˆÚ“®‚·‚é‚Æ‚«‚Ég—p‚·‚é‹““®.
+        /// ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ãŒã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç¯„å›²ã‚’è¶Šãˆã¦ç§»å‹•ã™ã‚‹ã¨ãã«ä½¿ç”¨ã™ã‚‹æŒ™å‹•.
         /// </summary>
         public MovementType MovementType
         {
@@ -41,7 +41,7 @@ namespace fantec
         [SerializeField] float elasticity = 0.1f;
 
         /// <summary>
-        /// ƒRƒ“ƒeƒ“ƒc‚ªƒXƒNƒ[ƒ‹”ÍˆÍ‚ğ‰z‚¦‚ÄˆÚ“®‚·‚é‚Æ‚«‚Ég—p‚·‚é’e—Í«‚Ì—Ê.
+        /// ã‚³ãƒ³ãƒ†ãƒ³ãƒ„ãŒã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç¯„å›²ã‚’è¶Šãˆã¦ç§»å‹•ã™ã‚‹ã¨ãã«ä½¿ç”¨ã™ã‚‹å¼¾åŠ›æ€§ã®é‡.
         /// </summary>
         public float Elasticity
         {
@@ -52,7 +52,7 @@ namespace fantec
         [SerializeField] float scrollSensitivity = 1f;
 
         /// <summary>
-        /// <see cref="ViewportSize"/> ‚Ì’[‚©‚ç’[‚Ü‚Å Drag ‚µ‚½‚Æ‚«‚ÌƒXƒNƒ[ƒ‹ˆÊ’u‚Ì•Ï‰»—Ê.
+        /// <see cref="ViewportSize"/> ã®ç«¯ã‹ã‚‰ç«¯ã¾ã§ Drag ã—ãŸã¨ãã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã®å¤‰åŒ–é‡.
         /// </summary>
         public float ScrollSensitivity
         {
@@ -63,7 +63,7 @@ namespace fantec
         [SerializeField] bool inertia = true;
 
         /// <summary>
-        /// Šµ«‚ğg—p‚·‚é‚©‚Ç‚¤‚©. <c>true</c> ‚ğw’è‚·‚é‚ÆŠµ«‚ª—LŒø‚É, <c>false</c> ‚ğw’è‚·‚é‚ÆŠµ«‚ª–³Œø‚É‚È‚è‚Ü‚·.
+        /// æ…£æ€§ã‚’ä½¿ç”¨ã™ã‚‹ã‹ã©ã†ã‹. <c>true</c> ã‚’æŒ‡å®šã™ã‚‹ã¨æ…£æ€§ãŒæœ‰åŠ¹ã«, <c>false</c> ã‚’æŒ‡å®šã™ã‚‹ã¨æ…£æ€§ãŒç„¡åŠ¹ã«ãªã‚Šã¾ã™.
         /// </summary>
         public bool Inertia
         {
@@ -74,7 +74,7 @@ namespace fantec
         [SerializeField] float decelerationRate = 0.03f;
 
         /// <summary>
-        /// ƒXƒNƒ[ƒ‹‚ÌŒ¸‘¬—¦. <see cref="Inertia"/> ‚ª <c>true</c> ‚Ìê‡‚Ì‚İ—LŒø‚Å‚·.
+        /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ã®æ¸›é€Ÿç‡. <see cref="Inertia"/> ãŒ <c>true</c> ã®å ´åˆã®ã¿æœ‰åŠ¹ã§ã™.
         /// </summary>
         public float DecelerationRate
         {
@@ -92,10 +92,10 @@ namespace fantec
         };
 
         /// <summary>
-        /// <c>true</c> ‚È‚çƒXƒiƒbƒv‚µ, <c>false</c>‚È‚çƒXƒiƒbƒv‚µ‚Ü‚¹‚ñ.
+        /// <c>true</c> ãªã‚‰ã‚¹ãƒŠãƒƒãƒ—ã—, <c>false</c>ãªã‚‰ã‚¹ãƒŠãƒƒãƒ—ã—ã¾ã›ã‚“.
         /// </summary>
         /// <remarks>
-        /// ƒXƒiƒbƒv‚ğ—LŒø‚É‚·‚é‚Æ, Šµ«‚ÅƒXƒNƒ[ƒ‹‚ª~‚Ü‚é’¼‘O‚ÉÅŠñ‚è‚ÌƒZƒ‹‚ÖˆÚ“®‚µ‚Ü‚·.
+        /// ã‚¹ãƒŠãƒƒãƒ—ã‚’æœ‰åŠ¹ã«ã™ã‚‹ã¨, æ…£æ€§ã§ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãŒæ­¢ã¾ã‚‹ç›´å‰ã«æœ€å¯„ã‚Šã®ã‚»ãƒ«ã¸ç§»å‹•ã—ã¾ã™.
         /// </remarks>
         public bool SnapEnabled
         {
@@ -106,7 +106,7 @@ namespace fantec
         [SerializeField] bool draggable = true;
 
         /// <summary>
-        /// Drag “ü—Í‚ğó•t‚¯‚é‚©‚Ç‚¤‚©.
+        /// Drag å…¥åŠ›ã‚’å—ä»˜ã‘ã‚‹ã‹ã©ã†ã‹.
         /// </summary>
         public bool Draggable
         {
@@ -117,12 +117,12 @@ namespace fantec
         [SerializeField] Scrollbar scrollbar = default;
 
         /// <summary>
-        /// ƒXƒNƒ[ƒ‹ƒo[‚ÌƒIƒuƒWƒFƒNƒg.
+        /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ãƒãƒ¼ã®ã‚ªãƒ–ã‚¸ã‚§ã‚¯ãƒˆ.
         /// </summary>
         public Scrollbar Scrollbar => scrollbar;
 
         /// <summary>
-        /// Œ»İ‚ÌƒXƒNƒ[ƒ‹ˆÊ’u.
+        /// ç¾åœ¨ã®ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®.
         /// </summary>
         /// <value></value>
         public float Position
@@ -211,50 +211,50 @@ namespace fantec
         }
 
         /// <summary>
-        /// ƒXƒNƒ[ƒ‹ˆÊ’u‚ª•Ï‰»‚µ‚½‚Æ‚«‚ÌƒR[ƒ‹ƒoƒbƒN‚ğİ’è‚µ‚Ü‚·.
+        /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ãŒå¤‰åŒ–ã—ãŸã¨ãã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’è¨­å®šã—ã¾ã™.
         /// </summary>
-        /// <param name="callback">ƒXƒNƒ[ƒ‹ˆÊ’u‚ª•Ï‰»‚µ‚½‚Æ‚«‚ÌƒR[ƒ‹ƒoƒbƒN.</param>
+        /// <param name="callback">ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ãŒå¤‰åŒ–ã—ãŸã¨ãã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯.</param>
         public void OnValueChanged(Action<float> callback) => onValueChanged = callback;
 
         /// <summary>
-        /// ‘I‘ğˆÊ’u‚ª•Ï‰»‚µ‚½‚Æ‚«‚ÌƒR[ƒ‹ƒoƒbƒN‚ğİ’è‚µ‚Ü‚·.
+        /// é¸æŠä½ç½®ãŒå¤‰åŒ–ã—ãŸã¨ãã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯ã‚’è¨­å®šã—ã¾ã™.
         /// </summary>
-        /// <param name="callback">‘I‘ğˆÊ’u‚ª•Ï‰»‚µ‚½‚Æ‚«‚ÌƒR[ƒ‹ƒoƒbƒN.</param>
+        /// <param name="callback">é¸æŠä½ç½®ãŒå¤‰åŒ–ã—ãŸã¨ãã®ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯.</param>
         public void OnSelectionChanged(Action<int> callback) => onSelectionChanged = callback;
 
         /// <summary>
-        /// ƒAƒCƒeƒ€‚Ì‘”‚ğİ’è‚µ‚Ü‚·.
+        /// ã‚¢ã‚¤ãƒ†ãƒ ã®ç·æ•°ã‚’è¨­å®šã—ã¾ã™.
         /// </summary>
         /// <remarks>
-        /// <paramref name="totalCount"/> ‚ğŒ³‚ÉÅ‘åƒXƒNƒ[ƒ‹ˆÊ’u‚ğŒvZ‚µ‚Ü‚·.
+        /// <paramref name="totalCount"/> ã‚’å…ƒã«æœ€å¤§ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®ã‚’è¨ˆç®—ã—ã¾ã™.
         /// </remarks>
-        /// <param name="totalCount">ƒAƒCƒeƒ€‚Ì‘”.</param>
+        /// <param name="totalCount">ã‚¢ã‚¤ãƒ†ãƒ ã®ç·æ•°.</param>
         public void SetTotalCount(int totalCount) => this.totalCount = totalCount;
 
         /// <summary>
-        /// w’è‚µ‚½ˆÊ’u‚Ü‚ÅˆÚ“®‚µ‚Ü‚·.
+        /// æŒ‡å®šã—ãŸä½ç½®ã¾ã§ç§»å‹•ã—ã¾ã™.
         /// </summary>
-        /// <param name="position">ƒXƒNƒ[ƒ‹ˆÊ’u. <c>0f</c> ~ <c>totalCount - 1f</c> ‚Ì”ÍˆÍ.</param>
-        /// <param name="duration">ˆÚ“®‚É‚©‚¯‚é•b”.</param>
-        /// <param name="onComplete">ˆÚ“®‚ªŠ®—¹‚µ‚½Û‚ÉŒÄ‚Ño‚³‚ê‚éƒR[ƒ‹ƒoƒbƒN.</param>
+        /// <param name="position">ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®. <c>0f</c> ~ <c>totalCount - 1f</c> ã®ç¯„å›².</param>
+        /// <param name="duration">ç§»å‹•ã«ã‹ã‘ã‚‹ç§’æ•°.</param>
+        /// <param name="onComplete">ç§»å‹•ãŒå®Œäº†ã—ãŸéš›ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯.</param>
         public void ScrollTo(float position, float duration, Action onComplete = null) => ScrollTo(position, duration, Ease.OutCubic, onComplete);
 
         /// <summary>
-        /// w’è‚µ‚½ˆÊ’u‚Ü‚ÅˆÚ“®‚µ‚Ü‚·.
+        /// æŒ‡å®šã—ãŸä½ç½®ã¾ã§ç§»å‹•ã—ã¾ã™.
         /// </summary>
-        /// <param name="position">ƒXƒNƒ[ƒ‹ˆÊ’u. <c>0f</c> ~ <c>totalCount - 1f</c> ‚Ì”ÍˆÍ.</param>
-        /// <param name="duration">ˆÚ“®‚É‚©‚¯‚é•b”.</param>
-        /// <param name="easing">ˆÚ“®‚Ég—p‚·‚éƒC[ƒWƒ“ƒO.</param>
-        /// <param name="onComplete">ˆÚ“®‚ªŠ®—¹‚µ‚½Û‚ÉŒÄ‚Ño‚³‚ê‚éƒR[ƒ‹ƒoƒbƒN.</param>
+        /// <param name="position">ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®. <c>0f</c> ~ <c>totalCount - 1f</c> ã®ç¯„å›².</param>
+        /// <param name="duration">ç§»å‹•ã«ã‹ã‘ã‚‹ç§’æ•°.</param>
+        /// <param name="easing">ç§»å‹•ã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ¼ã‚¸ãƒ³ã‚°.</param>
+        /// <param name="onComplete">ç§»å‹•ãŒå®Œäº†ã—ãŸéš›ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯.</param>
         public void ScrollTo(float position, float duration, Ease easing, Action onComplete = null) => ScrollTo(position, duration, Easing.Get(easing), onComplete);
 
         /// <summary>
-        /// w’è‚µ‚½ˆÊ’u‚Ü‚ÅˆÚ“®‚µ‚Ü‚·.
+        /// æŒ‡å®šã—ãŸä½ç½®ã¾ã§ç§»å‹•ã—ã¾ã™.
         /// </summary>
-        /// <param name="position">ƒXƒNƒ[ƒ‹ˆÊ’u. <c>0f</c> ~ <c>totalCount - 1f</c> ‚Ì”ÍˆÍ.</param>
-        /// <param name="duration">ˆÚ“®‚É‚©‚¯‚é•b”.</param>
-        /// <param name="easingFunction">ˆÚ“®‚Ég—p‚·‚éƒC[ƒWƒ“ƒOŠÖ”.</param>
-        /// <param name="onComplete">ˆÚ“®‚ªŠ®—¹‚µ‚½Û‚ÉŒÄ‚Ño‚³‚ê‚éƒR[ƒ‹ƒoƒbƒN.</param>
+        /// <param name="position">ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ä½ç½®. <c>0f</c> ~ <c>totalCount - 1f</c> ã®ç¯„å›².</param>
+        /// <param name="duration">ç§»å‹•ã«ã‹ã‘ã‚‹ç§’æ•°.</param>
+        /// <param name="easingFunction">ç§»å‹•ã«ä½¿ç”¨ã™ã‚‹ã‚¤ãƒ¼ã‚¸ãƒ³ã‚°é–¢æ•°.</param>
+        /// <param name="onComplete">ç§»å‹•ãŒå®Œäº†ã—ãŸéš›ã«å‘¼ã³å‡ºã•ã‚Œã‚‹ã‚³ãƒ¼ãƒ«ãƒãƒƒã‚¯.</param>
         public void ScrollTo(float position, float duration, EasingFunction easingFunction, Action onComplete = null)
         {
             if (duration <= 0f)
@@ -279,9 +279,9 @@ namespace fantec
         }
 
         /// <summary>
-        /// w’è‚µ‚½ƒCƒ“ƒfƒbƒNƒX‚ÌˆÊ’u‚Ü‚ÅƒWƒƒƒ“ƒv‚µ‚Ü‚·.
+        /// æŒ‡å®šã—ãŸã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹ã®ä½ç½®ã¾ã§ã‚¸ãƒ£ãƒ³ãƒ—ã—ã¾ã™.
         /// </summary>
-        /// <param name="index">ƒAƒCƒeƒ€‚ÌƒCƒ“ƒfƒbƒNƒX.</param>
+        /// <param name="index">ã‚¢ã‚¤ãƒ†ãƒ ã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹.</param>
         public void JumpTo(int index)
         {
             if (index < 0 || index > totalCount - 1)
@@ -294,11 +294,11 @@ namespace fantec
         }
 
         /// <summary>
-        /// <paramref name="sourceIndex"/> ‚©‚ç <paramref name="destIndex"/> ‚ÉˆÚ“®‚·‚éÛ‚ÌˆÚ“®•ûŒü‚ğ•Ô‚µ‚Ü‚·.
-        /// ƒXƒNƒ[ƒ‹”ÍˆÍ‚ª–³§ŒÀ‚Éİ’è‚³‚ê‚Ä‚¢‚éê‡‚Í, Å’Z‹——£‚ÌˆÚ“®•ûŒü‚ğ•Ô‚µ‚Ü‚·.
+        /// <paramref name="sourceIndex"/> ã‹ã‚‰ <paramref name="destIndex"/> ã«ç§»å‹•ã™ã‚‹éš›ã®ç§»å‹•æ–¹å‘ã‚’è¿”ã—ã¾ã™.
+        /// ã‚¹ã‚¯ãƒ­ãƒ¼ãƒ«ç¯„å›²ãŒç„¡åˆ¶é™ã«è¨­å®šã•ã‚Œã¦ã„ã‚‹å ´åˆã¯, æœ€çŸ­è·é›¢ã®ç§»å‹•æ–¹å‘ã‚’è¿”ã—ã¾ã™.
         /// </summary>
-        /// <param name="sourceIndex">ˆÚ“®Œ³‚ÌƒCƒ“ƒfƒbƒNƒX.</param>
-        /// <param name="destIndex">ˆÚ“®æ‚ÌƒCƒ“ƒfƒbƒNƒX.</param>
+        /// <param name="sourceIndex">ç§»å‹•å…ƒã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹.</param>
+        /// <param name="destIndex">ç§»å‹•å…ˆã®ã‚¤ãƒ³ãƒ‡ãƒƒã‚¯ã‚¹.</param>
         /// <returns></returns>
         public MovementDirection GetMovementDirection(int sourceIndex, int destIndex)
         {

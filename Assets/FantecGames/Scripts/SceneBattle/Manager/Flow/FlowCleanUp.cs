@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Common;
 using UnityEngine;
 using UnityEngine.SceneManagement;
@@ -19,18 +19,18 @@ namespace fantec.Battle.Manager
 
                     if(PlayFabClient.UserDataManager.User!=null)
                     {
-                        // ƒ†[ƒU[‚ª‘¶İ‚µ‚Ä‚¢‚½‚çƒƒjƒ…[‰æ–Ê‚É–ß‚é‚æ‚¤‚É‚·‚é
+                        // ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒå­˜åœ¨ã—ã¦ã„ãŸã‚‰ãƒ¡ãƒ‹ãƒ¥ãƒ¼ç”»é¢ã«æˆ»ã‚‹ã‚ˆã†ã«ã™ã‚‹
                         await ExSceneManager.Instance.LoadSceneAsync(SceneIndex.MENU, LoadSceneMode.Single);
                     }
                     else
                     {
-                        // ƒ†[ƒU[‚ª‘¶İ‚µ‚Ä‚¢‚È‚©‚Á‚½‚çƒfƒoƒbƒOƒ‚[ƒh‚Ìƒoƒgƒ‹‚ÌƒZƒbƒgƒAƒbƒv‰æ–Ê‚É–ß‚é
+                        // ãƒ¦ãƒ¼ã‚¶ãƒ¼ãŒå­˜åœ¨ã—ã¦ã„ãªã‹ã£ãŸã‚‰ãƒ‡ãƒãƒƒã‚°ãƒ¢ãƒ¼ãƒ‰ã®ãƒãƒˆãƒ«ã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—ç”»é¢ã«æˆ»ã‚‹
                         await ExSceneManager.Instance.LoadSceneAsync(SceneIndex.DEBUG_BATTLE_SETUP, LoadSceneMode.Single);
                     }
 
-                    Modal.Clear();     // ƒ‚[ƒ_ƒ‹‚ğ‘S‚Ä•Â‚¶‚é
-                    Locator.Dispose(); // ƒƒP[ƒg’†‚Ì‚à‚Ì‚ğDispose() ƒƒ‚ƒŠ‰ğ•ú
-                    Locator.Clear();   // ƒƒP[ƒ^[‚ğƒNƒŠƒA
+                    Modal.Clear();     // ãƒ¢ãƒ¼ãƒ€ãƒ«ã‚’å…¨ã¦é–‰ã˜ã‚‹
+                    Locator.Dispose(); // ãƒ­ã‚±ãƒ¼ãƒˆä¸­ã®ã‚‚ã®ã‚’Dispose() ãƒ¡ãƒ¢ãƒªè§£æ”¾
+                    Locator.Clear();   // ãƒ­ã‚±ãƒ¼ã‚¿ãƒ¼ã‚’ã‚¯ãƒªã‚¢
 
                     Loading.Hide(0.5f);
                 });

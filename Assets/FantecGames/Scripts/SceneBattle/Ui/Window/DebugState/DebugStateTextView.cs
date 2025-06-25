@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+ï»¿using fantec.Battle.Model;
 using UnityEngine;
 using UnityEngine.UI;
 
@@ -19,7 +19,7 @@ namespace fantec.Battle.Ui.Window
             m_HPText.text = ToValueFormat("HP", battler.State.Health.CurrentHealth);
             m_ATKText.text = ToValueFormat("ATK", battler.State.CurrentATK);
             m_SPDText.text = ToValueFormat("SPD", battler.State.CurrentSPD);
-            m_MovementText.text = ToValueFormat("ˆÚ“®—Í", battler.State.CurrentMOVE);
+            m_MovementText.text = ToValueFormat("ç§»å‹•åŠ›", battler.State.CurrentMOVE);
             SetBuff(m_HPTextB,battler.State.BuffMaxHP);
             SetBuff(m_ATKTextB,battler.State.BuffATK);
             SetBuff(m_SPDTextB,battler.State.BuffSPD);

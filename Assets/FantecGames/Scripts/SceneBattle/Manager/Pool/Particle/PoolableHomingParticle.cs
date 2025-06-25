@@ -1,36 +1,36 @@
-using System.Collections.Generic;
+ï»¿using System.Collections.Generic;
 
 namespace fantec.Battle.Manager
 {
     public static class PoolableHomingParticle
     {
-        // TODO: ‚Å‚«‚ê‚Î‘®«–ˆ‚Éƒp[ƒeƒBƒNƒ‹‚ÌF‚ğ•ª‚¯‚é
+        // TODO: ã§ãã‚Œã°å±æ€§æ¯ã«ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«ã®è‰²ã‚’åˆ†ã‘ã‚‹
         public enum Index
         {
-            Homing_’Êí, // ’Êíg—p‚·‚éƒp[ƒeƒBƒNƒ‹
+            Homing_é€šå¸¸, // é€šå¸¸ä½¿ç”¨ã™ã‚‹ãƒ‘ãƒ¼ãƒ†ã‚£ã‚¯ãƒ«
         }
 
 
         private static readonly Dictionary<int, string> m_IndexNameDis = new Dictionary<int, string>()
         {
-            {(int)Index.Homing_’Êí,              Index.Homing_’Êí.ToString() },
+            {(int)Index.Homing_é€šå¸¸,              Index.Homing_é€šå¸¸.ToString() },
         };
 
         private static readonly Dictionary<int, Index> m_AttributeTypeDic = new Dictionary<int, Index>()
         {
-            {(int)AffectAttributeType.’Êí,            Index.Homing_’Êí },
+            {(int)AffectAttributeType.é€šå¸¸,            Index.Homing_é€šå¸¸ },
         };
 
         public static string ToStringQuickly(this Index @this)
         {
             try { return m_IndexNameDis[(int)@this]; }
-            catch (KeyNotFoundException) { throw new KeyNotFoundException($"[attribute : {@this}] ‚ªkey ‚Æ‚µ‚ÄŠ„‚è“–‚Ä‚ç‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch (KeyNotFoundException) { throw new KeyNotFoundException($"[attribute : {@this}] ãŒkey ã¨ã—ã¦å‰²ã‚Šå½“ã¦ã‚‰ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
 
         public static Index GetIndex(AffectAttributeType attribute)
         {
             try { return m_AttributeTypeDic[(int)attribute]; }
-            catch(KeyNotFoundException) { throw new KeyNotFoundException($"[attribute: {attribute}] ‚ª key ‚Æ‚µ‚ÄŠ„‚è“–‚Ä‚ê‚Ä‚¢‚Ü‚¹‚ñB"); }
+            catch(KeyNotFoundException) { throw new KeyNotFoundException($"[attribute: {attribute}] ãŒ key ã¨ã—ã¦å‰²ã‚Šå½“ã¦ã‚Œã¦ã„ã¾ã›ã‚“ã€‚"); }
         }
     }
 }

@@ -1,4 +1,4 @@
-using fantec.Battle.Model;
+ï»¿using fantec.Battle.Model;
 using NUnit.Framework;
 using System.Collections.Generic;
 using System.Linq;
@@ -7,7 +7,7 @@ using UnityEngine;
 namespace fantec.Battle
 {
     /// <summary>
-    /// •¡”‚Ì AffectInfo ‚ğŠÇ—‚·‚é
+    /// è¤‡æ•°ã® AffectInfo ã‚’ç®¡ç†ã™ã‚‹
     /// </summary>
     public class AffectInfoBox
     {
@@ -16,18 +16,18 @@ namespace fantec.Battle
         public IBattler Owner { get; private set; }
 
         /// <summary>
-        /// ƒRƒ“ƒXƒgƒ‰ƒNƒ^
+        /// ã‚³ãƒ³ã‚¹ãƒˆãƒ©ã‚¯ã‚¿
         /// </summary>
         public AffectInfoBox(AbstructSkillEntity entity,IBattler owner)
         {
-            // ‰Šú‰»
+            // åˆæœŸåŒ–
             infoList = new List<AffectInfo>();
             Owner = owner;
 
-            // ”äŠr—p‚Ì—Dæ‡ˆÊ”Ô†‚ğ—pˆÓ
+            // æ¯”è¼ƒç”¨ã®å„ªå…ˆé †ä½ç•ªå·ã‚’ç”¨æ„
             var priority = 99;
 
-            // ƒRƒ}ƒ“ƒh‚ğ AffectInfo ‚É“ü‚ê‚İ
+            // ã‚³ãƒãƒ³ãƒ‰ã‚’ AffectInfo ã«å…¥ã‚Œè¾¼ã¿
             foreach(var command in entity.commands)
             {
                 var tempInfo=new AffectInfo().SetCommand(command).SetEntity(entity);
@@ -35,10 +35,10 @@ namespace fantec.Battle
 
                 if(tempPriority < priority) 
                 {
-                    // —Dæ”’lXV
+                    // å„ªå…ˆæ•°å€¤æ›´æ–°
                     priority = tempPriority;
 
-                    // ƒƒCƒ“XV
+                    // ãƒ¡ã‚¤ãƒ³æ›´æ–°
                     infoList.SetMain(false);
                     tempInfo.SetMain(true);
                 }
@@ -49,12 +49,12 @@ namespace fantec.Battle
                 infoList.Add(tempInfo.Clone());
             }
 
-            // ‡”Ô‚Ì•À‚Ñ•Ï‚¦
+            // é †ç•ªã®ä¸¦ã³å¤‰ãˆ
             infoList = infoList.SortByPriority().ToList();
         }
 
         /// <summary>
-        /// Œø‰Ê—Ê‚Ì•\¦‚ğ‰B‚·‚©”Û‚©İ’è
+        /// åŠ¹æœé‡ã®è¡¨ç¤ºã‚’éš ã™ã‹å¦ã‹è¨­å®š
         /// </summary>
         public AffectInfoBox SetIsHideNumeral(bool enabled)
         {
@@ -63,7 +63,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ŒvZí•Ê‚Ìİ’è
+        /// è¨ˆç®—ç¨®åˆ¥ã®è¨­å®š
         /// </summary>
         public AffectInfoBox SetCalcType(ValueCalcType calcType)
         {
@@ -72,7 +72,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ”­“®Ò‚ğİ’è
+        /// ç™ºå‹•è€…ã‚’è¨­å®š
         /// </summary>
         public AffectInfoBox SetOwner(IBattler owner)
         {
@@ -82,7 +82,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œø‰Ê‘ÎÛ‚ğİ’è
+        /// åŠ¹æœå¯¾è±¡ã‚’è¨­å®š
         /// </summary>
         /// <returns></returns>
         public AffectInfoBox SetTarget()
@@ -92,7 +92,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// Œø‰Ê‘ÎÛ‚ğ’¼Ú“ü‚ê‚Ş
+        /// åŠ¹æœå¯¾è±¡ã‚’ç›´æ¥å…¥ã‚Œè¾¼ã‚€
         /// </summary>
         public AffectInfoBox SetTarget(IBattler[]targets)
         {
@@ -101,7 +101,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// UŒ‚‘O‚É”­“®‚·‚éƒXƒLƒ‹‚ğæ“¾‚·‚é
+        /// æ”»æ’ƒå‰ã«ç™ºå‹•ã™ã‚‹ã‚¹ã‚­ãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public IEnumerable<AffectInfo>GetFirstInfos()
         {
@@ -110,7 +110,7 @@ namespace fantec.Battle
 
 
         /// <summary>
-        /// UŒ‚Œã‚É”­“®‚·‚éƒXƒLƒ‹‚ğæ“¾‚·‚é
+        /// æ”»æ’ƒå¾Œã«ç™ºå‹•ã™ã‚‹ã‚¹ã‚­ãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public IEnumerable<AffectInfo>GetLateInfos()
         {
@@ -118,7 +118,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// UŒ‚Œn‚ÌƒXƒLƒ‹‚ğæ“¾‚·‚é
+        /// æ”»æ’ƒç³»ã®ã‚¹ã‚­ãƒ«ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public IEnumerable<AffectInfo>GetAttackInfos()
         {
@@ -126,7 +126,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// ƒƒCƒ“‚Æ‚µ‚Äİ’è‚³‚ê‚½‚â‚Â‚ğæ“¾‚·‚é
+        /// ãƒ¡ã‚¤ãƒ³ã¨ã—ã¦è¨­å®šã•ã‚ŒãŸã‚„ã¤ã‚’å–å¾—ã™ã‚‹
         /// </summary>
         public AffectInfo GetMain()
         {
@@ -134,7 +134,7 @@ namespace fantec.Battle
         }
 
         /// <summary>
-        /// UŒ‚‚ğó‚¯‚é‘ÎÛ‚ğ‚©‚Ô‚è‚È‚µ‚Åæ“¾‚·‚é
+        /// æ”»æ’ƒã‚’å—ã‘ã‚‹å¯¾è±¡ã‚’ã‹ã¶ã‚Šãªã—ã§å–å¾—ã™ã‚‹
         /// </summary>
         /// <returns></returns>
         public IEnumerable <IBattler> GetAttackedTargets()

@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Battle.Field.Chara;
 using fantec.Battle.Model;
 using fantec.Common;
@@ -25,11 +25,11 @@ namespace fantec.Battle.Manager
                     var masterManager = Locator.Resolve<IBattleMasterManager>();
                     var soundManager=Locator.Resolve<IBattleSoundManager>();
                     //var windowManager = Locator.Resolve<IBattleWindowManager>();
-                    // TODO : ƒAƒjƒ[ƒVƒ‡ƒ“ƒ}ƒl[ƒWƒƒ[‚à‚±‚±‚É‹LÚ
+                    // TODO : ã‚¢ãƒ‹ãƒ¡ãƒ¼ã‚·ãƒ§ãƒ³ãƒãƒãƒ¼ã‚¸ãƒ£ãƒ¼ã‚‚ã“ã“ã«è¨˜è¼‰
 
                     var cts = manager.m_OnDestroyCancellationToken;
 
-                    // ƒ`[ƒ€î•ñ‰Šú‰»
+                    // ãƒãƒ¼ãƒ æƒ…å ±åˆæœŸåŒ–
                     modelUnits.ResetPlayerTeam();
                     modelUnits.ResetEnemyTeam();
 
@@ -46,42 +46,42 @@ namespace fantec.Battle.Manager
                     }
 
 
-                    // ƒŠƒZƒbƒg
+                    // ãƒªã‚»ãƒƒãƒˆ
                     modelStage.Reset();
                     modelOverride.Reset();
 
   
-                    // ƒf[ƒ^‚Ì“Ç‚İ‚İ
+                    // ãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
                     modelStage.SetStageEntity(bridgingData.GetStageData().ToEntity());
                     modelUnits.SetPlayerTeam(bridgingData.GetCleanTeamData());
 
 
-                    // ƒŠƒ\[ƒX“Ç‚İ‚İ
+                    // ãƒªã‚½ãƒ¼ã‚¹èª­ã¿è¾¼ã¿
                     await resourceManager.CasheSpriteAsync(AssetPath.SpriteFieldPath + modelStage.Entity.FieldImg, cts);
                     await resourceManager.CasheSpriteAsync(AssetPath.SpriteBackGroundPath+modelStage.Entity.normalBg,cts);
                     await resourceManager.CasheAudioAsync(AssetPath.BGMFolderPath+modelStage.Entity.normalBgm,cts);
 
-                    // ƒ{ƒXBGM‚Æ‰æ‘œƒtƒB[ƒ‹ƒh‚Ì“Ç‚İ‚İ
+                    // ãƒœã‚¹BGMã¨ç”»åƒãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®èª­ã¿è¾¼ã¿
                     //await resourceManager.CasheSpriteAsync(AssetPath.SpriteBackGroundPath+modelStage.Entity.bossBg,cts);
                     //await resourceManager.CasheAudioAsync(AssetPath.BGMFolderPath+modelStage.Entity.bossBgm,cts);
                     
-                    // ƒ{ƒCƒX‚Ì“Ç‚İ‚İˆ—‚âSpineƒf[ƒ^‚Ì“Ç‚İ‚İ
+                    // ãƒœã‚¤ã‚¹ã®èª­ã¿è¾¼ã¿å‡¦ç†ã‚„Spineãƒ‡ãƒ¼ã‚¿ã®èª­ã¿è¾¼ã¿
                     foreach (var battler in modelUnits.PlayerDatas.GetExistBattlers())
                     {
                         //await resourceManager.LoadVoiceAsync(masterManager.CharavoiceMaster.GetData(battler.Unit.Entity.originId)
                         //    .Select(x => x.fileName), cts);
                     }
 
-                    // ƒŠƒ\[ƒX‚©‚ç“Ç‚İ‚ñ‚Å‚«‚½ƒf[ƒ^‚ğƒXƒe[ƒW‚ÉƒZƒbƒg
-                    Locator.Resolve<IBattleSoundManager>().PlayBgm(modelStage.GetBattleBgmName()); // BGM‚ğÄ¶
-                    Locator.Resolve<Field.IFieldBackgroundView>().SetSprite(resourceManager.GetBg(modelStage.GetBattleBgName())); // ”wŒiXV
-                    Locator.Resolve<Field.IFieldView>().SetSprite(resourceManager.GetFieldImg(modelStage.GetFieldImgName())); // ƒXƒe[ƒW‚Ì‰æ‘œæ“¾
-                    Locator.Resolve<Ui.IHudInputGuardView>().Hide(); // “ü—Í‰ğ•ú
+                    // ãƒªã‚½ãƒ¼ã‚¹ã‹ã‚‰èª­ã¿è¾¼ã‚“ã§ããŸãƒ‡ãƒ¼ã‚¿ã‚’ã‚¹ãƒ†ãƒ¼ã‚¸ã«ã‚»ãƒƒãƒˆ
+                    Locator.Resolve<IBattleSoundManager>().PlayBgm(modelStage.GetBattleBgmName()); // BGMã‚’å†ç”Ÿ
+                    Locator.Resolve<Field.IFieldBackgroundView>().SetSprite(resourceManager.GetBg(modelStage.GetBattleBgName())); // èƒŒæ™¯æ›´æ–°
+                    Locator.Resolve<Field.IFieldView>().SetSprite(resourceManager.GetFieldImg(modelStage.GetFieldImgName())); // ã‚¹ãƒ†ãƒ¼ã‚¸ã®ç”»åƒå–å¾—
+                    Locator.Resolve<Ui.IHudInputGuardView>().Hide(); // å…¥åŠ›è§£æ”¾
                     
-                    // ƒtƒF[ƒhƒCƒ“
+                    // ãƒ•ã‚§ãƒ¼ãƒ‰ã‚¤ãƒ³
                     Loading.Hide(0.5f);
 
-                    // Ÿ‚Ìƒtƒ[ˆ—‚Ö
+                    // æ¬¡ã®ãƒ•ãƒ­ãƒ¼å‡¦ç†ã¸
                     manager.ChangeFlow<FlowAdmission>();
                 });
             }

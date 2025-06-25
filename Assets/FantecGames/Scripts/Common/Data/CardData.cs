@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using fantec.Master;
 using NUnit.Framework;
@@ -14,7 +14,7 @@ namespace fantec.Common
         public int OverrideSkillLevel;
         public List<int> positionIndex = new List<int>();
 
-        // ŒÀŠE“Ë”j—v‘f‚ÌƒXƒe[ƒ^ƒX‚ğ’Ç‰Á‚·‚é‚È‚ç‚±‚±‚É‹LÚ
+        // é™ç•Œçªç ´è¦ç´ ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¿½åŠ ã™ã‚‹ãªã‚‰ã“ã“ã«è¨˜è¼‰
 
         public CardData(int cardId, CardRarityType rarityType, int totalExp, DateTime purchaseDateTime, int overrideSkillLevel,List<int>positionIndex)
         {
@@ -28,12 +28,12 @@ namespace fantec.Common
 
         public PlayerCardData CardMasterData() => MasterDataManager.Instance.PlayerCardMaster.GetData(cardId);
         public int GetHp()=>MasterDataManager.Instance.PlayerCardMaster.GetData(cardId).GetHpByExp(totalExp,rarityType);
-        public int GetAtk() => MasterDataManager.Instance.PlayerCardMaster.GetData(cardId).GetAtkByExp(totalExp, rarityType);// ŒãXoverLimit‚à’Ç‰Á‚·‚é‚±‚Æ‚É‚È‚é‚©‚àEEE
+        public int GetAtk() => MasterDataManager.Instance.PlayerCardMaster.GetData(cardId).GetAtkByExp(totalExp, rarityType);// å¾Œã€…overLimitã‚‚è¿½åŠ ã™ã‚‹ã“ã¨ã«ãªã‚‹ã‹ã‚‚ãƒ»ãƒ»ãƒ»
         public int GetSpd() => MasterDataManager.Instance.PlayerCardMaster.GetData(cardId).GetSpdByExp(totalExp, rarityType);
         public int GetSpec() => MasterDataManager.Instance.PlayerCardMaster.GetData(cardId).GetSpecByExp(totalExp, rarityType);
 
-        // ‘®«‘Ï«‚È‚Ç‚ÌƒXƒe[ƒ^ƒX‚ğ’Ç‰Á‚·‚é‚È‚ç‚±‚±‚É‹LÚ
+        // å±æ€§è€æ€§ãªã©ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹ã‚’è¿½åŠ ã™ã‚‹ãªã‚‰ã“ã“ã«è¨˜è¼‰
 
-        //i‰»ƒf[ƒ^‚È‚Ç‹LÚ‚·‚é‚È‚ç‚±‚±‚É‹LÚ
+        //é€²åŒ–ãƒ‡ãƒ¼ã‚¿ãªã©è¨˜è¼‰ã™ã‚‹ãªã‚‰ã“ã“ã«è¨˜è¼‰
     }
 }

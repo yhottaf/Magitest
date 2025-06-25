@@ -1,15 +1,15 @@
-using fantec;
+ï»¿using fantec;
 using UnityEngine;
 
 namespace FantecScrollView
 {
     /// <summary>
-    /// <see cref="FantecGridView{TItemData, TContext}"/> ‚ÌƒZƒ‹‚ğÀ‘•‚·‚é‚½‚ß‚Ì’ŠÛŠî’êƒNƒ‰ƒX.
-    /// <see cref="FantecCell{TItemData, TContext}.Context"/> ‚ª•s—v‚Èê‡‚Í
-    /// ‘ã‚í‚è‚É <see cref="FantecGridViewCell{TItemData}"/> ‚ğg—p‚µ‚Ü‚·.
+    /// <see cref="FantecGridView{TItemData, TContext}"/> ã®ã‚»ãƒ«ã‚’å®Ÿè£…ã™ã‚‹ãŸã‚ã®æŠ½è±¡åŸºåº•ã‚¯ãƒ©ã‚¹.
+    /// <see cref="FantecCell{TItemData, TContext}.Context"/> ãŒä¸è¦ãªå ´åˆã¯
+    /// ä»£ã‚ã‚Šã« <see cref="FantecGridViewCell{TItemData}"/> ã‚’ä½¿ç”¨ã—ã¾ã™.
     /// </summary>
-    /// <typeparam name="TItemData">ƒAƒCƒeƒ€‚Ìƒf[ƒ^Œ^.</typeparam>
-    /// <typeparam name="TContext"><see cref="FancyCell{TItemData, TContext}.Context"/> ‚ÌŒ^.</typeparam>
+    /// <typeparam name="TItemData">ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‡ãƒ¼ã‚¿å‹.</typeparam>
+    /// <typeparam name="TContext"><see cref="FancyCell{TItemData, TContext}.Context"/> ã®å‹.</typeparam>
     public abstract class FantecGridViewCell<TItemData, TContext> : FantecScrollRectCell<TItemData, TContext>
         where TContext : class, IFantecGridViewContext, new()
     {
@@ -30,9 +30,9 @@ namespace FantecScrollView
     }
 
     /// <summary>
-    /// <see cref="FantecGridView{TItemData}"/> ‚ÌƒZƒ‹‚ğÀ‘•‚·‚é‚½‚ß‚Ì’ŠÛŠî’êƒNƒ‰ƒX.
+    /// <see cref="FantecGridView{TItemData}"/> ã®ã‚»ãƒ«ã‚’å®Ÿè£…ã™ã‚‹ãŸã‚ã®æŠ½è±¡åŸºåº•ã‚¯ãƒ©ã‚¹.
     /// </summary>
-    /// <typeparam name="TItemData">ƒAƒCƒeƒ€‚Ìƒf[ƒ^Œ^.</typeparam>
+    /// <typeparam name="TItemData">ã‚¢ã‚¤ãƒ†ãƒ ã®ãƒ‡ãƒ¼ã‚¿å‹.</typeparam>
     /// <seealso cref="FantecGridViewCell{TItemData, TContext}"/>
     public abstract class FantecGridViewCell<TItemData> : FantecGridViewCell<TItemData, FantecGridViewContext>
     {

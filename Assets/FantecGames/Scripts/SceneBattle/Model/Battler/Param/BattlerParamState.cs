@@ -1,4 +1,4 @@
-using System;
+ï»¿using System;
 using System.Collections.Generic;
 using System.Linq;
 using UniRx;
@@ -19,13 +19,13 @@ namespace fantec.Battle.Model
         public int OriginalDMG => 99999;
         public int OriginalMaxHP => m_StateEntity.HP;
 
-        public int OriginalMOVE => m_StateEntity.Move; // ƒfƒtƒHƒ‹ƒg‚ÌˆÚ“®—Í
+        public int OriginalMOVE => m_StateEntity.Move; // ãƒ‡ãƒ•ã‚©ãƒ«ãƒˆã®ç§»å‹•åŠ›
 
         public int Spec => CurrentMaxHP + CurrentATK + CurrentDEX + CurrentDMG + CurrentLUK + CurrentSPD + CurrentVIT;
 
         public float RatioHP => (float)CurrentHP / (float)CurrentMaxHP;
 
-        // Œ»İ‚ÌƒXƒe[ƒ^ƒX
+        // ç¾åœ¨ã®ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹
 
         public int CurrentUnitID => m_StateEntity.originId;
         public int CurrentATK => OriginalATK * (BuffATK + 100) / 100;
@@ -39,7 +39,7 @@ namespace fantec.Battle.Model
 
         public int CurrentMOVE => Mathf.Clamp(OriginalMOVE + BuffMOVE, 1, 8);
 
-        // ƒoƒtƒXƒe[ƒ^ƒXŒvZ
+        // ãƒãƒ•ã‚¹ãƒ†ãƒ¼ã‚¿ã‚¹è¨ˆç®—
         public int BuffATK => GetBuffValue(AffectCategoryType.ATK_Buff) - GetBuffValue(AffectCategoryType.ATK_Debuff);
         public int BuffSPD => GetBuffValue(AffectCategoryType.SPD_Buff) - GetBuffValue(AffectCategoryType.SPD_Debuff);
         public int BuffDEX => GetBuffValue(AffectCategoryType.DEX_Buff) - GetBuffValue(AffectCategoryType.DEX_Debuff);
@@ -50,7 +50,7 @@ namespace fantec.Battle.Model
         public int BuffMOVE => GetBuffValue(AffectCategoryType.MOVE_Buff) - GetBuffValue(AffectCategoryType.MOVE_Debuff);
 
         public bool IsConfusion => m_TokenCellList.GetisAnyToken(AffectCategoryType.Confusion);
-        public bool IsRestraintDS => m_TokenCellList.GetisAnyToken(AffectCategoryType.OverrideSealed);// ƒI[ƒo[ƒ‰ƒCƒhƒXƒLƒ‹••ˆóó‘Ô
+        public bool IsRestraintDS => m_TokenCellList.GetisAnyToken(AffectCategoryType.OverrideSealed);// ã‚ªãƒ¼ãƒãƒ¼ãƒ©ã‚¤ãƒ‰ã‚¹ã‚­ãƒ«å°å°çŠ¶æ…‹
         public bool IsBreak => m_TokenCellList.GetisAnyToken(AffectCategoryType.Break);
         public bool IsShield => m_TokenCellList.GetisAnyToken(AffectCategoryType.Shield);
 
@@ -71,14 +71,14 @@ namespace fantec.Battle.Model
         {
             m_AttributeResisDic = new Dictionary<int, int>()
             {
-                //TODO : ‚±‚±‚É‘®«‘Ï«‚ğ‹LÚ‚·‚é
+                //TODO : ã“ã“ã«å±æ€§è€æ€§ã‚’è¨˜è¼‰ã™ã‚‹
             };
         }
 
         public void Setup(CardStateEntity entity,bool isTakeover=false)
         {
             m_StateEntity = entity;
-            // TODO: ‘®«‘Ï«‹Lq
+            // TODO: å±æ€§è€æ€§è¨˜è¿°
 
             m_StateHealth.SetMaxHealth(entity.HP, isTakeover);
         }
@@ -121,7 +121,7 @@ namespace fantec.Battle.Model
             m_TokenCellList.Remove(tokenCell);
             m_UpdateTokenListSubject.OnNext(m_TokenCellList.ToList());
 
-            // Å‘å‘Ì—Í’l‚É‰e‹¿‚·‚éê‡
+            // æœ€å¤§ä½“åŠ›å€¤ã«å½±éŸ¿ã™ã‚‹å ´åˆ
             if(tokenCell.command.categoryType.GetIsMaxHealthable())
             {
                 m_StateHealth.SetMaxHealth(CurrentMaxHP);
@@ -140,13 +140,13 @@ namespace fantec.Battle.Model
                 m_TokenCellList.Add(TokenCell.Create(info));
                 m_UpdateTokenListSubject.OnNext(m_TokenCellList.ToList());
 
-                // Å‘å‘Ì—Í’l‚É‰e‹¿‚·‚éê‡
+                // æœ€å¤§ä½“åŠ›å€¤ã«å½±éŸ¿ã™ã‚‹å ´åˆ
                 if(info.Command.categoryType.GetIsMaxHealthable())
                 {
-                    m_StateHealth.SetMaxHealth(CurrentMaxHP, info.SkillType == SkillType.Gimmic); // MEMO:Gimmic ‚È‚çŒ»İ‘Ì—Í‚ğã‘‚«
+                    m_StateHealth.SetMaxHealth(CurrentMaxHP, info.SkillType == SkillType.Gimmic); // MEMO:Gimmic ãªã‚‰ç¾åœ¨ä½“åŠ›ã‚’ä¸Šæ›¸ã
                 }
             }
-            m_TakeBuffSubject.OnNext(info); // Œø‰Ê”½‰f‚ğ’Ê’m
+            m_TakeBuffSubject.OnNext(info); // åŠ¹æœåæ˜ ã‚’é€šçŸ¥
         }
 
         public void TakeDispel(AffectInfo info)
@@ -155,10 +155,10 @@ namespace fantec.Battle.Model
             {
                 if(m_TokenCellList.GetTryDiselableToken(out IEnumerable<TokenCell>cells))
                 {
-                    RemoveToken(cells.First());    // ¦Å‰‚Ì1‚Â‚Ì‚İ
+                    RemoveToken(cells.First());    // â€»æœ€åˆã®1ã¤ã®ã¿
                 }
             }
-            m_TakeBuffSubject.OnNext(info); // Œø‰Ê”½‰f‚ğ’Ê’m
+            m_TakeBuffSubject.OnNext(info); // åŠ¹æœåæ˜ ã‚’é€šçŸ¥
         }
 
         public void TakeAbnormalRecobery(AffectInfo info)
@@ -170,7 +170,7 @@ namespace fantec.Battle.Model
                     RemoveToken(cells);
                 }
             }
-            m_TakeBuffSubject.OnNext(info);   // Œø‰Ê”½‰f‚ğ’Ê’m
+            m_TakeBuffSubject.OnNext(info);   // åŠ¹æœåæ˜ ã‚’é€šçŸ¥
         }
 
         public int GetAttributeResisCurrentValue(AffectAttributeType attributeType)
@@ -183,7 +183,7 @@ namespace fantec.Battle.Model
         public int GetAttributeResistOriginalValue(AffectAttributeType attributeType)
         {
             try { return m_AttributeResisDic[(int)attributeType]; }
-            catch { throw new KeyNotFoundException($"[{attributeType}] ‚Í Key ‚Æ‚µ‚Ä“o˜^‚³‚ê‚Ä‚¢‚Ü‚¹‚ñB");  }
+            catch { throw new KeyNotFoundException($"[{attributeType}] ã¯ Key ã¨ã—ã¦ç™»éŒ²ã•ã‚Œã¦ã„ã¾ã›ã‚“ã€‚");  }
         }
 
         public int GetAttributeResistBuffValue(AffectAttributeType attributeType)

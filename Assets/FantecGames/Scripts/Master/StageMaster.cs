@@ -1,4 +1,4 @@
-using fantec;
+ï»¿using fantec;
 using fantec.Common;
 using fantec.Master;
 using fantec.PlayFabClient;
@@ -12,33 +12,33 @@ namespace fantec.Master
     [System.Serializable]
     public class StageData : IData
     {
-        public int stageId;        // ƒXƒe[ƒWID
-        public int sortId;         // ƒ\[ƒgID
-        public int groupId;        // ƒOƒ‹[ƒvID
-        public int chapterNumber;  // Í”Ô†
-        public int stageNumber;    // ƒXƒe[ƒW”Ô†
-        public string stageName;   // ƒXƒe[ƒW–¼
-        public int[] conditionIds; // ‰ğ•ú‚É•K—v‚ÈƒXƒe[ƒWID
-        public string description; // ƒXƒe[ƒW‚Ìà–¾
-        public int stamina;        // Á”ïƒXƒ^ƒ~ƒi
-        public StagePlayType playType; // ƒvƒŒƒC‚·‚éí•Ê (ƒoƒgƒ‹ or ƒXƒg[ƒŠ[)
-        public StageCategoryType categoryType; // ƒXƒe[ƒWí•Ê
-        public StageDifficultyType difficultyType;   // “ïˆÕ“x
-        public CardRarityType recommendedRarityType; // „§ƒŒƒAƒŠƒeƒB
-        public int recommendedLevel;                 // „§ƒŒƒxƒ‹
+        public int stageId;        // ã‚¹ãƒ†ãƒ¼ã‚¸ID
+        public int sortId;         // ã‚½ãƒ¼ãƒˆID
+        public int groupId;        // ã‚°ãƒ«ãƒ¼ãƒ—ID
+        public int chapterNumber;  // ç« ç•ªå·
+        public int stageNumber;    // ã‚¹ãƒ†ãƒ¼ã‚¸ç•ªå·
+        public string stageName;   // ã‚¹ãƒ†ãƒ¼ã‚¸å
+        public int[] conditionIds; // è§£æ”¾ã«å¿…è¦ãªã‚¹ãƒ†ãƒ¼ã‚¸ID
+        public string description; // ã‚¹ãƒ†ãƒ¼ã‚¸ã®èª¬æ˜
+        public int stamina;        // æ¶ˆè²»ã‚¹ã‚¿ãƒŸãƒŠ
+        public StagePlayType playType; // ãƒ—ãƒ¬ã‚¤ã™ã‚‹ç¨®åˆ¥ (ãƒãƒˆãƒ« or ã‚¹ãƒˆãƒ¼ãƒªãƒ¼)
+        public StageCategoryType categoryType; // ã‚¹ãƒ†ãƒ¼ã‚¸ç¨®åˆ¥
+        public StageDifficultyType difficultyType;   // é›£æ˜“åº¦
+        public CardRarityType recommendedRarityType; // æ¨å¥¨ãƒ¬ã‚¢ãƒªãƒ†ã‚£
+        public int recommendedLevel;                 // æ¨å¥¨ãƒ¬ãƒ™ãƒ«
 
-        public string normalBgm;  // ’ÊíBGM
-        public string bossBgm;    // ƒ{ƒXí‚ÌBGM
-        public string normalBg;   // ’Êí”wŒi
-        public string bossBg;     // ƒ{ƒX”wŒi
-        public string fieldImg;   // ƒtƒB[ƒ‹ƒh‚Ì‰æ‘œ
+        public string normalBgm;  // é€šå¸¸BGM
+        public string bossBgm;    // ãƒœã‚¹æˆ¦æ™‚ã®BGM
+        public string normalBg;   // é€šå¸¸èƒŒæ™¯
+        public string bossBg;     // ãƒœã‚¹èƒŒæ™¯
+        public string fieldImg;   // ãƒ•ã‚£ãƒ¼ãƒ«ãƒ‰ã®ç”»åƒ
 
-        public string waveMasterKey;       // ƒEƒF[ƒuƒ}ƒXƒ^[–¼
-        public int rewardExp;              // •ñVŒoŒ±’l
-        public int clearReword;            // ‰‰ñ•ñVƒe[ƒuƒ‹ID
-        public int rewardTableId;          // •ñVƒe[ƒuƒ‹ID
+        public string waveMasterKey;       // ã‚¦ã‚§ãƒ¼ãƒ–ãƒã‚¹ã‚¿ãƒ¼å
+        public int rewardExp;              // å ±é…¬çµŒé¨“å€¤
+        public int clearReword;            // åˆå›å ±é…¬ãƒ†ãƒ¼ãƒ–ãƒ«ID
+        public int rewardTableId;          // å ±é…¬ãƒ†ãƒ¼ãƒ–ãƒ«ID
 
-        public string advSeetName;         // Ä¶‚·‚é‰ï˜bƒp[ƒg–¼
+        public string advSeetName;         // å†ç”Ÿã™ã‚‹ä¼šè©±ãƒ‘ãƒ¼ãƒˆå
     }
 }
 
@@ -48,7 +48,7 @@ public class StageMaster:MasterBase<StageData>
     public StageData GetData(int stageId)
     {
         try { return dataList.First(x => x.stageId == stageId); }
-        catch { throw new InvalidOperationException($"[stageId : {stageId}] ‚Í‘¶İ‚µ‚Ü‚¹‚ñB"); }
+        catch { throw new InvalidOperationException($"[stageId : {stageId}] ã¯å­˜åœ¨ã—ã¾ã›ã‚“ã€‚"); }
     }
 
     public List<StageData>GetStageDataList(StageCategoryType type)
@@ -67,7 +67,7 @@ public class StageMaster:MasterBase<StageData>
     }
 
     /// <summary>
-    /// ˆø”‚Ì GroupId ‚ÌƒNƒGƒXƒg‚ğ‘S‚ÄƒNƒŠƒA‚µ‚Ä‚¢‚é‚©‚ğ•Ô‚µ‚Ü‚·
+    /// å¼•æ•°ã® GroupId ã®ã‚¯ã‚¨ã‚¹ãƒˆã‚’å…¨ã¦ã‚¯ãƒªã‚¢ã—ã¦ã„ã‚‹ã‹ã‚’è¿”ã—ã¾ã™
     /// </summary>
     /// <param name="groupId"></param>
     /// <returns></returns>

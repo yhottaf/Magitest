@@ -1,4 +1,4 @@
-using Cysharp.Threading.Tasks;
+ï»¿using Cysharp.Threading.Tasks;
 using fantec.Utilities;
 using System.Collections.Generic;
 using System.Threading;
@@ -9,28 +9,28 @@ namespace fantec.Common
 {
     public class AssetManager:PersistentSingleton<AssetManager>
     {
-        private Dictionary<string, Object> _loadedAssets = new();                // AudioClipˆÈŠO
-        private Dictionary<string, AudioClip> _loadedAudioClips = new();         // AudioClip‚Ì‚İ
-        private Dictionary<string,GameObject>_loadedLive2DModels=new();          // Live2Dê—p
+        private Dictionary<string, Object> _loadedAssets = new();                // AudioClipä»¥å¤–
+        private Dictionary<string, AudioClip> _loadedAudioClips = new();         // AudioClipã®ã¿
+        private Dictionary<string,GameObject>_loadedLive2DModels=new();          // Live2Då°‚ç”¨
 
         /// <summary>
-        /// ”ñ“¯Šú‚ÅAddressablesƒAƒZƒbƒg‚ğ“Ç‚İ‚Ş
+        /// éåŒæœŸã§Addressablesã‚¢ã‚»ãƒƒãƒˆã‚’èª­ã¿è¾¼ã‚€
         /// </summary>
         public async UniTask<T> LoadAssetAsync<T>(string address, CancellationToken cts = default) where T : Object
         {
-            // AudioClip‚¾‚¯•ÊƒLƒƒƒbƒVƒ…‚ğQÆ
+            // AudioClipã ã‘åˆ¥ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‚ç…§
             if (typeof(T) == typeof(AudioClip) && _loadedAudioClips.TryGetValue(address, out var audioObj))
             {
                 return audioObj as T;
             }
 
-            // Live2D‚à•ÊƒLƒƒƒbƒVƒ…‚ğQÆ
+            // Live2Dã‚‚åˆ¥ã‚­ãƒ£ãƒƒã‚·ãƒ¥ã‚’å‚ç…§
             if(typeof(T) == typeof(GameObject)&&address.Contains("Live2D")&&_loadedLive2DModels.TryGetValue(address, out var live2DModel))
             {
                 return live2DModel as T;
             }
 
-            // ’Êí‚ÌƒLƒƒƒbƒVƒ…QÆ
+            // é€šå¸¸ã®ã‚­ãƒ£ãƒƒã‚·ãƒ¥å‚ç…§
             if (_loadedAssets.TryGetValue(address, out Object cachedAsset) && cachedAsset is T cachedTyped)
             {
                 return cachedTyped;
@@ -49,7 +49,7 @@ namespace fantec.Common
                         var result = handle.Result;
                         if (result != null)
                         {
-                            // AudioClip‚¾‚¯•ÊŠÇ—
+                            // AudioClipã ã‘åˆ¥ç®¡ç†
                             if (result is AudioClip clip)
                             {
                                 _loadedAudioClips[address] = clip;
@@ -90,7 +90,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// “Ç‚İ‚ñ‚¾ƒAƒZƒbƒg‚ğ‰ğ•ú
+        /// èª­ã¿è¾¼ã‚“ã ã‚¢ã‚»ãƒƒãƒˆã‚’è§£æ”¾
         /// </summary>
         public void ReleaseAsset<T>(T asset) where T : Object
         {
@@ -98,7 +98,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// _loadedAssets ‚É“o˜^‚³‚ê‚Ä‚¢‚é‚·‚×‚Ä‚ÌƒAƒZƒbƒg‚ğ Release ‚µAŠÇ—‚©‚çœŠO‚·‚é
+        /// _loadedAssets ã«ç™»éŒ²ã•ã‚Œã¦ã„ã‚‹ã™ã¹ã¦ã®ã‚¢ã‚»ãƒƒãƒˆã‚’ Release ã—ã€ç®¡ç†ã‹ã‚‰é™¤å¤–ã™ã‚‹
         /// </summary>
         public void ReleaseAllLoadedAssets()
         {
@@ -113,7 +113,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// AudioClip‚¾‚¯‚ğƒŠƒŠ[ƒX
+        /// AudioClipã ã‘ã‚’ãƒªãƒªãƒ¼ã‚¹
         /// </summary>
         public void ReleaseAllAudioClips()
         {
@@ -128,7 +128,7 @@ namespace fantec.Common
         }
 
         /// <summary>
-        /// Live2DŠÖ˜A‚¾‚¯‚ğƒŠƒŠ[ƒX
+        /// Live2Dé–¢é€£ã ã‘ã‚’ãƒªãƒªãƒ¼ã‚¹
         /// </summary>
         public void ReleaseAllLive2DModels()
         {
