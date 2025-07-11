@@ -21,495 +21,495 @@ MonoBehaviour:
   - level: 2
     HP: 2.11
     ATK: 2.11
-    DEF: 2.11
+    DEF: 0
     SPD: 2.11
   - level: 3
     HP: 4.21
     ATK: 4.21
-    DEF: 4.21
+    DEF: 0
     SPD: 4.21
   - level: 4
     HP: 6.32
     ATK: 6.32
-    DEF: 6.32
+    DEF: 0
     SPD: 6.32
   - level: 5
     HP: 8.42
     ATK: 8.42
-    DEF: 8.42
+    DEF: 0
     SPD: 8.42
   - level: 6
     HP: 10.53
     ATK: 10.53
-    DEF: 10.53
+    DEF: 0
     SPD: 10.53
   - level: 7
     HP: 12.63
     ATK: 12.63
-    DEF: 12.63
+    DEF: 0
     SPD: 12.63
   - level: 8
     HP: 14.74
     ATK: 14.74
-    DEF: 14.74
+    DEF: 0
     SPD: 14.74
   - level: 9
     HP: 16.84
     ATK: 16.84
-    DEF: 16.84
+    DEF: 0
     SPD: 16.84
   - level: 10
     HP: 18.95
     ATK: 18.95
-    DEF: 18.95
+    DEF: 0
     SPD: 18.95
   - level: 11
     HP: 21.05
     ATK: 21.05
-    DEF: 21.05
+    DEF: 0
     SPD: 21.05
   - level: 12
     HP: 23.16
     ATK: 23.16
-    DEF: 23.16
+    DEF: 0
     SPD: 23.16
   - level: 13
     HP: 25.26
     ATK: 25.26
-    DEF: 25.26
+    DEF: 0
     SPD: 25.26
   - level: 14
     HP: 27.37
     ATK: 27.37
-    DEF: 27.37
+    DEF: 0
     SPD: 27.37
   - level: 15
     HP: 29.47
     ATK: 29.47
-    DEF: 29.47
+    DEF: 0
     SPD: 29.47
   - level: 16
     HP: 31.58
     ATK: 31.58
-    DEF: 31.58
+    DEF: 0
     SPD: 31.58
   - level: 17
     HP: 33.68
     ATK: 33.68
-    DEF: 33.68
+    DEF: 0
     SPD: 33.68
   - level: 18
     HP: 35.79
     ATK: 35.79
-    DEF: 35.79
+    DEF: 0
     SPD: 35.79
   - level: 19
     HP: 37.89
     ATK: 37.89
-    DEF: 37.89
+    DEF: 0
     SPD: 37.89
   - level: 20
     HP: 40
     ATK: 40
-    DEF: 40
+    DEF: 0
     SPD: 40
   - level: 21
     HP: 41
     ATK: 41
-    DEF: 41
+    DEF: 0
     SPD: 41
   - level: 22
     HP: 42
     ATK: 42
-    DEF: 42
+    DEF: 0
     SPD: 42
   - level: 23
     HP: 43
     ATK: 43
-    DEF: 43
+    DEF: 0
     SPD: 43
   - level: 24
     HP: 44
     ATK: 44
-    DEF: 44
+    DEF: 0
     SPD: 44
   - level: 25
     HP: 45
     ATK: 45
-    DEF: 45
+    DEF: 0
     SPD: 45
   - level: 26
     HP: 46
     ATK: 46
-    DEF: 46
+    DEF: 0
     SPD: 46
   - level: 27
     HP: 47
     ATK: 47
-    DEF: 47
+    DEF: 0
     SPD: 47
   - level: 28
     HP: 48
     ATK: 48
-    DEF: 48
+    DEF: 0
     SPD: 48
   - level: 29
     HP: 49
     ATK: 49
-    DEF: 49
+    DEF: 0
     SPD: 49
   - level: 30
     HP: 50
     ATK: 50
-    DEF: 50
+    DEF: 0
     SPD: 50
   - level: 31
     HP: 51
     ATK: 51
-    DEF: 51
+    DEF: 0
     SPD: 51
   - level: 32
     HP: 52
     ATK: 52
-    DEF: 52
+    DEF: 0
     SPD: 52
   - level: 33
     HP: 53
     ATK: 53
-    DEF: 53
+    DEF: 0
     SPD: 53
   - level: 34
     HP: 54
     ATK: 54
-    DEF: 54
+    DEF: 0
     SPD: 54
   - level: 35
     HP: 55
     ATK: 55
-    DEF: 55
+    DEF: 0
     SPD: 55
   - level: 36
     HP: 56
     ATK: 56
-    DEF: 56
+    DEF: 0
     SPD: 56
   - level: 37
     HP: 57
     ATK: 57
-    DEF: 57
+    DEF: 0
     SPD: 57
   - level: 38
     HP: 58
     ATK: 58
-    DEF: 58
+    DEF: 0
     SPD: 58
   - level: 39
     HP: 59
     ATK: 59
-    DEF: 59
+    DEF: 0
     SPD: 59
   - level: 40
     HP: 60
     ATK: 60
-    DEF: 60
+    DEF: 0
     SPD: 60
   - level: 41
     HP: 61
     ATK: 61
-    DEF: 61
+    DEF: 0
     SPD: 61
   - level: 42
     HP: 62
     ATK: 62
-    DEF: 62
+    DEF: 0
     SPD: 62
   - level: 43
     HP: 63
     ATK: 63
-    DEF: 63
+    DEF: 0
     SPD: 63
   - level: 44
     HP: 64
     ATK: 64
-    DEF: 64
+    DEF: 0
     SPD: 64
   - level: 45
     HP: 65
     ATK: 65
-    DEF: 65
+    DEF: 0
     SPD: 65
   - level: 46
     HP: 66
     ATK: 66
-    DEF: 66
+    DEF: 0
     SPD: 66
   - level: 47
     HP: 67
     ATK: 67
-    DEF: 67
+    DEF: 0
     SPD: 67
   - level: 48
     HP: 68
     ATK: 68
-    DEF: 68
+    DEF: 0
     SPD: 68
   - level: 49
     HP: 69
     ATK: 69
-    DEF: 69
+    DEF: 0
     SPD: 69
   - level: 50
     HP: 70
     ATK: 70
-    DEF: 70
+    DEF: 0
     SPD: 70
   - level: 51
     HP: 70.6
     ATK: 70.6
-    DEF: 70.6
+    DEF: 0
     SPD: 70.6
   - level: 52
     HP: 71.2
     ATK: 71.2
-    DEF: 71.2
+    DEF: 0
     SPD: 71.2
   - level: 53
     HP: 71.8
     ATK: 71.8
-    DEF: 71.8
+    DEF: 0
     SPD: 71.8
   - level: 54
     HP: 72.4
     ATK: 72.4
-    DEF: 72.4
+    DEF: 0
     SPD: 72.4
   - level: 55
     HP: 73
     ATK: 73
-    DEF: 73
+    DEF: 0
     SPD: 73
   - level: 56
     HP: 73.6
     ATK: 73.6
-    DEF: 73.6
+    DEF: 0
     SPD: 73.6
   - level: 57
     HP: 74.2
     ATK: 74.2
-    DEF: 74.2
+    DEF: 0
     SPD: 74.2
   - level: 58
     HP: 74.8
     ATK: 74.8
-    DEF: 74.8
+    DEF: 0
     SPD: 74.8
   - level: 59
     HP: 75.4
     ATK: 75.4
-    DEF: 75.4
+    DEF: 0
     SPD: 75.4
   - level: 60
     HP: 76
     ATK: 76
-    DEF: 76
+    DEF: 0
     SPD: 76
   - level: 61
     HP: 76.6
     ATK: 76.6
-    DEF: 76.6
+    DEF: 0
     SPD: 76.6
   - level: 62
     HP: 77.2
     ATK: 77.2
-    DEF: 77.2
+    DEF: 0
     SPD: 77.2
   - level: 63
     HP: 77.8
     ATK: 77.8
-    DEF: 77.8
+    DEF: 0
     SPD: 77.8
   - level: 64
     HP: 78.4
     ATK: 78.4
-    DEF: 78.4
+    DEF: 0
     SPD: 78.4
   - level: 65
     HP: 79
     ATK: 79
-    DEF: 79
+    DEF: 0
     SPD: 79
   - level: 66
     HP: 79.6
     ATK: 79.6
-    DEF: 79.6
+    DEF: 0
     SPD: 79.6
   - level: 67
     HP: 80.2
     ATK: 80.2
-    DEF: 80.2
+    DEF: 0
     SPD: 80.2
   - level: 68
     HP: 80.8
     ATK: 80.8
-    DEF: 80.8
+    DEF: 0
     SPD: 80.8
   - level: 69
     HP: 81.4
     ATK: 81.4
-    DEF: 81.4
+    DEF: 0
     SPD: 81.4
   - level: 70
     HP: 82
     ATK: 82
-    DEF: 82
+    DEF: 0
     SPD: 82
   - level: 71
     HP: 82.6
     ATK: 82.6
-    DEF: 82.6
+    DEF: 0
     SPD: 82.6
   - level: 72
     HP: 83.2
     ATK: 83.2
-    DEF: 83.2
+    DEF: 0
     SPD: 83.2
   - level: 73
     HP: 83.8
     ATK: 83.8
-    DEF: 83.8
+    DEF: 0
     SPD: 83.8
   - level: 74
     HP: 84.4
     ATK: 84.4
-    DEF: 84.4
+    DEF: 0
     SPD: 84.4
   - level: 75
     HP: 85
     ATK: 85
-    DEF: 85
+    DEF: 0
     SPD: 85
   - level: 76
     HP: 85.6
     ATK: 85.6
-    DEF: 85.6
+    DEF: 0
     SPD: 85.6
   - level: 77
     HP: 86.2
     ATK: 86.2
-    DEF: 86.2
+    DEF: 0
     SPD: 86.2
   - level: 78
     HP: 86.8
     ATK: 86.8
-    DEF: 86.8
+    DEF: 0
     SPD: 86.8
   - level: 79
     HP: 87.4
     ATK: 87.4
-    DEF: 87.4
+    DEF: 0
     SPD: 87.4
   - level: 80
     HP: 88
     ATK: 88
-    DEF: 88
+    DEF: 0
     SPD: 88
   - level: 81
     HP: 88.6
     ATK: 88.6
-    DEF: 88.6
+    DEF: 0
     SPD: 88.6
   - level: 82
     HP: 89.2
     ATK: 89.2
-    DEF: 89.2
+    DEF: 0
     SPD: 89.2
   - level: 83
     HP: 89.8
     ATK: 89.8
-    DEF: 89.8
+    DEF: 0
     SPD: 89.8
   - level: 84
     HP: 90.4
     ATK: 90.4
-    DEF: 90.4
+    DEF: 0
     SPD: 90.4
   - level: 85
     HP: 91
     ATK: 91
-    DEF: 91
+    DEF: 0
     SPD: 91
   - level: 86
     HP: 91.6
     ATK: 91.6
-    DEF: 91.6
+    DEF: 0
     SPD: 91.6
   - level: 87
     HP: 92.2
     ATK: 92.2
-    DEF: 92.2
+    DEF: 0
     SPD: 92.2
   - level: 88
     HP: 92.8
     ATK: 92.8
-    DEF: 92.8
+    DEF: 0
     SPD: 92.8
   - level: 89
     HP: 93.4
     ATK: 93.4
-    DEF: 93.4
+    DEF: 0
     SPD: 93.4
   - level: 90
     HP: 94
     ATK: 94
-    DEF: 94
+    DEF: 0
     SPD: 94
   - level: 91
     HP: 94.6
     ATK: 94.6
-    DEF: 94.6
+    DEF: 0
     SPD: 94.6
   - level: 92
     HP: 95.2
     ATK: 95.2
-    DEF: 95.2
+    DEF: 0
     SPD: 95.2
   - level: 93
     HP: 95.8
     ATK: 95.8
-    DEF: 95.8
+    DEF: 0
     SPD: 95.8
   - level: 94
     HP: 96.4
     ATK: 96.4
-    DEF: 96.4
+    DEF: 0
     SPD: 96.4
   - level: 95
     HP: 97
     ATK: 97
-    DEF: 97
+    DEF: 0
     SPD: 97
   - level: 96
     HP: 97.6
     ATK: 97.6
-    DEF: 97.6
+    DEF: 0
     SPD: 97.6
   - level: 97
     HP: 98.2
     ATK: 98.2
-    DEF: 98.2
+    DEF: 0
     SPD: 98.2
   - level: 98
     HP: 98.8
     ATK: 98.8
-    DEF: 98.8
+    DEF: 0
     SPD: 98.8
   - level: 99
     HP: 99.4
     ATK: 99.4
-    DEF: 99.4
+    DEF: 0
     SPD: 99.4
   - level: 100
     HP: 100
     ATK: 100
-    DEF: 100
+    DEF: 0
     SPD: 100

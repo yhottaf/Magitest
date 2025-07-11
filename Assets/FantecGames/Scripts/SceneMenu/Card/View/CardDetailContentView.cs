@@ -1,67 +1,113 @@
-ï»¿using fantec.Common;
+using System.Xml.Linq;
+using fantec.Common;
+using fantec.Master;
 using fantec.PlayFabClient;
 using UnityEngine;
+using UnityEngine.UI;
 
 namespace fantec.Menu.Card.View
 {
     public class CardDetailContentView : MonoBehaviour
     {
+        [SerializeField] private Text characterNameText; // ƒLƒƒƒ‰ƒNƒ^[–¼‚ğ•\¦‚·‚éƒeƒLƒXƒg@
+        [SerializeField] private Text hpText; // ƒLƒƒƒ‰ƒNƒ^[‚ÌHP‚ğ•\¦‚·‚éƒeƒLƒXƒg@
+        [SerializeField] private Text atkText; // ƒLƒƒƒ‰ƒNƒ^‚ÌUŒ‚—Í‚ğ•\¦‚·‚éƒeƒLƒXƒg@
+        [SerializeField] private Text spdText; // ƒLƒƒƒ‰ƒNƒ^[‚ÌƒXƒs[ƒh‚ğ•\¦‚·‚éƒeƒLƒXƒg@
+        [SerializeField] private Text specText; // ƒLƒƒƒ‰ƒNƒ^[‚ÌƒXƒyƒbƒN‚ğ•\¦‚·‚éƒeƒLƒXƒg@
+
         public void Setup(int cardId)
         {
-            CardData cardData=CardManager.GetCardData(cardId);
+            CardData cardData = CardManager.GetCardData(cardId);
             UnitSetUp(cardData);
             CommonSetup(cardId);
         }
 
         /// <summary>
-        /// å…±é€šåæ˜ å‡¦ç†
+        /// ‹¤’Ê”½‰fˆ—
         /// </summary>
         /// <param name="cardId"></param>
         private void CommonSetup(int cardId)
         {
-            Master.PlayerCardData masterData=MasterDataManager.Instance.PlayerCardMaster.GetData(cardId);
-
-            // ã‚­ãƒ£ãƒ©ã‚¯ã‚¿ãƒ¼å åæ˜ 
-
-            
+            Master.PlayerCardData masterData = MasterDataManager.Instance.PlayerCardMaster.GetData(cardId);
+            // ƒLƒƒƒ‰ƒNƒ^[–¼ ”½‰f
+            characterNameText.text = masterData.charaName;
         }
 
+        [SerializeField] private Text levelText; // ƒLƒƒƒ‰ƒNƒ^[‚ÌƒŒƒxƒ‹‚ğ•\¦‚·‚éƒeƒLƒXƒg
+        [SerializeField] private Slider expSlider; // ŒoŒ±’l‚ÌƒXƒ‰ƒCƒ_[
+        [SerializeField] private Text nextexpText; // ƒLƒƒƒ‰ƒNƒ^[‚ÌŒ»İƒŒƒxƒ‹’†‚ÌŒoŒ±’l / Ÿ‚ÌƒŒƒxƒ‹‚Ü‚Å‚ÌŒoŒ±’l‚ğ•\¦‚·‚éƒeƒLƒXƒg
+
         /// <summary>
-        /// æ‰€æŒãƒ¦ãƒ‹ãƒƒãƒˆç”¨ã®ã‚»ãƒƒãƒˆã‚¢ãƒƒãƒ—
+        /// Šƒ†ƒjƒbƒg—p‚ÌƒZƒbƒgƒAƒbƒv
         /// </summary>
         /// <param name="data"></param>
         private void UnitSetUp(CardData data)
         {
-            if(data!=null)
+
+            if (data != null)
             {
                 Master.PlayerCardData masterData = MasterDataManager.Instance.PlayerCardMaster.GetData(data.cardId);
 
-                int level = masterData.GetLevelByExp(data.totalExp);         // ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«
-                int maxLevel = EnumExtentions.GetMaxLevel(data.rarityType);  // ç¾åœ¨ã®é™ç•Œãƒ¬ãƒ™ãƒ«
+                int level = masterData.GetLevelByExp(data.totalExp);         // Œ»İ‚ÌƒŒƒxƒ‹
+                int maxLevel = EnumExtentions.GetMaxLevel(data.rarityType);  // Œ»İ‚ÌŒÀŠEƒŒƒxƒ‹
 
-                int nNowExperience = data.totalExp;     // ç¾åœ¨ã®çµŒé¨“å€¤
-                int nNowExpTotal;                       // ç¾åœ¨ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã®çµŒé¨“å€¤
-                int nNextExpTotal;                      // æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã®çµŒé¨“å€¤
+                //Œ»İ‚ÌƒŒƒxƒ‹‚ğ•\¦
+                levelText.text = $"Lv.{level}@/  {maxLevel}(MAX)";
 
-                // çµŒé¨“å€¤
-                if(level!=maxLevel)
+                int nNowExperience = data.totalExp;     // Œ»İ‚ÌŒoŒ±’l
+                int nNowExpTotal;                       // Œ»İ‚ÌƒŒƒxƒ‹‚Ü‚Å‚ÌŒoŒ±’l
+                int nNextExpTotal;                      // Ÿ‚ÌƒŒƒxƒ‹‚Ü‚Å‚ÌŒoŒ±’l
+
+
+                // ƒXƒe[ƒ^ƒXæ“¾
+                int currentHp = data.GetHp();           //Œ»İ‚ÌHP
+                int currentAtk = data.GetAtk();@       //Œ»İ‚ÌUŒ‚—Í
+                int currentSpd = data.GetSpd();@       //Œ»İ‚ÌƒXƒs[ƒh
+                int currentSpec = data.GetSpec();       //Œ»İ‚ÌƒXƒyƒbƒN
+
+
+
+                //ƒXƒe[ƒ^ƒX•\¦
+                hpText.text = $"HP: {currentHp}";
+                atkText.text = $"ATK: {currentAtk}";
+                spdText.text = $"SPD: {currentSpd}";
+                specText.text = $"ƒŒƒAƒŠƒeƒB: {currentSpec}";
+
+                // ŒoŒ±’l
+                if (level != maxLevel)
                 {
-                    nNowExpTotal=masterData.GetExpByLevel(level);
+                    nNowExpTotal = masterData.GetExpByLevel(level);
                     nNextExpTotal = masterData.GetExpByLevel(level + 1);
                 }
-                else // æœ€å¤§ãƒ¬ãƒ™ãƒ«ã®å ´åˆ
+                else // Å‘åƒŒƒxƒ‹‚Ìê‡
                 {
                     nNowExpTotal = masterData.GetExpByLevel(level - 1);
                     nNextExpTotal = masterData.GetExpByLevel(level);
                 }
 
-                int nextLevel = masterData.GetLevelByExp(data.totalExp) + 1; // æ¬¡ã®ãƒ¬ãƒ™ãƒ«
-                if(nextLevel>=EnumExtentions.GetMaxLevel(data.rarityType))
+                int nextLevel = masterData.GetLevelByExp(data.totalExp) + 1; // Ÿ‚ÌƒŒƒxƒ‹
+                if (nextLevel >= EnumExtentions.GetMaxLevel(data.rarityType))
                 {
-                    nextLevel=EnumExtentions.GetMaxLevel(data.rarityType);
+                    nextLevel = EnumExtentions.GetMaxLevel(data.rarityType);
+
                 }
 
-                //ã€€ç¾åœ¨ã®çµŒé¨“å€¤ / æ¬¡ã®ãƒ¬ãƒ™ãƒ«ã¾ã§ã«å¿…è¦ãªçµŒé¨“å€¤ã€€ã‚’æç”»
+                // Œ»İ‚ÌƒŒƒxƒ‹’†‚ÌŒoŒ±’l / Ÿ‚ÌƒŒƒxƒ‹‚Ü‚Å‚É•K—v‚ÈŒoŒ±’l@‚ğ•`‰æ
+                //expmaster‚©‚çƒLƒƒƒ‰ƒNƒ^[‚É‘Î‰‚·‚éŒoŒ±’lƒe[ƒuƒ‹‚ğæ“¾
+                var expMaster = MasterDataManager.Instance.GetMaster<ExpMaster>(masterData.expTableKey);
+
+                //Œ»İ‚ÌƒŒƒxƒ‹‚Ì’†‚Å‚ÌŒoŒ±’l‚ğæ“¾
+                int currentLevelExp = expMaster.GetCurrentTableExp(data.totalExp);
+                // Ÿ‚ÌƒŒƒxƒ‹‚Ü‚Å‚ÌŒoŒ±’l‚ğæ“¾
+                int nextExp = expMaster.GetNextLevelExp(data.totalExp);
+
+                // ƒXƒ‰ƒCƒ_[•\¦
+                expSlider.value = Mathf.Clamp01((float)currentLevelExp / nextExp);
+
+@@@@@@@@// Œ»İ‚ÌƒŒƒxƒ‹’†‚ÌŒoŒ±’l / Ÿ‚ÌƒŒƒxƒ‹‚Ü‚Å‚É•K—v‚ÈŒoŒ±’l‚ğ•\¦
+                nextexpText.text = $"Œ»İ‚ÌŒoŒ±’lF{currentLevelExp} Ÿ‚ÌƒŒƒxƒ‹‚Ü‚ÅF{nextExp}";
+
+                
             }
         }
     }

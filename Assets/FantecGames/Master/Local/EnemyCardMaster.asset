@@ -18,7 +18,7 @@ MonoBehaviour:
     originId: 30001
     sortId: 1
     charaName: "\u30BF\u30B3"
-    readCharaname: 
+    readCharaname: "\u305F\u3053"
     tagNames: []
     rarityType: 0
     moveType: 0

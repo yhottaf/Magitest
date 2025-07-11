@@ -1,0 +1,42 @@
+﻿using UnityEngine;
+
+namespace fantec
+{
+
+    /// <summary>
+    /// カスタムオブジェクト（基本はプレハブ）
+    /// </summary>
+    [AddComponentMenu("fantec/ADV/Internal/GraphicObject/AdvGraphicObjectCustom")]
+    public class AdvGraphicObjectCustom : AdvGraphicObjectPrefabBase
+    {
+        protected SpriteRenderer sprite;
+
+        //********描画時のリソース変更********//
+        protected override void ChangeResourceOnDrawSub(AdvGraphicInfo graphic)
+        {
+            foreach (var item in this.GetComponentsInChildren<IAdvGraphicObjectCustom>())
+            {
+                item.ChangeResourceOnDrawSub(graphic);
+            }
+        }
+
+        //エフェクト用の色が変化したとき
+        internal override void OnEffectColorsChange(AdvEffectColor color)
+        {
+            foreach (var item in this.GetComponentsInChildren<IAdvGraphicObjectCustom>())
+            {
+                item.OnEffectColorsChange(color);
+            }
+        }
+
+        //********描画時の引数適用********//
+        internal override void SetCommandArg(AdvCommand command)
+        {
+            base.SetCommandArg(command);
+            foreach (var item in this.GetComponentsInChildren<IAdvGraphicObjectCustomCommand>())
+            {
+                item.SetCommandArg(command);
+            }
+        }
+    }
+}

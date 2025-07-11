@@ -1,5 +1,6 @@
-using System.Linq;
+﻿using System.Linq;
 using UnityEditor;
+using UnityEditor.Build;
 
 [InitializeOnLoad]
 public static class AutoDefineSymbols
@@ -26,10 +27,12 @@ public static class AutoDefineSymbols
     }
     static void AddDefine(BuildTargetGroup group, string define)
     {
-        var current = PlayerSettings.GetScriptingDefineSymbolsForGroup(group);
+        var namedTarget = NamedBuildTarget.FromBuildTargetGroup(group);
+        var current = PlayerSettings.GetScriptingDefineSymbols(namedTarget);
+
         if (!current.Split(';').Contains(define))
         {
-            PlayerSettings.SetScriptingDefineSymbolsForGroup(group, current + ";" + define);
+            PlayerSettings.SetScriptingDefineSymbols(namedTarget, current + ";" + define);
         }
     }
 }

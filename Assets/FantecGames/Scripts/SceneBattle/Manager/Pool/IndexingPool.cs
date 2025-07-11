@@ -3,7 +3,7 @@ using UnityEngine;
 
 namespace fantec.Battle.Manager.Pool
 {
-    public class IndexingPool<TObject> : ObjectPool<AbstractIndexingBaseObject<TObject>>where TObject : Object
+    public class IndexingPool<TObject> : UniRx.Toolkit.ObjectPool<AbstractIndexingBaseObject<TObject>>where TObject : Object
     {
         public readonly string key;
         private readonly AbstractIndexingBaseObject<TObject> m_PoolObject;
